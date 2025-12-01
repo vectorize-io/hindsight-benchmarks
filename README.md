@@ -31,53 +31,23 @@ The table below shows performance across different memory systems on the LongMem
 
 ### Benchmark Execution Details
 
-#### Performance Metrics
+**Models:** Hindsight uses **only open source models** via Groq
+- Memory 'Retain' Pipeline: `openai/gpt-oss-20b`
+- Answer Generator: `openai/gpt-oss-20b`
+- Judge: `openai/gpt-oss-120b`
 
-**Latency**
+**Cost:** $17.10 total ($0.034 per question)
+- 128M input tokens × $0.075/1M = $9.60
+- 25M output tokens × $0.30/1M = $7.50
+- *Note: Covers only Hindsight operations (retain pipeline), excludes evaluation costs*
 
-Latency performance respected Hindsight's standard latency specifications. For detailed latency benchmarks and performance characteristics, see the [Hindsight documentation](https://github.com/vectorize-io/hindsight).
+**Cost Efficiency:** Exceptionally low costs achieved through sophisticated token reduction techniques in the Retain pipeline and **LLM-free memory recalls** - retrieving memories incurs zero LLM cost, enabling unlimited recall operations in production.
 
-**Cost**
+**Infrastructure:** Local MacBook with PostgreSQL (pg0) - no specialized cloud infrastructure required
 
-Hindsight uses **only open source models** for all memory operations. The benchmark execution costs are extremely competitive:
+**Latency:** Respected Hindsight's standard specifications. See [documentation](https://github.com/vectorize-io/hindsight) for details.
 
-**Models Used:**
-- **Answer Generator:** `openai/gpt-oss-20b` (via Groq)
-- **Judge:** `openai/gpt-oss-120b` (via Groq)
-- **Memory 'Retain' Pipeline:** `openai/gpt-oss-20b` (via Groq)
-
-**Token Usage:**
-- Input tokens: ~128M tokens
-- Output tokens: ~25M tokens
-- Groq pricing: $0.075 per 1M input tokens, $0.30 per 1M output tokens
-
-**Total Cost Breakdown:**
-- Input cost: 128M × $0.075/1M = **$9.60**
-- Output cost: 25M × $0.30/1M = **$7.50**
-- **Total Hindsight cost: $17.10**
-
-**Per-Question Cost:**
-- Average cost: $17.10 / 500 questions = **$0.034 per question**
-
-**Note:** This cost represents **only the Hindsight memory system operations** (retain pipeline). It does not include the costs of the answer generator and judge models used for benchmark evaluation.
-
-This demonstrates that Hindsight achieves state-of-the-art performance (96.40% accuracy) at a fraction of the cost of proprietary model-based systems, thanks to its exclusive use of open source models.
-
-**Note on Cost Efficiency:**
-
-The exceptionally low costs are achieved through:
-1. **Sophisticated token reduction techniques** in the Retain pipeline that minimize LLM usage during memory storage
-2. **LLM-free memory recalls** - The memory architecture does not use LLMs for retrieving memories, enabling **unlimited recall operations at zero LLM cost**
-
-This means you can read and recall memories forever without incurring any LLM costs, making Hindsight extremely cost-effective for production deployments with high recall volumes.
-
-**Infrastructure:**
-
-The benchmark was executed on a **local MacBook** using a **local PostgreSQL database (pg0)**, demonstrating that Hindsight achieves exceptional performance without requiring specialized cloud infrastructure or expensive hardware.
-
-#### System Configuration
-
-These results were generated using the **first version of Hindsight**. The infrastructure and hardware configuration are not significant variables in performance - the key factor is the memory system architecture and model selection.
+**System:** First version of Hindsight. 
 
 ### Reproducibility
 
@@ -105,22 +75,43 @@ LoComo (Long Conversation Memory) is a benchmark designed to test memory systems
 
 **Note:** We skipped the **Adversarial category** as it is almost impossible to evaluate reliably due to the subjective and ambiguous nature of the questions in that category.
 
+### Performance Comparison
+
+The table below shows performance across different memory systems on the LoComo benchmark:
+
+| Method | Single Hop J ↑ | Multi-Hop J ↑ | Open Domain J ↑ | Temporal J ↑ | Overall |
+|--------|----------------|---------------|-----------------|--------------|---------|
+| A-Mem* | 39.79 | 18.85 | 54.05 | 31.08 | 48.38 |
+| LangMem | 62.23 | 47.92 | 71.12 | 23.43 | 58.10 |
+| Zep (Mem0 paper) | 61.70 | 41.35 | 76.60 | 49.31 | 65.99 |
+| Zep (Zep Blog Post) | - | - | - | - | 75.14 |
+| OpenAI | 63.79 | 42.92 | 62.29 | 21.71 | 52.90 |
+| Mem0 | 67.13 | 51.15 | 72.93 | 55.51 | 66.88 |
+| Mem0 w Graph | 65.71 | 47.19 | 75.71 | 58.13 | 68.44 |
+| **Hindsight** | **44.90** | **73.00** | **92.20** | **60.40** | **76.85** |
+
+**Key Highlights:**
+- Hindsight achieves the highest overall accuracy at 76.85%
+- Exceptional Open Domain performance (92.20%), significantly outperforming other systems
+- Strong Multi-Hop reasoning (73.00%), the best among all systems
+- Best Temporal reasoning performance (60.40%)
+
 ### Important Note on Benchmark Validity
 
 While Hindsight achieves solid performance on LoComo, **we do not consider this benchmark to be a reliable indicator of memory system quality** due to significant flaws in the dataset design and evaluation methodology.
 
 **Known Issues with LoComo:**
 
-1. **Ambiguous Questions and Answers** - Many questions have multiple valid interpretations, and the "correct" answers are often subjective or incomplete
-2. **Flawed Ground Truth** - The dataset contains numerous labeling errors and inconsistencies in what is marked as correct
-3. **Limited Evaluation Scope** - The benchmark focuses on narrow recall tasks that don't reflect real-world memory system requirements
-4. **Dataset Quality Issues** - Poor conversation design and unrealistic dialogue patterns
+1. **Missing and Flawed Ground Truth** - Some categories have missing ground truth answers, speaker attribution errors, and inconsistencies in what is marked as correct
+2. **Ambiguous Questions** - Many questions have multiple valid interpretations and lack sufficient specificity to have a single correct answer
+3. **Insufficient Challenge** - Conversations are too short (16k-26k tokens), fitting within modern LLM context windows, failing to genuinely test memory retrieval capabilities
+4. **Limited Evaluation Scope** - Lacks critical tests for knowledge updates and temporal reasoning that are essential for real-world memory systems
+5. **Data Quality Issues** - Multimodal errors (image references without descriptions), poor conversation design, and unrealistic dialogue patterns
 
 **References:**
 
-- [Discussion of LoComo limitations in memory benchmarking literature](TODO: Add specific reference)
-- [Analysis of conversational memory benchmark design flaws](TODO: Add specific reference)
-- [Critique of long-context evaluation methodologies](TODO: Add specific reference)
+- [https://blog.getzep.com/lies-damn-lies-statistics-is-mem0-really-sota-in-agent-memory/]
+- [https://www.kdjingpai.com/en/ai-zhinengtijiyiban/]
 
 For these reasons, we recommend focusing on **LongMemEval** as a more reliable indicator of memory system performance. LongMemEval provides better-quality ground truth, more realistic conversation scenarios, and a broader evaluation of memory capabilities.
 
