@@ -1,8 +1,8 @@
-# Benchmark Results
+# Hindsight Benchmark Results
 
-This repository contains benchmark results for the Hindsight memory system.
+This repository contains benchmark results for the Hindsight memory system and visualization tools to inspect the results.
 
-## LongMemEval Benchmark Results
+## LongMemEval
 
 ### Overview
 
@@ -33,11 +33,11 @@ The table below shows performance across different memory systems on the LongMem
 
 #### Performance Metrics
 
-**Latency:**
+**Latency**
 
 Latency performance respected Hindsight's standard latency specifications. For detailed latency benchmarks and performance characteristics, see the [Hindsight documentation](https://github.com/vectorize-io/hindsight).
 
-**Cost:**
+**Cost**
 
 Hindsight uses **only open source models** for all memory operations. The benchmark execution costs are extremely competitive:
 
@@ -54,10 +54,12 @@ Hindsight uses **only open source models** for all memory operations. The benchm
 **Total Cost Breakdown:**
 - Input cost: 128M × $0.075/1M = **$9.60**
 - Output cost: 25M × $0.30/1M = **$7.50**
-- **Total benchmark cost: $17.10**
+- **Total Hindsight cost: $17.10**
 
 **Per-Question Cost:**
 - Average cost: $17.10 / 500 questions = **$0.034 per question**
+
+**Note:** This cost represents **only the Hindsight memory system operations** (retain pipeline). It does not include the costs of the answer generator and judge models used for benchmark evaluation.
 
 This demonstrates that Hindsight achieves state-of-the-art performance (96.40% accuracy) at a fraction of the cost of proprietary model-based systems, thanks to its exclusive use of open source models.
 
