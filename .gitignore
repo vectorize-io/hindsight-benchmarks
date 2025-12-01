@@ -1,1 +1,5 @@
 .idea
+
+# Exclude uncompressed result files (keep only .gz versions)
+results/*.json
+!results/*.json.gz

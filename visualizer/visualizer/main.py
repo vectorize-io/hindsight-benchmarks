@@ -7,6 +7,7 @@ Usage:
     python main.py
 """
 
+import gzip
 import json
 from pathlib import Path
 from typing import Any
@@ -16,6 +17,27 @@ from fasthtml.common import *
 # Get the project root directory (hindsight-benchmarks/)
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 RESULTS_DIR = PROJECT_ROOT / "results"
+
+
+def load_json_file(path: Path) -> dict[str, Any] | None:
+    """Load a JSON file, supporting both regular and gzipped files."""
+    # Try .gz version first if regular file doesn't exist
+    if not path.exists() and (path.parent / f"{path.name}.gz").exists():
+        path = path.parent / f"{path.name}.gz"
+
+    if not path.exists():
+        return None
+
+    try:
+        if path.suffix == ".gz":
+            with gzip.open(path, 'rt', encoding='utf-8') as f:
+                return json.load(f)
+        else:
+            with open(path, encoding='utf-8') as f:
+                return json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return None
+
 
 # Tailwind + shadcn/ui theme
 def get_head():
@@ -80,33 +102,16 @@ def get_head():
 app, rt = fast_app()
 
 
-def load_locomo_results(mode: str = "search") -> dict[str, Any] | None:
-    """Load LoComo benchmark results."""
-    filename = "locomo_think.json" if mode == "think" else "locomo.json"
-    results_path = RESULTS_DIR / filename
-
-    if not results_path.exists():
-        return None
-
-    try:
-        with open(results_path) as f:
-            return json.load(f)
-    except json.JSONDecodeError:
-        return None
+def load_locomo_results() -> dict[str, Any] | None:
+    """Load LoComo benchmark results (supports .json and .json.gz)."""
+    results_path = RESULTS_DIR / "locomo.json"
+    return load_json_file(results_path)
 
 
 def load_longmemeval_results() -> dict[str, Any] | None:
-    """Load LongMemEval benchmark results."""
+    """Load LongMemEval benchmark results (supports .json and .json.gz)."""
     results_path = RESULTS_DIR / "longmemeval.json"
-
-    if not results_path.exists():
-        return None
-
-    try:
-        with open(results_path) as f:
-            return json.load(f)
-    except json.JSONDecodeError:
-        return None
+    return load_json_file(results_path)
 
 
 def get_category_name(category: int | str) -> str:
@@ -126,18 +131,15 @@ def get_category_name(category: int | str) -> str:
 @rt("/")
 def get():
     """Main page."""
-    # Check which benchmarks are available
-    has_locomo_search = (RESULTS_DIR / "locomo.json").exists()
-    has_locomo_think = (RESULTS_DIR / "locomo_think.json").exists()
-    has_longmemeval = (RESULTS_DIR / "longmemeval.json").exists()
+    # Check which benchmarks are available (both .json and .json.gz)
+    has_locomo = (RESULTS_DIR / "locomo.json").exists() or (RESULTS_DIR / "locomo.json.gz").exists()
+    has_longmemeval = (RESULTS_DIR / "longmemeval.json").exists() or (RESULTS_DIR / "longmemeval.json.gz").exists()
 
     # Build options list dynamically
     options = [Option("-- Choose a benchmark --", value="", selected=True)]
 
-    if has_locomo_search:
-        options.append(Option("LoComo (search mode)", value="/locomo/search"))
-    if has_locomo_think:
-        options.append(Option("LoComo (think mode)", value="/locomo/think"))
+    if has_locomo:
+        options.append(Option("LoComo", value="/locomo"))
     if has_longmemeval:
         options.append(Option("LongMemEval", value="/longmemeval"))
 
@@ -164,26 +166,23 @@ def get():
     )
 
 
-@rt("/locomo/{mode}")
-def get_locomo(mode: str, filter_type: str = "all", category_filter: str = "all"):
+@rt("/locomo")
+def get_locomo(filter_type: str = "all", category_filter: str = "all"):
     """Render LoComo results."""
-    data = load_locomo_results(mode)
+    data = load_locomo_results()
 
     if not data:
-        mode_label = "think" if mode == "think" else "search"
-        extra_args = " --use-think" if mode == "think" else ""
-        filename = "locomo_think.json" if mode == "think" else "locomo.json"
-        expected_path = RESULTS_DIR / filename
+        expected_path = RESULTS_DIR / "locomo.json"
         return (
-            Title(f"LoComo ({mode_label}) - Not Found"),
+            Title("LoComo - Not Found"),
             get_head(),
             Main(
                 H1("⚠️ Benchmark Results Not Found", cls="text-3xl font-bold text-foreground mb-4"),
-                P(f"The {mode_label} mode results are not available.", cls="text-muted-foreground mb-2"),
-                P(f"Expected file location:", cls="text-sm font-medium text-foreground mt-4 mb-1"),
+                P("The LoComo results are not available.", cls="text-muted-foreground mb-2"),
+                P("Expected file location:", cls="text-sm font-medium text-foreground mt-4 mb-1"),
                 Pre(str(expected_path), cls="bg-slate-100 text-slate-900 p-3 rounded-md overflow-x-auto text-sm mb-6 border border-border"),
                 H4("To generate results:", cls="text-lg font-semibold text-foreground mb-2"),
-                Pre(f"./scripts/benchmarks/run-locomo.sh --env local{extra_args}", cls="bg-slate-900 text-slate-100 p-4 rounded-md overflow-x-auto text-sm"),
+                Pre("./scripts/benchmarks/run-locomo.sh --env local", cls="bg-slate-900 text-slate-100 p-4 rounded-md overflow-x-auto text-sm"),
                 A("← Back", href="/", cls="inline-flex items-center mt-6 px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 text-sm font-medium"),
                 cls="container mx-auto max-w-7xl px-4 py-8"
             )
@@ -243,11 +242,9 @@ def get_locomo(mode: str, filter_type: str = "all", category_filter: str = "all"
                     elif result.get("is_correct"):
                         category_stats[category]["correct"] += 1
 
-    mode_label = " (Think Mode)" if mode == "think" else " (Search Mode)"
-
     # Overall stats
     stats_html = Div(
-        H3(f"LoComo Benchmark{mode_label} - Overall Performance", cls="text-2xl font-bold text-foreground mb-6"),
+        H3("LoComo Benchmark - Overall Performance", cls="text-2xl font-bold text-foreground mb-6"),
         Div(
             Div(
                 P("Overall Accuracy", cls="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2"),
@@ -292,13 +289,13 @@ def get_locomo(mode: str, filter_type: str = "all", category_filter: str = "all"
         Div(
             P("Filter by correctness:", cls="text-sm font-medium text-foreground mb-2"),
             Div(
-                A("All", href=f"/locomo/{mode}?filter_type=all&category_filter={category_filter}",
+                A("All", href=f"/locomo?filter_type=all&category_filter={category_filter}",
                   cls="px-3 py-1.5 rounded-md text-sm font-medium " + ("bg-primary text-primary-foreground" if filter_type == 'all' else "bg-white text-foreground border border-border hover:bg-accent")),
-                A("✅ All Correct", href=f"/locomo/{mode}?filter_type=correct&category_filter={category_filter}",
+                A("✅ All Correct", href=f"/locomo?filter_type=correct&category_filter={category_filter}",
                   cls="px-3 py-1.5 rounded-md text-sm font-medium " + ("bg-primary text-primary-foreground" if filter_type == 'correct' else "bg-white text-foreground border border-border hover:bg-accent")),
-                A("❌ Has Incorrect", href=f"/locomo/{mode}?filter_type=incorrect&category_filter={category_filter}",
+                A("❌ Has Incorrect", href=f"/locomo?filter_type=incorrect&category_filter={category_filter}",
                   cls="px-3 py-1.5 rounded-md text-sm font-medium " + ("bg-primary text-primary-foreground" if filter_type == 'incorrect' else "bg-white text-foreground border border-border hover:bg-accent")),
-                A("⚠️ Has Invalid", href=f"/locomo/{mode}?filter_type=invalid&category_filter={category_filter}",
+                A("⚠️ Has Invalid", href=f"/locomo?filter_type=invalid&category_filter={category_filter}",
                   cls="px-3 py-1.5 rounded-md text-sm font-medium " + ("bg-primary text-primary-foreground" if filter_type == 'invalid' else "bg-white text-foreground border border-border hover:bg-accent")) if total_invalid > 0 else None,
                 cls="flex flex-wrap gap-2"
             ),
@@ -308,15 +305,15 @@ def get_locomo(mode: str, filter_type: str = "all", category_filter: str = "all"
         Div(
             P("Filter by question category:", cls="text-sm font-medium text-foreground mb-2"),
             Div(
-                A("All Categories", href=f"/locomo/{mode}?filter_type={filter_type}&category_filter=all",
+                A("All Categories", href=f"/locomo?filter_type={filter_type}&category_filter=all",
                   cls="px-3 py-1.5 rounded-md text-sm font-medium " + ("bg-primary text-primary-foreground" if category_filter == 'all' else "bg-white text-foreground border border-border hover:bg-accent")),
-                A("Multi-hop", href=f"/locomo/{mode}?filter_type={filter_type}&category_filter=1",
+                A("Multi-hop", href=f"/locomo?filter_type={filter_type}&category_filter=1",
                   cls="px-3 py-1.5 rounded-md text-sm font-medium " + ("bg-primary text-primary-foreground" if category_filter == '1' else "bg-white text-foreground border border-border hover:bg-accent")),
-                A("Single-hop", href=f"/locomo/{mode}?filter_type={filter_type}&category_filter=2",
+                A("Single-hop", href=f"/locomo?filter_type={filter_type}&category_filter=2",
                   cls="px-3 py-1.5 rounded-md text-sm font-medium " + ("bg-primary text-primary-foreground" if category_filter == '2' else "bg-white text-foreground border border-border hover:bg-accent")),
-                A("Temporal", href=f"/locomo/{mode}?filter_type={filter_type}&category_filter=3",
+                A("Temporal", href=f"/locomo?filter_type={filter_type}&category_filter=3",
                   cls="px-3 py-1.5 rounded-md text-sm font-medium " + ("bg-primary text-primary-foreground" if category_filter == '3' else "bg-white text-foreground border border-border hover:bg-accent")),
-                A("Open-domain", href=f"/locomo/{mode}?filter_type={filter_type}&category_filter=4",
+                A("Open-domain", href=f"/locomo?filter_type={filter_type}&category_filter=4",
                   cls="px-3 py-1.5 rounded-md text-sm font-medium " + ("bg-primary text-primary-foreground" if category_filter == '4' else "bg-white text-foreground border border-border hover:bg-accent")),
                 cls="flex flex-wrap gap-2"
             ),
@@ -383,13 +380,13 @@ def get_locomo(mode: str, filter_type: str = "all", category_filter: str = "all"
                     ),
                     cls=f"bg-white border border-border rounded-lg shadow-sm transition-all {border_class} {bg_class}"
                 ),
-                href=f"/locomo/{mode}/item/{original_idx}?filter_type={filter_type}&category_filter={category_filter}",
+                href=f"/locomo/item/{original_idx}?filter_type={filter_type}&category_filter={category_filter}",
                 cls="block no-underline"
             )
         )
 
     return (
-        Title(f"LoComo ({mode_label})"),
+        Title("LoComo"),
         get_head(),
         Main(
             Div(
@@ -408,16 +405,16 @@ def get_locomo(mode: str, filter_type: str = "all", category_filter: str = "all"
     )
 
 
-@rt("/locomo/{mode}/item/{item_idx}")
-def get_locomo_item(mode: str, item_idx: int, filter_type: str = "all", category_filter: str = "all"):
+@rt("/locomo/item/{item_idx}")
+def get_locomo_item(item_idx: int, filter_type: str = "all", category_filter: str = "all"):
     """Render a single LoComo item with questions."""
-    data = load_locomo_results(mode)
+    data = load_locomo_results()
     if not data:
         return Redirect("/")
 
     results = data.get("item_results", data.get("conversation_results", []))
     if item_idx >= len(results):
-        return Redirect(f"/locomo/{mode}")
+        return Redirect("/locomo")
 
     item = results[item_idx]
     item_id = item.get("item_id", item.get("sample_id", f"item-{item_idx}"))
@@ -473,9 +470,8 @@ def get_locomo_item(mode: str, item_idx: int, filter_type: str = "all", category
             category_stats[cat_id]["invalid"] = stats.get("invalid", 0)
 
     # Overall stats for this item
-    mode_label = " (Think Mode)" if mode == "think" else " (Search Mode)"
     stats_html = Div(
-        H3(f"{item_id}{mode_label} - Performance", cls="text-2xl font-bold text-foreground mb-6"),
+        H3(f"{item_id} - Performance", cls="text-2xl font-bold text-foreground mb-6"),
         Div(
             Div(
                 P("Overall Accuracy", cls="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2"),
@@ -548,13 +544,13 @@ def get_locomo_item(mode: str, item_idx: int, filter_type: str = "all", category
         Div(
             P("Filter by correctness:", cls="text-sm font-medium text-foreground mb-2"),
             Div(
-                A("All", href=f"/locomo/{mode}/item/{item_idx}?filter_type=all&category_filter={category_filter}",
+                A("All", href=f"/locomo/item/{item_idx}?filter_type=all&category_filter={category_filter}",
                   cls="px-3 py-1.5 rounded-md text-sm font-medium " + ("bg-primary text-primary-foreground" if filter_type == 'all' else "bg-white text-foreground border border-border hover:bg-accent")),
-                A("✅ Correct", href=f"/locomo/{mode}/item/{item_idx}?filter_type=correct&category_filter={category_filter}",
+                A("✅ Correct", href=f"/locomo/item/{item_idx}?filter_type=correct&category_filter={category_filter}",
                   cls="px-3 py-1.5 rounded-md text-sm font-medium " + ("bg-primary text-primary-foreground" if filter_type == 'correct' else "bg-white text-foreground border border-border hover:bg-accent")),
-                A("❌ Incorrect", href=f"/locomo/{mode}/item/{item_idx}?filter_type=incorrect&category_filter={category_filter}",
+                A("❌ Incorrect", href=f"/locomo/item/{item_idx}?filter_type=incorrect&category_filter={category_filter}",
                   cls="px-3 py-1.5 rounded-md text-sm font-medium " + ("bg-primary text-primary-foreground" if filter_type == 'incorrect' else "bg-white text-foreground border border-border hover:bg-accent")),
-                A("⚠️ Invalid", href=f"/locomo/{mode}/item/{item_idx}?filter_type=invalid&category_filter={category_filter}",
+                A("⚠️ Invalid", href=f"/locomo/item/{item_idx}?filter_type=invalid&category_filter={category_filter}",
                   cls="px-3 py-1.5 rounded-md text-sm font-medium " + ("bg-primary text-primary-foreground" if filter_type == 'invalid' else "bg-white text-foreground border border-border hover:bg-accent")) if has_invalid else None,
                 cls="flex flex-wrap gap-2"
             ),
@@ -564,15 +560,15 @@ def get_locomo_item(mode: str, item_idx: int, filter_type: str = "all", category
         Div(
             P("Filter by category:", cls="text-sm font-medium text-foreground mb-2"),
             Div(
-                A("All Categories", href=f"/locomo/{mode}/item/{item_idx}?filter_type={filter_type}&category_filter=all",
+                A("All Categories", href=f"/locomo/item/{item_idx}?filter_type={filter_type}&category_filter=all",
                   cls="px-3 py-1.5 rounded-md text-sm font-medium " + ("bg-primary text-primary-foreground" if category_filter == 'all' else "bg-white text-foreground border border-border hover:bg-accent")),
-                A("Multi-hop", href=f"/locomo/{mode}/item/{item_idx}?filter_type={filter_type}&category_filter=1",
+                A("Multi-hop", href=f"/locomo/item/{item_idx}?filter_type={filter_type}&category_filter=1",
                   cls="px-3 py-1.5 rounded-md text-sm font-medium " + ("bg-primary text-primary-foreground" if category_filter == '1' else "bg-white text-foreground border border-border hover:bg-accent")) if any(cat_id == 1 for cat_id in category_stats.keys() if category_stats[cat_id]['total'] > 0) else None,
-                A("Single-hop", href=f"/locomo/{mode}/item/{item_idx}?filter_type={filter_type}&category_filter=2",
+                A("Single-hop", href=f"/locomo/item/{item_idx}?filter_type={filter_type}&category_filter=2",
                   cls="px-3 py-1.5 rounded-md text-sm font-medium " + ("bg-primary text-primary-foreground" if category_filter == '2' else "bg-white text-foreground border border-border hover:bg-accent")) if any(cat_id == 2 for cat_id in category_stats.keys() if category_stats[cat_id]['total'] > 0) else None,
-                A("Temporal", href=f"/locomo/{mode}/item/{item_idx}?filter_type={filter_type}&category_filter=3",
+                A("Temporal", href=f"/locomo/item/{item_idx}?filter_type={filter_type}&category_filter=3",
                   cls="px-3 py-1.5 rounded-md text-sm font-medium " + ("bg-primary text-primary-foreground" if category_filter == '3' else "bg-white text-foreground border border-border hover:bg-accent")) if any(cat_id == 3 for cat_id in category_stats.keys() if category_stats[cat_id]['total'] > 0) else None,
-                A("Open-domain", href=f"/locomo/{mode}/item/{item_idx}?filter_type={filter_type}&category_filter=4",
+                A("Open-domain", href=f"/locomo/item/{item_idx}?filter_type={filter_type}&category_filter=4",
                   cls="px-3 py-1.5 rounded-md text-sm font-medium " + ("bg-primary text-primary-foreground" if category_filter == '4' else "bg-white text-foreground border border-border hover:bg-accent")) if any(cat_id == 4 for cat_id in category_stats.keys() if category_stats[cat_id]['total'] > 0) else None,
                 cls="flex flex-wrap gap-2"
             ),
@@ -676,7 +672,7 @@ def get_locomo_item(mode: str, item_idx: int, filter_type: str = "all", category
         get_head(),
         Main(
             Div(
-                A(f"← Back to LoComo ({mode})", href=f"/locomo/{mode}", cls="inline-flex items-center px-4 py-2 bg-white border border-border rounded-md text-sm font-medium text-foreground hover:bg-accent mb-6"),
+                A("← Back to LoComo", href="/locomo", cls="inline-flex items-center px-4 py-2 bg-white border border-border rounded-md text-sm font-medium text-foreground hover:bg-accent mb-6"),
                 stats_html,
                 copy_button,
                 Hr(cls="my-6 border-border"),

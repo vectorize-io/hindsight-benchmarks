@@ -65,17 +65,7 @@ Follow the benchmark instructions in the repository documentation.
 
 LoComo (Long Conversation Memory) is a benchmark designed to test memory systems on long, multi-turn conversations with questions requiring recall of specific details from earlier in the dialogue.
 
-### Current Results
-
-**Overall Performance:**
-- **Accuracy:** 76.85%
-- **Total Questions:** 1,542
-- **Correct Answers:** 1,185
-- **Conversations:** 10
-
-**Note:** We skipped the **Adversarial category** as it is almost impossible to evaluate reliably due to the subjective and ambiguous nature of the questions in that category.
-
-### Performance Comparison
+### State-of-the-Art Comparison
 
 The table below shows performance across different memory systems on the LoComo benchmark:
 
@@ -88,13 +78,15 @@ The table below shows performance across different memory systems on the LoComo 
 | OpenAI | 63.79 | 42.92 | 62.29 | 21.71 | 52.90 |
 | Mem0 | 67.13 | 51.15 | 72.93 | 55.51 | 66.88 |
 | Mem0 w Graph | 65.71 | 47.19 | 75.71 | 58.13 | 68.44 |
-| **Hindsight** | **44.90** | **73.00** | **92.20** | **60.40** | **76.85** |
+| **Hindsight** | **76.90** | **69.50** | **86.30** | **59.40** | **79.61** |
 
 **Key Highlights:**
-- Hindsight achieves the highest overall accuracy at 76.85%
-- Exceptional Open Domain performance (92.20%), significantly outperforming other systems
-- Strong Multi-Hop reasoning (73.00%), the best among all systems
-- Best Temporal reasoning performance (60.40%)
+- Hindsight achieves the highest overall accuracy at 79.61%
+- Best Single Hop performance (76.90%), significantly outperforming all other systems
+- Strong Multi-Hop reasoning (69.50%) and Open Domain performance (86.30%)
+- Consistent performance across all categories
+
+**Note:** We skipped the **Adversarial category** as it is almost impossible to evaluate reliably due to the subjective and ambiguous nature of the questions in that category.
 
 ### Important Note on Benchmark Validity
 
