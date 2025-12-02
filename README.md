@@ -122,7 +122,7 @@ Follow the LoComo benchmark instructions in the repository documentation.
 To visualize the benchmark results:
 
 ```bash
-cd visualizer-web
+cd visualizer
 npm install
 npm run dev
 ```
@@ -135,4 +135,4 @@ The visualizer provides:
 - 📝 Detailed question-level analysis with reasoning and retrieved memories
 - 🎯 Beautiful, responsive UI built with Next.js and Tailwind CSS
 
-For deployment options and more details, see [visualizer-web/README.md](./visualizer-web/README.md).
+For deployment options and more details, see [visualizer/README.md](./visualizer/README.md).
