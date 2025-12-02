@@ -119,10 +119,20 @@ Follow the LoComo benchmark instructions in the repository documentation.
 
 ## Exploring Results
 
-To visualize the benchmark results, run:
+To visualize the benchmark results:
 
 ```bash
-./start-visualizer.sh
+cd visualizer-web
+npm install
+npm run dev
 ```
 
 Then open http://localhost:9998 in your browser.
+
+The visualizer provides:
+- 📊 Interactive benchmark overview with category breakdowns
+- 🔍 Advanced filtering (by category, correctness, item ID)
+- 📝 Detailed question-level analysis with reasoning and retrieved memories
+- 🎯 Beautiful, responsive UI built with Next.js and Tailwind CSS
+
+For deployment options and more details, see [visualizer-web/README.md](./visualizer-web/README.md).
