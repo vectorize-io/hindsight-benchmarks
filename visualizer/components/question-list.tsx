@@ -172,6 +172,12 @@ export function QuestionList({ questions }: QuestionListProps) {
                     <p className="text-sm font-medium text-foreground mb-2">
                       Retrieved Memories ({result.retrieved_memories?.length || 0}):
                     </p>
+                    <p className="text-xs text-muted-foreground mb-3">
+                      Hindsight also uses chunks and entities for retrieval.{' '}
+                      <a href="http://hindsight.vectorize.io/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                        Learn more
+                      </a>
+                    </p>
                     {result.retrieved_memories && result.retrieved_memories.length > 0 ? (
                       result.retrieved_memories.map((mem, i) => (
                         <div key={i} className="bg-muted/50 border border-border rounded-md p-3 mb-2">

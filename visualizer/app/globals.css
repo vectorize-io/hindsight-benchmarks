@@ -10,4 +10,23 @@
     background-color: hsl(210 40% 96.1%);
     color: hsl(222.2 84% 4.9%);
   }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-space-grotesk), sans-serif;
+    font-weight: 700;
+  }
+  code, pre {
+    font-family: var(--font-jetbrains-mono), monospace;
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: linear-gradient(135deg, #0074d9 0%, #009296 100%);
+  }
+  .gradient-primary-text {
+    background: linear-gradient(135deg, #0074d9 0%, #009296 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 }
