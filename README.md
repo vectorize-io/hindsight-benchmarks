@@ -72,24 +72,26 @@ LoComo (Long Conversation Memory) is a benchmark designed to test memory systems
 
 ### State-of-the-Art Comparison
 
-The table below shows performance across different memory systems on the LoComo benchmark:
+The table below shows accuracy (%) by question type and overall for prior memory systems and Hindsight with different backbone models:
 
-| Method | Single Hop J ↑ | Multi-Hop J ↑ | Open Domain J ↑ | Temporal J ↑ | Overall |
-|--------|----------------|---------------|-----------------|--------------|---------|
-| A-Mem* | 39.79 | 18.85 | 54.05 | 31.08 | 48.38 |
-| LangMem | 62.23 | 47.92 | 71.12 | 23.43 | 58.10 |
-| Zep (Mem0 paper) | 61.70 | 41.35 | 76.60 | 49.31 | 65.99 |
-| Zep (Zep Blog Post) | - | - | - | - | 75.14 |
-| OpenAI | 63.79 | 42.92 | 62.29 | 21.71 | 52.90 |
+| Method | Single-Hop | Multi-Hop | Open Domain | Temporal | Overall |
+|--------|------------|-----------|-------------|----------|---------|
+| Backboard | 89.36 | 75.00 | 91.20 | 91.90 | 90.00 |
+| Memobase (v0.0.37) | 70.92 | 46.88 | 77.17 | 85.05 | 75.78 |
+| Zep | 74.11 | 66.04 | 67.71 | 79.79 | 75.14 |
+| Mem0-Graph | 65.71 | 47.19 | 75.71 | 58.13 | 68.44 |
 | Mem0 | 67.13 | 51.15 | 72.93 | 55.51 | 66.88 |
-| Mem0 w Graph | 65.71 | 47.19 | 75.71 | 58.13 | 68.44 |
-| **Hindsight** | **76.90** | **69.50** | **86.30** | **59.40** | **79.61** |
+| LangMem | 62.23 | 47.92 | 71.12 | 23.43 | 58.10 |
+| OpenAI | 63.79 | 42.92 | 62.29 | 21.71 | 52.90 |
+| Hindsight (OSS-20B) | 74.11 | 64.58 | 90.96 | 76.32 | 83.18 |
+| Hindsight (OSS-120B) | 76.79 | 62.50 | 93.68 | 79.44 | 85.67 |
+| **Hindsight (Gemini-3)** | **86.17** | **70.83** | **95.12** | **83.80** | **89.61** |
 
 **Key Highlights:**
-- Hindsight achieves the highest overall accuracy at 79.61%
-- Best Single Hop performance (76.90%), significantly outperforming all other systems
-- Strong Multi-Hop reasoning (69.50%) and Open Domain performance (86.30%)
-- Consistent performance across all categories
+- Across all backbone sizes, Hindsight consistently outperforms prior open memory systems such as Memobase, Zep, Mem0, and LangMem
+- **Hindsight raises overall accuracy from 75.78% (Memobase) to 83.18%** with OSS-20B and **85.67%** with OSS-120B
+- **Hindsight with Gemini-3 attains 89.61% overall accuracy** and the highest Open Domain score (95.12%), closely matching Backboard's 90.00% overall performance
+- These results demonstrate that the gains from Hindsight's memory architecture on LongMemEval transfer to realistic, multi-session human conversations
 
 **Note:** We skipped the **Adversarial category** as it is almost impossible to evaluate reliably due to the subjective and ambiguous nature of the questions in that category.
 
