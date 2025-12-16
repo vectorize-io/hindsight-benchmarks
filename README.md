@@ -4,6 +4,9 @@ This repository contains benchmark results for the Hindsight memory system and v
 
 Explore the results yourself on the [Benchmarks Visualizer](https://benchmarks.hindsight.vectorize.io/)
 
+<a href='https://benchmarks.hindsight.vectorize.io/'><img width="500" height="350" alt="Screenshot 2025-12-16 at 10 31 02" src="https://github.com/user-attachments/assets/151e5a37-419f-4804-a0a3-6284964b62d9" /></a>
+
+
 ## LongMemEval
 
 ### Overview
