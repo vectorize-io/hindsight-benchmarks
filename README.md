@@ -2,6 +2,8 @@
 
 This repository contains benchmark results for the Hindsight memory system and visualization tools to inspect the results.
 
+Explore the results yourself on the [Benchmarks Visualizer](https://benchmarks.hindsight.vectorize.io/)
+
 ## LongMemEval
 
 ### Overview
@@ -32,23 +34,6 @@ The table below shows performance across different memory systems on the LongMem
 - **+44.6 percentage point improvement**: Hindsight with OSS-20B (83.6%) vs Full-context OSS-20B baseline (39.0%) demonstrates that the memory architecture, not model size, drives performance
 - The largest gains appear in long-horizon categories: multi-session improves from 21.1% to 79.7%, temporal reasoning from 31.6% to 79.7%
 - Even with a smaller open-source 20B model, Hindsight surpasses Full-context GPT-4o (60.2%) and matches Supermemory+GPT-4o (81.6%)
-
-### Benchmark Execution Details
-
-**Models:**
-- Memory Retention (TEMPR fact extraction): `openai/gpt-oss-20b`
-- Reflection (CARA): `openai/gpt-oss-20b`
-- Judge: `GPT-5.1` (temperature 0.1 for consistent scoring)
-
-**Methodology:**
-- During retention, each conversation session is processed through TEMPR's extraction pipeline, producing narrative facts, building entity links, and updating the memory graph
-- For each test question, memories are retrieved using four-way parallel recall (semantic, keyword, graph, temporal) with Reciprocal Rank Fusion and neural reranking
-- Retrieved memories are passed to CARA's reflection step for final response generation
-
-**Configuration:**
-- Memory banks configured with neutral behavioral profiles (skepticism, literalism, empathy all set to 3)
-- Low bias strength (0.2) since benchmarks test factual recall rather than preference-conditioned reasoning
-- This setup isolates core memory and retrieval capabilities
 
 **Cost Efficiency:** Exceptionally low costs achieved through sophisticated token reduction techniques in the Retain pipeline and **LLM-free memory recalls** - retrieving memories incurs zero LLM cost, enabling unlimited recall operations in production.
 
@@ -119,8 +104,6 @@ For these reasons, we recommend focusing on **LongMemEval** as a more reliable i
 To reproduce these results, visit the main Hindsight repository:
 
 **[github.com/vectorize-io/hindsight](https://github.com/vectorize-io/hindsight)**
-
-Follow the LoComo benchmark instructions in the repository documentation.
 
 ---
 
