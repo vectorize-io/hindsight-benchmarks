@@ -50,3 +50,84 @@ export interface Memory {
   event_date?: string
   activation?: number
 }
+
+// Leaderboard types
+export interface BenchmarkTest {
+  test_index: number
+  latency_s: number
+  num_facts: number
+  valid_json: boolean
+  success: boolean
+  retries: number
+  prompt_tokens: number
+  completion_tokens: number
+  error: string
+}
+
+export interface BenchmarkSummary {
+  success: number
+  total: number
+  wall_s: number
+  avg_latency_s: number | null
+  throughput_rps: number | null
+  completion_toks_s: number | null
+  total_toks_s: number | null
+  out_in_ratio: number | null
+  tokens_per_fact: number | null
+}
+
+export interface BenchmarkRun {
+  timestamp: string
+  model_id: string
+  model_name: string
+  provider_id: string
+  size_gb: number
+  dataset: string
+  concurrency: number
+  wall_s: number
+  summary: BenchmarkSummary
+  tests: BenchmarkTest[]
+}
+
+export interface ModelConfig {
+  provider_id: string
+  provider_name: string
+  provider_icon: string
+  pricing_type: 'pay-per-use' | 'subscription' | 'local'
+  model_id: string
+  model_name: string
+  api_model: string
+  method: string
+  url?: string
+  api_key_env?: string
+  input_price_per_1m?: number
+  output_price_per_1m?: number
+  size_gb?: number
+  benchmarks?: string[]  // e.g. ["retain", "quality", "reflect"]
+}
+
+export interface QualityResult {
+  accuracy: number
+  correct: number
+  total: number
+  model_id: string
+  provider_id: string
+  sample_id: string
+}
+
+export interface ReflectResult {
+  accuracy: number
+  correct: number
+  total: number
+  avg_latency_s: number
+  model_id: string
+  provider_id: string
+  sample_id: string
+}
+
+export interface ModelWithResult {
+  config: ModelConfig
+  result: BenchmarkRun | null
+  qualityResult?: QualityResult | null
+  reflectResult?: ReflectResult | null
+}

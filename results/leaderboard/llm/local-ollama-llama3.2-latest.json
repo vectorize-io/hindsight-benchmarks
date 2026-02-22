@@ -1,0 +1,248 @@
+{
+  "model_id": "llama3.2-latest",
+  "provider_id": "local-ollama",
+  "quality": null,
+  "retain": {
+    "timestamp": "2026-02-20T17:06:08.204436+00:00",
+    "model_id": "llama3.2-latest",
+    "model_name": "llama3.2:latest",
+    "provider_id": "local-ollama",
+    "size_gb": 0.0,
+    "dataset": "locomo_3k",
+    "concurrency": 1,
+    "wall_s": 992.9292781352997,
+    "summary": {
+      "success": 0,
+      "total": 20,
+      "wall_s": 992.929,
+      "avg_latency_s": null,
+      "throughput_rps": null,
+      "completion_toks_s": null,
+      "total_toks_s": null,
+      "out_in_ratio": null,
+      "tokens_per_fact": null
+    },
+    "tests": [
+      {
+        "test_index": 1,
+        "latency_s": 46.91389584541321,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting ':' delimiter: line 1 column 5 (char 4) | raw: {\"\" \"Caroline\": [\"I've been looking into counseling and mental health as a career.\", \"I want to help people who have gone through the same things as me.\", \"I'm still figuring out the details, but I'm thinking of working with trans people, helping them accept themselves and supporting their mental he"
+      },
+      {
+        "test_index": 2,
+        "latency_s": 128.4383099079132,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\"message\": \"Cannot create an array from a string\", \"errorCode\": \"InvalidInputError\", \"name\": \"InvalidInputError\", \"target\": \"[]\"}"
+      },
+      {
+        "test_index": 3,
+        "latency_s": 16.482818126678467,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\"@context\": \"http://schema.org\", \"@type\": \"Question\", \"name\": \"What are the key takeaways from this conversation between Jon and Gina?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"The conversatio"
+      },
+      {
+        "test_index": 4,
+        "latency_s": 11.605711936950684,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\"@context\": \"http://schema.org\", \"@type\": \"Question\", \"name\": \"Gina's online clothing store and Jon's dance studio business\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Gina's online clothing sto"
+      },
+      {
+        "test_index": 5,
+        "latency_s": 127.12330794334412,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting ':' delimiter: line 1 column 4 (char 3) | raw: {\"\"\",\"\"}"
+      },
+      {
+        "test_index": 6,
+        "latency_s": 10.065997123718262,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting ':' delimiter: line 1 column 4 (char 3) | raw: {\"\"key\": \"2023-03-06\", \"text\": \"Maria: Hey John, how are you doing? Just wanted to give you the heads up on what\\\\u2019s been happening lately- I took a creative writing class recently, and it was super enlightening! John: Hey Maria! Wanted to let you know that I\u2019m running for office again. It\u2019s bee"
+      },
+      {
+        "test_index": 7,
+        "latency_s": 14.255338907241821,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\"@context\": \"http://schema.org\", \"@type\": \"Question\", \"name\": \"What is Joanna's screenplay about?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Joanna's screenplay is about a thirty year old woman"
+      },
+      {
+        "test_index": 8,
+        "latency_s": 26.987488746643066,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting ':' delimiter: line 1 column 17 (char 16) | raw: {\"Finding Home\" sounds really special. Must be so meaningful to work on. I've got a gaming tournament next month and I'm feeling good about it. It's gonna be my 4th one! \"Finding Home\" sounds like a great project, Joanna. I can see why you're motivated to work on it. What kind of projects are you wo"
+      },
+      {
+        "test_index": 9,
+        "latency_s": 10.592071056365967,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\"@context\": \"http://schema.org\", \"@type\": \"Question\", \"name\": \"What have John and Tim been up to?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"John has been scoring high points in basketball game"
+      },
+      {
+        "test_index": 10,
+        "latency_s": 29.02297329902649,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting ':' delimiter: line 1 column 5 (char 4) | raw: {\" \"@context\": \"https://schema.org/Person\", \"@type\": \"Person\", \"name\": \"Tim\", \"description\": \"A book lover, writer, and music enthusiast who shares his passions with John.\", \"mainEntityOfPage\": \"https://example.com/conversation-with-tim\", \"image\": \"https://example.com/image-of-tim.jpg\", \"url\": \"http"
+      },
+      {
+        "test_index": 11,
+        "latency_s": 14.03088903427124,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\"@context\": \"http://schema.org\", \"@type\": \"Question\", \"name\": \"What are some common themes in this conversation between two friends, one who lives in the city and the other who has dogs?\", \"acceptedA"
+      },
+      {
+        "test_index": 12,
+        "latency_s": 23.382965803146362,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting ':' delimiter: line 1 column 110 (char 109) | raw: {\"@context\": \"http://schema.org/JSONLD\", \"@type\": \"Answer\", \"name\": \"\", \"acceptedType\": \"object\", \"body\": {\"\"@context\": \"https://schema.org/jsonld\", \"@type\": \"QuestionAnsweringServiceResponse\", \"question\": \"\", \"answer\": \"[{\\\"text\\\": \\\"Audrey has taken her dogs on a hike before and they had a great t"
+      },
+      {
+        "test_index": 13,
+        "latency_s": 70.88694620132446,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting ':' delimiter: line 1 column 4 (char 3) | raw: {\"\"\",\"\"James\": \"Hey John, something awesome happened since we talked. I made a game avatar and joined a new platform. It's so fun exploring and chatting with other gamers - it's a whole new adventure every time! I feel like I'm part of a super cool online community.\",\"\"\",\"\"John\": \"Hey James, awesome"
+      },
+      {
+        "test_index": 14,
+        "latency_s": 162.88714981079102,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting ':' delimiter: line 1 column 4 (char 3) | raw: {\"\"\":\"[11:04 am on 23 April 2022]\\nJohn: Hey James! How's it going?\\nJames: Hey John! Good to hear from ya. Yeah, been crazy. Last Thursday I took my dogs out for a hike. Was quite the adventure! Explored some nice trails and enjoyed fresh air.\\nJohn: Wow, sounds like quite an adventure! Do you have"
+      },
+      {
+        "test_index": 15,
+        "latency_s": 118.88482999801636,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting ':' delimiter: line 1 column 4 (char 3) | raw: {\"\"\":\"[7:03 pm on 1 February, 2023]\"\": \"Jolene: Hi Deb! How're you? I've been busy. My engineering professor gave us a huge robotics project. It's tough but fun, it's making me get creative and problem-solve.\",\"\"\":\"[9:48 am on 4 February, 2023]\"\": \"Jolene: Hey Deborah! Good to hear from you. How've "
+      },
+      {
+        "test_index": 16,
+        "latency_s": 33.6480016708374,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\"@context\": \"http://schema.org\", \"@type\": \"Question\", \"name\": \"What are some tips on time management and prioritization?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Deborah suggests creating a d"
+      },
+      {
+        "test_index": 17,
+        "latency_s": 17.54425597190857,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\"@context\": \"http://schema.org\", \"@type\": \"Question\", \"name\": \"What are the health changes that Evan has made?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Evan has made several health changes, i"
+      },
+      {
+        "test_index": 18,
+        "latency_s": 14.825883865356445,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\"message\": \"Cannot create an array from a non-array\", \"name\": \"Error\", \"stack\": \"TypeError: Cannot destructure iterable (unknown type) into 1 argument\"}"
+      },
+      {
+        "test_index": 19,
+        "latency_s": 20.868535041809082,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting ':' delimiter: line 1 column 5 (char 4) | raw: {\" \"@context\": \"https://schema.org/Person\", \"@type\": \"Person\", \"name\": \"Calvin\", \"propertyList\": [{\"\"@type\": \"DefinedTerm\", \"termId\": \"12345\", \"definitionUrl\": \"https://example.com/definition-of-calvin\"}, {\"\"@type\": \"DefinedTerm\", \"termId\": \"67890\", \"definitionUrl\": \"https://example.com/definition-o"
+      },
+      {
+        "test_index": 20,
+        "latency_s": 94.41565799713135,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting ':' delimiter: line 1 column 4 (char 3) | raw: {\"\"\":\"[2:31 pm on 9 June, 2023]\\nCalvin: Hey Dave! Met with the creative team for my album yesterday. It was a long session, but awesome to see everything coming together.\\n\\nDave: Hey Cal! Sounds great that your album's coming along. Are you feeling good about it? Here's a pic I just took.\\n\\nCalvi"
+      }
+    ]
+  }
+}

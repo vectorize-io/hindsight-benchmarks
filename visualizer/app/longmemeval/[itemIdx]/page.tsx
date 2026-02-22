@@ -1,14 +1,12 @@
 import Link from 'next/link'
 import { loadLongMemEval } from '@/lib/data'
 import { notFound } from 'next/navigation'
+import { Button } from '@/components/ui/button'
 
 export function generateStaticParams() {
   const data = loadLongMemEval()
   if (!data) return []
-
-  return data.item_results.map((_, idx) => ({
-    itemIdx: idx.toString(),
-  }))
+  return data.item_results.map((_, idx) => ({ itemIdx: idx.toString() }))
 }
 
 export default async function LongMemEvalItemPage({ params }: { params: Promise<{ itemIdx: string }> }) {
@@ -24,157 +22,135 @@ export default async function LongMemEvalItemPage({ params }: { params: Promise<
   const accuracy = metrics.accuracy
   const detailedResults = metrics.detailed_results || []
 
+  const statCells = [
+    { label: 'Accuracy', value: `${accuracy.toFixed(2)}%`, highlight: true },
+    { label: 'Correct', value: `${metrics.correct} / ${metrics.total}` },
+    ...(metrics.invalid > 0 ? [{ label: 'Invalid', value: metrics.invalid }] : []),
+    { label: 'Total', value: metrics.total },
+  ]
+
   return (
-    <main className="container mx-auto max-w-7xl px-4 py-8">
-      <Link
-        href="/longmemeval"
-        className="inline-flex items-center px-4 py-2 bg-white border border-border rounded-md text-sm font-medium text-foreground hover:bg-accent mb-6 transition-colors"
-      >
-        ← Back to LongMemEval
-      </Link>
+    <main className="container mx-auto max-w-5xl px-4 py-8">
+      <Button variant="ghost" size="sm" asChild className="mb-8 -ml-2 text-muted-foreground">
+        <Link href="/longmemeval">← Back</Link>
+      </Button>
 
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-foreground mb-6">
-          {item.item_id} - Performance
-        </h1>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="bg-white border border-border rounded-lg p-6 text-center shadow-sm">
-            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">
-              Overall Accuracy
-            </p>
-            <p className="text-3xl font-bold text-foreground">{accuracy.toFixed(2)}%</p>
-          </div>
-
-          <div className="bg-white border border-border rounded-lg p-6 text-center shadow-sm">
-            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">
-              Correct Answers
-            </p>
-            <p className="text-3xl font-bold text-foreground">
-              {metrics.correct} / {metrics.total}
-            </p>
-          </div>
-
-          {metrics.invalid > 0 && (
-            <div className="bg-white border border-border rounded-lg p-6 text-center shadow-sm">
-              <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">
-                Invalid Questions
-              </p>
-              <p className="text-3xl font-bold text-foreground">{metrics.invalid}</p>
-            </div>
-          )}
-
-          <div className="bg-white border border-border rounded-lg p-6 text-center shadow-sm">
-            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">
-              Total Questions
-            </p>
-            <p className="text-3xl font-bold text-foreground">{metrics.total}</p>
-          </div>
-        </div>
+      <div className="mb-10">
+        <h1 className="text-2xl font-heading font-bold mb-1 text-foreground">{item.item_id}</h1>
+        <p className="text-sm text-muted-foreground">LongMemEval — item detail</p>
       </div>
 
-      <hr className="my-6 border-border" />
+      {/* Stats */}
+      <section className="mb-10">
+        <p className="text-[11px] font-semibold tracking-widest uppercase text-muted-foreground mb-3">Overview</p>
+        <div className="grid gap-px bg-border rounded-lg overflow-hidden" style={{ gridTemplateColumns: `repeat(${statCells.length}, minmax(0, 1fr))` }}>
+          {statCells.map((s) => (
+            <div key={s.label} className="bg-card px-5 py-4">
+              <p className="text-[11px] font-semibold tracking-widest uppercase text-muted-foreground mb-1">{s.label}</p>
+              <p className={`text-2xl font-bold tabular-nums ${s.highlight ? 'gradient-primary-text' : 'text-foreground'}`}>{s.value}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
-      <p className="text-sm text-muted-foreground mb-6">Showing {detailedResults.length} questions</p>
+      {/* Questions */}
+      <section>
+        <p className="text-[11px] font-semibold tracking-widest uppercase text-muted-foreground mb-3">
+          Questions <span className="font-normal normal-case tracking-normal text-muted-foreground/50">({detailedResults.length})</span>
+        </p>
+        <div className="space-y-2">
+          {detailedResults.map((result, qIdx) => {
+            const isInvalid = result.is_invalid
+            const isCorrect = result.is_correct
+            const accentClass = isInvalid
+              ? 'border-l-amber-500'
+              : isCorrect
+              ? 'border-l-emerald-500'
+              : 'border-l-red-500'
+            const statusLabel = isInvalid ? 'Invalid' : isCorrect ? 'Correct' : 'Incorrect'
+            const statusColor = isInvalid
+              ? 'text-amber-400'
+              : isCorrect
+              ? 'text-emerald-400'
+              : 'text-red-400'
 
-      <div className="space-y-4">
-        {detailedResults.map((result, qIdx) => {
-          const isInvalid = result.is_invalid
-          const isCorrect = result.is_correct
-          const icon = isInvalid ? '⚠️' : isCorrect ? '✅' : '❌'
-          const borderClass = isInvalid
-            ? 'border-l-4 border-yellow-500'
-            : isCorrect
-            ? 'border-l-4 border-green-600'
-            : 'border-l-4 border-red-600'
-
-          return (
-            <div key={qIdx} className={`bg-white border border-border rounded-lg p-6 shadow-sm ${borderClass}`}>
-              <div className="mb-4">
-                <p className="text-lg font-semibold text-foreground">
-                  {icon} Question {qIdx + 1}
-                </p>
-                <p className="text-sm text-muted-foreground">Category: {result.category}</p>
-              </div>
-
-              <div className="mb-4">
-                <p className="text-sm font-medium text-foreground mb-1">Question:</p>
-                <p className="text-foreground">{result.question}</p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <p className="text-sm font-medium text-foreground mb-2">✓ Correct Answer</p>
-                  <div className="bg-green-50 border border-green-200 rounded-md p-3 text-foreground text-sm">
-                    {result.correct_answer}
+            return (
+              <details key={qIdx} className={`group bg-card border border-border border-l-2 ${accentClass} rounded-lg`}>
+                <summary className="flex items-center justify-between px-5 py-4 cursor-pointer list-none select-none">
+                  <div className="flex items-center gap-4 min-w-0">
+                    <span className="text-xs font-mono text-muted-foreground shrink-0">Q{qIdx + 1}</span>
+                    <span className="text-sm text-foreground truncate">{result.question}</span>
                   </div>
-                </div>
-
-                <div>
-                  <p className="text-sm font-medium text-foreground mb-2">
-                    {isCorrect ? '✓' : '✗'} Predicted Answer
-                  </p>
-                  <div
-                    className={`border rounded-md p-3 text-foreground text-sm ${
-                      isCorrect ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'
-                    }`}
-                  >
-                    {result.predicted_answer}
+                  <div className="flex items-center gap-3 ml-4 shrink-0">
+                    <span className={`text-xs font-semibold ${statusColor}`}>{statusLabel}</span>
+                    <span className="text-xs text-muted-foreground uppercase tracking-wide">{result.category}</span>
+                    <svg className="w-4 h-4 text-muted-foreground transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
                   </div>
-                </div>
-              </div>
-
-              <details className="border border-border rounded-md p-4 bg-muted/30">
-                <summary className="cursor-pointer font-medium text-foreground hover:text-primary py-2">
-                  📝 Show Reasoning & Retrieved Memories
                 </summary>
-                <div className="mt-3 space-y-4">
+
+                <div className="px-5 pb-5 border-t border-border pt-4 space-y-4">
+                  {/* Question */}
                   <div>
-                    <p className="text-sm font-medium text-foreground mb-2">System Reasoning:</p>
-                    <pre className="bg-slate-900 text-slate-100 p-3 rounded-md overflow-x-auto text-sm whitespace-pre-wrap">
-                      {result.reasoning || 'N/A'}
-                    </pre>
+                    <p className="text-[11px] font-semibold tracking-widest uppercase text-muted-foreground mb-1">Question</p>
+                    <p className="text-sm text-foreground">{result.question}</p>
                   </div>
 
-                  {result.correctness_reasoning && (
+                  {/* Answers */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border rounded-md overflow-hidden">
+                    <div className="bg-card px-4 py-3">
+                      <p className="text-[11px] font-semibold tracking-widest uppercase text-emerald-500 mb-1">Expected</p>
+                      <p className="text-sm text-foreground">{result.correct_answer}</p>
+                    </div>
+                    <div className="bg-card px-4 py-3">
+                      <p className={`text-[11px] font-semibold tracking-widest uppercase mb-1 ${isCorrect ? 'text-emerald-500' : isInvalid ? 'text-amber-500' : 'text-red-500'}`}>
+                        Predicted
+                      </p>
+                      <p className="text-sm text-foreground">{result.predicted_answer}</p>
+                    </div>
+                  </div>
+
+                  {/* Reasoning */}
+                  {result.reasoning && (
                     <div>
-                      <p className="text-sm font-medium text-foreground mb-2">Judge Reasoning:</p>
-                      <pre className="bg-slate-900 text-slate-100 p-3 rounded-md overflow-x-auto text-sm whitespace-pre-wrap">
-                        {result.correctness_reasoning}
-                      </pre>
+                      <p className="text-[11px] font-semibold tracking-widest uppercase text-muted-foreground mb-1">Reasoning</p>
+                      <pre className="text-xs text-muted-foreground bg-background border border-border rounded-md p-3 overflow-x-auto whitespace-pre-wrap font-mono">{result.reasoning}</pre>
                     </div>
                   )}
 
-                  <div>
-                    <p className="text-sm font-medium text-foreground mb-2">
-                      Retrieved Memories ({result.retrieved_memories?.length || 0}):
-                    </p>
-                    <p className="text-xs text-muted-foreground mb-3">
-                      Hindsight also uses chunks and entities for retrieval.{' '}
-                      <a href="http://hindsight.vectorize.io/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                        Learn more
-                      </a>
-                    </p>
-                    {result.retrieved_memories && result.retrieved_memories.length > 0 ? (
-                      result.retrieved_memories.map((mem, i) => (
-                        <div key={i} className="bg-muted/50 border border-border rounded-md p-3 mb-2">
-                          <p className="text-xs text-muted-foreground mb-1">
-                            #{i + 1} • Type: {mem.fact_type?.toUpperCase() || 'N/A'}
-                            {mem.occurred_start && ` • Date: ${mem.occurred_start.slice(0, 10)}`}
-                          </p>
-                          <p className="text-sm text-foreground">{mem.text}</p>
-                        </div>
-                      ))
-                    ) : (
-                      <p className="text-sm text-muted-foreground">No memories retrieved</p>
-                    )}
-                  </div>
+                  {result.correctness_reasoning && (
+                    <div>
+                      <p className="text-[11px] font-semibold tracking-widest uppercase text-muted-foreground mb-1">Judge Reasoning</p>
+                      <pre className="text-xs text-muted-foreground bg-background border border-border rounded-md p-3 overflow-x-auto whitespace-pre-wrap font-mono">{result.correctness_reasoning}</pre>
+                    </div>
+                  )}
+
+                  {/* Memories */}
+                  {result.retrieved_memories && result.retrieved_memories.length > 0 && (
+                    <div>
+                      <p className="text-[11px] font-semibold tracking-widest uppercase text-muted-foreground mb-2">
+                        Retrieved Memories ({result.retrieved_memories.length})
+                      </p>
+                      <div className="space-y-1">
+                        {result.retrieved_memories.map((mem, i) => (
+                          <div key={i} className="bg-secondary/40 border border-border rounded-md px-3 py-2">
+                            <p className="text-[10px] font-semibold tracking-widest uppercase text-muted-foreground mb-0.5">
+                              {mem.fact_type?.toUpperCase() || 'FACT'}
+                              {mem.occurred_start && ` · ${mem.occurred_start.slice(0, 10)}`}
+                            </p>
+                            <p className="text-sm text-foreground">{mem.text}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </details>
-            </div>
-          )
-        })}
-      </div>
+            )
+          })}
+        </div>
+      </section>
     </main>
   )
 }

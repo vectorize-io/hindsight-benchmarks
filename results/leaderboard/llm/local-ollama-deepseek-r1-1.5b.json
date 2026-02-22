@@ -1,0 +1,248 @@
+{
+  "model_id": "deepseek-r1-1.5b",
+  "provider_id": "local-ollama",
+  "quality": null,
+  "retain": {
+    "timestamp": "2026-02-20T16:29:16.824250+00:00",
+    "model_id": "deepseek-r1-1.5b",
+    "model_name": "deepseek-r1:1.5b",
+    "provider_id": "local-ollama",
+    "size_gb": 0.0,
+    "dataset": "locomo_3k",
+    "concurrency": 1,
+    "wall_s": 711.8773529529572,
+    "summary": {
+      "success": 0,
+      "total": 20,
+      "wall_s": 711.877,
+      "avg_latency_s": null,
+      "throughput_rps": null,
+      "completion_toks_s": null,
+      "total_toks_s": null,
+      "out_in_ratio": null,
+      "tokens_per_fact": null
+    },
+    "tests": [
+      {
+        "test_index": 1,
+        "latency_s": 46.29087996482849,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: The text highlights several significant points:\n\n1. **Caroline's School Event**: On June 9th, Caroline shared her story about her transgender journey and encouraged others to engage with the LGBTQ community, emphasizing the importance of mutual understanding and support.\n\n2. **Melanie's Support**: M"
+      },
+      {
+        "test_index": 2,
+        "latency_s": 40.076459884643555,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: **Significant Events Extracted:**\n\n1. **Weekly Mel Seminars:** Each week, Caroline provides advice on mental health support at a meeting with Mel. They had a pup and cat named Luna and Oliver.\n\n2. **Painting Class and Project:** After July 15, they attended a painting class and started a project tog"
+      },
+      {
+        "test_index": 3,
+        "latency_s": 30.78615689277649,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: **Extracted Points:**\n\n1. **Dance Career and Business Success:** Jon is deeply committed to both his dance career and running a successful business. He consistently demonstrates resilience and determination in the face of challenges.\n\n2. **Challenges Faced:** While pursuing his dance career, Jon enc"
+      },
+      {
+        "test_index": 4,
+        "latency_s": 35.329522371292114,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: The significant points from the text about extracting dance into a business are:\n\n1. **Jon's Start**: Jon begins the dance studio business after losing his job, which was a pivotal moment in their personal journey.\n\n2. **Gina's Management**: Gina oversees day-to-day operations while Jon focuses on c"
+      },
+      {
+        "test_index": 5,
+        "latency_s": 42.01734924316406,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: **Extracted Significant Points:**\n\n1. **John's Initial Joining:** John joined a service-focused online group after failing a military aptitude test, highlighting his stress and determination to contribute despite challenges.\n\n2. **Community Service Focus:** They discussed efforts to help underserved"
+      },
+      {
+        "test_index": 6,
+        "latency_s": 39.04134702682495,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: **Extracted Points:**\n\n1. **Reflection on Grandma's Passing:**  \n   - Maria reflects on her grandma's passing, acknowledging the tough time but expressing hope for a better future.\n\n2. **Family Activity:**  \n   - John tries to find fun activities with a picnic or walk in the park, emphasizing the jo"
+      },
+      {
+        "test_index": 7,
+        "latency_s": 30.485923767089844,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: **Significant Points:**\n\n1. **Concert Waiting:** Joanna was waiting for her friend's concert, feeling both excited and nervous due to the pressure of anticipation.\n\n2. **Relaxing Beach Party:** They spent time at a beach party, enjoying relaxation together in a fun and enjoyable setting.\n\n3. **Scrip"
+      },
+      {
+        "test_index": 8,
+        "latency_s": 29.46865725517273,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: **Extracted Points:**\n\n1. **Joanna's Focus on Writing:**\n   - Joanna joined a writers group and suggested \"Finding Home,\" a writing project about a girl's journey to find her true home.\n   - She expressed the emotional impact of writing, finding it fulfilling and inspiring her feelings of belonging "
+      },
+      {
+        "test_index": 9,
+        "latency_s": 35.77214312553406,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: **Extracted Points:**\n\n1. **Sports Activities:**\n   - **Game 1:** John scored 40 points as his highest ever, with a strong team bond created by teammates' passion.\n   - **Game 2:** John won against a Harry Potter fan in California, feeling an adrenaline rush from the intense game.\n   - **City Explor"
+      },
+      {
+        "test_index": 10,
+        "latency_s": 42.48633599281311,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: **Extracted Points:**\n\n1. **Passion and Impact on Life:** John expresses enthusiasm for basketball, highlighting how it shapes his life through specific achievements like winning a championship and making a difference away from the court.\n\n2. **Team Dynamics and Friendship:** They discuss their team"
+      },
+      {
+        "test_index": 11,
+        "latency_s": 41.335875034332275,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: The significant parts of Audrey and Andrew's interaction are:\n\n1. **Frequent Meetings**: They meet frequently in the city, each time with different people from the surrounding area.\n2. **Nature-High Context**: After some time away, they go on another hike together, emphasizing their connection to na"
+      },
+      {
+        "test_index": 12,
+        "latency_s": 38.71676063537598,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: The conversation discusses various methods for extracting significant points in data analysis, particularly focusing on clustering techniques. Here's a structured summary:\n\n1. **K-Means Clustering**:\n   - **Key Points**: Uses centroids to represent clusters.\n   - **Significance**: Effective for part"
+      },
+      {
+        "test_index": 13,
+        "latency_s": 46.720008850097656,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: **Extracted Significant Points from John and James's Conversation:**\n\n1. **Morning Bowling Session:** John achieved two strikes at a bowling alley, demonstrating his impressive gaming skills and the positive impact of his gaming experience.\n\n2. **Beach Walking:** James mentions meeting his dogs as t"
+      },
+      {
+        "test_index": 14,
+        "latency_s": 45.53695106506348,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: The conversation between James and John highlights several key points regarding their work:\n\n1. **Understanding Significant Bits of Information**: James explains how to extract important details from games, emphasizing clarity and efficiency.\n\n2. **Coding Challenges and Strategy**: They discuss the "
+      },
+      {
+        "test_index": 15,
+        "latency_s": 40.40907859802246,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: **Extracted Significant Points:**\n\n1. **Student Journey (2013-2015):**\n   - Jolene faced challenges as a student and learned resilience through hard work and determination.\n\n2. **Engineer's Project (2016-2017):**\n   - She developed a sustainable water purifier project, demonstrating the impact of en"
+      },
+      {
+        "test_index": 16,
+        "latency_s": 28.332762718200684,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: - On March 2, 2023: Jolene discussed hosting a yoga class with neighbors to share her love for exercise and build community.\n\n- On March 13, 2023: Deborah mentioned starting a yoga class and how it helps others, emphasizing the importance of teaching peace and awareness through shared activities.\n\n-"
+      },
+      {
+        "test_index": 17,
+        "latency_s": 11.078853130340576,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: "
+      },
+      {
+        "test_index": 18,
+        "latency_s": 47.897571086883545,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: Sam and Evan have been reflecting on their journey together. Sam began a new diet and exercise routine last Monday, which has made a significant difference for him. Evan, however, faced a sore spot in his knee after a recent workout, finding it challenging to stay consistent with his usual fitness r"
+      },
+      {
+        "test_index": 19,
+        "latency_s": 10.442115783691406,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: Here are the significant updates from your conversation:\n\n1. **Teamwork with a Local garage**: Dave is collaborating with a local garage, which is exciting and inspiring. You'll be working on projects together, sharing knowledge about cars.\n\n2. **Project Completion**: The car you're currently workin"
+      },
+      {
+        "test_index": 20,
+        "latency_s": 29.27857208251953,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: **Extracted Points:**\n\n1. **Dave's Performance:**  \n   - Dave performed a show in Tokyo last week with Frank Ocean, highlighting the city lights' enchanting atmosphere.\n\n2. **Calvin's Album Collaboration:**  \n   - Calvin is checking in with the creative team for his album, emphasizing their teamwork"
+      }
+    ]
+  }
+}

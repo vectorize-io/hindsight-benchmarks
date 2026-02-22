@@ -1,0 +1,248 @@
+{
+  "model_id": "qwen2.5-0.5b",
+  "provider_id": "local-ollama",
+  "quality": null,
+  "retain": {
+    "timestamp": "2026-02-20T16:15:34.336134+00:00",
+    "model_id": "qwen2.5-0.5b",
+    "model_name": "qwen2.5:0.5b",
+    "provider_id": "local-ollama",
+    "size_gb": 0.0,
+    "dataset": "locomo_3k",
+    "concurrency": 1,
+    "wall_s": 1180.2592420578003,
+    "summary": {
+      "success": 0,
+      "total": 20,
+      "wall_s": 1180.259,
+      "avg_latency_s": null,
+      "throughput_rps": null,
+      "completion_toks_s": null,
+      "total_toks_s": null,
+      "out_in_ratio": null,
+      "tokens_per_fact": null
+    },
+    "tests": [
+      {
+        "test_index": 1,
+        "latency_s": 8.480972051620483,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"message\": \"All messages have been successfully extracted.\",\n  \"status\": \"success\"\n}"
+      },
+      {
+        "test_index": 2,
+        "latency_s": 270.6438179016113,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"message\": \"All messages are successfully extracted.\",\n  \"status\": \"success\"\n}"
+      },
+      {
+        "test_index": 3,
+        "latency_s": 10.189910173416138,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"status\": \"success\",\n  \"message\": \"All data has been successfully extracted and processed.\",\n  \"data\": {\n    \"user\": {\n      \"name\": \"Jon\",\n      \"email\": \"jon@example.com\",\n      \"phone_number\": "
+      },
+      {
+        "test_index": 4,
+        "latency_s": 27.96056890487671,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"Jon\": {\n    \"status\": \"working\",\n    \"goals\": [\n      \"expand dance studio's social media presence and offer workshops and classes to local schools and centers\",\n      \"host a dance competition n"
+      },
+      {
+        "test_index": 5,
+        "latency_s": 10.100296020507812,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"date\": \"2023-01-28\",\n  \"events\": [\n    {\n      \"day\": \"9\",\n      \"event\": \"attended a service-focused online group\",\n      \"notes\": \"Everyone there is incredible with their own inspiring stories."
+      },
+      {
+        "test_index": 6,
+        "latency_s": 135.6602909564972,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"message\": \"Thank you for sharing your experiences with John and Maria. We appreciate your insights into their journey towards positive change.\",\n  \"feedback\": [\n    {\n      \"sender\": \"John\",\n    "
+      },
+      {
+        "test_index": 7,
+        "latency_s": 5.31131911277771,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"message\": \"The assistant successfully extracted the information from the provided text.\",\n  \"status\": \"success\"\n}"
+      },
+      {
+        "test_index": 8,
+        "latency_s": 2.548471689224243,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"message\": \"The message has been successfully sent.\",\n  \"status\": \"success\"\n}"
+      },
+      {
+        "test_index": 9,
+        "latency_s": 12.44188904762268,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"messages\": [\n    {\n      \"sender\": \"John\",\n      \"recipient\": \"Tim\",\n      \"message\": \"Hey Tim! Long time no see! Been super busy lately. Guess what? Just skyped with that Harry Potter fan I met "
+      },
+      {
+        "test_index": 10,
+        "latency_s": 3.058488130569458,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"message\": \"The assistant successfully extracted the information from the provided text.\",\n  \"status\": \"success\"\n}"
+      },
+      {
+        "test_index": 11,
+        "latency_s": 361.33601784706116,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: exception: Request timed out."
+      },
+      {
+        "test_index": 12,
+        "latency_s": 5.568586111068726,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"activities\": [\n    {\n      \"date\": \"2023-06-11\",\n      \"location\": \"Rock Climbing Class\",\n      \"description\": \"A great experience for climbing mountains, challenging but rewarding.\"\n    },\n    {"
+      },
+      {
+        "test_index": 13,
+        "latency_s": 21.611713647842407,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"games_played\": [\n    {\n      \"game_name\": \"CS:GO\",\n      \"date\": \"2022-03-15\",\n      \"status\": \"completed\"\n    },\n    {\n      \"game_name\": \"RPGs\",\n      \"date\": \"2022-04-04\",\n      \"status\": \"ong"
+      },
+      {
+        "test_index": 14,
+        "latency_s": 10.368030786514282,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"user\": {\n    \"name\": \"John\",\n    \"age\": 30,\n    \"interests\": [\"programming\", \"traveling\", \"coding\"],\n    \"achievements\": [\n      {\n        \"date\": \"29 April, 2022\",\n        \"achievement\": \"took o"
+      },
+      {
+        "test_index": 15,
+        "latency_s": 244.7875621318817,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"message\": \"All messages are received and processed successfully.\",\n  \"status\": \"success\"\n}"
+      },
+      {
+        "test_index": 16,
+        "latency_s": 9.742594003677368,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"deborah\": {\n    \"jolene\": {\n      \"time_management\": \"I use the Pomodoro Technique, working for 25 minutes and taking a 5-minute break every hour.\",\n      \"exam_schedule\": \"I try to create a dail"
+      },
+      {
+        "test_index": 17,
+        "latency_s": 2.187898874282837,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"message\": \"All messages have been successfully extracted.\"\n}"
+      },
+      {
+        "test_index": 18,
+        "latency_s": 26.71468186378479,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"messages\": [\n    {\n      \"sender\": \"Sam\",\n      \"recipient\": \"Evan\",\n      \"message\": \"Hey Evan! Exciting news: I started a new diet and exercise routine last Monday and it's made a huge differen"
+      },
+      {
+        "test_index": 19,
+        "latency_s": 3.1076691150665283,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"message\": \"All messages have been successfully extracted.\",\n  \"status\": \"success\"\n}"
+      },
+      {
+        "test_index": 20,
+        "latency_s": 8.346274137496948,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"message\": \"The message has been successfully extracted from the provided text.\",\n  \"extracted_text\": \"Hey Dave, I had a lil car accident last Friday. The mechanic helped me get my car running aga"
+      }
+    ]
+  }
+}

@@ -1,4 +1,5 @@
 .idea
+benchmark-runner/.env
 
 # Exclude uncompressed result files (keep only .gz versions)
 results/*.json

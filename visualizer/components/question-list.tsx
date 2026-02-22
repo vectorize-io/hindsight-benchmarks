@@ -10,11 +10,8 @@ interface QuestionListProps {
 
 export function QuestionList({ questions }: QuestionListProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
-  const [correctnessFilter, setCorrectnessFilter] = useState<'all' | 'correct' | 'incorrect' | 'invalid'>(
-    'all'
-  )
+  const [correctnessFilter, setCorrectnessFilter] = useState<'all' | 'correct' | 'incorrect' | 'invalid'>('all')
 
-  // Get all unique categories from the questions
   const categories = useMemo(() => {
     const categorySet = new Set<string>()
     questions.forEach((q) => {
@@ -24,22 +21,17 @@ export function QuestionList({ questions }: QuestionListProps) {
     return Array.from(categorySet).sort()
   }, [questions])
 
-  // Filter questions
   const filteredQuestions = useMemo(() => {
-    return questions.filter((question, idx) => {
-      // Correctness filter
+    return questions.filter((question) => {
       if (correctnessFilter !== 'all') {
         if (correctnessFilter === 'invalid' && !question.is_invalid) return false
         if (correctnessFilter === 'correct' && (!question.is_correct || question.is_invalid)) return false
         if (correctnessFilter === 'incorrect' && (question.is_correct || question.is_invalid)) return false
       }
-
-      // Category filter
       if (selectedCategory !== 'all') {
         const cat = typeof question.category === 'number' ? getCategoryName(question.category) : question.category
         if (cat !== selectedCategory) return false
       }
-
       return true
     })
   }, [questions, correctnessFilter, selectedCategory])
@@ -47,161 +39,127 @@ export function QuestionList({ questions }: QuestionListProps) {
   return (
     <div>
       {/* Filters */}
-      <div className="bg-white border border-border rounded-lg p-6 shadow-sm mb-6">
-        <h3 className="text-sm font-semibold text-foreground mb-4">Filter Questions</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* Correctness */}
-          <div>
-            <label htmlFor="correctness" className="block text-xs font-medium text-muted-foreground mb-2">
-              Correctness
-            </label>
-            <select
-              id="correctness"
-              value={correctnessFilter}
-              onChange={(e) => setCorrectnessFilter(e.target.value as any)}
-              className="w-full px-3 py-2 border border-border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="all">All</option>
-              <option value="correct">Correct</option>
-              <option value="incorrect">Incorrect</option>
-              <option value="invalid">Invalid</option>
-            </select>
-          </div>
+      <div className="flex flex-wrap items-center gap-3 mb-4">
+        <select
+          value={correctnessFilter}
+          onChange={(e) => setCorrectnessFilter(e.target.value as any)}
+          className="px-3 py-1.5 border border-border rounded-md text-xs bg-secondary text-foreground focus:outline-none focus:ring-1 focus:ring-primary/50"
+        >
+          <option value="all">All results</option>
+          <option value="correct">Correct only</option>
+          <option value="incorrect">Incorrect only</option>
+          <option value="invalid">Invalid only</option>
+        </select>
 
-          {/* Category */}
-          {categories.length > 0 && (
-            <div>
-              <label htmlFor="category" className="block text-xs font-medium text-muted-foreground mb-2">
-                Category
-              </label>
-              <select
-                id="category"
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full px-3 py-2 border border-border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                <option value="all">All Categories</option>
-                {categories.map((cat) => (
-                  <option key={cat} value={cat}>
-                    {cat}
-                  </option>
-                ))}
-              </select>
-            </div>
-          )}
-        </div>
-        <p className="text-xs text-muted-foreground mt-3">
-          Showing {filteredQuestions.length} of {questions.length} questions
-        </p>
+        {categories.length > 0 && (
+          <select
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+            className="px-3 py-1.5 border border-border rounded-md text-xs bg-secondary text-foreground focus:outline-none focus:ring-1 focus:ring-primary/50"
+          >
+            <option value="all">All categories</option>
+            {categories.map((cat) => (
+              <option key={cat} value={cat}>{cat}</option>
+            ))}
+          </select>
+        )}
+
+        <span className="text-xs text-muted-foreground ml-auto">
+          {filteredQuestions.length} / {questions.length}
+        </span>
       </div>
 
-      {/* Question List */}
-      <div className="space-y-4">
-        {filteredQuestions.map((result, qIdx) => {
-          const isInvalid = result.is_invalid
-          const isCorrect = result.is_correct
-          const category = typeof result.category === 'number' ? getCategoryName(result.category) : result.category
-          const icon = isInvalid ? '⚠️' : isCorrect ? '✅' : '❌'
-          const borderClass = isInvalid
-            ? 'border-l-4 border-yellow-500'
-            : isCorrect
-            ? 'border-l-4 border-green-600'
-            : 'border-l-4 border-red-600'
+      {filteredQuestions.length === 0 ? (
+        <div className="text-center py-12 bg-card border border-border rounded-lg">
+          <p className="text-muted-foreground text-sm">No questions match your filters</p>
+        </div>
+      ) : (
+        <div className="space-y-2">
+          {filteredQuestions.map((result) => {
+            const isInvalid = result.is_invalid
+            const isCorrect = result.is_correct
+            const category = typeof result.category === 'number' ? getCategoryName(result.category) : result.category
+            const originalIdx = questions.findIndex((q) => q.question === result.question)
 
-          // Find original index
-          const originalIdx = questions.findIndex((q) => q.question === result.question)
+            const accentClass = isInvalid
+              ? 'border-l-amber-500'
+              : isCorrect
+              ? 'border-l-emerald-500'
+              : 'border-l-red-500'
+            const statusLabel = isInvalid ? 'Invalid' : isCorrect ? 'Correct' : 'Incorrect'
+            const statusColor = isInvalid ? 'text-amber-400' : isCorrect ? 'text-emerald-400' : 'text-red-400'
 
-          return (
-            <div key={originalIdx} className={`bg-white border border-border rounded-lg p-6 shadow-sm ${borderClass}`}>
-              <div className="mb-4">
-                <p className="text-lg font-semibold text-foreground">
-                  {icon} Question {originalIdx + 1}
-                </p>
-                <p className="text-sm text-muted-foreground">Category: {category}</p>
-              </div>
-
-              <div className="mb-4">
-                <p className="text-sm font-medium text-foreground mb-1">Question:</p>
-                <p className="text-foreground">{result.question}</p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <p className="text-sm font-medium text-foreground mb-2">✓ Correct Answer</p>
-                  <div className="bg-green-50 border border-green-200 rounded-md p-3 text-foreground text-sm">
-                    {result.correct_answer}
+            return (
+              <details key={originalIdx} className={`group bg-card border border-border border-l-2 ${accentClass} rounded-lg`}>
+                <summary className="flex items-center justify-between px-5 py-4 cursor-pointer list-none select-none">
+                  <div className="flex items-center gap-4 min-w-0">
+                    <span className="text-xs font-mono text-muted-foreground shrink-0">Q{originalIdx + 1}</span>
+                    <span className="text-sm text-foreground truncate">{result.question}</span>
                   </div>
-                </div>
-
-                <div>
-                  <p className="text-sm font-medium text-foreground mb-2">
-                    {isCorrect ? '✓' : '✗'} Predicted Answer
-                  </p>
-                  <div
-                    className={`border rounded-md p-3 text-foreground text-sm ${
-                      isCorrect ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'
-                    }`}
-                  >
-                    {result.predicted_answer}
+                  <div className="flex items-center gap-3 ml-4 shrink-0">
+                    <span className={`text-xs font-semibold ${statusColor}`}>{statusLabel}</span>
+                    <span className="text-xs text-muted-foreground uppercase tracking-wide hidden sm:inline">{category}</span>
+                    <svg className="w-4 h-4 text-muted-foreground transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
                   </div>
-                </div>
-              </div>
-
-              <details className="border border-border rounded-md p-4 bg-muted/30">
-                <summary className="cursor-pointer font-medium text-foreground hover:text-primary py-2">
-                  📝 Show Reasoning & Retrieved Memories
                 </summary>
-                <div className="mt-3 space-y-4">
+
+                <div className="px-5 pb-5 border-t border-border pt-4 space-y-4">
                   <div>
-                    <p className="text-sm font-medium text-foreground mb-2">System Reasoning:</p>
-                    <pre className="bg-slate-900 text-slate-100 p-3 rounded-md overflow-x-auto text-sm whitespace-pre-wrap">
-                      {result.reasoning || 'N/A'}
-                    </pre>
+                    <p className="text-[11px] font-semibold tracking-widest uppercase text-muted-foreground mb-1">Question</p>
+                    <p className="text-sm text-foreground">{result.question}</p>
                   </div>
 
-                  {result.correctness_reasoning && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border rounded-md overflow-hidden">
+                    <div className="bg-card px-4 py-3">
+                      <p className="text-[11px] font-semibold tracking-widest uppercase text-emerald-500 mb-1">Expected</p>
+                      <p className="text-sm text-foreground">{result.correct_answer}</p>
+                    </div>
+                    <div className="bg-card px-4 py-3">
+                      <p className={`text-[11px] font-semibold tracking-widest uppercase mb-1 ${isCorrect ? 'text-emerald-500' : isInvalid ? 'text-amber-500' : 'text-red-500'}`}>
+                        Predicted
+                      </p>
+                      <p className="text-sm text-foreground">{result.predicted_answer}</p>
+                    </div>
+                  </div>
+
+                  {result.reasoning && (
                     <div>
-                      <p className="text-sm font-medium text-foreground mb-2">Judge Reasoning:</p>
-                      <pre className="bg-slate-900 text-slate-100 p-3 rounded-md overflow-x-auto text-sm whitespace-pre-wrap">
-                        {result.correctness_reasoning}
-                      </pre>
+                      <p className="text-[11px] font-semibold tracking-widest uppercase text-muted-foreground mb-1">Reasoning</p>
+                      <pre className="text-xs text-muted-foreground bg-background border border-border rounded-md p-3 overflow-x-auto whitespace-pre-wrap font-mono">{result.reasoning}</pre>
                     </div>
                   )}
 
-                  <div>
-                    <p className="text-sm font-medium text-foreground mb-2">
-                      Retrieved Memories ({result.retrieved_memories?.length || 0}):
-                    </p>
-                    <p className="text-xs text-muted-foreground mb-3">
-                      Hindsight also uses chunks and entities for retrieval.{' '}
-                      <a href="http://hindsight.vectorize.io/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                        Learn more
-                      </a>
-                    </p>
-                    {result.retrieved_memories && result.retrieved_memories.length > 0 ? (
-                      result.retrieved_memories.map((mem, i) => (
-                        <div key={i} className="bg-muted/50 border border-border rounded-md p-3 mb-2">
-                          <p className="text-xs text-muted-foreground mb-1">
-                            #{i + 1} • Type: {mem.fact_type?.toUpperCase() || 'N/A'}
-                            {mem.occurred_start && ` • Date: ${mem.occurred_start.slice(0, 10)}`}
-                          </p>
-                          <p className="text-sm text-foreground">{mem.text}</p>
-                        </div>
-                      ))
-                    ) : (
-                      <p className="text-sm text-muted-foreground">No memories retrieved</p>
-                    )}
-                  </div>
+                  {result.correctness_reasoning && (
+                    <div>
+                      <p className="text-[11px] font-semibold tracking-widest uppercase text-muted-foreground mb-1">Judge Reasoning</p>
+                      <pre className="text-xs text-muted-foreground bg-background border border-border rounded-md p-3 overflow-x-auto whitespace-pre-wrap font-mono">{result.correctness_reasoning}</pre>
+                    </div>
+                  )}
+
+                  {result.retrieved_memories && result.retrieved_memories.length > 0 && (
+                    <div>
+                      <p className="text-[11px] font-semibold tracking-widest uppercase text-muted-foreground mb-2">
+                        Retrieved Memories ({result.retrieved_memories.length})
+                      </p>
+                      <div className="space-y-1">
+                        {result.retrieved_memories.map((mem, i) => (
+                          <div key={i} className="bg-secondary/40 border border-border rounded-md px-3 py-2">
+                            <p className="text-[10px] font-semibold tracking-widest uppercase text-muted-foreground mb-0.5">
+                              {mem.fact_type?.toUpperCase() || 'FACT'}
+                              {mem.occurred_start && ` · ${mem.occurred_start.slice(0, 10)}`}
+                            </p>
+                            <p className="text-sm text-foreground">{mem.text}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </details>
-            </div>
-          )
-        })}
-      </div>
-
-      {filteredQuestions.length === 0 && (
-        <div className="text-center py-12 bg-white border border-border rounded-lg">
-          <p className="text-muted-foreground">No questions match your filters</p>
+            )
+          })}
         </div>
       )}
     </div>

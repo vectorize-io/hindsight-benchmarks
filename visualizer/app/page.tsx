@@ -1,156 +1,183 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import React from 'react'
 import { loadLongMemEval, loadLoComo } from '@/lib/data'
+import { loadLeaderboardData, getLeaderboardStats } from '@/lib/leaderboard'
+
+function StatBlock({ value, label, highlight }: { value: string | number; label: string; highlight?: boolean }) {
+  return (
+    <div>
+      <div className={`text-xl font-bold tabular-nums ${highlight ? 'gradient-primary-text' : 'text-foreground'}`}>
+        {value}
+      </div>
+      <div className="text-xs text-muted-foreground uppercase tracking-wide mt-0.5">{label}</div>
+    </div>
+  )
+}
+
+function WinnerBlock({ name, providerIcon, providerName }: { name: string; providerIcon: string; providerName: string }) {
+  return (
+    <div>
+      <div className="flex items-center gap-1.5 mb-1">
+        {providerIcon && (
+          <Image src={providerIcon} alt={providerName} width={14} height={14} className="rounded-sm opacity-80" />
+        )}
+        <span className="text-xs font-medium text-foreground bg-secondary px-2 py-0.5 rounded-full border border-border">
+          {name}
+        </span>
+      </div>
+      <div className="text-xs text-muted-foreground uppercase tracking-wide mt-0.5">Top model</div>
+    </div>
+  )
+}
+
+function BenchmarkCard({
+  href,
+  tag,
+  title,
+  description,
+  stats,
+  winner,
+  cta,
+}: {
+  href: string
+  tag: string
+  title: string
+  description: React.ReactNode
+  stats: { value: string | number; label: string; highlight?: boolean }[]
+  winner?: { name: string; providerIcon: string; providerName: string } | null
+  cta: string
+}) {
+  return (
+    <Link href={href} className="group block">
+      <div className="h-full bg-card border border-border rounded-lg p-6 transition-colors duration-200 hover:bg-secondary/40 cursor-pointer">
+        <div className="mb-4">
+          <span className="text-[10px] font-semibold tracking-widest uppercase text-muted-foreground">
+            {tag}
+          </span>
+        </div>
+
+        <h3 className="text-sm font-semibold tracking-widest uppercase text-foreground mb-1">
+          {title}
+        </h3>
+        <p className="text-sm text-muted-foreground mb-6">{description}</p>
+
+        <div className="flex items-center gap-8 mb-6">
+          {stats.map((s, i) => (
+            <StatBlock key={i} value={s.value} label={s.label} highlight={s.highlight} />
+          ))}
+          {winner && <WinnerBlock name={winner.name} providerIcon={winner.providerIcon} providerName={winner.providerName} />}
+        </div>
+
+        <div className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground group-hover:text-foreground transition-colors">
+          {cta}
+          <svg
+            className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      </div>
+    </Link>
+  )
+}
 
 export default function Home() {
-  // Check which benchmarks are available
   const longmemeval = loadLongMemEval()
   const locomo = loadLoComo()
+  const leaderboardModels = loadLeaderboardData()
+  const leaderboardStats = getLeaderboardStats(leaderboardModels)
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-50 via-cyan-50/30 to-slate-50">
-      <div className="container mx-auto max-w-7xl px-4 py-16">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center mb-6">
-            <Image
-              src="/logo.png"
-              alt="Hindsight Logo"
-              width={80}
-              height={80}
-              className="rounded-2xl shadow-lg"
-            />
-          </div>
-          <h1 className="text-5xl font-heading text-foreground mb-4 gradient-primary-text">
-            Hindsight Benchmarks
+    <main className="min-h-screen">
+      <div className="container mx-auto max-w-5xl px-4 py-20">
+        <div className="mb-16">
+          <h1 className="text-4xl font-heading font-bold mb-3">
+            <span className="gradient-primary-text">Hindsight</span>
+            <span className="text-foreground"> Benchmarks</span>
           </h1>
-          <p className="text-lg text-muted-foreground mb-4 font-body">
-            Analyze and visualize LongMemEval and LoComo benchmark results for Hindsight
+          <p className="text-muted-foreground max-w-xl">
+            Industry benchmarks and model leaderboard for Hindsight — the memory layer for AI agents.
           </p>
-          <div className="flex items-center justify-center gap-3">
-            <a
-              href="http://hindsight.vectorize.io/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 gradient-primary text-white rounded-lg hover:opacity-90 transition-opacity text-sm font-medium"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              Learn More
-            </a>
-            <a
-              href="https://github.com/vectorize-io/hindsight"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors text-sm font-medium"
-            >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
-              </svg>
-              View on GitHub
-            </a>
-          </div>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-6">
-            {longmemeval && (
-              <Link
-                href="/longmemeval"
-                className="group relative bg-white border-2 border-border rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
-              >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-bl-full opacity-50"></div>
-                <div className="relative">
-                  <div className="text-4xl mb-4">🎯</div>
-                  <h2 className="text-2xl font-heading text-foreground mb-2 group-hover:text-primary transition-colors">
-                    LongMemEval
-                  </h2>
-                  <p className="text-muted-foreground text-sm mb-4">
-                    Comprehensive long-term memory evaluation
-                  </p>
-                  <div className="flex items-center gap-4 text-sm">
-                    <div>
-                      <div className="text-2xl font-bold text-foreground">
-                        {longmemeval.overall_accuracy.toFixed(1)}%
-                      </div>
-                      <div className="text-xs text-muted-foreground">Accuracy</div>
-                    </div>
-                    <div className="h-10 w-px bg-border"></div>
-                    <div>
-                      <div className="text-2xl font-bold text-foreground">{longmemeval.num_items}</div>
-                      <div className="text-xs text-muted-foreground">Items</div>
-                    </div>
-                    <div className="h-10 w-px bg-border"></div>
-                    <div>
-                      <div className="text-2xl font-bold text-foreground">{longmemeval.total_questions}</div>
-                      <div className="text-xs text-muted-foreground">Questions</div>
-                    </div>
-                  </div>
-                  <div className="mt-6 flex items-center text-primary font-medium">
-                    View Results
-                    <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </div>
-              </Link>
-            )}
+        <div className="space-y-10">
+          {/* Industry Benchmarks */}
+          <section>
+            <p className="text-[11px] font-semibold tracking-widest uppercase text-muted-foreground mb-4">
+              Industry Benchmarks
+            </p>
+            <div className="grid md:grid-cols-2 gap-4">
+              {longmemeval ? (
+                <BenchmarkCard
+                  href="/longmemeval"
+                  tag="Benchmark"
+                  title="LongMemEval"
+                  description="Comprehensive long-term memory evaluation across 500 items."
+                  stats={[
+                    { value: `${longmemeval.overall_accuracy.toFixed(1)}%`, label: 'Accuracy', highlight: true },
+                    { value: longmemeval.num_items, label: 'Items' },
+                    { value: longmemeval.total_questions, label: 'Questions' },
+                  ]}
+                  cta="View results"
+                />
+              ) : (
+                <div className="bg-card p-6 text-sm text-muted-foreground">No LongMemEval data</div>
+              )}
 
-            {locomo && (
-              <Link
-                href="/locomo"
-                className="group relative bg-white border-2 border-border rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
-              >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-100 to-teal-100 rounded-bl-full opacity-50"></div>
-                <div className="relative">
-                  <div className="text-4xl mb-4">💬</div>
-                  <h2 className="text-2xl font-heading text-foreground mb-2 group-hover:text-primary-end transition-colors">
-                    LoComo
-                  </h2>
-                  <p className="text-muted-foreground text-sm mb-4">
-                    Long conversation memory benchmark
-                  </p>
-                  <div className="flex items-center gap-4 text-sm">
-                    <div>
-                      <div className="text-2xl font-bold text-foreground">
-                        {locomo.overall_accuracy.toFixed(1)}%
-                      </div>
-                      <div className="text-xs text-muted-foreground">Accuracy</div>
-                    </div>
-                    <div className="h-10 w-px bg-border"></div>
-                    <div>
-                      <div className="text-2xl font-bold text-foreground">{locomo.num_items}</div>
-                      <div className="text-xs text-muted-foreground">Convos</div>
-                    </div>
-                    <div className="h-10 w-px bg-border"></div>
-                    <div>
-                      <div className="text-2xl font-bold text-foreground">{locomo.total_questions}</div>
-                      <div className="text-xs text-muted-foreground">Questions</div>
-                    </div>
-                  </div>
-                  <div className="mt-6 flex items-center text-primary-end font-medium">
-                    View Results
-                    <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </div>
-              </Link>
-            )}
+              {locomo ? (
+                <BenchmarkCard
+                  href="/locomo"
+                  tag="Benchmark"
+                  title="LoComo"
+                  description="Long conversation memory benchmark across real-world dialogues."
+                  stats={[
+                    { value: `${locomo.overall_accuracy.toFixed(1)}%`, label: 'Accuracy', highlight: true },
+                    { value: locomo.num_items, label: 'Convos' },
+                    { value: locomo.total_questions, label: 'Questions' },
+                  ]}
+                  cta="View results"
+                />
+              ) : (
+                <div className="bg-card p-6 text-sm text-muted-foreground">No LoComo data</div>
+              )}
+            </div>
+          </section>
 
-            {!longmemeval && !locomo && (
-              <div className="col-span-2 text-center py-12 bg-white border-2 border-border rounded-2xl shadow-lg">
-                <div className="text-6xl mb-4">📂</div>
-                <h3 className="text-xl font-heading text-foreground mb-2">No Results Found</h3>
-                <p className="text-muted-foreground font-body">
-                  Add result files to the <code className="px-2 py-1 bg-slate-100 rounded font-mono">results/</code> directory to get
-                  started.
-                </p>
-              </div>
-            )}
-          </div>
+          {/* Model Leaderboards */}
+          <section>
+            <p className="text-[11px] font-semibold tracking-widest uppercase text-muted-foreground mb-4">
+              Model Leaderboards
+            </p>
+            <div className="grid md:grid-cols-2 gap-4">
+              <BenchmarkCard
+                href="/leaderboard/retain"
+                tag="Leaderboard"
+                title="Retain Leaderboard"
+                description={<>Ranked LLMs for <span className="gradient-primary-text font-semibold">retain()</span> and <span className="gradient-primary-text font-semibold">observation consolidation</span> — fact extraction quality, speed, cost, and reliability.</>}
+                stats={[
+                  { value: leaderboardStats.viableModels, label: 'Models', highlight: true },
+                ]}
+                winner={leaderboardStats.topRetainModel}
+                cta="View leaderboard"
+              />
+              <BenchmarkCard
+                href="/leaderboard/reflect"
+                tag="Leaderboard"
+                title="Reflect Leaderboard"
+                description={<>Ranked LLMs for the <span className="gradient-primary-text font-semibold">reflect</span> operation in Hindsight.</>}
+                stats={[
+                  { value: leaderboardStats.viableReflectModels, label: 'Models', highlight: true },
+                ]}
+                winner={leaderboardStats.topReflectModel}
+                cta="View leaderboard"
+              />
+            </div>
+          </section>
         </div>
-
       </div>
     </main>
   )

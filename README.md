@@ -1,6 +1,131 @@
-# Hindsight Benchmark Results
+# Hindsight Benchmarks
 
-This repository contains benchmark results for the Hindsight memory system and visualization tools to inspect the results.
+This repository contains:
+- **Industry Benchmarks**: LongMemEval and LoComo benchmark results for the Hindsight memory system
+- **Model Leaderboard**: Comparative performance metrics for LLMs on fact extraction tasks
+- **Visualization Tools**: Interactive web interface to explore results
+
+## Repository Structure
+
+```
+hindsight-benchmarks/
+├── benchmark-runner/          # Python CLI tools for benchmarking
+│   ├── src/hindsight_benchmark/  # Fast benchmark (speed/cost/reliability)
+│   ├── quality_benchmark/        # Quality benchmark (accuracy via Hindsight)
+│   │   ├── run_quality_benchmark.py
+│   │   ├── locomo_quality.json
+│   │   └── README.md
+│   ├── datasets/
+│   ├── benchmark_models.json
+│   └── pyproject.toml
+├── visualizer/               # Next.js web application
+│   ├── app/
+│   │   ├── page.tsx          # Home page with both sections
+│   │   ├── longmemeval/      # Industry benchmark pages
+│   │   ├── locomo/          # Industry benchmark pages
+│   │   └── leaderboard/     # Model leaderboard pages
+│   ├── components/
+│   └── lib/
+└── results/                  # Shared results directory
+    ├── longmemeval.json.gz   # Industry benchmark
+    ├── locomo.json.gz        # Industry benchmark
+    ├── model-results/        # Fast benchmark results
+    └── quality/              # Quality benchmark results
+```
+
+## Quick Start
+
+### Viewing Results
+
+```bash
+cd visualizer
+npm install
+npm run dev
+# Open http://localhost:9998
+```
+
+### Running Model Benchmarks
+
+```bash
+cd benchmark-runner
+uv run hindsight-benchmark --dataset simple
+# Results saved to ../results/model-results/
+```
+
+---
+
+## Model Leaderboard
+
+### Overview
+
+The Model Leaderboard compares LLM performance using two complementary benchmarks:
+
+#### 1. Fast Benchmark (Speed, Cost, Reliability)
+Direct model testing for operational metrics:
+- **Speed (25%)**: Response latency and throughput
+- **Cost (20%)**: Pricing per million tokens
+- **Reliability (15%)**: Schema conformance rate
+
+#### 2. Quality Benchmark (Accuracy)
+Tests model performance within Hindsight using LoComo conversations:
+- **Quality (40%)**: Answer accuracy on conversation recall tasks
+- Measures real-world memory system performance
+- Runs through Hindsight API to test model in context
+
+### Fast Benchmark
+
+Models are tested on 20 diverse conversation scenarios. Each test requires:
+- Extracting structured facts from a conversation
+- Returning results in a specific JSON schema format
+- Valid JSON output with correct schema structure
+
+**Running:**
+```bash
+cd benchmark-runner
+uv run hindsight-benchmark --dataset simple
+# Results saved to ../results/model-results/
+```
+
+Model configurations are defined in `benchmark-runner/benchmark_models.json`.
+
+### Quality Benchmark
+
+Measures accuracy by running a LoComo conversation through Hindsight with the model configured.
+
+**Prerequisites:**
+- Hindsight API running with the model to test
+- hindsight-client Python package installed
+- OpenAI API key for LLM judge (recommended)
+
+**Running:**
+```bash
+cd benchmark-runner/quality_benchmark
+
+# Start Hindsight with your model
+cd /path/to/hindsight-wt1
+export HINDSIGHT_API_LLM_MODEL=gpt-4o-mini
+python -m hindsight_api
+
+# Run quality benchmark
+cd /path/to/hindsight-benchmarks/benchmark-runner/quality_benchmark
+python run_quality_benchmark.py \
+    --api-url http://localhost:8888 \
+    --model-id gpt-4o-mini \
+    --provider-id openai \
+    --judge-api-key $OPENAI_API_KEY
+```
+
+See [`benchmark-runner/quality_benchmark/README.md`](benchmark-runner/quality_benchmark/README.md) for detailed instructions.
+
+### Viewing Results
+
+Navigate to `/leaderboard` in the visualizer to see:
+- Interactive sortable table of all models
+- Score breakdowns by dimension
+- Non-viable models section
+- Detailed metrics for each model
+
+---
 
 Explore the results yourself on the [Benchmarks Visualizer](https://benchmarks.hindsight.vectorize.io/)
 

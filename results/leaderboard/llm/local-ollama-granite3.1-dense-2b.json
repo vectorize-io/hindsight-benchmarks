@@ -1,0 +1,248 @@
+{
+  "model_id": "granite3.1-dense-2b",
+  "provider_id": "local-ollama",
+  "quality": null,
+  "retain": {
+    "timestamp": "2026-02-20T16:47:32.166468+00:00",
+    "model_id": "granite3.1-dense-2b",
+    "model_name": "granite3.1-dense:2b",
+    "provider_id": "local-ollama",
+    "size_gb": 0.0,
+    "dataset": "locomo_3k",
+    "concurrency": 1,
+    "wall_s": 849.0060851573944,
+    "summary": {
+      "success": 0,
+      "total": 20,
+      "wall_s": 849.006,
+      "avg_latency_s": null,
+      "throughput_rps": null,
+      "completion_toks_s": null,
+      "total_toks_s": null,
+      "out_in_ratio": null,
+      "tokens_per_fact": null
+    },
+    "tests": [
+      {
+        "test_index": 1,
+        "latency_s": 47.28014636039734,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"Events\": [\n    {\n      \"Participants\": [\"Caroline\", \"Melanie\"],\n      \"Date\": \"9 June 2023\",\n      \"Description\": \"Caroline shared her transgender journey and encouraged students to get involved "
+      },
+      {
+        "test_index": 2,
+        "latency_s": 69.00379085540771,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"Events\": [\n    {\n      \"Participants\": [\"Caroline\", \"Melanie\"],\n      \"Date\": \"12 July 2023\",\n      \"Description\": \"Attended an LGBTQ conference, felt accepted and supported by the community.\"\n  "
+      },
+      {
+        "test_index": 3,
+        "latency_s": 65.6271481513977,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"Conversation\": [\n    {\n      \"User1\": \"Jon\",\n      \"User2\": \"Gina\"\n    },\n    {\n      \"User1\": \"Jon\",\n      \"User2\": \"Gina\",\n      \"Message\": \"Hey Gina! How have you been?\"\n    },\n    {\n      \"Us"
+      },
+      {
+        "test_index": 4,
+        "latency_s": 90.4934949874878,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"Interactions\": [\n    {\n      \"Participants\": [\"Jon\", \"Gina\"],\n      \"Topic\": \"Support and motivation for each other's businesses\",\n      \"Details\": [\n        {\n          \"Date\": \"1:26 pm on 3 Apr"
+      },
+      {
+        "test_index": 5,
+        "latency_s": 33.74071192741394,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"Extracted Information\": [\n    {\n      \"Person A\": \"John\",\n      \"Activities\": [\"Volunteering at homeless shelter\", \"Organizing toy drive for kids in need\", \"Joining service-focused online group\","
+      },
+      {
+        "test_index": 6,
+        "latency_s": 173.25682401657104,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"Interactions\": [\n    {\n      \"Participants\": [\"Maria\", \"John\"],\n      \"Topic\": \"Support for personal loss and upcoming events\",\n      \"Details\": {\n        \"Maria's Grandma's Passing\": \"Maria shar"
+      },
+      {
+        "test_index": 7,
+        "latency_s": 48.464730739593506,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"Events\": [\n    {\n      \"Participants\": [\"Joanna\", \"Nate\"],\n      \"Date\": \"7 February 2022\",\n      \"Description\": \"Joanna shared her excitement about a screenplay she submitted to a film festival,"
+      },
+      {
+        "test_index": 8,
+        "latency_s": 33.1071560382843,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"Events\": [\n    {\n      \"Participants\": [\"Nate\", \"Joanna\"],\n      \"Description\": \"Discussed Joanna's involvement in a writers group and her work on a script titled 'Finding Home'. Nate shared that"
+      },
+      {
+        "test_index": 9,
+        "latency_s": 33.33859896659851,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"Extracted Information\": [\n    {\n      \"Person A\": \"John\",\n      \"Event 1\": \"Scoring 40 points in a game, his highest ever\",\n      \"Emotion\": \"Exhilaration and pride\"\n    },\n    {\n      \"Person B\""
+      },
+      {
+        "test_index": 10,
+        "latency_s": 35.1392707824707,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"Extracted Information\": [\n    {\n      \"Topic\": \"John's Basketball Journey\",\n      \"Details\": [\n        {\n          \"Event\": \"Meeting with teammates after trip\",\n          \"Impact\": \"Reinforced th"
+      },
+      {
+        "test_index": 11,
+        "latency_s": 27.540221214294434,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 19 column 9 (char 580) | raw: {\n  \"Extracted Information\": {\n    \"Audrey's Pets\": {\n      \"Name\": \"Pets\",\n      \"Type\": \"Dogs\"\n    },\n    \"Audrey's Connection to Nature\": {\n      \"Activity\": \"Hiking\",\n      \"Frequency\": \"At least once a weekend\",\n      \"Experience\": \"Watching hummingbirds and enjoying nature's beauty\"\n    },\n   "
+      },
+      {
+        "test_index": 12,
+        "latency_s": 32.563409090042114,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"Extracted Information\": {\n    \"Andrew's Search for a Furry Friend\": {\n      \"Status\": \"Still ongoing\",\n      \"Challenges\": [\"Finding pet-friendly spots in the city\"],\n      \"Preferences\": [\"Outdo"
+      },
+      {
+        "test_index": 13,
+        "latency_s": 19.988852977752686,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"Extracted Information\": {\n    \"James' Gaming Interests\": [\n      \"Joined an online gaming tournament\",\n      \"Plays various games like RPGs and strategy games\",\n      \"Participated in a CS:GO tou"
+      },
+      {
+        "test_index": 14,
+        "latency_s": 16.34485626220703,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"conversation\": [\n    {\n      \"participants\": [\"James\", \"John\"],\n      \"topics\": [\n        \"Hiking with dogs\",\n        \"Nature inspiration for game design\",\n        \"Travel experiences\",\n        \""
+      },
+      {
+        "test_index": 15,
+        "latency_s": 19.827850103378296,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"Conversations\": [\n    {\n      \"Participants\": [\"Deborah\", \"Jolene\"],\n      \"Topics\": [\n        {\n          \"Topic\": \"Engineering project and personal accomplishments\",\n          \"Details\": [\n    "
+      },
+      {
+        "test_index": 16,
+        "latency_s": 21.188832998275757,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"Extracted Information\": {\n    \"Deborah\": {\n      \"Personality Traits\": [\"Supportive\", \"Encouraging\", \"Patient\", \"Organized\", \"Community-focused\"],\n      \"Hobbies/Interests\": [\"Yoga\", \"Teaching yo"
+      },
+      {
+        "test_index": 17,
+        "latency_s": 17.04046893119812,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting ':' delimiter: line 32 column 105 (char 1353) | raw: {\n  \"Extracted Information\": [\n    {\n      \"Person A\": \"Sam\",\n      \"Activities/Changes\": [\"Reducing soda and candy intake\", \"Trying flavored seltzer water as an alternative to soda\", \"Starting gym exercises\"],\n      \"Health Goals\": [\"Improving overall health through diet and exercise\"]\n    },\n    {"
+      },
+      {
+        "test_index": 18,
+        "latency_s": 29.928993940353394,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 46 column 26 (char 2802) | raw: {\n  \"Extracted Information\": {\n    \"Evan's Health and Fitness Journey\": {\n      \"Diet\": \"Evan has started a new diet, focusing on healthier eating habits.\",\n      \"Exercise\": \"Due to an injury, Evan has had to modify his usual fitness routine. He is currently swimming as a low-impact exercise to sta"
+      },
+      {
+        "test_index": 19,
+        "latency_s": 18.400165796279907,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 15 column 9 (char 483) | raw: {\n  \"Extracted Information\": [\n    {\n      \"Person A\": \"Dave\",\n      \"Activities\": [\"Opened his own car maintenance shop\", \"Worked on a restored classic car\", \"Collaborated with a local garage\"]\n    },\n    {\n      \"Person B\": \"Calvin\",\n      \"Activities\": [\"Met Dave at various events and locations\","
+      },
+      {
+        "test_index": 20,
+        "latency_s": 16.619590282440186,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 27 column 7 (char 884) | raw: {\n  \"Extracted Information\": {\n    \"Calvin's Hobbies and Interests\": [\n      \"Fixing cars\",\n      \"Performing live\",\n      \"Exploring parks in Boston\",\n      \"Hiking (though not recently)\",\n      \"Visiting mountainous regions\"\n    ],\n    \"Dave's Hobbies and Interests\": [\n      \"Fixing up things\",\n  "
+      }
+    ]
+  }
+}

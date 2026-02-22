@@ -1,0 +1,248 @@
+{
+  "model_id": "smollm2-1.7b",
+  "provider_id": "local-ollama",
+  "quality": null,
+  "retain": {
+    "timestamp": "2026-02-20T16:35:17.560173+00:00",
+    "model_id": "smollm2-1.7b",
+    "model_name": "smollm2:1.7b",
+    "provider_id": "local-ollama",
+    "size_gb": 0.0,
+    "dataset": "locomo_3k",
+    "concurrency": 1,
+    "wall_s": 694.3701980113983,
+    "summary": {
+      "success": 0,
+      "total": 20,
+      "wall_s": 694.37,
+      "avg_latency_s": null,
+      "throughput_rps": null,
+      "completion_toks_s": null,
+      "total_toks_s": null,
+      "out_in_ratio": null,
+      "tokens_per_fact": null
+    },
+    "tests": [
+      {
+        "test_index": 1,
+        "latency_s": 14.70905089378357,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\"status\": \"success\", \"data\": {\"transactions\": [{\"id\": 1, \"amount\": -500}, {\"id\": 2, \"amount\": 300}, {\"id\": 3, \"amount\": -200}], \"balance\": 400}}"
+      },
+      {
+        "test_index": 2,
+        "latency_s": 135.87783813476562,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\"type\":\"object\",\"properties\":{\"input_string\":{\"type\":\"string\",\"description\":\"The input string containing the text from the conversation.\"}},\"required\":[\"input_string\"]}"
+      },
+      {
+        "test_index": 3,
+        "latency_s": 132.86831378936768,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: Output:\n1. Jon and Gina have been communicating about their respective businesses - Jon is working on his dance business while Gina is managing her clothing store.\n2. They discuss the challenges of running a business, including finding a location for Jon's dance studio and dealing with setbacks in h"
+      },
+      {
+        "test_index": 4,
+        "latency_s": 12.923929691314697,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: Output:\n\nJon is turning his love of dance into a business. He has sunk tons of time into the studio and sees his students improving rapidly. Jon's determination to make this studio work came from tough times where he lost his job but found motivation in pursuing his dreams. Dancing brings him joy, a"
+      },
+      {
+        "test_index": 5,
+        "latency_s": 8.490738868713379,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: Output:\n\nJohn and Maria are discussing their shared passion for helping others through volunteering and community service. They talk about the impact of John's recent volunteer work at a homeless shelter and his efforts to support local politics. They also discuss the importance of unity in making p"
+      },
+      {
+        "test_index": 6,
+        "latency_s": 39.90689206123352,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: Output:\n\n[12:05 pm on 3 March, 2023]\nMaria: Hey John, how are you doing? I've been thinking about our conversations lately and wanted to share something with you. Last week, my grandma passed away and it's been really tough. I'm trying to stay positive, but it's tough. How're you doing?\nJohn: So sor"
+      },
+      {
+        "test_index": 7,
+        "latency_s": 9.960011005401611,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: Output:\n1. Joanna and Nate have been friends for a long time. They talk about their lives and share stories.\n2. Joanna is working on her second script, which she finds both exciting and terrifying. She expresses her feelings of relief and anxiety about the future.\n3. Nate offers words of encourageme"
+      },
+      {
+        "test_index": 8,
+        "latency_s": 19.460567951202393,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\"type\":\"object\",\"properties\":{\"text\":{\"type\":\"string\",\"description\":\"The text string containing the phrases to be extracted.\"}},\"required\":[\"text\"]}"
+      },
+      {
+        "test_index": 9,
+        "latency_s": 8.635379314422607,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: Output:\n\nHi Tim, long time no see! Been super busy lately. Guess what? Just skyped with that Harry Potter fan I met in CA and had a great time. We talked characters and maybe collab-ing - so cool to talk to someone who gets it. You? Anything new going on?"
+      },
+      {
+        "test_index": 10,
+        "latency_s": 12.276089906692505,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"user\": {\n    \"name\": \"John\",\n    \"age\": 25,\n    \"location\": \"New York\"\n  },\n  \"system\": {\n    \"greeting\": \"Hello! How can I assist you today?\"\n  }\n}"
+      },
+      {
+        "test_index": 11,
+        "latency_s": 16.971760034561157,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: Output:\n1. Audrey and Andrew have been chatting about their lives since last week, including Audrey's recent hike where she spotted a hummingbird.\n2. Audrey shares that her dogs enjoy hiking and exploring new scents in nature.\n3. Audrey mentions that safety is important for her dogs, and she has eve"
+      },
+      {
+        "test_index": 12,
+        "latency_s": 10.250340223312378,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: Output:\n1. Andrew and Audrey are discussing their shared love of nature and outdoor activities with their pets.\n2. Andrew shares his recent experience rock climbing, which was challenging but rewarding.\n3. Audrey mentions her new backyard setup for the dogs, including a doggy play area with agility "
+      },
+      {
+        "test_index": 13,
+        "latency_s": 31.082129955291748,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\"status\": \"success\", \"data\": {\"message\": \"You have successfully retrieved the conversation history between John and James.\", \"conversation_history\": [{\"sender\": \"John\", \"recipient\": \"James\", \"timesta"
+      },
+      {
+        "test_index": 14,
+        "latency_s": 49.45202612876892,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: Output:\n[1] James: Hey John! What's up? Anything fun going on?\nJohn:  I'm currently taking on some freelance programming to hone my coding skills. It's challenging, but I'm determined to improve.\nJames: Freelancing can definitely be a great way to sharpen skills and gain experience. What projects ar"
+      },
+      {
+        "test_index": 15,
+        "latency_s": 14.793920993804932,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: Output:\n1. Deborah and Jolene are discussing their experiences with yoga, engineering, and nature.\n2. Deborah shares how she met her neighbor Anna during a yoga class and bonded over their shared interests in sustainability and community development.\n3. Jolene expresses her gratitude for Deborah's s"
+      },
+      {
+        "test_index": 16,
+        "latency_s": 9.959889888763428,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"user\": {\n    \"name\": \"Deborah\",\n    \"email\": \"deb@example.com\"\n  },\n  \"message\": {\n    \"content\": \"Hey Jolene, hope you're doing well with your exams and deadlines. It's tough to find time for ev"
+      },
+      {
+        "test_index": 17,
+        "latency_s": 8.518791198730469,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\"status\": \"success\", \"data\": {\"user_id\": 1, \"message\": \"Great chatting with you, Sam! Take care, talk soon!\"}}"
+      },
+      {
+        "test_index": 18,
+        "latency_s": 13.11143183708191,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: Output:\n1. Sam and Evan have been communicating through text messages about their personal lives and experiences.\n2. They discuss various topics such as health, fitness, and travel.\n3. Sam shares her progress on a new diet and exercise routine, while Evan talks about his knee injury and the challeng"
+      },
+      {
+        "test_index": 19,
+        "latency_s": 137.80863881111145,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\"status\": \"success\", \"data\": {\"message\": \"You have successfully retrieved 10 records.\", \"records\": [{\"id\": 1, \"name\": \"Calvin\", \"age\": 25}, {\"id\": 2, \"name\": \"Dave\", \"age\": 30}, {\"id\": 3, \"name\": \"Ev"
+      },
+      {
+        "test_index": 20,
+        "latency_s": 7.18831992149353,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\"status\": \"success\", \"data\": {\"message\": \"Hello, I'm an AI assistant designed to provide information and answer questions about movies. What movie would you like some trivia about?\"}}"
+      }
+    ]
+  }
+}

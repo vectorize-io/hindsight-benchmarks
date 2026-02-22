@@ -2,15 +2,12 @@ import Link from 'next/link'
 import { loadLongMemEval } from '@/lib/data'
 import { notFound } from 'next/navigation'
 import { ItemList } from '@/components/item-list'
+import { Button } from '@/components/ui/button'
 
 export default function LongMemEvalPage() {
   const data = loadLongMemEval()
+  if (!data) notFound()
 
-  if (!data) {
-    notFound()
-  }
-
-  // Calculate category stats
   const categoryStats: Record<string, { correct: number; total: number; invalid: number }> = {}
 
   data.item_results.forEach((item) => {
@@ -28,69 +25,76 @@ export default function LongMemEvalPage() {
     })
   })
 
+  const categoryEntries = Object.entries(categoryStats).sort(([a], [b]) => a.localeCompare(b))
+
   return (
-    <main className="container mx-auto max-w-7xl px-4 py-8">
-      <Link
-        href="/"
-        className="inline-flex items-center px-4 py-2 bg-white border border-border rounded-md text-sm font-medium text-foreground hover:bg-accent mb-6 transition-colors"
-      >
-        ← Back to benchmarks
-      </Link>
+    <main className="container mx-auto max-w-5xl px-4 py-8">
+      <Button variant="ghost" size="sm" asChild className="mb-8 -ml-2 text-muted-foreground">
+        <Link href="/">← Back</Link>
+      </Button>
 
-      <h1 className="text-2xl font-bold text-foreground mb-6">LongMemEval Benchmark - Overall Performance</h1>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <div className="bg-white border border-border rounded-lg p-6 text-center shadow-sm">
-          <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">Overall Accuracy</p>
-          <p className="text-3xl font-bold text-foreground">{data.overall_accuracy.toFixed(2)}%</p>
-        </div>
-
-        <div className="bg-white border border-border rounded-lg p-6 text-center shadow-sm">
-          <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">Correct Answers</p>
-          <p className="text-3xl font-bold text-foreground">
-            {data.total_correct} / {data.total_questions}
-          </p>
-        </div>
-
-        {data.total_invalid > 0 && (
-          <div className="bg-white border border-border rounded-lg p-6 text-center shadow-sm">
-            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">Invalid Questions</p>
-            <p className="text-3xl font-bold text-foreground">{data.total_invalid}</p>
-          </div>
-        )}
-
-        <div className="bg-white border border-border rounded-lg p-6 text-center shadow-sm">
-          <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">Items</p>
-          <p className="text-3xl font-bold text-foreground">{data.num_items}</p>
-        </div>
+      <div className="mb-10">
+        <h1 className="text-3xl font-heading font-bold mb-1">
+          <span className="gradient-primary-text">LongMemEval</span>
+          <span className="text-foreground"> Benchmark</span>
+        </h1>
+        <p className="text-sm text-muted-foreground">Long-term memory evaluation across extended conversations</p>
       </div>
 
-      {Object.keys(categoryStats).length > 0 && (
-        <>
-          <h2 className="text-xl font-semibold text-foreground mb-4">Accuracy by Category</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-            {Object.entries(categoryStats)
-              .sort(([a], [b]) => a.localeCompare(b))
-              .map(([category, stats]) => {
-                const validTotal = stats.total - stats.invalid
-                const accuracy = validTotal > 0 ? (stats.correct / validTotal) * 100 : 0
-                return (
-                  <div key={category} className="bg-white border border-border rounded-lg p-6 text-center shadow-sm">
-                    <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">
-                      {category}
-                    </p>
-                    <p className="text-2xl font-bold text-foreground">{accuracy.toFixed(1)}%</p>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      {stats.correct} / {stats.total}
-                    </p>
-                  </div>
-                )
-              })}
+      {/* Overall stats */}
+      <section className="mb-10">
+        <p className="text-[11px] font-semibold tracking-widest uppercase text-muted-foreground mb-3">
+          Overall
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border rounded-lg overflow-hidden">
+          {[
+            { label: 'Accuracy', value: `${data.overall_accuracy.toFixed(2)}%`, highlight: true },
+            { label: 'Correct', value: `${data.total_correct} / ${data.total_questions}` },
+            ...(data.total_invalid > 0 ? [{ label: 'Invalid', value: data.total_invalid }] : []),
+            { label: 'Items', value: data.num_items },
+          ].map((s) => (
+            <div key={s.label} className="bg-card px-5 py-4">
+              <p className="text-[11px] font-semibold tracking-widest uppercase text-muted-foreground mb-1">{s.label}</p>
+              <p className={`text-2xl font-bold tabular-nums ${s.highlight ? 'gradient-primary-text' : 'text-foreground'}`}>
+                {s.value}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* By category */}
+      {categoryEntries.length > 0 && (
+        <section className="mb-10">
+          <p className="text-[11px] font-semibold tracking-widest uppercase text-muted-foreground mb-3">
+            By Category
+          </p>
+          <div
+            className="grid gap-px bg-border rounded-lg overflow-hidden"
+            style={{ gridTemplateColumns: `repeat(${Math.min(categoryEntries.length, 4)}, minmax(0, 1fr))` }}
+          >
+            {categoryEntries.map(([category, stats]) => {
+              const validTotal = stats.total - stats.invalid
+              const accuracy = validTotal > 0 ? (stats.correct / validTotal) * 100 : 0
+              return (
+                <div key={category} className="bg-card px-5 py-4">
+                  <p className="text-[11px] font-semibold tracking-widest uppercase text-muted-foreground mb-1 truncate">{category}</p>
+                  <p className="text-2xl font-bold text-foreground tabular-nums">{accuracy.toFixed(1)}%</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">{stats.correct} / {stats.total}</p>
+                </div>
+              )
+            })}
           </div>
-        </>
+        </section>
       )}
 
-      <ItemList items={data.item_results} basePath="/longmemeval" showCategories={true} />
+      {/* Items */}
+      <section>
+        <p className="text-[11px] font-semibold tracking-widest uppercase text-muted-foreground mb-3">
+          Items <span className="text-muted-foreground/50 font-normal normal-case tracking-normal">({data.num_items})</span>
+        </p>
+        <ItemList items={data.item_results} basePath="/longmemeval" showCategories={true} />
+      </section>
     </main>
   )
 }

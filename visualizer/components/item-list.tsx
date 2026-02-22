@@ -3,6 +3,7 @@
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import type { ItemResult } from '@/lib/types'
+import { Card, CardContent } from '@/components/ui/card'
 
 interface ItemListProps {
   items: ItemResult[]
@@ -17,7 +18,6 @@ export function ItemList({ items, basePath, showCategories = false }: ItemListPr
     'all'
   )
 
-  // Get all unique categories from the data
   const categories = useMemo(() => {
     if (!showCategories) return []
     const categorySet = new Set<string>()
@@ -30,15 +30,12 @@ export function ItemList({ items, basePath, showCategories = false }: ItemListPr
     return Array.from(categorySet).sort()
   }, [items, showCategories])
 
-  // Filter items
   const filteredItems = useMemo(() => {
     return items.filter((item) => {
-      // Search filter
       if (searchTerm && !item.item_id.toLowerCase().includes(searchTerm.toLowerCase())) {
         return false
       }
 
-      // Correctness filter
       if (correctnessFilter !== 'all') {
         const accuracy = item.metrics.accuracy
         const hasInvalid = item.metrics.invalid > 0
@@ -47,7 +44,6 @@ export function ItemList({ items, basePath, showCategories = false }: ItemListPr
         if (correctnessFilter === 'incorrect' && (accuracy >= 100 || hasInvalid)) return false
       }
 
-      // Category filter
       if (selectedCategory !== 'all') {
         const hasCategory = item.metrics.detailed_results?.some((result) => {
           const cat = typeof result.category === 'number' ? result.category.toString() : result.category
@@ -63,10 +59,8 @@ export function ItemList({ items, basePath, showCategories = false }: ItemListPr
   return (
     <div>
       {/* Filters */}
-      <div className="bg-white border border-border rounded-lg p-6 shadow-sm mb-6">
-        <h3 className="text-sm font-semibold text-foreground mb-4">Filters</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {/* Search */}
+      <div className="bg-card border border-border rounded-lg p-5 mb-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           <div>
             <label htmlFor="search" className="block text-xs font-medium text-muted-foreground mb-2">
               Search by ID
@@ -77,11 +71,10 @@ export function ItemList({ items, basePath, showCategories = false }: ItemListPr
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search..."
-              className="w-full px-3 py-2 border border-border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-border rounded-md text-sm bg-secondary text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50"
             />
           </div>
 
-          {/* Correctness */}
           <div>
             <label htmlFor="correctness" className="block text-xs font-medium text-muted-foreground mb-2">
               Correctness
@@ -90,7 +83,7 @@ export function ItemList({ items, basePath, showCategories = false }: ItemListPr
               id="correctness"
               value={correctnessFilter}
               onChange={(e) => setCorrectnessFilter(e.target.value as any)}
-              className="w-full px-3 py-2 border border-border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-border rounded-md text-sm bg-secondary text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50"
             >
               <option value="all">All</option>
               <option value="correct">Correct (100%)</option>
@@ -99,7 +92,6 @@ export function ItemList({ items, basePath, showCategories = false }: ItemListPr
             </select>
           </div>
 
-          {/* Category */}
           {showCategories && categories.length > 0 && (
             <div>
               <label htmlFor="category" className="block text-xs font-medium text-muted-foreground mb-2">
@@ -109,7 +101,7 @@ export function ItemList({ items, basePath, showCategories = false }: ItemListPr
                 id="category"
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full px-3 py-2 border border-border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-border rounded-md text-sm bg-secondary text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50"
               >
                 <option value="all">All Categories</option>
                 {categories.map((cat) => (
@@ -127,53 +119,33 @@ export function ItemList({ items, basePath, showCategories = false }: ItemListPr
       </div>
 
       {/* Item Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {filteredItems.map((item, idx) => {
-          const accuracy = item.metrics.accuracy
-          const color = accuracy >= 70 ? '🟢' : accuracy >= 50 ? '🟡' : '🔴'
-          const borderClass =
-            accuracy >= 70
-              ? 'border-l-4 border-green-600'
-              : accuracy >= 50
-              ? 'border-l-4 border-yellow-500'
-              : 'border-l-4 border-red-600'
-          const hoverClass =
-            accuracy >= 70 ? 'hover:bg-green-50' : accuracy >= 50 ? 'hover:bg-yellow-50' : 'hover:bg-red-50'
+      {filteredItems.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border rounded-lg overflow-hidden">
+          {filteredItems.map((item) => {
+            const accuracy = item.metrics.accuracy
+            const accentClass =
+              accuracy >= 70 ? 'border-l-emerald-500' : accuracy >= 50 ? 'border-l-amber-500' : 'border-l-red-500'
 
-          // Find original index
-          const originalIdx = items.findIndex((i) => i.item_id === item.item_id)
+            const originalIdx = items.findIndex((i) => i.item_id === item.item_id)
 
-          return (
-            <Link
-              key={item.item_id}
-              href={`${basePath}/${originalIdx}`}
-              className={`block bg-white border border-border rounded-lg shadow-sm transition-all ${borderClass} ${hoverClass}`}
-            >
-              <div className="p-6">
-                <p className="text-lg font-semibold text-foreground mb-2">
-                  {color} {item.item_id}
-                </p>
-                <div className="flex gap-6 items-center">
-                  <div className="text-center">
-                    <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Accuracy</p>
-                    <p className="text-2xl font-bold text-foreground">{accuracy.toFixed(1)}%</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Correct</p>
-                    <p className="text-xl font-semibold text-foreground">
-                      {item.metrics.correct}/{item.metrics.total}
-                    </p>
-                  </div>
+            return (
+              <Link
+                key={item.item_id}
+                href={`${basePath}/${originalIdx}`}
+                className={`group bg-card border-l-2 ${accentClass} px-5 py-4 hover:bg-secondary/30 transition-colors`}
+              >
+                <p className="text-xs font-medium text-muted-foreground mb-2 truncate">{item.item_id}</p>
+                <div className="flex items-baseline gap-3">
+                  <span className="text-xl font-bold text-foreground tabular-nums">{accuracy.toFixed(1)}%</span>
+                  <span className="text-xs text-muted-foreground">{item.metrics.correct}/{item.metrics.total} correct</span>
                 </div>
-              </div>
-            </Link>
-          )
-        })}
-      </div>
-
-      {filteredItems.length === 0 && (
-        <div className="text-center py-12 bg-white border border-border rounded-lg">
-          <p className="text-muted-foreground">No items match your filters</p>
+              </Link>
+            )
+          })}
+        </div>
+      ) : (
+        <div className="text-center py-12 bg-card border border-border rounded-lg">
+          <p className="text-muted-foreground text-sm">No items match your filters</p>
         </div>
       )}
     </div>

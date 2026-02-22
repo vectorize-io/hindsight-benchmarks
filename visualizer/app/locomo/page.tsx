@@ -1,15 +1,12 @@
 import Link from 'next/link'
-import { loadLoComo, getCategoryName } from '@/lib/data'
+import { loadLoComo } from '@/lib/data'
 import { notFound } from 'next/navigation'
+import { Button } from '@/components/ui/button'
 
 export default function LoComoPage() {
   const data = loadLoComo()
+  if (!data) notFound()
 
-  if (!data) {
-    notFound()
-  }
-
-  // Calculate category stats
   const categoryStats: Record<number, { name: string; correct: number; total: number; invalid: number }> = {
     1: { name: 'Multi-hop', correct: 0, total: 0, invalid: 0 },
     2: { name: 'Single-hop', correct: 0, total: 0, invalid: 0 },
@@ -34,101 +31,88 @@ export default function LoComoPage() {
   })
 
   return (
-    <main className="container mx-auto max-w-7xl px-4 py-8">
-      <Link
-        href="/"
-        className="inline-flex items-center px-4 py-2 bg-white border border-border rounded-md text-sm font-medium text-foreground hover:bg-accent mb-6 transition-colors"
-      >
-        ← Back to benchmarks
-      </Link>
+    <main className="container mx-auto max-w-5xl px-4 py-8">
+      <Button variant="ghost" size="sm" asChild className="mb-8 -ml-2 text-muted-foreground">
+        <Link href="/">← Back</Link>
+      </Button>
 
-      <h1 className="text-2xl font-bold text-foreground mb-6">LoComo Benchmark - Overall Performance</h1>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <div className="bg-white border border-border rounded-lg p-6 text-center shadow-sm">
-          <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">Overall Accuracy</p>
-          <p className="text-3xl font-bold text-foreground">{data.overall_accuracy.toFixed(2)}%</p>
-        </div>
-
-        <div className="bg-white border border-border rounded-lg p-6 text-center shadow-sm">
-          <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">Correct Answers</p>
-          <p className="text-3xl font-bold text-foreground">
-            {data.total_correct} / {data.total_questions}
-          </p>
-        </div>
-
-        {totalInvalid > 0 && (
-          <div className="bg-white border border-border rounded-lg p-6 text-center shadow-sm">
-            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">Invalid Questions</p>
-            <p className="text-3xl font-bold text-foreground">{totalInvalid}</p>
-          </div>
-        )}
-
-        <div className="bg-white border border-border rounded-lg p-6 text-center shadow-sm">
-          <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">Items</p>
-          <p className="text-3xl font-bold text-foreground">{data.num_items}</p>
-        </div>
+      <div className="mb-10">
+        <h1 className="text-3xl font-heading font-bold mb-1">
+          <span className="gradient-primary-text">LoComo</span>
+          <span className="text-foreground"> Benchmark</span>
+        </h1>
+        <p className="text-sm text-muted-foreground">Long conversation memory evaluation</p>
       </div>
 
-      <h2 className="text-xl font-semibold text-foreground mb-4">Accuracy by Category</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        {Object.values(categoryStats).map((cat) => {
-          const validTotal = cat.total - cat.invalid
-          const accuracy = validTotal > 0 ? (cat.correct / validTotal) * 100 : 0
-          return (
-            <div key={cat.name} className="bg-white border border-border rounded-lg p-6 text-center shadow-sm">
-              <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">{cat.name}</p>
-              <p className="text-2xl font-bold text-foreground">{accuracy.toFixed(1)}%</p>
-              <p className="text-sm text-muted-foreground mt-1">
-                {cat.correct} / {cat.total}
+      {/* Overall stats */}
+      <section className="mb-10">
+        <p className="text-[11px] font-semibold tracking-widest uppercase text-muted-foreground mb-3">
+          Overall
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border rounded-lg overflow-hidden">
+          {[
+            { label: 'Accuracy', value: `${data.overall_accuracy.toFixed(2)}%`, highlight: true },
+            { label: 'Correct', value: `${data.total_correct} / ${data.total_questions}` },
+            ...(totalInvalid > 0 ? [{ label: 'Invalid', value: totalInvalid }] : []),
+            { label: 'Conversations', value: data.num_items },
+          ].map((s) => (
+            <div key={s.label} className="bg-card px-5 py-4">
+              <p className="text-[11px] font-semibold tracking-widest uppercase text-muted-foreground mb-1">{s.label}</p>
+              <p className={`text-2xl font-bold tabular-nums ${s.highlight ? 'gradient-primary-text' : 'text-foreground'}`}>
+                {s.value}
               </p>
             </div>
-          )
-        })}
-      </div>
+          ))}
+        </div>
+      </section>
 
-      <p className="text-sm text-muted-foreground mb-6">Showing {data.num_items} conversations</p>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {data.item_results.map((item, idx) => {
-          const accuracy = item.metrics.accuracy
-          const color = accuracy >= 70 ? '🟢' : accuracy >= 50 ? '🟡' : '🔴'
-          const borderClass =
-            accuracy >= 70
-              ? 'border-l-4 border-green-600'
-              : accuracy >= 50
-              ? 'border-l-4 border-yellow-500'
-              : 'border-l-4 border-red-600'
-          const hoverClass =
-            accuracy >= 70 ? 'hover:bg-green-50' : accuracy >= 50 ? 'hover:bg-yellow-50' : 'hover:bg-red-50'
-
-          return (
-            <Link
-              key={item.item_id}
-              href={`/locomo/${idx}`}
-              className={`block bg-white border border-border rounded-lg shadow-sm transition-all ${borderClass} ${hoverClass}`}
-            >
-              <div className="p-6">
-                <p className="text-lg font-semibold text-foreground mb-2">
-                  {color} {item.item_id}
-                </p>
-                <div className="flex gap-6 items-center">
-                  <div className="text-center">
-                    <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Accuracy</p>
-                    <p className="text-2xl font-bold text-foreground">{accuracy.toFixed(1)}%</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Correct</p>
-                    <p className="text-xl font-semibold text-foreground">
-                      {item.metrics.correct}/{item.metrics.total}
-                    </p>
-                  </div>
-                </div>
+      {/* By category */}
+      <section className="mb-10">
+        <p className="text-[11px] font-semibold tracking-widest uppercase text-muted-foreground mb-3">
+          By Category
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border rounded-lg overflow-hidden">
+          {Object.values(categoryStats).map((cat) => {
+            const validTotal = cat.total - cat.invalid
+            const accuracy = validTotal > 0 ? (cat.correct / validTotal) * 100 : 0
+            return (
+              <div key={cat.name} className="bg-card px-5 py-4">
+                <p className="text-[11px] font-semibold tracking-widest uppercase text-muted-foreground mb-1">{cat.name}</p>
+                <p className="text-2xl font-bold text-foreground tabular-nums">{accuracy.toFixed(1)}%</p>
+                <p className="text-xs text-muted-foreground mt-0.5">{cat.correct} / {cat.total}</p>
               </div>
-            </Link>
-          )
-        })}
-      </div>
+            )
+          })}
+        </div>
+      </section>
+
+      {/* Conversations */}
+      <section>
+        <p className="text-[11px] font-semibold tracking-widest uppercase text-muted-foreground mb-3">
+          Conversations <span className="text-muted-foreground/50 font-normal normal-case tracking-normal">({data.num_items})</span>
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border rounded-lg overflow-hidden">
+          {data.item_results.map((item, idx) => {
+            const accuracy = item.metrics.accuracy
+            const accentClass =
+              accuracy >= 70 ? 'border-l-emerald-500' : accuracy >= 50 ? 'border-l-amber-500' : 'border-l-red-500'
+
+            return (
+              <Link
+                key={item.item_id}
+                href={`/locomo/${idx}`}
+                className={`group bg-card border-l-2 ${accentClass} px-5 py-4 hover:bg-secondary/30 transition-colors`}
+              >
+                <p className="text-xs font-medium text-muted-foreground mb-2 truncate">{item.item_id}</p>
+                <div className="flex items-baseline gap-3">
+                  <span className="text-xl font-bold text-foreground tabular-nums">{accuracy.toFixed(1)}%</span>
+                  <span className="text-xs text-muted-foreground">{item.metrics.correct}/{item.metrics.total} correct</span>
+                </div>
+              </Link>
+            )
+          })}
+        </div>
+      </section>
     </main>
   )
 }

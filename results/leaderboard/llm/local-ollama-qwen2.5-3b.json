@@ -1,0 +1,248 @@
+{
+  "model_id": "qwen2.5-3b",
+  "provider_id": "local-ollama",
+  "quality": null,
+  "retain": {
+    "timestamp": "2026-02-20T17:01:42.770349+00:00",
+    "model_id": "qwen2.5-3b",
+    "model_name": "qwen2.5:3b",
+    "provider_id": "local-ollama",
+    "size_gb": 0.0,
+    "dataset": "locomo_3k",
+    "concurrency": 1,
+    "wall_s": 750.209203004837,
+    "summary": {
+      "success": 0,
+      "total": 20,
+      "wall_s": 750.209,
+      "avg_latency_s": null,
+      "throughput_rps": null,
+      "completion_toks_s": null,
+      "total_toks_s": null,
+      "out_in_ratio": null,
+      "tokens_per_fact": null
+    },
+    "tests": [
+      {
+        "test_index": 1,
+        "latency_s": 133.73770093917847,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\"messages\": [{\"role\": \"user\", \"content\": \"Hey Caroline! It looks like you've been busy with some exciting developments in your life. Can you share what's new?\"}], \"messages\": [], \"history\": []}"
+      },
+      {
+        "test_index": 2,
+        "latency_s": 39.42941212654114,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"data\": [\n    {\n      \"timestamp\": \"2023-07-15T13:51:00Z\",\n      \"speaker\": \"Melanie\",\n      \"message\": \"Hey Caroline, what's up? Been a busy week since we talked. Last Fri I finally took my kids "
+      },
+      {
+        "test_index": 3,
+        "latency_s": 14.722875118255615,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\"extracted_conversation\": \"Jon and Gina continue to support each other in their respective businesses. Jon is searching for the perfect location for his dance studio while Gina has expanded her cloth"
+      },
+      {
+        "test_index": 4,
+        "latency_s": 37.597090005874634,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n    \"data\": [\n        {\n            \"timestamp\": \"2023-03-23T19:28:00Z\",\n            \"message\": \"Jon: Hey Gina, I had to shut down my bank account. It was tough, but I needed to do it for my biz.\\nG"
+      },
+      {
+        "test_index": 5,
+        "latency_s": 29.525733947753906,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n    \"messages\": [\n        {\n            \"sender\": \"Maria\",\n            \"content\": \"Hey John, great news - I'm now friends with one of my fellow volunteers! We both love helping others. How have you "
+      },
+      {
+        "test_index": 6,
+        "latency_s": 29.229259967803955,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"challenges\": [\n    {\n      \"date\": \"2023-02-25\",\n      \"description\": \"Maria challenged herself by doing a charity event and felt the power of collective effort to help people in need.\"\n    },\n  "
+      },
+      {
+        "test_index": 7,
+        "latency_s": 8.699661254882812,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting ':' delimiter: line 1 column 43 (char 42) | raw: {\"Joanna\": {\"start writing another script\", \"crossing fingers for her screenplay\"}}\n{\"Nate\": {\"discovered he can make coconut milk ice cream and gave it a try\"}}"
+      },
+      {
+        "test_index": 8,
+        "latency_s": 11.356335163116455,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\"extracts\":[\n{\n\"content\":\"Hey Joanna! Great to hear from you! Quite a week since we last talked - something awesome happened to me!\",\n\"label\":\"Nate's response to Joanna's message\"\n},\n{\n\"content\":\"I w"
+      },
+      {
+        "test_index": 9,
+        "latency_s": 16.658392190933228,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"conversations\": [\n    {\n      \"date\": \"2023-07-16\",\n      \"participants\": [\"John\", \"Tim\"],\n      \"topics\": [\n        \"Achievements (scoring 40 points)\",\n        \"Celebration after the game\",\n    "
+      },
+      {
+        "test_index": 10,
+        "latency_s": 59.00818204879761,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n    \"chats\": [\n        {\n            \"id\": 1,\n            \"messages\": [\n                {\n                    \"sender\": \"John\",\n                    \"text\": \"Hey Tim! We had a wild few days since we "
+      },
+      {
+        "test_index": 11,
+        "latency_s": 19.85776686668396,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n    \"Andrew\": {\n        \"hiking\": [\n            {\"date\": \"16 April, 2023\", \"description\": \"Found a new open space to hike nearby\"},\n            {\"date\": \"3 May, 2023\", \"description\": \"Captured an am"
+      },
+      {
+        "test_index": 12,
+        "latency_s": 14.134078979492188,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n    \"extracted_conversation\": [\n        {\n            \"timestamp\": \"13 June, 2023\",\n            \"participants\": [\"Audrey\", \"Andrew\"],\n            \"conversation_summary\": \"Audrey and Andrew discuss t"
+      },
+      {
+        "test_index": 13,
+        "latency_s": 11.612429141998291,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting ',' delimiter: line 1 column 47 (char 46) | raw: {\"data\":[[\"[2:13 pm on 4 April, 2022]\", \"John\": Hey James! Long time no chat. What's up? Been playing any new games lately?], [\"[2:13 pm on 4 April, 2022]\", \"James\": Hey John! Yeah, it's been a while. I've been busy, but I joined an online gaming tournament yesterday. It was so intense and fun! Here"
+      },
+      {
+        "test_index": 14,
+        "latency_s": 23.678319931030273,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n  \"extracted_conversations\": [\n    {\n      \"date\": \"23 April, 2022\",\n      \"participants\": [\"John\", \"James\"],\n      \"topics\": [\n        \"Meeting new friends in programming course\",\n        \"Inspirat"
+      },
+      {
+        "test_index": 15,
+        "latency_s": 162.04154777526855,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting ',' delimiter: line 1 column 149 (char 148) | raw: {\"conversations\":[[\"jolene\",\"hi deb, good to hear from you. how've you been? i've been on an emotional rollercoaster lately, but i'm coping.\"],\"deb\":[\"hey jolene! all good here - how about you? anything new happening lately?\"],\"jolene\":\"i had a major milestone last week and it went really well - i'm"
+      },
+      {
+        "test_index": 16,
+        "latency_s": 17.005691051483154,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\"data\": [{\"user\": \"Deborah\", \"message\": \"In the morning, I meditate, do yoga, and teach classes. And yesterday I went for a morning jog for the first time in a nearby park. I will now incorporate thi"
+      },
+      {
+        "test_index": 17,
+        "latency_s": 51.31482696533203,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\n    \"messages\": [\n        {\n            \"sender\": \"Evan\",\n            \"message\": \"Hey Sam, how's it going? Last week I went on a trip to Canada and something unreal happened - I met this awesome Can"
+      },
+      {
+        "test_index": 18,
+        "latency_s": 35.08507585525513,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: missing_facts_key | raw: {\"items\": [{\"text\": \"Wow, Sam, great! Glad your new diet/exercise is going well.\", \"timestamp\": \"2023-08-27 10:18\", \"speaker\": \"Sam\"}, {\"text\": \"Oh no, sorry to hear about that, Evan. It's frustrating"
+      },
+      {
+        "test_index": 19,
+        "latency_s": 15.507891178131104,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting ':' delimiter: line 1 column 397 (char 396) | raw: {\"messages\": \"[1] {\\\"role\\\": \\\"user\\\", \\\"content\\\": \\\"Hey Dave, long time no talk. How's it going? Crazy news - I'm teaming up with a local garage. Take a look at what we working on together!\\\"}\", \"[2] {\\\"role\\\": \\\"assistant\\\", \\\"content\\\": \\\"That car looks awesome! You're putting in a lot of effort"
+      },
+      {
+        "test_index": 20,
+        "latency_s": 19.915066719055176,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting ',' delimiter: line 1 column 1250 (char 1249) | raw: {\"extracts\":[[\"Hey Dave, I'm glad to hear that nobody was hurt. Dealing with insurance and repairs can definitely be time-consuming and draining.\", \"Dealing with insurance and repairs can definitely be time-consuming and draining.\"], [\"It only took a week to sort everything out. I was worried about "
+      }
+    ]
+  }
+}

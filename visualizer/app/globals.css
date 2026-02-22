@@ -3,17 +3,58 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    /* Dark theme by default — matches hindsight-docs */
+    --background: 240 10% 3.9%;        /* #09090b */
+    --foreground: 0 0% 98%;
+
+    --card: 240 5% 10%;                /* #18181b */
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 209 78% 56%;            /* #3396e8 — dark-mode primary */
+    --primary-foreground: 240 10% 3.9%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 45%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 209 78% 56%;
+
+    --radius: 0.5rem;
+
+    /* Brand gradient */
+    --gradient-start: #0074d9;
+    --gradient-end: #009296;
+  }
+
   * {
     border-color: hsl(var(--border));
   }
+
   body {
-    background-color: hsl(210 40% 96.1%);
-    color: hsl(222.2 84% 4.9%);
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-inter), sans-serif;
   }
+
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-space-grotesk), sans-serif;
     font-weight: 700;
   }
+
   code, pre {
     font-family: var(--font-jetbrains-mono), monospace;
   }
@@ -21,12 +62,17 @@
 
 @layer utilities {
   .gradient-primary {
-    background: linear-gradient(135deg, #0074d9 0%, #009296 100%);
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
   }
+
   .gradient-primary-text {
-    background: linear-gradient(135deg, #0074d9 0%, #009296 100%);
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  .gradient-border {
+    border-image: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%) 1;
   }
 }
