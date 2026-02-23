@@ -1,3 +1,4 @@
+import Script from 'next/script'
 import type { Metadata } from 'next'
 import { Space_Grotesk, Inter, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
@@ -35,6 +36,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
+      <head>
+        <Script
+          defer
+          src="https://analytics.hindsight.vectorize.io/script.js"
+          data-website-id="e59d3201-3a11-46e3-b48f-895f12d148fb"
+          strategy="afterInteractive"
+        />
+      </head>
       <body className="antialiased font-body">{children}</body>
     </html>
   )
