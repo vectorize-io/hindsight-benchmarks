@@ -1,0 +1,135 @@
+{
+  "rerankers": [
+    {
+      "reranker_id": "rrf",
+      "display_name": "No reranker (RRF baseline)",
+      "provider": "rrf",
+      "provider_name": "",
+      "provider_icon": "",
+      "pricing_type": "free",
+      "price_per_search": 0.0,
+      "notes": "Reciprocal Rank Fusion — score-based merging of BM25 and vector search. No reranking model at all; this is the baseline."
+    },
+    {
+      "reranker_id": "local-minilm-l6",
+      "display_name": "MiniLM-L6",
+      "provider": "local",
+      "provider_name": "Local CPU",
+      "provider_icon": "/huggingface.png",
+      "pricing_type": "free",
+      "price_per_search": 0.0,
+      "model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+      "notes": "cross-encoder/ms-marco-MiniLM-L-6-v2 via sentence-transformers. Runs on CPU inside Docker."
+    },
+    {
+      "reranker_id": "flashrank",
+      "display_name": "FlashRank MiniLM-L12",
+      "provider": "flashrank",
+      "provider_name": "Local CPU",
+      "provider_icon": "",
+      "pricing_type": "free",
+      "price_per_search": 0.0,
+      "model": "ms-marco-MiniLM-L-12-v2",
+      "notes": "ms-marco-MiniLM-L-12-v2 via FlashRank. Runs on CPU inside Docker."
+    },
+    {
+      "reranker_id": "jina-reranker-v2-multilingual",
+      "display_name": "Jina Reranker v2 Multilingual",
+      "provider": "litellm-sdk",
+      "provider_name": "Jina AI",
+      "provider_icon": "/jina.png",
+      "pricing_type": "pay-per-use",
+      "price_per_search": 0.0,
+      "model": "jina-reranker-v2-base-multilingual",
+      "notes": "jina-reranker-v2-base-multilingual via Jina AI API."
+    },
+    {
+      "reranker_id": "voyage-rerank-2",
+      "display_name": "Voyage Rerank 2",
+      "provider": "litellm-sdk",
+      "provider_name": "Voyage AI",
+      "provider_icon": "/voyageai.png",
+      "pricing_type": "pay-per-use",
+      "price_per_search": 0.0,
+      "model": "voyage/rerank-2",
+      "notes": "voyage/rerank-2 via Voyage AI API."
+    },
+    {
+      "reranker_id": "voyage-rerank-2-lite",
+      "display_name": "Voyage Rerank 2 Lite",
+      "provider": "litellm-sdk",
+      "provider_name": "Voyage AI",
+      "provider_icon": "/voyageai.png",
+      "pricing_type": "pay-per-use",
+      "price_per_search": 0.0,
+      "model": "voyage/rerank-2-lite",
+      "notes": "voyage/rerank-2-lite via Voyage AI API."
+    },
+    {
+      "reranker_id": "cohere-rerank-english-v3",
+      "display_name": "Cohere Rerank English v3",
+      "provider": "cohere",
+      "provider_name": "Cohere",
+      "provider_icon": "/cohere.png",
+      "pricing_type": "pay-per-use",
+      "price_per_search": 0.002,
+      "model": "rerank-english-v3.0",
+      "notes": "$2.00 per 1,000 searches (Cohere list price). English-only model."
+    },
+    {
+      "reranker_id": "cohere-rerank-multilingual-v3",
+      "display_name": "Cohere Rerank Multilingual v3",
+      "provider": "cohere",
+      "provider_name": "Cohere",
+      "provider_icon": "/cohere.png",
+      "pricing_type": "pay-per-use",
+      "price_per_search": 0.002,
+      "model": "rerank-multilingual-v3.0",
+      "notes": "$2.00 per 1,000 searches (Cohere list price). Supports 100+ languages."
+    },
+    {
+      "reranker_id": "cohere-rerank-v4-pro",
+      "display_name": "Cohere Rerank v4 Pro",
+      "provider": "cohere",
+      "provider_name": "Cohere",
+      "provider_icon": "/cohere.png",
+      "pricing_type": "pay-per-use",
+      "price_per_search": 0.005,
+      "model": "rerank-v4.0-pro",
+      "notes": "Est. ~$5.00 per 1,000 searches. State-of-the-art quality, multilingual."
+    },
+    {
+      "reranker_id": "cohere-rerank-v4-fast",
+      "display_name": "Cohere Rerank v4 Fast",
+      "provider": "cohere",
+      "provider_name": "Cohere",
+      "provider_icon": "/cohere.png",
+      "pricing_type": "pay-per-use",
+      "price_per_search": 0.0025,
+      "model": "rerank-v4.0-fast",
+      "notes": "Est. ~$2.50 per 1,000 searches. Lower latency variant of v4."
+    },
+    {
+      "reranker_id": "zerank-2",
+      "display_name": "Zerank 2",
+      "provider": "zeroentropy",
+      "provider_name": "ZeroEntropy",
+      "provider_icon": "/zeroentropy.png",
+      "pricing_type": "pay-per-use",
+      "price_per_search": 0.00075,
+      "model": "zerank-2",
+      "notes": "$0.025 per 1M tokens. Est. ~$0.00075/search at 300 candidates × 100 tokens avg."
+    },
+    {
+      "reranker_id": "zerank-2-small",
+      "display_name": "Zerank 2 Small",
+      "provider": "zeroentropy",
+      "provider_name": "ZeroEntropy",
+      "provider_icon": "/zeroentropy.png",
+      "pricing_type": "pay-per-use",
+      "price_per_search": 0.00075,
+      "model": "zerank-2-small",
+      "notes": "$0.025 per 1M tokens (same as zerank-2). Faster, smaller model."
+    }
+  ]
+}

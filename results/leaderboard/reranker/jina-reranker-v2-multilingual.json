@@ -1,0 +1,12 @@
+{
+  "reranker_id": "jina-reranker-v2-multilingual",
+  "provider": "litellm-sdk",
+  "model": "jina_ai/jina-reranker-v2-base-multilingual",
+  "recall_at_1": 0.5455,
+  "recall_at_3": 0.7455,
+  "recall_at_5": 0.8182,
+  "mrr": 0.6698,
+  "avg_latency_s": 1.061,
+  "total_questions": 165,
+  "sample_id": "conv-43"
+}

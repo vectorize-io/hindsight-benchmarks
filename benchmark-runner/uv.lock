@@ -613,7 +613,7 @@ wheels = [
 
 [[package]]
 name = "hindsight-embed"
-version = "0.4.11"
+version = "0.4.14"
 source = { editable = "../../memory-poc/hindsight-embed" }
 dependencies = [
     { name = "httpx" },

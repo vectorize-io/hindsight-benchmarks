@@ -1,0 +1,12 @@
+{
+  "reranker_id": "rrf",
+  "provider": "rrf",
+  "model": null,
+  "recall_at_1": 0.0667,
+  "recall_at_3": 0.1455,
+  "recall_at_5": 0.297,
+  "mrr": 0.183,
+  "avg_latency_s": 0.403,
+  "total_questions": 165,
+  "sample_id": "conv-43"
+}

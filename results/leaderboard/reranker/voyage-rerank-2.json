@@ -1,0 +1,12 @@
+{
+  "reranker_id": "voyage-rerank-2",
+  "provider": "litellm-sdk",
+  "model": "voyage/rerank-2",
+  "recall_at_1": 0.4,
+  "recall_at_3": 0.6061,
+  "recall_at_5": 0.7394,
+  "mrr": 0.5447,
+  "avg_latency_s": 0.683,
+  "total_questions": 165,
+  "sample_id": "conv-43"
+}

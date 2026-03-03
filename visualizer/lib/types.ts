@@ -125,6 +125,19 @@ export interface ReflectResult {
   sample_id: string
 }
 
+export interface RerankerResult {
+  reranker_id: string
+  provider: string
+  model: string | null
+  recall_at_1: number
+  recall_at_3: number
+  recall_at_5: number
+  mrr: number
+  avg_latency_s: number
+  total_questions: number
+  sample_id: string
+}
+
 export interface ModelWithResult {
   config: ModelConfig
   result: BenchmarkRun | null

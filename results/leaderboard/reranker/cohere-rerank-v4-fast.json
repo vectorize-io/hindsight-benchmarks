@@ -1,0 +1,12 @@
+{
+  "reranker_id": "cohere-rerank-v4-fast",
+  "provider": "cohere",
+  "model": "rerank-v4.0-fast",
+  "recall_at_1": 0.6545,
+  "recall_at_3": 0.8121,
+  "recall_at_5": 0.8727,
+  "mrr": 0.747,
+  "avg_latency_s": 1.144,
+  "total_questions": 165,
+  "sample_id": "conv-43"
+}

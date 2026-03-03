@@ -3,6 +3,7 @@ import Image from 'next/image'
 import React from 'react'
 import { loadLongMemEval, loadLoComo } from '@/lib/data'
 import { loadLeaderboardData, getLeaderboardStats } from '@/lib/leaderboard'
+import { loadRerankerData, getRerankerStats } from '@/lib/reranker'
 
 function StatBlock({ value, label, highlight }: { value: string | number; label: string; highlight?: boolean }) {
   return (
@@ -90,6 +91,8 @@ export default function Home() {
   const locomo = loadLoComo()
   const leaderboardModels = loadLeaderboardData()
   const leaderboardStats = getLeaderboardStats(leaderboardModels)
+  const rerankers = loadRerankerData()
+  const rerankerStats = getRerankerStats(rerankers)
 
   return (
     <main className="min-h-screen">
@@ -173,6 +176,17 @@ export default function Home() {
                   { value: leaderboardStats.viableReflectModels, label: 'Models', highlight: true },
                 ]}
                 winner={leaderboardStats.topReflectModel}
+                cta="View leaderboard"
+              />
+              <BenchmarkCard
+                href="/leaderboard/reranker"
+                tag="Leaderboard"
+                title="Reranker Leaderboard"
+                description={<>Ranked rerankers for <span className="gradient-primary-text font-semibold">recall()</span> — which reranker surfaces the most relevant facts first.</>}
+                stats={[
+                  { value: rerankerStats.count, label: 'Rerankers', highlight: true },
+                  ...(rerankerStats.topReranker ? [{ value: rerankerStats.topReranker.score.toFixed(1), label: 'Top Score' }] : []),
+                ]}
                 cta="View leaderboard"
               />
             </div>

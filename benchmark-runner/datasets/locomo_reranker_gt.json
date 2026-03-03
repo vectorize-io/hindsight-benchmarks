@@ -1,0 +1,1792 @@
+{
+  "annotations": [
+    {
+      "q_idx": 0,
+      "question": "what are John's goals with regards to his basketball career?",
+      "expected_answer": "improve shooting percentage, win a championship",
+      "relevant_facts": [
+        "John's number one goal for his basketball career is winning a championship. | Involving: John",
+        "John's on-court goals include improving his shooting, making more of an impact on the court, being known as a consistent performer, and helping his team. | Involving: John",
+        "John's goal is to improve his shooting percentage. | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 1,
+      "question": "What are John's goals for his career that are not related to his basketball skills?",
+      "expected_answer": "get endorsements, build his brand, do charity work",
+      "relevant_facts": [
+        "John's off-court goals include seeking more endorsements and building his brand, as he is thinking about life after basketball. | Involving: John",
+        "John also wants to make a difference away from the court through charity or inspiring people, as he wants to give back because basketball has been great to him. | Involving: John | John wants to give back to the sport that has been great to him.",
+        "John plans to use his platform after basketball to make a positive difference, inspire others, potentially start a foundation, do charity work, and leave a meaningful legacy. | Involving: John",
+        "John plans to team up with a local organization that helps disadvantaged kids with sports and school to use his platform for positive community impact and inspire others. | Involving: John | To make a positive impact on the community and inspire others."
+      ]
+    },
+    {
+      "q_idx": 2,
+      "question": "What items does John collect?",
+      "expected_answer": "sneakers, fantasy movie DVDs, jerseys",
+      "relevant_facts": [
+        "John loves \"Harry Potter and the Philosopher's Stone\" and owns the entire Harry Potter movie collection. | Involving: John",
+        "John loves talking to people about his sneaker collection. | Involving: John",
+        "John likes to collect jerseys. | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 3,
+      "question": "Would Tim enjoy reading books by C. S. Lewis or John Greene?",
+      "expected_answer": "C. S.Lewis",
+      "relevant_facts": [
+        "Tim loves reading and enjoys escaping to other worlds through books, and he has a collection of books. | Involving: Tim (user) | He loves escaping to other worlds.",
+        "Both Tim and John appreciate fantasy books for providing an escape to different worlds and a break from reality, offering a fun and magical adventure. | Involving: Tim, John",
+        "John knows that Tim finds peace in reading fantasy books. | Involving: John, Tim",
+        "Tim has seen all the Harry Potter movies and enjoys comparing them to the books. | Involving: Tim",
+        "Tim is currently reading a captivating fantasy book that transports him to another world, keeping him on the edge of his seat and allowing his imagination to soar. | When: Currently | Involving: Tim",
+        "Tim enjoys fantasy books like Lord of the Rings because they allow him to get lost in another world, appreciate intricate details, and explore other cultures and landscapes from home. | Involving: Tim",
+        "Tim reads fantasy books as a way to take a break from stress. | Involving: Tim",
+        "Tim and John are friends and mutually appreciate their friendship. They both share an interest in fantasy books and movies. | Involving: Tim, John",
+        "Tim loves to read books in his free time, and the Harry Potter series is one of his favorite book series. | Involving: Tim",
+        "Tim's favorite fantasy books are Harry Potter and Game of Thrones, which he enjoys because they transport him to other places. He also enjoys books on growth, psychology, and self-improvement. | Involving: Tim",
+        "Tim does not surf. He finds reading great fantasy books helps him escape and feel free, experiencing bliss and a feeling of being in another world, especially when doing so in a comfy spot. | Involving: Tim",
+        "Tim has never been on a sports team. He enjoys reading fantasy novels and traveling to new places to experience different kinds of \"magic.\" | Involving: Tim",
+        "Tim recommends a book by Patrick Rothfuss, describing it as \"awesome\" due to the author's amazing world-building and character development. | Involving: Tim, Patrick Rothfuss",
+        "Tim would love to explore more real Harry Potter places someday. | When: Someday | Involving: Tim",
+        "Tim recommended 'The Name of the Wind', a fantasy novel by Patrick Rothfuss, to John as a good book for traveling. | Involving: Tim, John, Patrick Rothfuss",
+        "Tim is currently reading and enjoying the fantasy novel \"The Name of the Wind\" by Patrick Rothfuss. | Involving: Tim",
+        "Tim recommends the fantasy novel \"The Name of the Wind,\" highlighting its great magician and musician protagonist, world-building, and character development. | Involving: Tim",
+        "Tim's articles for the online magazine involve studying characters and themes of different fantasy novels and making book recommendations. | Involving: Tim",
+        "Tim is currently writing a fantasy novel, which he finds nerve-wracking but exciting, and he feels his hard work is paying off. Writing brings him joy. | Involving: Tim (user)",
+        "Tim's bookshelf is filled with his favorite fantasy novels, which he enjoys because they fire up his imagination, take him to alternate realities, and serve as an escape from reality. | Involving: Tim",
+        "Tim just finished reading and highly recommends \"A Dance with Dragons\". | Involving: Tim",
+        "Tim considers \"The Alchemist\" to be one of his favorite books. | Involving: Tim",
+        "Tim likes the J.K. Rowling quote \"Turn on the light - happiness hides in the darkest of times\" and uses it to maintain hope during difficult periods. | Involving: Tim",
+        "Tim is writing articles about fantasy novels for an online magazine and finds this work rewarding. | Involving: Tim",
+        "Tim met many people who shared his interests at the Harry Potter party and had a lot of fun. | When: Recently | Involving: Tim",
+        "Tim offered to provide tips for visiting Harry Potter places. | Involving: Tim",
+        "Tim decorated his Christmas tree himself with a Harry Potter theme, finding it a fun project and being happy with the result. | Involving: Tim",
+        "Tim plans to visit more Harry Potter spots in the future, as it makes him feel like he's stepping into the books. | When: In the future | Involving: Tim | To feel like stepping into the books.",
+        "J.K. Rowling is an inspiring writer for Tim, who finds her books captivating due to their detail and creative storytelling, and he takes notes on her style for his own writing. | Involving: Tim (user)",
+        "Tim has only read the \"Game of Thrones\" (GoT) series by George R. R. Martin. | Involving: Tim, George R. R. Martin",
+        "Tim has been reading J.K. Rowling's works for a long time, and her stories continue to inspire him due to a special quality in her writing. | Involving: Tim (user)",
+        "Tim is planning his first trip to Universal Studios next month and is excited about the Harry Potter attractions. | When: Next month (September 2023) | Involving: Tim",
+        "Tim is currently overwhelmed by assignments and exams and is trying to find a way to juggle studying with his fantasy reading hobby. | When: This week | Involving: Tim",
+        "Tim also likes Lord of the Rings. | Involving: Tim (user)",
+        "Tim joined a fantasy literature forum and had an enriching discussion about his favorite books. | When: Last night | Involving: Tim",
+        "Tim is very enthusiastic about Harry Potter and Game of Thrones and enjoys writing about them. | Involving: Tim",
+        "Tim attended a Harry Potter party. | When: Recently | Involving: Tim",
+        "Tim found the opportunity to write for the online magazine on a fantasy literature forum and his ideas were accepted. He pursued this opportunity because he loves fantasy. | Involving: Tim | Tim loves fantasy.",
+        "Tim's favorite book is Harry Potter because it is immersive. | Involving: Tim (user) | It is immersive.",
+        "Tim is excited about a new fantasy TV series called \"The Wheel of Time\" which is scheduled to be released next month (January 2024) and is based on a book series he loves. | When: next month (January 2024) | Involving: Tim",
+        "Tim visited a Harry Potter-related place in London a few years ago, which he described as being like walking into a Harry Potter movie and an amazing tour. | When: A few years ago | Involving: Tim",
+        "Tim skyped with a Harry Potter fan he met in California, discussing characters and potential collaboration, and had a great time talking to someone who understands his interest. | When: Recently | Involving: Tim, Harry Potter fan (Tim met in CA) | Tim enjoyed talking to someone who understands his interest.",
+        "Tim suggested Edinburgh, Scotland, as a destination for John's team trip, highlighting its magical vibe, history, architecture, beauty, and its status as the birthplace of Harry Potter. | Involving: Tim, John | As a suggestion for John's team trip destination.",
+        "Tim's favorite movie genre is fantasy, specifically epic adventures and magical worlds, and his favorite movie is Lord of the Rings. | Involving: Tim",
+        "\"Harry Potter and the Philosopher's Stone\" is special to Tim because it was the first movie in the series and watching it with his family created magical and special memories. | Involving: Tim, Tim's family",
+        "Tim's favorite fantasy movie is Star Wars. | Involving: Tim (user) | It never gets old.",
+        "Tim loves being lost in fantasy realms and considers the show \"That\" one of his favorite fantasy shows because it's like an escape. | Involving: Tim | It's like an escape.",
+        "Tim recently reorganized his bookshelf, which contains fantasy novels such as 'Game of Thrones', 'Harry Potter', and 'Lord of the Rings'. | When: Recently, around December 01, 2023 | Involving: Tim",
+        "Tim uses reminders of the wizarding world as a way to escape reality and the daily grind. | Involving: Tim",
+        "Tim received a chocolate frog as a treat at the Harry Potter party. | When: Recently | Involving: Tim",
+        "Tim is working on a Harry Potter fan project and is discussing collaborations for it. | Involving: Tim",
+        "Tim wore his Gryffindor scarf to the Harry Potter party. | When: Recently | Involving: Tim",
+        "Tim attended a Harry Potter conference in the UK, which he found incredible and inspiring, making him feel like he got a new lease of life. He enjoys how his passion for fantasy connects him with people globally. | When: Last week | Involving: Tim",
+        "Tim's picture is from MinaLima, who created props for the Harry Potter films, and he loves their work, feeling it brings a piece of the wizarding world home. | Involving: Tim, MinaLima",
+        "Tim talked to a friend, who is a Harry Potter fan, last week to figure out ideas for his fan project. | When: Last week (relative to May 21, 2023) | Involving: Tim, Tim's friend | To figure out ideas for the Harry Potter fan project.",
+        "Tim had a nice chat with a Harry Potter fan. | When: Last week | Involving: Tim, a Harry Potter fan | It was a magical experience, feeling the love from shared passion."
+      ]
+    },
+    {
+      "q_idx": 4,
+      "question": "What books has Tim read?",
+      "expected_answer": "Harry Potter, Game of Thrones, the Name of the Wind, The Alchemist, The Hobbit, A Dance with Dragons, and the Wheel of Time.",
+      "relevant_facts": [
+        "Tim has seen all the Harry Potter movies and enjoys comparing them to the books. | Involving: Tim",
+        "Tim read \"The Alchemist\" a while back, and it changed his perspective on his goals. | When: A while back | Involving: Tim",
+        "Tim loves to read books in his free time, and the Harry Potter series is one of his favorite book series. | Involving: Tim",
+        "Tim's favorite fantasy books are Harry Potter and Game of Thrones, which he enjoys because they transport him to other places. He also enjoys books on growth, psychology, and self-improvement. | Involving: Tim",
+        "J.K. Rowling is an inspiring writer for Tim, who finds her books captivating due to their detail and creative storytelling, and he takes notes on her style for his own writing. | Involving: Tim (user)",
+        "Tim has been reading J.K. Rowling's works for a long time, and her stories continue to inspire him due to a special quality in her writing. | Involving: Tim (user)",
+        "Tim has only read the \"Game of Thrones\" (GoT) series by George R. R. Martin. | Involving: Tim, George R. R. Martin",
+        "Tim just finished reading and highly recommends \"A Dance with Dragons\". | Involving: Tim",
+        "Tim recently reorganized his bookshelf, which contains fantasy novels such as 'Game of Thrones', 'Harry Potter', and 'Lord of the Rings'. | When: Recently, around December 01, 2023 | Involving: Tim",
+        "Tim is currently reading and enjoying the fantasy novel \"The Name of the Wind\" by Patrick Rothfuss. | Involving: Tim",
+        "Tim is excited about a new fantasy TV series called \"The Wheel of Time\" which is scheduled to be released next month (January 2024) and is based on a book series he loves. | When: next month (January 2024) | Involving: Tim",
+        "Tim's favorite book is Harry Potter because it is immersive. | Involving: Tim (user) | It is immersive.",
+        "Tim considers \"The Alchemist\" to be one of his favorite books. | Involving: Tim",
+        "Tim recommended 'The Name of the Wind', a fantasy novel by Patrick Rothfuss, to John as a good book for traveling. | Involving: Tim, John, Patrick Rothfuss",
+        "Tim recommends the fantasy novel \"The Name of the Wind,\" highlighting its great magician and musician protagonist, world-building, and character development. | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 5,
+      "question": "Based on Tim's collections, what is a shop that he would enjoy visiting in New York city?",
+      "expected_answer": "House of MinaLima",
+      "relevant_facts": [
+        "Tim is very enthusiastic about Harry Potter and Game of Thrones and enjoys writing about them. | Involving: Tim",
+        "Tim wants to visit New York City. | Involving: Tim",
+        "Tim is adding New York City to his travel list and is looking forward to visiting it. | Involving: Tim",
+        "Tim would love to explore more real Harry Potter places someday. | When: Someday | Involving: Tim",
+        "Tim showed John his book collection, which includes a picture from MinaLima. | Involving: Tim, John",
+        "Tim's picture is from MinaLima, who created props for the Harry Potter films, and he loves their work, feeling it brings a piece of the wizarding world home. | Involving: Tim, MinaLima"
+      ]
+    },
+    {
+      "q_idx": 6,
+      "question": "In which month's game did John achieve a career-high score in points?",
+      "expected_answer": "June 2023",
+      "relevant_facts": []
+    },
+    {
+      "q_idx": 7,
+      "question": "Which geographical locations has Tim been to?",
+      "expected_answer": "California, London, the Smoky Mountains",
+      "relevant_facts": [
+        "Tim skyped with a Harry Potter fan he met in California, discussing characters and potential collaboration, and had a great time talking to someone who understands his interest. | When: Recently | Involving: Tim, Harry Potter fan (Tim met in CA) | Tim enjoyed talking to someone who understands his interest.",
+        "Tim visited a Harry Potter-related place in London a few years ago, which he described as being like walking into a Harry Potter movie and an amazing tour. | When: A few years ago | Involving: Tim",
+        "Tim took a stunning picture during a trip to the Smoky Mountains. | When: Summer 2022 | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 8,
+      "question": "Which outdoor gear company likely signed up John for an endorsement deal?",
+      "expected_answer": "Under Armour",
+      "relevant_facts": [
+        "John secured an endorsement deal with a renowned outdoor gear company. | When: Last week | Involving: John",
+        "John is considering sports brands like Nike and Under Armour for collaborations but is also open to other brands that align with his values and interests. | Involving: John",
+        "John has always liked Under Armour and would find it cool to work with them. | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 9,
+      "question": "Which endorsement deals has John been offered?",
+      "expected_answer": "basketball shoes and gear deal with Nike, potential sponsorship with Gatorade, Moxie a popular beverage company, outdoor gear company",
+      "relevant_facts": [
+        "John received top-notch hiking and outdoor gear as part of his endorsement deal. | Involving: John | It was part of his endorsement deal.",
+        "The photoshoot for John's outdoor gear endorsement deal was conducted in a gorgeous forest and yielded epic shots. | Involving: John, photographer | It was part of his endorsement deal.",
+        "John secured an endorsement deal with a renowned outdoor gear company. | When: Last week | Involving: John",
+        "John signed a deal with Nike for basketball shoes and gear. | Involving: John",
+        "John is currently in talks with Gatorade regarding a potential sponsorship. | Involving: John",
+        "John secured an endorsement deal with a popular beverage company, which he considers a dream come true. | When: Last week (around January 5, 2024) | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 10,
+      "question": "When was John in Seattle for a game?",
+      "expected_answer": "early August, 2023",
+      "relevant_facts": []
+    },
+    {
+      "q_idx": 11,
+      "question": "What sports does John like besides basketball?",
+      "expected_answer": "surfing",
+      "relevant_facts": [
+        "John had an awesome summer surfing and riding waves with his friends, describing the feeling as unreal. He started surfing five years ago and loves the connection to nature it provides, finding being in the water with waves and wind super exciting and free-feeling. | Involving: John, John's friends"
+      ]
+    },
+    {
+      "q_idx": 12,
+      "question": "What year did John start surfing?",
+      "expected_answer": "2018",
+      "relevant_facts": [
+        "John had an awesome summer surfing and riding waves with his friends, describing the feeling as unreal. He started surfing five years ago and loves the connection to nature it provides, finding being in the water with waves and wind super exciting and free-feeling. | Involving: John, John's friends"
+      ]
+    },
+    {
+      "q_idx": 13,
+      "question": "What does Tim do to escape reality?",
+      "expected_answer": "Read fantasy books.",
+      "relevant_facts": [
+        "Both Tim and John appreciate fantasy books for providing an escape to different worlds and a break from reality, offering a fun and magical adventure. | Involving: Tim, John",
+        "Tim's favorite fantasy books are Harry Potter and Game of Thrones, which he enjoys because they transport him to other places. He also enjoys books on growth, psychology, and self-improvement. | Involving: Tim",
+        "Tim's bookshelf is filled with his favorite fantasy novels, which he enjoys because they fire up his imagination, take him to alternate realities, and serve as an escape from reality. | Involving: Tim",
+        "Tim uses reminders of the wizarding world as a way to escape reality and the daily grind. | Involving: Tim",
+        "Tim does not surf. He finds reading great fantasy books helps him escape and feel free, experiencing bliss and a feeling of being in another world, especially when doing so in a comfy spot. | Involving: Tim",
+        "Tim loves reading and enjoys escaping to other worlds through books, and he has a collection of books. | Involving: Tim (user) | He loves escaping to other worlds.",
+        "John knows that Tim finds peace in reading fantasy books. | Involving: John, Tim",
+        "Tim is currently reading a captivating fantasy book that transports him to another world, keeping him on the edge of his seat and allowing his imagination to soar. | When: Currently | Involving: Tim",
+        "Tim enjoys fantasy books like Lord of the Rings because they allow him to get lost in another world, appreciate intricate details, and explore other cultures and landscapes from home. | Involving: Tim",
+        "Tim reads fantasy books as a way to take a break from stress. | Involving: Tim",
+        "Tim has never been on a sports team. He enjoys reading fantasy novels and traveling to new places to experience different kinds of \"magic.\" | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 14,
+      "question": "What kind of writing does Tim do?",
+      "expected_answer": "comments on favorite books in a fantasy literature forum, articles on fantasy novels, studying characters, themes, and making book recommendations, writing a fantasy novel",
+      "relevant_facts": [
+        "Tim is currently writing a fantasy novel, which he finds nerve-wracking but exciting, and he feels his hard work is paying off. Writing brings him joy. | Involving: Tim (user)",
+        "Tim is very enthusiastic about Harry Potter and Game of Thrones and enjoys writing about them. | Involving: Tim",
+        "Tim found the opportunity to write for the online magazine on a fantasy literature forum and his ideas were accepted. He pursued this opportunity because he loves fantasy. | Involving: Tim | Tim loves fantasy.",
+        "Tim has been writing more articles, which he enjoys because it combines his love for reading and sharing stories. | Involving: Tim",
+        "Tim is writing articles about fantasy novels for an online magazine and finds this work rewarding. | Involving: Tim",
+        "Tim joined a fantasy literature forum and had an enriching discussion about his favorite books. | When: Last night | Involving: Tim",
+        "Last week, Tim had a setback trying to write a story based on his experiences in the UK, which didn't go as planned. He finds this tough and is seeking advice on storytelling. | When: Last week | Involving: Tim",
+        "Tim's articles for the online magazine involve studying characters and themes of different fantasy novels and making book recommendations. | Involving: Tim",
+        "Tim experienced a significant writing issue last week, getting stuck on a plot twist, which was frustrating, but he eventually overcame it and got his ideas flowing again. | When: Last week | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 15,
+      "question": "Who is Anthony?",
+      "expected_answer": "likely John's friend, colleague or family",
+      "relevant_facts": [
+        "John and Anthony participated in an intense Harry Potter trivia contest at a charity event, where a \"super-nerd\" won a signed Harry Potter book as a prize. | Involving: John, Anthony, a \"super-nerd\""
+      ]
+    },
+    {
+      "q_idx": 16,
+      "question": "After how many weeks did Tim reconnect with the fellow Harry Potter fan from California?",
+      "expected_answer": "three weeks",
+      "relevant_facts": []
+    },
+    {
+      "q_idx": 17,
+      "question": "How many games has John mentioned winning?",
+      "expected_answer": "6",
+      "relevant_facts": [
+        "John's team won a trophy, which made John feel great and validated their hard work. | Involving: John's team, John",
+        "John's team won an intense basketball game last week by a tight score, with John scoring the last basket, which he found awesome and an amazing rush. | When: Last week | Involving: John, John's team | It was an awesome and exhilarating experience.",
+        "John's favorite game involved his team being down by 10 points in the 4th quarter, and he hit a buzzer-beater shot to win, which was a thrilling experience with an incredible atmosphere. | Involving: John, John's team | This experience contributes to his love for basketball.",
+        "John and his teammates pulled off a tough win in a basketball game. | When: Last week | Involving: John, his teammates | The atmosphere was electric, and it was an incredible experience.",
+        "John and his teammates celebrated their tough win at a restaurant. | When: Last week (after the game) | Involving: John, his teammates | They were exhausted but happy, laughing and reliving the intense moments.",
+        "John was elated about winning the trophy and values Tim's support, stating he will continue to work hard. | Involving: John, Tim",
+        "John considered the camaraderie built with his basketball team, both on and off the court, to be the best part of their recent win. | When: Recently | Involving: John (and his basketball team)",
+        "John's basketball team recently won a tough game against a top team. | When: Recently | Involving: John (and his basketball team)",
+        "John won a trophy, likely a basketball trophy, and felt great about achieving it after putting in significant time and energy. | Involving: John",
+        "John's basketball team was trailing significantly in the 4th quarter of a game last year, but they managed to overturn the deficit, resulting in an unforgettable feeling when the final buzzer sounded. | When: Last year | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 18,
+      "question": "What authors has Tim read books from?",
+      "expected_answer": "J.K. Rowling, R.R. Martin, Patrick Rothfuss, Paulo Coelho, and J. R. R. Tolkien.",
+      "relevant_facts": [
+        "Tim recommends a book by Patrick Rothfuss, describing it as \"awesome\" due to the author's amazing world-building and character development. | Involving: Tim, Patrick Rothfuss",
+        "J.K. Rowling is an inspiring writer for Tim, who finds her books captivating due to their detail and creative storytelling, and he takes notes on her style for his own writing. | Involving: Tim (user)",
+        "Tim has seen all the Harry Potter movies and enjoys comparing them to the books. | Involving: Tim",
+        "Tim is very enthusiastic about Harry Potter and Game of Thrones and enjoys writing about them. | Involving: Tim",
+        "Tim loves to read books in his free time, and the Harry Potter series is one of his favorite book series. | Involving: Tim",
+        "Tim's favorite fantasy books are Harry Potter and Game of Thrones, which he enjoys because they transport him to other places. He also enjoys books on growth, psychology, and self-improvement. | Involving: Tim",
+        "Tim has only read the \"Game of Thrones\" (GoT) series by George R. R. Martin. | Involving: Tim, George R. R. Martin",
+        "Tim considers \"The Alchemist\" to be one of his favorite books. | Involving: Tim",
+        "Tim just finished reading and highly recommends \"A Dance with Dragons\". | Involving: Tim",
+        "Tim also likes Lord of the Rings. | Involving: Tim (user)",
+        "Tim read \"The Alchemist\" a while back, and it changed his perspective on his goals. | When: A while back | Involving: Tim",
+        "Tim is currently reading and enjoying the fantasy novel \"The Name of the Wind\" by Patrick Rothfuss. | Involving: Tim",
+        "Tim has been reading J.K. Rowling's works for a long time, and her stories continue to inspire him due to a special quality in her writing. | Involving: Tim (user)",
+        "Tim enjoys fantasy books like Lord of the Rings because they allow him to get lost in another world, appreciate intricate details, and explore other cultures and landscapes from home. | Involving: Tim",
+        "Tim's favorite book is Harry Potter because it is immersive. | Involving: Tim (user) | It is immersive.",
+        "Tim recommended 'The Name of the Wind', a fantasy novel by Patrick Rothfuss, to John as a good book for traveling. | Involving: Tim, John, Patrick Rothfuss",
+        "Tim recommends the fantasy novel \"The Name of the Wind,\" highlighting its great magician and musician protagonist, world-building, and character development. | Involving: Tim",
+        "Tim recently reorganized his bookshelf, which contains fantasy novels such as 'Game of Thrones', 'Harry Potter', and 'Lord of the Rings'. | When: Recently, around December 01, 2023 | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 19,
+      "question": "What is a prominent charity organization that John might want to work with and why?",
+      "expected_answer": "Good Sports, because they work with Nike, Gatorade, and Under Armour and they aim toprovide youth sports opportunities for kids ages 3-18 in high-need communities.",
+      "relevant_facts": [
+        "John also wants to make a difference away from the court through charity or inspiring people, as he wants to give back because basketball has been great to him. | Involving: John | John wants to give back to the sport that has been great to him.",
+        "John plans to use his platform after basketball to make a positive difference, inspire others, potentially start a foundation, do charity work, and leave a meaningful legacy. | Involving: John",
+        "John has been working on supporting youth sports and fighting for fair chances in sports for underserved communities, collaborating with organizations to create more opportunities for young athletes. | Involving: John",
+        "John has always liked Under Armour and would find it cool to work with them. | Involving: John",
+        "John plans to team up with a local organization that helps disadvantaged kids with sports and school to use his platform for positive community impact and inspire others. | Involving: John | To make a positive impact on the community and inspire others.",
+        "John believes in making a difference and uses his influence and resources to help causes he believes in, and he has spoken at charity events. | Involving: John",
+        "John signed a deal with Nike for basketball shoes and gear. | Involving: John",
+        "John is considering sports brands like Nike and Under Armour for collaborations but is also open to other brands that align with his values and interests. | Involving: John",
+        "John believes that basketball brings people together and creates a positive impact. | Involving: John",
+        "John is currently in talks with Gatorade regarding a potential sponsorship. | Involving: John",
+        "John organized a basketball camp for kids in his hometown last summer, which was an awesome and truly incredible experience that inspired the kids and showed them their potential. | When: Summer 2023 | Involving: John, kids | To inspire kids and show them their potential.",
+        "Tim advised John to choose endorsements that align with his values and brand, to look for companies that share his desire to make a change and help others, and to ensure the endorsement feels authentic to his followers. | Involving: Tim, John"
+      ]
+    },
+    {
+      "q_idx": 20,
+      "question": "Which city was John in before traveling to Chicago?",
+      "expected_answer": "Seattle",
+      "relevant_facts": []
+    },
+    {
+      "q_idx": 21,
+      "question": "Which US cities does John mention visiting to Tim?",
+      "expected_answer": "Seattle, Chicago, New York",
+      "relevant_facts": [
+        "John loves discovering new cities and has visited New York City. | Involving: John",
+        "John had an amazing experience in New York City, enjoying exploring the city and trying restaurants, and recommends it as a must-visit. | Involving: John",
+        "Seattle is one of John's favorite cities to explore, appreciated for its vibrant energy, diversity, awesome food (especially local seafood), and incredible fan support at games. | Involving: John",
+        "John recently took a trip to Chicago, finding it awesome due to its energy and friendly locals. | When: within the last few days before August 11, 2023 | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 22,
+      "question": "When did John meet with his teammates after returning from Chicago?",
+      "expected_answer": "August 15, 2023",
+      "relevant_facts": [
+        "John reunited with his teammates on August 15th after a trip, feeling very welcome and lucky to be part of the team, experiencing an electric atmosphere. | When: August 15, 2023 | Involving: John, John's teammates",
+        "John's teammates gave him a signed basketball as a sign of their friendship and appreciation when they reunited. | When: August 15, 2023 | Involving: John, John's teammates | To show their friendship and appreciation, serving as a reminder of their bond.",
+        "John recently took a trip to Chicago, finding it awesome due to its energy and friendly locals. | When: within the last few days before August 11, 2023 | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 23,
+      "question": "When is Tim attending a book conference?",
+      "expected_answer": "September 2023",
+      "relevant_facts": [
+        "Tim plans to attend a book conference next month (September 2023), which is a gathering of authors, publishers, and book lovers, to learn more about literature and strengthen his bond to it. | When: Next month (September 2023) | Involving: Tim | To learn more about literature and create a stronger bond to it."
+      ]
+    },
+    {
+      "q_idx": 24,
+      "question": "Where was John between August 11 and August 15 2023?",
+      "expected_answer": "Chicago",
+      "relevant_facts": [
+        "John recently took a trip to Chicago, finding it awesome due to its energy and friendly locals. | When: within the last few days before August 11, 2023 | Involving: John",
+        "John reunited with his teammates on August 15th after a trip, feeling very welcome and lucky to be part of the team, experiencing an electric atmosphere. | When: August 15, 2023 | Involving: John, John's teammates"
+      ]
+    },
+    {
+      "q_idx": 25,
+      "question": "What similar sports collectible do Tim and John own?",
+      "expected_answer": "signed basketball",
+      "relevant_facts": [
+        "Tim's prized possession is a basketball signed by his favorite player, which serves as a reminder of hard work. | Involving: Tim | It serves as a reminder of hard work.",
+        "John's teammates gave him a signed basketball as a sign of their friendship and appreciation when they reunited. | When: August 15, 2023 | Involving: John, John's teammates | To show their friendship and appreciation, serving as a reminder of their bond."
+      ]
+    },
+    {
+      "q_idx": 26,
+      "question": "Which TV series does Tim mention watching?",
+      "expected_answer": "That, Wheel of Time",
+      "relevant_facts": [
+        "Tim is excited about a new fantasy TV series called \"The Wheel of Time\" which is scheduled to be released next month (January 2024) and is based on a book series he loves. | When: next month (January 2024) | Involving: Tim",
+        "Tim loves being lost in fantasy realms and considers the show \"That\" one of his favorite fantasy shows because it's like an escape. | Involving: Tim | It's like an escape."
+      ]
+    },
+    {
+      "q_idx": 27,
+      "question": "Which popular time management technique does Tim use to prepare for exams?",
+      "expected_answer": "Pomodoro technique",
+      "relevant_facts": [
+        "Tim's study trick is breaking up studying into smaller parts, specifically 25 minutes on and 5 minutes off for something fun, to make it less overwhelming and stay on track. | Involving: Tim | To make studying less overwhelming and stay on track."
+      ]
+    },
+    {
+      "q_idx": 28,
+      "question": "Which popular music composer's tunes does Tim enjoy playing on the piano?",
+      "expected_answer": "John Williams",
+      "relevant_facts": [
+        "Tim's favorite song to play on the piano is a movie theme that brings back great memories. | Involving: Tim",
+        "Tim started learning to play the piano and finds the progress satisfying. | Involving: Tim",
+        "Tim is learning to play the violin and is interested in classical music, jazz, and film scores, finding it a great way to chill and get creative. | Involving: Tim",
+        "\"Harry Potter and the Philosopher's Stone\" is special to Tim because it was the first movie in the series and watching it with his family created magical and special memories. | Involving: Tim, Tim's family",
+        "Tim's favorite fantasy movie is Star Wars. | Involving: Tim (user) | It never gets old."
+      ]
+    },
+    {
+      "q_idx": 29,
+      "question": "What schools did John play basketball in and how many years was he with his team during high school?",
+      "expected_answer": "Middle school, high school, and college and he was with his high school team for 4 years.",
+      "relevant_facts": [
+        "John played basketball through middle and high school before earning a college scholarship. | When: Through middle and high school | Involving: John",
+        "John and his friends were teammates in high school for four years. | Involving: John, John's friends",
+        "After college, John was drafted by a team, fulfilling his dream. | When: After college | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 30,
+      "question": "Which cities has John been to?",
+      "expected_answer": "Seattle, Chicago, New York, and Paris.",
+      "relevant_facts": [
+        "John loves discovering new cities and has visited New York City. | Involving: John",
+        "John had an amazing experience in New York City, enjoying exploring the city and trying restaurants, and recommends it as a must-visit. | Involving: John",
+        "Seattle is one of John's favorite cities to explore, appreciated for its vibrant energy, diversity, awesome food (especially local seafood), and incredible fan support at games. | Involving: John",
+        "John has been to Paris and loved it, finding the city amazing and the view from the Eiffel Tower incredible. | Involving: John",
+        "John initially had trouble figuring out the subway during his NYC trip but found it easy after someone helped explain it. | Involving: John",
+        "John recently took a trip to Chicago, finding it awesome due to its energy and friendly locals. | When: within the last few days before August 11, 2023 | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 31,
+      "question": "What month did Tim plan on going to Universal Studios?",
+      "expected_answer": "September, 2023",
+      "relevant_facts": [
+        "Tim is planning his first trip to Universal Studios next month and is excited about the Harry Potter attractions. | When: Next month (September 2023) | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 32,
+      "question": "Which US states might Tim be in during September 2023 based on his plans of visiting Universal Studios?",
+      "expected_answer": "California or Florida",
+      "relevant_facts": [
+        "Tim is planning his first trip to Universal Studios next month and is excited about the Harry Potter attractions. | When: Next month (September 2023) | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 33,
+      "question": "When does John plan on traveling with his team on a team trip?",
+      "expected_answer": "October, 2023",
+      "relevant_facts": [
+        "John and his teammates are planning a team trip next month to explore a new city and have some fun, but the destination is still undecided. | When: Next month (October 2023) | Involving: John, John's teammates | To explore a new city and have some fun."
+      ]
+    },
+    {
+      "q_idx": 34,
+      "question": "What could John do after his basketball career?",
+      "expected_answer": "become a basketball coach since he likes giving back and leadership",
+      "relevant_facts": [
+        "John's favorite basketball team is The Wolves, and his favorite player is LeBron, whose skills, leadership, work ethic, and dedication he admires. | Involving: John, LeBron",
+        "John felt great making plays for his team, enjoying creating opportunities for teammates' success. The arena atmosphere was electric, and playing rivals added intensity, making it a memorable night. | When: Last Friday | Involving: John, John's teammates, John's rivals | Describes his experience during his career-high game.",
+        "John also wants to make a difference away from the court through charity or inspiring people, as he wants to give back because basketball has been great to him. | Involving: John | John wants to give back to the sport that has been great to him.",
+        "John advised Tim to reflect on what went wrong and find ways to improve when facing challenges, similar to how he handles challenges on the basketball court. | When: Tuesday, November 21, 2023 | Involving: John, Tim | To help Tim with his storytelling setback.",
+        "John's tips for motivating others include showing care for teammates, celebrating achievements, providing constructive feedback, reminding them of the bigger goal, creating a positive environment, and giving pep talks before a game. | Involving: John | In response to Tim's request for advice.",
+        "John held a benefit basketball game. | When: Last week (between December 31, 2023, and January 6, 2024) | Involving: John",
+        "John plans to use his platform after basketball to make a positive difference, inspire others, potentially start a foundation, do charity work, and leave a meaningful legacy. | Involving: John",
+        "Some of the younger players see John as a mentor, which he finds really rewarding. He tries to provide them with advice and support both on and off the court and enjoys being a positive role model for them. | Involving: John, younger players",
+        "John's benefit basketball game was a total success, with many attendees and money raised for charity. | When: Last week (between December 31, 2023, and January 6, 2024) | Involving: John",
+        "John has been working on supporting youth sports and fighting for fair chances in sports for underserved communities, collaborating with organizations to create more opportunities for young athletes. | Involving: John",
+        "John believes that basketball brings people together and creates a positive impact. | Involving: John",
+        "John's seminars went really well, and the aspiring professionals were eager and motivated. | Involving: John, aspiring professionals | John was happy to share his knowledge and help them.",
+        "John is mentoring younger players on his team, finding it super rewarding to share his skills and knowledge, and it helps him stay involved in the game during the off-season. | Involving: John, younger players (on John's team) | To share skills and knowledge, to stay involved in the game during the off-season.",
+        "John finds it fulfilling to witness the growth, improvement, and confidence of the younger players he mentors, and is glad to make a positive impact on their lives. He shared a picture of himself with some of the younger players at a recent practice. | Involving: John, younger players",
+        "John feels great about having the trust and admiration of the young athletes he mentors. He finds being a role model for them fulfilling and is glad his experiences can help shape their future and inspire them to go after their dreams. | Involving: John, young athletes",
+        "John has a painting of Aragorn in his room to remind him to stay true and be a leader. | Involving: John, Aragorn | To remind him to stay true and be a leader.",
+        "John faces challenges in mentoring due to individual differences among players, but he enjoys gaining experience, adapting, motivating, and encouraging them, and finds it rewarding to see them develop and reach their goals. | Involving: John, younger players",
+        "John organized a basketball camp for kids in his hometown last summer, which was an awesome and truly incredible experience that inspired the kids and showed them their potential. | When: Summer 2023 | Involving: John, kids | To inspire kids and show them their potential.",
+        "John believes in making a difference and uses his influence and resources to help causes he believes in, and he has spoken at charity events. | Involving: John",
+        "John plans to team up with a local organization that helps disadvantaged kids with sports and school to use his platform for positive community impact and inspire others. | Involving: John | To make a positive impact on the community and inspire others.",
+        "John's favorite character is Aragorn, whom he finds inspiring due to his growth, leadership qualities (puts others first, becomes king), bravery, selflessness, down-to-earth attitude, perseverance, and commitment to justice. | Involving: John, Aragorn",
+        "John and Anthony participated in an intense Harry Potter trivia contest at a charity event, where a \"super-nerd\" won a signed Harry Potter book as a prize. | Involving: John, Anthony, a \"super-nerd\"",
+        "John started doing seminars to help people with their sports and marketing. | When: This week (week of December 26, 2023) | Involving: John",
+        "John attended a charity event featuring Harry Potter trivia. | When: Last August (2023) | Involving: John",
+        "Tim asked John for tips on motivating others on his team. | When: Wednesday, December 06, 2023 | Involving: Tim (user), John | Tim is looking for ways to inspire his team."
+      ]
+    },
+    {
+      "q_idx": 35,
+      "question": "What outdoor activities does John enjoy?",
+      "expected_answer": "Hiking, surfing",
+      "relevant_facts": [
+        "John felt immense love and happiness on his wedding day, which was attended by his loved ones and some friends from his recently joined hiking club. | When: Last week | Involving: John, John's wife, John's loved ones, John's hiking club friends",
+        "John had an awesome summer surfing and riding waves with his friends, describing the feeling as unreal. He started surfing five years ago and loves the connection to nature it provides, finding being in the water with waves and wind super exciting and free-feeling. | Involving: John, John's friends",
+        "While hiking, John discovered a peaceful spot with a soothing river sound and surrounding rocks, which made him feel at peace and inspired him to admire nature's beauty. | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 36,
+      "question": "Who is Tim and John's favorite basketball player?",
+      "expected_answer": "LeBron James",
+      "relevant_facts": [
+        "John remembers LeBron James's epic block in Game 7 of the 2016 Finals against Iguodala, where he chased down Iguodala and pinned the ball against the backboard, and this determination is a reason John loves basketball. | When: 2016 Finals, Game 7 | Involving: John, LeBron James, Iguodala | This moment of determination is a reason John loves basketball.",
+        "Tim's favorite basketball player is LeBron James, who inspires him, especially due to an epic block in a Finals game a few years ago that was game-changing and led to a win. | When: A few years back | Involving: Tim, LeBron James | LeBron's determination and the game-changing block inspire Tim.",
+        "John's favorite basketball team is The Wolves, and his favorite player is LeBron, whose skills, leadership, work ethic, and dedication he admires. | Involving: John, LeBron"
+      ]
+    },
+    {
+      "q_idx": 37,
+      "question": "Which week did Tim visit the UK for the Harry Potter Conference?",
+      "expected_answer": "The week before October 13th, 2023.",
+      "relevant_facts": [
+        "Tim attended a Harry Potter conference in the UK, which he found incredible and inspiring, making him feel like he got a new lease of life. He enjoys how his passion for fantasy connects him with people globally. | When: Last week | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 38,
+      "question": "which country has Tim visited most frequently in his travels?",
+      "expected_answer": "UK",
+      "relevant_facts": [
+        "Tim attended a Harry Potter conference in the UK, which he found incredible and inspiring, making him feel like he got a new lease of life. He enjoys how his passion for fantasy connects him with people globally. | When: Last week | Involving: Tim",
+        "Tim visited a Harry Potter-related place in London a few years ago, which he described as being like walking into a Harry Potter movie and an amazing tour. | When: A few years ago | Involving: Tim",
+        "Last week, Tim had a setback trying to write a story based on his experiences in the UK, which didn't go as planned. He finds this tough and is seeking advice on storytelling. | When: Last week | Involving: Tim",
+        "Tim visited a castle in the UK during his trip last Friday, finding its architecture and history amazing. | When: Last Friday, November 10, 2023 | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 39,
+      "question": "What year did Tim go to the Smoky Mountains?",
+      "expected_answer": "2022",
+      "relevant_facts": [
+        "Tim took a stunning picture during a trip to the Smoky Mountains. | When: Summer 2022 | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 40,
+      "question": "Has Tim been to North Carolina and/or Tennesee states in the US?",
+      "expected_answer": "Yes",
+      "relevant_facts": [
+        "Tim took a stunning picture during a trip to the Smoky Mountains. | When: Summer 2022 | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 41,
+      "question": "What kind of fiction stories does Tim write?",
+      "expected_answer": "Fantasy stories with plot twists",
+      "relevant_facts": [
+        "Tim is currently writing a fantasy novel, which he finds nerve-wracking but exciting, and he feels his hard work is paying off. Writing brings him joy. | Involving: Tim (user)",
+        "Tim experienced a significant writing issue last week, getting stuck on a plot twist, which was frustrating, but he eventually overcame it and got his ideas flowing again. | When: Last week | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 42,
+      "question": "What has John cooked?",
+      "expected_answer": "Soup, a slow cooker meal, and honey garlic chicken with roasted veg.",
+      "relevant_facts": [
+        "John has been trying out cooking recipes and recently made a tasty soup. | When: Recently | Involving: John",
+        "John frequently makes honey garlic chicken with roasted vegetables, which is one of his favorite recipes, and he enjoys trying out new recipes. | Involving: John",
+        "John will write down and mail his honey garlic chicken with roasted vegetables recipe to Tim, who is eager to try it. | Involving: John, Tim",
+        "John made the soup up on the spot and does not have a specific recipe for it. | Involving: John",
+        "John used sage as a spice in the soup he made. | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 43,
+      "question": "What does John like about Lebron James?",
+      "expected_answer": "His heart, determination, skills, and leadership.",
+      "relevant_facts": [
+        "John's favorite basketball team is The Wolves, and his favorite player is LeBron, whose skills, leadership, work ethic, and dedication he admires. | Involving: John, LeBron",
+        "John enjoys playing and pushing himself, inspired by LeBron's determination and heart. | Involving: John",
+        "John remembers LeBron James's epic block in Game 7 of the 2016 Finals against Iguodala, where he chased down Iguodala and pinned the ball against the backboard, and this determination is a reason John loves basketball. | When: 2016 Finals, Game 7 | Involving: John, LeBron James, Iguodala | This moment of determination is a reason John loves basketball."
+      ]
+    },
+    {
+      "q_idx": 44,
+      "question": "When did John and his wife go on a European vacation?",
+      "expected_answer": "November, 2023.",
+      "relevant_facts": [
+        "John and his wife just left for a short European vacation. | When: Monday, November 06, 2023 | Involving: John, John's wife"
+      ]
+    },
+    {
+      "q_idx": 45,
+      "question": "Which country was Tim visiting in the second week of November?",
+      "expected_answer": "UK",
+      "relevant_facts": [
+        "Tim attended a Harry Potter conference in the UK, which he found incredible and inspiring, making him feel like he got a new lease of life. He enjoys how his passion for fantasy connects him with people globally. | When: Last week | Involving: Tim",
+        "Tim visited a castle in the UK during his trip last Friday, finding its architecture and history amazing. | When: Last Friday, November 10, 2023 | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 46,
+      "question": "Where was Tim in the week before 16 November 2023?",
+      "expected_answer": "UK",
+      "relevant_facts": [
+        "Tim attended a Harry Potter conference in the UK, which he found incredible and inspiring, making him feel like he got a new lease of life. He enjoys how his passion for fantasy connects him with people globally. | When: Last week | Involving: Tim",
+        "Tim visited a castle in the UK during his trip last Friday, finding its architecture and history amazing. | When: Last Friday, November 10, 2023 | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 47,
+      "question": "When did John get married at a greenhouse?",
+      "expected_answer": "last week of September 2023",
+      "relevant_facts": [
+        "John and his wife held their wedding ceremony at a lovely greenhouse venue, which was a smaller, more intimate gathering, and they followed necessary safety protocols. | When: Last week | Involving: John, John's wife, their loved ones | To ensure everyone felt safe and to celebrate their wedding."
+      ]
+    },
+    {
+      "q_idx": 48,
+      "question": "When did John get an ankle injury in 2023?",
+      "expected_answer": "around November 16, 2023",
+      "relevant_facts": [
+        "John has an injury that has made his week tough, but he is staying positive. | When: This week (leading up to November 16, 2023) | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 49,
+      "question": "How many times has John injured his ankle?",
+      "expected_answer": "two times",
+      "relevant_facts": [
+        "Last season, John hurt his ankle, which was a major challenge requiring time off and physical therapy. He found it frustrating but focused on recovery, realizing the importance of patience and perseverance. | When: Last season | Involving: John",
+        "John injured himself not too long ago, which caused him to miss some basketball games and be unable to help his team. | When: not too long ago | Involving: John (and his team)"
+      ]
+    },
+    {
+      "q_idx": 50,
+      "question": "Which book was John reading during his recovery from an ankle injury?",
+      "expected_answer": "The Alchemist",
+      "relevant_facts": [
+        "Last season, John hurt his ankle, which was a major challenge requiring time off and physical therapy. He found it frustrating but focused on recovery, realizing the importance of patience and perseverance. | When: Last season | Involving: John",
+        "John read and loved the book \"The Alchemist\". | Involving: John",
+        "Reading \"The Alchemist\" made John think about life and the importance of following one's dreams. | Involving: John",
+        "John recently reread \"The Alchemist,\" which he found inspiring and motivating to follow dreams and trust the process, making him feel hopeful. | When: Recently | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 51,
+      "question": "What kind of yoga for building core strength might John benefit from?",
+      "expected_answer": "Hatha Yoga",
+      "relevant_facts": []
+    },
+    {
+      "q_idx": 52,
+      "question": "What does John do to supplement his basketball training?",
+      "expected_answer": "Yoga, strength training",
+      "relevant_facts": [
+        "John includes strength training in his basketball routine to build muscle, increase power, prevent injuries, become more explosive, and boost his overall athleticism. | Involving: John | These benefits are essential for his performance in professional basketball games.",
+        "John developed a workout schedule that incorporates both basketball training and strength training, prioritizing listening to his body and ensuring adequate rest. | Involving: John | To balance his training and look after himself while pushing during practice.",
+        "Strength training has significantly improved John's basketball performance, leading to better shooting accuracy, agility, and speed, and has also boosted his confidence on the court. | Involving: John | It gave him an upper hand over opponents and helped him up his game.",
+        "John has noticed improvements from practicing yoga, specifically increased strength, flexibility, focus, and balance during his workouts. | Involving: John",
+        "John is trying out yoga to gain strength and flexibility, finding it challenging but worthwhile. | Involving: John",
+        "John enjoys practicing specific yoga poses, including Warrior II (which he finds makes him feel strong and works legs/core) and another that helps with balance and stability. He loves how these poses challenge his body and mind and shared a photo of himself doing Warrior II. | Involving: John",
+        "John typically holds the Warrior II yoga pose for 30-60 seconds, finding it helps build strength and stability. | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 53,
+      "question": "What other exercises can help John with his basketball performance?",
+      "expected_answer": "Sprinting, long-distance running, and boxing.",
+      "relevant_facts": [
+        "John typically holds the Warrior II yoga pose for 30-60 seconds, finding it helps build strength and stability. | Involving: John",
+        "John is trying out yoga to gain strength and flexibility, finding it challenging but worthwhile. | Involving: John",
+        "John achieved a milestone at the gym by jogging without any pain, which was a huge relief and success after being out for so long. | When: Last Friday | Involving: John | It was a significant step in his recovery after being out for a long time.",
+        "John enjoys practicing specific yoga poses, including Warrior II (which he finds makes him feel strong and works legs/core) and another that helps with balance and stability. He loves how these poses challenge his body and mind and shared a photo of himself doing Warrior II. | Involving: John",
+        "John has noticed improvements from practicing yoga, specifically increased strength, flexibility, focus, and balance during his workouts. | Involving: John",
+        "John had an awesome summer surfing and riding waves with his friends, describing the feeling as unreal. He started surfing five years ago and loves the connection to nature it provides, finding being in the water with waves and wind super exciting and free-feeling. | Involving: John, John's friends",
+        "While hiking, John discovered a peaceful spot with a soothing river sound and surrounding rocks, which made him feel at peace and inspired him to admire nature's beauty. | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 54,
+      "question": "When did John take a trip to the Rocky Mountains?",
+      "expected_answer": "2022",
+      "relevant_facts": [
+        "John took a stunning trip to the Rocky Mountains last year, finding that nature clears the mind, calms the soul, humbles people, and shows their place in the world. | When: Last year | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 55,
+      "question": "When did John start playing professionally?",
+      "expected_answer": "May, 2023",
+      "relevant_facts": [
+        "John signed with a new team. | When: Recently, around May 21, 2023 | Involving: John",
+        "John signed with the Minnesota Wolves. | When: Recently, around May 21, 2023 | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 56,
+      "question": "When did Tim start playing the violin?",
+      "expected_answer": "August 2023",
+      "relevant_facts": [
+        "Tim is learning to play the violin and is interested in classical music, jazz, and film scores, finding it a great way to chill and get creative. | Involving: Tim",
+        "Tim has been playing an unspecified activity for about four months and is enjoying the progress he is making. | Involving: Tim (user)",
+        "Tim asked John for tips on motivating others on his team. | When: Wednesday, December 06, 2023 | Involving: Tim (user), John | Tim is looking for ways to inspire his team."
+      ]
+    },
+    {
+      "q_idx": 57,
+      "question": "What instruments does Tim play?",
+      "expected_answer": "piano, violin",
+      "relevant_facts": [
+        "Tim is learning to play the violin and is interested in classical music, jazz, and film scores, finding it a great way to chill and get creative. | Involving: Tim",
+        "Tim started learning to play the piano and finds the progress satisfying. | Involving: Tim",
+        "Tim's favorite song to play on the piano is a movie theme that brings back great memories. | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 58,
+      "question": "When did John attend the Harry Potter trivia?",
+      "expected_answer": "August 2023.",
+      "relevant_facts": [
+        "John attended a charity event featuring Harry Potter trivia. | When: Last August (2023) | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 59,
+      "question": "Which career-high performances did John achieve in 2023?",
+      "expected_answer": "highest point score, highest assist",
+      "relevant_facts": [
+        "John achieved a career-high in assists during a big basketball game against a rival. | When: Last Friday | Involving: John | It was a significant personal achievement in a big game against a rival.",
+        "John scored 40 points in a game, which is his highest score ever. | When: Last week | Involving: John | It feels like all his hard work is paying off."
+      ]
+    },
+    {
+      "q_idx": 60,
+      "question": "When did John achieve a career-high assist performance?",
+      "expected_answer": "December 11, 2023",
+      "relevant_facts": [
+        "John achieved a career-high in assists during a big basketball game against a rival. | When: Last Friday | Involving: John | It was a significant personal achievement in a big game against a rival.",
+        "John felt great making plays for his team, enjoying creating opportunities for teammates' success. The arena atmosphere was electric, and playing rivals added intensity, making it a memorable night. | When: Last Friday | Involving: John, John's teammates, John's rivals | Describes his experience during his career-high game."
+      ]
+    },
+    {
+      "q_idx": 61,
+      "question": "What books has John read?",
+      "expected_answer": "inpsiring book on dreaming big, The Alchemist, fantasy series, non-fiction books on personal development, Dune",
+      "relevant_facts": [
+        "John is currently reading an inspiring book that reminds him to keep dreaming. | Involving: John",
+        "John likes fantasy books because they fuel his creativity, and non-fiction books on personal development and mindset because they help him know himself better. | Involving: John",
+        "John read and loved the book \"The Alchemist\". | Involving: John",
+        "John's favorite fantasy books include 'The Hobbit' and another popular fantasy series. | Involving: John",
+        "John recently reread \"The Alchemist,\" which he found inspiring and motivating to follow dreams and trust the process, making him feel hopeful. | When: Recently | Involving: John",
+        "John is currently reading and highly recommends \"Dune\" by Frank Herbert, which he describes as a story about religion and human control over ecology. | Involving: John, Frank Herbert",
+        "Reading \"The Alchemist\" made John think about life and the importance of following one's dreams. | Involving: John",
+        "John loves \"Harry Potter and the Philosopher's Stone\" and owns the entire Harry Potter movie collection. | Involving: John",
+        "John recently finished an amazing fantasy series with many twists and loves getting lost in fantasy worlds created by authors with awesome storylines and characters. | Involving: John",
+        "John loves maps, specifically the map of Middle-earth, as it helps him get lost in another world. He also enjoys exploring different lands and regions in fantasy stories. | Involving: John",
+        "John is a huge fan of Lord of the Rings. | Involving: John | He appreciates the adventure, the world, and the characters.",
+        "John's favorite character is Aragorn, whom he finds inspiring due to his growth, leadership qualities (puts others first, becomes king), bravery, selflessness, down-to-earth attitude, perseverance, and commitment to justice. | Involving: John, Aragorn",
+        "John has a painting of Aragorn in his room to remind him to stay true and be a leader. | Involving: John, Aragorn | To remind him to stay true and be a leader."
+      ]
+    },
+    {
+      "q_idx": 62,
+      "question": "What does John do to share his knowledge?",
+      "expected_answer": "gives seminars, mentors younger players.",
+      "relevant_facts": [
+        "John's seminars went really well, and the aspiring professionals were eager and motivated. | Involving: John, aspiring professionals | John was happy to share his knowledge and help them.",
+        "John is mentoring younger players on his team, finding it super rewarding to share his skills and knowledge, and it helps him stay involved in the game during the off-season. | Involving: John, younger players (on John's team) | To share skills and knowledge, to stay involved in the game during the off-season.",
+        "John finds it fulfilling to witness the growth, improvement, and confidence of the younger players he mentors, and is glad to make a positive impact on their lives. He shared a picture of himself with some of the younger players at a recent practice. | Involving: John, younger players",
+        "Some of the younger players see John as a mentor, which he finds really rewarding. He tries to provide them with advice and support both on and off the court and enjoys being a positive role model for them. | Involving: John, younger players",
+        "John faces challenges in mentoring due to individual differences among players, but he enjoys gaining experience, adapting, motivating, and encouraging them, and finds it rewarding to see them develop and reach their goals. | Involving: John, younger players",
+        "John started doing seminars to help people with their sports and marketing. | When: This week (week of December 26, 2023) | Involving: John",
+        "John feels great about having the trust and admiration of the young athletes he mentors. He finds being a role model for them fulfilling and is glad his experiences can help shape their future and inspire them to go after their dreams. | Involving: John, young athletes",
+        "John organized a basketball camp for kids in his hometown last summer, which was an awesome and truly incredible experience that inspired the kids and showed them their potential. | When: Summer 2023 | Involving: John, kids | To inspire kids and show them their potential."
+      ]
+    },
+    {
+      "q_idx": 63,
+      "question": "When did John organize a basketball camp for kids?",
+      "expected_answer": "summer 2023",
+      "relevant_facts": [
+        "John organized a basketball camp for kids in his hometown last summer, which was an awesome and truly incredible experience that inspired the kids and showed them their potential. | When: Summer 2023 | Involving: John, kids | To inspire kids and show them their potential."
+      ]
+    },
+    {
+      "q_idx": 64,
+      "question": "Which month was John in Italy?",
+      "expected_answer": "December, 2023",
+      "relevant_facts": [
+        "John found the food, history, and architecture in Italy amazing, and he bought a book there that provides him with cooking inspiration. | When: Last month (during his trip to Italy) | Involving: John",
+        "John visited Italy last month and had a blast. | When: Last month (December 2023) | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 65,
+      "question": "What fantasy movies does Tim like?",
+      "expected_answer": "Lord of the Rings, Harry Potter, and Star Wars.",
+      "relevant_facts": [
+        "\"Harry Potter and the Philosopher's Stone\" is special to Tim because it was the first movie in the series and watching it with his family created magical and special memories. | Involving: Tim, Tim's family",
+        "Tim's favorite movie genre is fantasy, specifically epic adventures and magical worlds, and his favorite movie is Lord of the Rings. | Involving: Tim",
+        "Tim's favorite fantasy movie is Star Wars. | Involving: Tim (user) | It never gets old.",
+        "Tim also likes Lord of the Rings. | Involving: Tim (user)",
+        "Tim has seen all the Harry Potter movies and enjoys comparing them to the books. | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 66,
+      "question": "What is a Star Wars book that Tim might enjoy?",
+      "expected_answer": "Star Wars: Jedi Apprentice by Judy Blundell and David Farland. It is a highly rated and immersive series about his favorite movies.",
+      "relevant_facts": [
+        "Tim loves reading and enjoys escaping to other worlds through books, and he has a collection of books. | Involving: Tim (user) | He loves escaping to other worlds.",
+        "Tim reads fantasy books as a way to take a break from stress. | Involving: Tim",
+        "Both Tim and John appreciate fantasy books for providing an escape to different worlds and a break from reality, offering a fun and magical adventure. | Involving: Tim, John",
+        "Tim does not surf. He finds reading great fantasy books helps him escape and feel free, experiencing bliss and a feeling of being in another world, especially when doing so in a comfy spot. | Involving: Tim",
+        "Tim's favorite fantasy books are Harry Potter and Game of Thrones, which he enjoys because they transport him to other places. He also enjoys books on growth, psychology, and self-improvement. | Involving: Tim",
+        "Tim's favorite fantasy movie is Star Wars. | Involving: Tim (user) | It never gets old.",
+        "Tim enjoys fantasy books like Lord of the Rings because they allow him to get lost in another world, appreciate intricate details, and explore other cultures and landscapes from home. | Involving: Tim",
+        "Tim's favorite book is Harry Potter because it is immersive. | Involving: Tim (user) | It is immersive.",
+        "Tim's bookshelf is filled with his favorite fantasy novels, which he enjoys because they fire up his imagination, take him to alternate realities, and serve as an escape from reality. | Involving: Tim",
+        "Tim is currently reading a captivating fantasy book that transports him to another world, keeping him on the edge of his seat and allowing his imagination to soar. | When: Currently | Involving: Tim",
+        "Tim recommends a book by Patrick Rothfuss, describing it as \"awesome\" due to the author's amazing world-building and character development. | Involving: Tim, Patrick Rothfuss",
+        "Tim loves being lost in fantasy realms and considers the show \"That\" one of his favorite fantasy shows because it's like an escape. | Involving: Tim | It's like an escape.",
+        "Tim's favorite movie genre is fantasy, specifically epic adventures and magical worlds, and his favorite movie is Lord of the Rings. | Involving: Tim",
+        "Tim is currently overwhelmed by assignments and exams and is trying to find a way to juggle studying with his fantasy reading hobby. | When: This week | Involving: Tim",
+        "Tim uses reminders of the wizarding world as a way to escape reality and the daily grind. | Involving: Tim",
+        "Tim recommends the fantasy novel \"The Name of the Wind,\" highlighting its great magician and musician protagonist, world-building, and character development. | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 67,
+      "question": "What would be a good hobby related to his travel dreams for Tim to pick up?",
+      "expected_answer": "Writing a travel blog.",
+      "relevant_facts": [
+        "Tim finds traveling eye-opening. | Involving: Tim",
+        "Tim is researching visa requirements for places he wants to visit, finding the process overwhelming but exciting. | Involving: Tim | To make his travel dreams a reality.",
+        "Tim plans to keep John updated about his future travels. | Involving: Tim, John",
+        "Tim is proud of researching visa requirements, viewing it as taking initiative towards his travel dreams. | Involving: Tim | It's a step towards making his travel dreams a reality.",
+        "Tim has been writing more articles, which he enjoys because it combines his love for reading and sharing stories. | Involving: Tim",
+        "Tim found the opportunity to write for the online magazine on a fantasy literature forum and his ideas were accepted. He pursued this opportunity because he loves fantasy. | Involving: Tim | Tim loves fantasy.",
+        "Tim joined a travel club and is interested in different cultures and countries, looking forward to meeting new people and learning about them. | Involving: Tim",
+        "Tim loves traveling. | Involving: Tim",
+        "Tim is currently writing a fantasy novel, which he finds nerve-wracking but exciting, and he feels his hard work is paying off. Writing brings him joy. | Involving: Tim (user)",
+        "Tim is writing articles about fantasy novels for an online magazine and finds this work rewarding. | Involving: Tim",
+        "Tim is very enthusiastic about Harry Potter and Game of Thrones and enjoys writing about them. | Involving: Tim",
+        "Tim visited a travel agency to inquire about the requirements for his next dream trip. | When: Recently | Involving: Tim",
+        "Tim joined a group of globetrotters who share his interests. | When: Since Tim and John last talked | Involving: Tim, group of globetrotters",
+        "J.K. Rowling is an inspiring writer for Tim, who finds her books captivating due to their detail and creative storytelling, and he takes notes on her style for his own writing. | Involving: Tim (user)",
+        "Tim believes creating a constructive atmosphere, setting an example through hard work, and using personal stories can inspire others. | Involving: Tim (user) | Reflecting on John's advice.",
+        "Tim's love for writing and reading helps him stay motivated and improve. | Involving: Tim",
+        "Last week, Tim had a setback trying to write a story based on his experiences in the UK, which didn't go as planned. He finds this tough and is seeking advice on storytelling. | When: Last week | Involving: Tim",
+        "Tim was accepted into a study abroad program and will go to Ireland for a semester next month. | When: Friday, January 5, 2024 | Involving: Tim",
+        "Tim experienced a significant writing issue last week, getting stuck on a plot twist, which was frustrating, but he eventually overcame it and got his ideas flowing again. | When: Last week | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 68,
+      "question": "What day did Tim get into his study abroad program?",
+      "expected_answer": "Januarty 5, 2024",
+      "relevant_facts": [
+        "Tim was accepted into a study abroad program and will go to Ireland for a semester next month. | When: Friday, January 5, 2024 | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 69,
+      "question": "When will Tim leave for Ireland?",
+      "expected_answer": "February, 2024",
+      "relevant_facts": [
+        "Tim plans to stay in Galway, Ireland, which he notes is known for its arts, Irish music, and vibrant atmosphere. | When: Next month (February 2024) | Involving: Tim",
+        "Tim was accepted into a study abroad program and will go to Ireland for a semester next month. | When: Friday, January 5, 2024 | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 70,
+      "question": "Which Star Wars-related locations would Tim enjoy during his visit to Ireland?",
+      "expected_answer": "Skellig Michael, Malin Head, Loop Head, Ceann Sib\u00e9al, and Brow Head because they are Star Wars filming locations.",
+      "relevant_facts": [
+        "Tim was accepted into a study abroad program and will go to Ireland for a semester next month. | When: Friday, January 5, 2024 | Involving: Tim",
+        "Tim's favorite fantasy movie is Star Wars. | Involving: Tim (user) | It never gets old."
+      ]
+    },
+    {
+      "q_idx": 71,
+      "question": "Which team did John sign with on 21 May, 2023?",
+      "expected_answer": "The Minnesota Wolves",
+      "relevant_facts": [
+        "John signed with the Minnesota Wolves. | When: Recently, around May 21, 2023 | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 72,
+      "question": "What is John's position on the team he signed with?",
+      "expected_answer": "shooting guard",
+      "relevant_facts": [
+        "John is a shooting guard for the Minnesota Wolves. | Involving: John",
+        "John signed with the Minnesota Wolves. | When: Recently, around May 21, 2023 | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 73,
+      "question": "What challenge did John encounter during pre-season training?",
+      "expected_answer": "fitting into the new team's style of play",
+      "relevant_facts": [
+        "John found fitting into the new team's style of play challenging during pre-season training. | When: During pre-season | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 74,
+      "question": "What aspects of the Harry Potter universe will be discussed in John's fan project collaborations?",
+      "expected_answer": "characters, spells, magical creatures",
+      "relevant_facts": []
+    },
+    {
+      "q_idx": 75,
+      "question": "What forum did Tim join recently?",
+      "expected_answer": "fantasy literature forum",
+      "relevant_facts": [
+        "Tim found the opportunity to write for the online magazine on a fantasy literature forum and his ideas were accepted. He pursued this opportunity because he loves fantasy. | Involving: Tim | Tim loves fantasy.",
+        "Tim joined a fantasy literature forum and had an enriching discussion about his favorite books. | When: Last night | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 76,
+      "question": "What kind of picture did Tim share as part of their Harry Potter book collection?",
+      "expected_answer": "MinaLima's creation from the Harry Potter films",
+      "relevant_facts": [
+        "Tim's picture is from MinaLima, who created props for the Harry Potter films, and he loves their work, feeling it brings a piece of the wizarding world home. | Involving: Tim, MinaLima",
+        "Tim showed John his book collection, which includes a picture from MinaLima. | Involving: Tim, John"
+      ]
+    },
+    {
+      "q_idx": 77,
+      "question": "What was the highest number of points John scored in a game recently?",
+      "expected_answer": "40 points",
+      "relevant_facts": [
+        "John scored 40 points in a game, which is his highest score ever. | When: Last week | Involving: John | It feels like all his hard work is paying off."
+      ]
+    },
+    {
+      "q_idx": 78,
+      "question": "What did John celebrate at a restaurant with teammates?",
+      "expected_answer": "a tough win",
+      "relevant_facts": [
+        "John and his teammates celebrated their tough win at a restaurant. | When: Last week (after the game) | Involving: John, his teammates | They were exhausted but happy, laughing and reliving the intense moments."
+      ]
+    },
+    {
+      "q_idx": 79,
+      "question": "What kind of deals did John sign with Nike and Gatorade?",
+      "expected_answer": "basketball shoe and gear deal with Nike, potential sponsorship deal with Gatorade",
+      "relevant_facts": [
+        "John signed a deal with Nike for basketball shoes and gear. | Involving: John",
+        "John is currently in talks with Gatorade regarding a potential sponsorship. | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 80,
+      "question": "Which city is John excited to have a game at?",
+      "expected_answer": "Seattle",
+      "relevant_facts": [
+        "Seattle is one of John's favorite cities to explore, appreciated for its vibrant energy, diversity, awesome food (especially local seafood), and incredible fan support at games. | Involving: John",
+        "John has an upcoming game in Seattle next month. | When: Next month | Involving: John | John is stoked for the game."
+      ]
+    },
+    {
+      "q_idx": 81,
+      "question": "How long has John been surfing?",
+      "expected_answer": "five years",
+      "relevant_facts": [
+        "John had an awesome summer surfing and riding waves with his friends, describing the feeling as unreal. He started surfing five years ago and loves the connection to nature it provides, finding being in the water with waves and wind super exciting and free-feeling. | Involving: John, John's friends"
+      ]
+    },
+    {
+      "q_idx": 82,
+      "question": "How does John feel while surfing?",
+      "expected_answer": "super exciting and free-feeling",
+      "relevant_facts": [
+        "John had an awesome summer surfing and riding waves with his friends, describing the feeling as unreal. He started surfing five years ago and loves the connection to nature it provides, finding being in the water with waves and wind super exciting and free-feeling. | Involving: John, John's friends"
+      ]
+    },
+    {
+      "q_idx": 83,
+      "question": "What kind of articles has Tim been writing about for the online magazine?",
+      "expected_answer": "different fantasy novels, characters, themes, and book recommendations",
+      "relevant_facts": [
+        "Tim is writing articles about fantasy novels for an online magazine and finds this work rewarding. | Involving: Tim",
+        "Tim's articles for the online magazine involve studying characters and themes of different fantasy novels and making book recommendations. | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 84,
+      "question": "Which two fantasy novels does Tim particularly enjoy writing about?",
+      "expected_answer": "Harry Potter and Game of Thrones",
+      "relevant_facts": [
+        "Tim is very enthusiastic about Harry Potter and Game of Thrones and enjoys writing about them. | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 85,
+      "question": "What did Anthony and John end up playing during the charity event?",
+      "expected_answer": "an intense Harry Potter trivia contest",
+      "relevant_facts": [
+        "John and Anthony participated in an intense Harry Potter trivia contest at a charity event, where a \"super-nerd\" won a signed Harry Potter book as a prize. | Involving: John, Anthony, a \"super-nerd\"",
+        "John attended a charity event featuring Harry Potter trivia. | When: Last August (2023) | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 86,
+      "question": "What did John share with the person he skyped about?",
+      "expected_answer": "Characters from Harry Potter",
+      "relevant_facts": []
+    },
+    {
+      "q_idx": 87,
+      "question": "How did John describe the team bond?",
+      "expected_answer": "Awesome",
+      "relevant_facts": [
+        "John values his team's strong bond, considering them like a family away from home. They push each other to improve, provide encouragement in and out of sport, and hang out often, making all the hard work worthwhile. He is thankful for them. | Involving: John, John's team",
+        "John feels a strong bond with his passionate teammates, who are like a second family, and they push each other to be their best. | Involving: John, his teammates | Shared passion for the game creates this bond.",
+        "John considered the camaraderie built with his basketball team, both on and off the court, to be the best part of their recent win. | When: Recently | Involving: John (and his basketball team)"
+      ]
+    },
+    {
+      "q_idx": 88,
+      "question": "How did John get introduced to basketball?",
+      "expected_answer": "Dad signed him up for a local league",
+      "relevant_facts": [
+        "When John turned ten, his dad signed him up for a local league, and he has been playing ever since. | When: When John turned ten | Involving: John, John's dad"
+      ]
+    },
+    {
+      "q_idx": 89,
+      "question": "What is John's number one goal in his basketball career?",
+      "expected_answer": "Winning a championship",
+      "relevant_facts": [
+        "John's number one goal for his basketball career is winning a championship. | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 90,
+      "question": "What organization is John teaming up with for his charity work?",
+      "expected_answer": "A local organization helping disadvantaged kids with sports and school",
+      "relevant_facts": [
+        "John plans to team up with a local organization that helps disadvantaged kids with sports and school to use his platform for positive community impact and inspire others. | Involving: John | To make a positive impact on the community and inspire others."
+      ]
+    },
+    {
+      "q_idx": 91,
+      "question": "When did John meet back up with his teammates after his trip in August 2023?",
+      "expected_answer": "Aug 15th",
+      "relevant_facts": [
+        "John reunited with his teammates on August 15th after a trip, feeling very welcome and lucky to be part of the team, experiencing an electric atmosphere. | When: August 15, 2023 | Involving: John, John's teammates",
+        "John's teammates gave him a signed basketball as a sign of their friendship and appreciation when they reunited. | When: August 15, 2023 | Involving: John, John's teammates | To show their friendship and appreciation, serving as a reminder of their bond."
+      ]
+    },
+    {
+      "q_idx": 92,
+      "question": "What did John's teammates give him when they met on Aug 15th?",
+      "expected_answer": "a basketball with autographs on it",
+      "relevant_facts": [
+        "John's teammates gave him a signed basketball as a sign of their friendship and appreciation when they reunited. | When: August 15, 2023 | Involving: John, John's teammates | To show their friendship and appreciation, serving as a reminder of their bond."
+      ]
+    },
+    {
+      "q_idx": 93,
+      "question": "Why did John's teammates sign the basketball they gave him?",
+      "expected_answer": "to show their friendship and appreciation",
+      "relevant_facts": [
+        "John's teammates gave him a signed basketball as a sign of their friendship and appreciation when they reunited. | When: August 15, 2023 | Involving: John, John's teammates | To show their friendship and appreciation, serving as a reminder of their bond."
+      ]
+    },
+    {
+      "q_idx": 94,
+      "question": "What is the main intention behind Tim wanting to attend the book conference?",
+      "expected_answer": "to learn more about literature and create a stronger bond to it",
+      "relevant_facts": [
+        "Tim plans to attend a book conference next month (September 2023), which is a gathering of authors, publishers, and book lovers, to learn more about literature and strengthen his bond to it. | When: Next month (September 2023) | Involving: Tim | To learn more about literature and create a stronger bond to it."
+      ]
+    },
+    {
+      "q_idx": 95,
+      "question": "What new activity has Tim started learning in August 2023?",
+      "expected_answer": "play the piano",
+      "relevant_facts": [
+        "Tim started learning to play the piano and finds the progress satisfying. | Involving: Tim",
+        "Tim has been playing an unspecified activity for about four months and is enjoying the progress he is making. | Involving: Tim (user)"
+      ]
+    },
+    {
+      "q_idx": 96,
+      "question": "Which movie's theme is Tim's favorite to play on the piano?",
+      "expected_answer": "\"Harry Potter and the Philosopher's Stone\"",
+      "relevant_facts": [
+        "Tim's favorite song to play on the piano is a movie theme that brings back great memories. | Involving: Tim",
+        "Tim started learning to play the piano and finds the progress satisfying. | Involving: Tim",
+        "\"Harry Potter and the Philosopher's Stone\" is special to Tim because it was the first movie in the series and watching it with his family created magical and special memories. | Involving: Tim, Tim's family"
+      ]
+    },
+    {
+      "q_idx": 97,
+      "question": "What special memory does \"Harry Potter and the Philosopher's Stone\" bring to Tim?",
+      "expected_answer": "Watching it with his family",
+      "relevant_facts": [
+        "\"Harry Potter and the Philosopher's Stone\" is special to Tim because it was the first movie in the series and watching it with his family created magical and special memories. | Involving: Tim, Tim's family"
+      ]
+    },
+    {
+      "q_idx": 98,
+      "question": "Which movie does Tim mention they enjoy watching during Thanksgiving?",
+      "expected_answer": "\"Home Alone\"",
+      "relevant_facts": [
+        "Tim and his family find Thanksgiving special, enjoying preparing the feast, discussing gratitude, and watching movies afterward. | Involving: Tim and his family",
+        "Tim and his family love watching \"Home Alone,\" \"Elf,\" and \"The Santa Clause\" during the holidays, as these movies bring laughs, festivity, and warmth. | Involving: Tim and his family"
+      ]
+    },
+    {
+      "q_idx": 99,
+      "question": "What tradition does Tim mention they love during Thanksgiving?",
+      "expected_answer": "Prepping the feast and talking about what they're thankful for",
+      "relevant_facts": [
+        "Tim and his family find Thanksgiving special, enjoying preparing the feast, discussing gratitude, and watching movies afterward. | Involving: Tim and his family"
+      ]
+    },
+    {
+      "q_idx": 100,
+      "question": "How long did John and his high school basketball teammates play together?",
+      "expected_answer": "Four years",
+      "relevant_facts": [
+        "John and his friends were teammates in high school for four years. | Involving: John, John's friends"
+      ]
+    },
+    {
+      "q_idx": 101,
+      "question": "How was John's experience in New York City?",
+      "expected_answer": "Amazing",
+      "relevant_facts": [
+        "John had an amazing experience in New York City, enjoying exploring the city and trying restaurants, and recommends it as a must-visit. | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 102,
+      "question": "What did John say about NYC, enticing Tim to visit?",
+      "expected_answer": "It's got so much to check out - the culture, food - you won't regret it.",
+      "relevant_facts": [
+        "John had an amazing experience in New York City, enjoying exploring the city and trying restaurants, and recommends it as a must-visit. | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 103,
+      "question": "What kind of soup did John make recently?",
+      "expected_answer": "tasty soup with sage",
+      "relevant_facts": [
+        "John has been trying out cooking recipes and recently made a tasty soup. | When: Recently | Involving: John",
+        "John used sage as a spice in the soup he made. | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 104,
+      "question": "What spice did John add to the soup for flavor?",
+      "expected_answer": "sage",
+      "relevant_facts": [
+        "John used sage as a spice in the soup he made. | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 105,
+      "question": "What is Tim excited to see at Universal Studios?",
+      "expected_answer": "The Harry Potter stuff",
+      "relevant_facts": [
+        "Tim is planning his first trip to Universal Studios next month and is excited about the Harry Potter attractions. | When: Next month (September 2023) | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 106,
+      "question": "Where are John and his teammates planning to explore on a team trip?",
+      "expected_answer": "a new city",
+      "relevant_facts": [
+        "John and his teammates are planning a team trip next month to explore a new city and have some fun, but the destination is still undecided. | When: Next month (October 2023) | Involving: John, John's teammates | To explore a new city and have some fun."
+      ]
+    },
+    {
+      "q_idx": 107,
+      "question": "What city did Tim suggest to John for the team trip next month?",
+      "expected_answer": "Edinburgh, Scotland",
+      "relevant_facts": [
+        "John found Tim's suggestion of Edinburgh, Scotland, a great idea and will consider it for the team trip. | Involving: John, Tim",
+        "Tim suggested Edinburgh, Scotland, as a destination for John's team trip, highlighting its magical vibe, history, architecture, beauty, and its status as the birthplace of Harry Potter. | Involving: Tim, John | As a suggestion for John's team trip destination."
+      ]
+    },
+    {
+      "q_idx": 108,
+      "question": "What does John want to do after his basketball career?",
+      "expected_answer": "positively influence and inspire others, potentially start a foundation and engage in charity work",
+      "relevant_facts": [
+        "John also wants to make a difference away from the court through charity or inspiring people, as he wants to give back because basketball has been great to him. | Involving: John | John wants to give back to the sport that has been great to him.",
+        "John plans to use his platform after basketball to make a positive difference, inspire others, potentially start a foundation, do charity work, and leave a meaningful legacy. | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 109,
+      "question": "What advice did Tim give John about picking endorsements?",
+      "expected_answer": "Ensure they align with values and brand, look for companies that share the desire to make a change and help others, make sure the endorsement feels authentic",
+      "relevant_facts": [
+        "Tim advised John to choose endorsements that align with his values and brand, to look for companies that share his desire to make a change and help others, and to ensure the endorsement feels authentic to his followers. | Involving: Tim, John"
+      ]
+    },
+    {
+      "q_idx": 110,
+      "question": "What book recommendation did Tim give to John for the trip?",
+      "expected_answer": "A fantasy novel by Patrick Rothfuss",
+      "relevant_facts": [
+        "Tim recommended 'The Name of the Wind', a fantasy novel by Patrick Rothfuss, to John as a good book for traveling. | Involving: Tim, John, Patrick Rothfuss",
+        "John asked Tim for book recommendations for his trip. | When: Thursday, September 21, 2023 | Involving: John, Tim",
+        "John plans to check out 'The Name of the Wind' for his trip and shared a photo of his bookshelf, which contains books he has read and enjoyed. | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 111,
+      "question": "What type of venue did John and his girlfriend choose for their wedding ceremony?",
+      "expected_answer": "Greenhouse",
+      "relevant_facts": [
+        "John and his wife held their wedding ceremony at a lovely greenhouse venue, which was a smaller, more intimate gathering, and they followed necessary safety protocols. | When: Last week | Involving: John, John's wife, their loved ones | To ensure everyone felt safe and to celebrate their wedding."
+      ]
+    },
+    {
+      "q_idx": 112,
+      "question": "What was the setting for John and his wife's first dance?",
+      "expected_answer": "Cozy restaurant",
+      "relevant_facts": [
+        "John and his wife had their first dance at a cozy restaurant, which was described as dreamy with music and candlelight. | When: Last week | Involving: John, John's wife, their loved ones"
+      ]
+    },
+    {
+      "q_idx": 113,
+      "question": "Which basketball team does Tim support?",
+      "expected_answer": "The Wolves",
+      "relevant_facts": []
+    },
+    {
+      "q_idx": 114,
+      "question": "What passion does Tim mention connects him with people from all over the world?",
+      "expected_answer": "passion for fantasy stuff",
+      "relevant_facts": [
+        "John feels that his passion for his team connects him with others, similar to Tim's experience with fantasy. | Involving: John, Tim",
+        "Tim attended a Harry Potter conference in the UK, which he found incredible and inspiring, making him feel like he got a new lease of life. He enjoys how his passion for fantasy connects him with people globally. | When: Last week | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 115,
+      "question": "How does John describe the game season for his team?",
+      "expected_answer": "intense with tough losses and great wins",
+      "relevant_facts": [
+        "John's team had an intense season with both tough losses and great wins, performing pretty well overall. | Involving: John's team"
+      ]
+    },
+    {
+      "q_idx": 116,
+      "question": "How does John say his team handles tough opponents?",
+      "expected_answer": "by backing each other up and not quitting",
+      "relevant_facts": [
+        "John's team is driven to improve by tough opponents, and they support each other and are resilient. | Involving: John's team",
+        "John values his team's strong bond, considering them like a family away from home. They push each other to improve, provide encouragement in and out of sport, and hang out often, making all the hard work worthwhile. He is thankful for them. | Involving: John, John's team",
+        "John feels a strong bond with his passionate teammates, who are like a second family, and they push each other to be their best. | Involving: John, his teammates | Shared passion for the game creates this bond.",
+        "John's basketball team was trailing significantly in the 4th quarter of a game last year, but they managed to overturn the deficit, resulting in an unforgettable feeling when the final buzzer sounded. | When: Last year | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 117,
+      "question": "What motivates John's team to get better, according to John?",
+      "expected_answer": "facing tough opponents",
+      "relevant_facts": [
+        "John's team is driven to improve by tough opponents, and they support each other and are resilient. | Involving: John's team"
+      ]
+    },
+    {
+      "q_idx": 118,
+      "question": "What did John's team win at the end of the season?",
+      "expected_answer": "a trophy",
+      "relevant_facts": [
+        "John's team won a trophy, which made John feel great and validated their hard work. | Involving: John's team, John"
+      ]
+    },
+    {
+      "q_idx": 119,
+      "question": "Where did Tim capture the photography of the sunset over the mountain range?",
+      "expected_answer": "Smoky Mountains",
+      "relevant_facts": [
+        "Tim took a stunning picture during a trip to the Smoky Mountains. | When: Summer 2022 | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 120,
+      "question": "How does John feel about being seen as a mentor by some of the younger players?",
+      "expected_answer": "It feels great",
+      "relevant_facts": [
+        "Some of the younger players see John as a mentor, which he finds really rewarding. He tries to provide them with advice and support both on and off the court and enjoys being a positive role model for them. | Involving: John, younger players",
+        "John is mentoring younger players on his team, finding it super rewarding to share his skills and knowledge, and it helps him stay involved in the game during the off-season. | Involving: John, younger players (on John's team) | To share skills and knowledge, to stay involved in the game during the off-season.",
+        "John finds it fulfilling to witness the growth, improvement, and confidence of the younger players he mentors, and is glad to make a positive impact on their lives. He shared a picture of himself with some of the younger players at a recent practice. | Involving: John, younger players",
+        "John faces challenges in mentoring due to individual differences among players, but he enjoys gaining experience, adapting, motivating, and encouraging them, and finds it rewarding to see them develop and reach their goals. | Involving: John, younger players",
+        "John feels great about having the trust and admiration of the young athletes he mentors. He finds being a role model for them fulfilling and is glad his experiences can help shape their future and inspire them to go after their dreams. | Involving: John, young athletes",
+        "John's seminars went really well, and the aspiring professionals were eager and motivated. | Involving: John, aspiring professionals | John was happy to share his knowledge and help them.",
+        "John organized a basketball camp for kids in his hometown last summer, which was an awesome and truly incredible experience that inspired the kids and showed them their potential. | When: Summer 2023 | Involving: John, kids | To inspire kids and show them their potential.",
+        "John started doing seminars to help people with their sports and marketing. | When: This week (week of December 26, 2023) | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 121,
+      "question": "What does John find rewarding about mentoring the younger players?",
+      "expected_answer": "Seeing their growth, improvement, and confidence",
+      "relevant_facts": [
+        "John faces challenges in mentoring due to individual differences among players, but he enjoys gaining experience, adapting, motivating, and encouraging them, and finds it rewarding to see them develop and reach their goals. | Involving: John, younger players",
+        "John finds it fulfilling to witness the growth, improvement, and confidence of the younger players he mentors, and is glad to make a positive impact on their lives. He shared a picture of himself with some of the younger players at a recent practice. | Involving: John, younger players"
+      ]
+    },
+    {
+      "q_idx": 122,
+      "question": "What has John been able to help the younger players achieve?",
+      "expected_answer": "reach their goals",
+      "relevant_facts": [
+        "John faces challenges in mentoring due to individual differences among players, but he enjoys gaining experience, adapting, motivating, and encouraging them, and finds it rewarding to see them develop and reach their goals. | Involving: John, younger players"
+      ]
+    },
+    {
+      "q_idx": 123,
+      "question": "What genre is the novel that Tim is writing?",
+      "expected_answer": "Fantasy",
+      "relevant_facts": [
+        "Tim is currently writing a fantasy novel, which he finds nerve-wracking but exciting, and he feels his hard work is paying off. Writing brings him joy. | Involving: Tim (user)"
+      ]
+    },
+    {
+      "q_idx": 124,
+      "question": "Who is one of Tim's sources of inspiration for writing?",
+      "expected_answer": "J.K. Rowling",
+      "relevant_facts": [
+        "J.K. Rowling is an inspiring writer for Tim, who finds her books captivating due to their detail and creative storytelling, and he takes notes on her style for his own writing. | Involving: Tim (user)",
+        "Tim has been reading J.K. Rowling's works for a long time, and her stories continue to inspire him due to a special quality in her writing. | Involving: Tim (user)",
+        "Tim's inspiration for his stories comes from books, movies, real-life experiences (like reading about UK castles), and certain authors. | Involving: Tim (user)"
+      ]
+    },
+    {
+      "q_idx": 125,
+      "question": "What J.K. Rowling quote does Tim resonate with?",
+      "expected_answer": "\"Turn on the light - happiness hides in the darkest of times.\"",
+      "relevant_facts": [
+        "Tim likes the J.K. Rowling quote \"Turn on the light - happiness hides in the darkest of times\" and uses it to maintain hope during difficult periods. | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 126,
+      "question": "What does John write on the whiteboard to help him stay motivated?",
+      "expected_answer": "motivational quotes and strategies",
+      "relevant_facts": [
+        "John writes motivational quotes and strategies on a whiteboard to help him stay focused, push through tough workouts, and remain motivated for improvement. | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 127,
+      "question": "What hobby is a therapy for John when away from the court?",
+      "expected_answer": "Cooking",
+      "relevant_facts": [
+        "John enjoys cuddling up with a book as his chill time. He also finds cooking therapeutic and a way to be creative and experiment with flavors when he's away from the court. | Involving: John (user)"
+      ]
+    },
+    {
+      "q_idx": 128,
+      "question": "What type of meal does John often cook using a slow cooker?",
+      "expected_answer": "honey garlic chicken with roasted veg",
+      "relevant_facts": [
+        "John frequently makes honey garlic chicken with roasted vegetables, which is one of his favorite recipes, and he enjoys trying out new recipes. | Involving: John",
+        "John will write down and mail his honey garlic chicken with roasted vegetables recipe to Tim, who is eager to try it. | Involving: John, Tim"
+      ]
+    },
+    {
+      "q_idx": 129,
+      "question": "How will John share the honey garlic chicken recipe with the other person?",
+      "expected_answer": "write it down and mail it",
+      "relevant_facts": [
+        "John will write down and mail his honey garlic chicken with roasted vegetables recipe to Tim, who is eager to try it. | Involving: John, Tim"
+      ]
+    },
+    {
+      "q_idx": 130,
+      "question": "What was Tim's huge writing issue last week,as mentioned on November 6, 2023?",
+      "expected_answer": "He got stuck on a plot twist",
+      "relevant_facts": [
+        "Tim experienced a significant writing issue last week, getting stuck on a plot twist, which was frustrating, but he eventually overcame it and got his ideas flowing again. | When: Last week | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 131,
+      "question": "What does Tim have that serves as a reminder of hard work and is his prized possession?",
+      "expected_answer": "a basketball signed by his favorite player",
+      "relevant_facts": [
+        "Tim's prized possession is a basketball signed by his favorite player, which serves as a reminder of hard work. | Involving: Tim | It serves as a reminder of hard work."
+      ]
+    },
+    {
+      "q_idx": 132,
+      "question": "Why do Tim and John find LeBron inspiring?",
+      "expected_answer": "LeBron's determination and the epic block in Game 7 of the '16 Finals",
+      "relevant_facts": [
+        "Tim's favorite basketball player is LeBron James, who inspires him, especially due to an epic block in a Finals game a few years ago that was game-changing and led to a win. | When: A few years back | Involving: Tim, LeBron James | LeBron's determination and the game-changing block inspire Tim.",
+        "John's favorite basketball team is The Wolves, and his favorite player is LeBron, whose skills, leadership, work ethic, and dedication he admires. | Involving: John, LeBron",
+        "John remembers LeBron James's epic block in Game 7 of the 2016 Finals against Iguodala, where he chased down Iguodala and pinned the ball against the backboard, and this determination is a reason John loves basketball. | When: 2016 Finals, Game 7 | Involving: John, LeBron James, Iguodala | This moment of determination is a reason John loves basketball.",
+        "John enjoys playing and pushing himself, inspired by LeBron's determination and heart. | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 133,
+      "question": "How did John describe the views during their road trip out on the European coastline?",
+      "expected_answer": "Spectacular",
+      "relevant_facts": [
+        "John and his wife went on an amazing road trip on the European coastline, enjoying spectacular views, bonding, and creating memories, which was a nice change from his regular life. | Involving: John, John's wife | To bond, create memories, and experience a change from regular life."
+      ]
+    },
+    {
+      "q_idx": 134,
+      "question": "What is one of Tim's favorite fantasy TV shows, as mentioned on November 11, 2023?",
+      "expected_answer": "\"That\"",
+      "relevant_facts": [
+        "Tim loves being lost in fantasy realms and considers the show \"That\" one of his favorite fantasy shows because it's like an escape. | Involving: Tim | It's like an escape."
+      ]
+    },
+    {
+      "q_idx": 135,
+      "question": "How does Tim stay motivated during difficult study sessions?",
+      "expected_answer": "Visualizing goals and success",
+      "relevant_facts": [
+        "Tim's study trick is breaking up studying into smaller parts, specifically 25 minutes on and 5 minutes off for something fun, to make it less overwhelming and stay on track. | Involving: Tim | To make studying less overwhelming and stay on track.",
+        "Tim likes the J.K. Rowling quote \"Turn on the light - happiness hides in the darkest of times\" and uses it to maintain hope during difficult periods. | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 136,
+      "question": "What did Tim say about his injury on 16 November, 2023?",
+      "expected_answer": "The doctor said it's not too serious",
+      "relevant_facts": []
+    },
+    {
+      "q_idx": 137,
+      "question": "What was the setback Tim faced in his writing project on 21 November, 2023?",
+      "expected_answer": "Story based on experiences in the UK didn't go as planned",
+      "relevant_facts": [
+        "John advised Tim to reflect on what went wrong and find ways to improve when facing challenges, similar to how he handles challenges on the basketball court. | When: Tuesday, November 21, 2023 | Involving: John, Tim | To help Tim with his storytelling setback.",
+        "Last week, Tim had a setback trying to write a story based on his experiences in the UK, which didn't go as planned. He finds this tough and is seeking advice on storytelling. | When: Last week | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 138,
+      "question": "How did John overcome his ankle injury from last season?",
+      "expected_answer": "stayed focused on recovery and worked hard to strengthen his body",
+      "relevant_facts": [
+        "Last season, John hurt his ankle, which was a major challenge requiring time off and physical therapy. He found it frustrating but focused on recovery, realizing the importance of patience and perseverance. | When: Last season | Involving: John",
+        "John is doing daily physical therapy exercises as part of his rehab to stay active. | When: every day | Involving: John | To recover from his injury and stay active.",
+        "John's injury is tough, but he is staying positive and taking it slow. | Involving: John",
+        "John has an injury that has made his week tough, but he is staying positive. | When: This week (leading up to November 16, 2023) | Involving: John",
+        "John is trying out yoga to gain strength and flexibility, finding it challenging but worthwhile. | Involving: John",
+        "Strength training has significantly improved John's basketball performance, leading to better shooting accuracy, agility, and speed, and has also boosted his confidence on the court. | Involving: John | It gave him an upper hand over opponents and helped him up his game.",
+        "John achieved a milestone at the gym by jogging without any pain, which was a huge relief and success after being out for so long. | When: Last Friday | Involving: John | It was a significant step in his recovery after being out for a long time.",
+        "John includes strength training in his basketball routine to build muscle, increase power, prevent injuries, become more explosive, and boost his overall athleticism. | Involving: John | These benefits are essential for his performance in professional basketball games.",
+        "John has noticed improvements from practicing yoga, specifically increased strength, flexibility, focus, and balance during his workouts. | Involving: John",
+        "John plans to keep pushing and staying positive in his recovery. | Involving: John",
+        "John developed a workout schedule that incorporates both basketball training and strength training, prioritizing listening to his body and ensuring adequate rest. | Involving: John | To balance his training and look after himself while pushing during practice.",
+        "John is motivated to keep putting in effort for basketball, as it makes all the tough times worth it. He took a picture during a morning workout as a reminder of the journey. | Involving: John",
+        "John enjoys practicing specific yoga poses, including Warrior II (which he finds makes him feel strong and works legs/core) and another that helps with balance and stability. He loves how these poses challenge his body and mind and shared a photo of himself doing Warrior II. | Involving: John",
+        "John typically holds the Warrior II yoga pose for 30-60 seconds, finding it helps build strength and stability. | Involving: John",
+        "John writes motivational quotes and strategies on a whiteboard to help him stay focused, push through tough workouts, and remain motivated for improvement. | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 139,
+      "question": "What motivated Tim to keep pushing himself to get better in writing and reading?",
+      "expected_answer": "Love for writing and reading",
+      "relevant_facts": [
+        "Tim's love for writing and reading helps him stay motivated and improve. | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 140,
+      "question": "How did John overcome a mistake he made during a big game in basketball?",
+      "expected_answer": "Worked hard to get better and focused on growth",
+      "relevant_facts": [
+        "John is comforted and motivated by a basketball that reminds him of the bond and support from his teammates and his journey in basketball. This encourages him to stay strong, give his all, and never give up, viewing supportive people as a \"cheer team\" for tough times. | Involving: John, John's teammates | The ball serves as a meaningful reminder and motivator for John's basketball journey and performance.",
+        "John includes strength training in his basketball routine to build muscle, increase power, prevent injuries, become more explosive, and boost his overall athleticism. | Involving: John | These benefits are essential for his performance in professional basketball games.",
+        "John is passionate about basketball and practices and trains every day to stay in shape and improve. | Involving: John | It is his passion and he cannot imagine his life without it.",
+        "John finds his professional basketball journey great and amazing, involving challenges and growth. | Involving: John",
+        "John once messed up during a big basketball game, which was hard to accept. He learned the importance of resilience and owning up to mistakes from this experience. | Involving: John",
+        "John is motivated by his teammates' belief in him and their encouragement, even when he makes mistakes, along with his love for improving his skills, as he doesn't want to disappoint them. | Involving: John, John's teammates",
+        "John found the energy at a basketball game amazing and motivating, which made him want to work even harder. | Involving: John | The energy and seeing top players at the game were highly motivating.",
+        "John is improving his overall basketball game, has secured endorsement deals, and is learning to market himself and boost his brand. | Involving: John | These are aspects of his growth in professional basketball.",
+        "John loves his professional basketball career because it offers constant challenges, fosters personal growth, allows him to achieve goals, and he enjoys playing with teammates and the support of fans, giving him a sense of satisfaction and purpose. | Involving: John",
+        "John is motivated to keep putting in effort for basketball, as it makes all the tough times worth it. He took a picture during a morning workout as a reminder of the journey. | Involving: John",
+        "John developed a workout schedule that incorporates both basketball training and strength training, prioritizing listening to his body and ensuring adequate rest. | Involving: John | To balance his training and look after himself while pushing during practice.",
+        "Strength training has significantly improved John's basketball performance, leading to better shooting accuracy, agility, and speed, and has also boosted his confidence on the court. | Involving: John | It gave him an upper hand over opponents and helped him up his game.",
+        "John's goal is to improve his shooting percentage. | Involving: John",
+        "John's passion for basketball keeps him motivated during tough times. | Involving: John",
+        "After joining the new gym, John had to adapt and tweak his routine, finding the right balance tricky, but he eventually got the hang of it. | Involving: John | To optimize his training for professional basketball.",
+        "John's on-court goals include improving his shooting, making more of an impact on the court, being known as a consistent performer, and helping his team. | Involving: John",
+        "John enjoys playing and pushing himself, inspired by LeBron's determination and heart. | Involving: John",
+        "Tim encourages John to stay motivated and keep pushing for his goals, emphasizing that hard work makes anything possible. | Involving: Tim, John",
+        "John values personal growth and improvement, both on and off the court. | Involving: John",
+        "John writes motivational quotes and strategies on a whiteboard to help him stay focused, push through tough workouts, and remain motivated for improvement. | Involving: John",
+        "John advised Tim to reflect on what went wrong and find ways to improve when facing challenges, similar to how he handles challenges on the basketball court. | When: Tuesday, November 21, 2023 | Involving: John, Tim | To help Tim with his storytelling setback.",
+        "John's team is driven to improve by tough opponents, and they support each other and are resilient. | Involving: John's team",
+        "John keeps a plaque on his desk as a physical reminder to believe in himself, which helps him trust his abilities, face obstacles, and stay motivated. | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 141,
+      "question": "What book did John recently finish rereading that left him feeling inspired and hopeful about following dreams?",
+      "expected_answer": "The Alchemist",
+      "relevant_facts": [
+        "John recently reread \"The Alchemist,\" which he found inspiring and motivating to follow dreams and trust the process, making him feel hopeful. | When: Recently | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 142,
+      "question": "How did \"The Alchemist\" impact John's perspective on following dreams?",
+      "expected_answer": "made him think again about following dreams and searching for personal legends",
+      "relevant_facts": [
+        "Reading \"The Alchemist\" made John think about life and the importance of following one's dreams. | Involving: John",
+        "John recently reread \"The Alchemist,\" which he found inspiring and motivating to follow dreams and trust the process, making him feel hopeful. | When: Recently | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 143,
+      "question": "What is John trying out to improve his strength and flexibility after recovery from ankle injury?",
+      "expected_answer": "yoga",
+      "relevant_facts": [
+        "John typically holds the Warrior II yoga pose for 30-60 seconds, finding it helps build strength and stability. | Involving: John",
+        "John has noticed improvements from practicing yoga, specifically increased strength, flexibility, focus, and balance during his workouts. | Involving: John",
+        "John is trying out yoga to gain strength and flexibility, finding it challenging but worthwhile. | Involving: John",
+        "Last season, John hurt his ankle, which was a major challenge requiring time off and physical therapy. He found it frustrating but focused on recovery, realizing the importance of patience and perseverance. | When: Last season | Involving: John",
+        "John enjoys practicing specific yoga poses, including Warrior II (which he finds makes him feel strong and works legs/core) and another that helps with balance and stability. He loves how these poses challenge his body and mind and shared a photo of himself doing Warrior II. | Involving: John",
+        "John achieved a milestone at the gym by jogging without any pain, which was a huge relief and success after being out for so long. | When: Last Friday | Involving: John | It was a significant step in his recovery after being out for a long time."
+      ]
+    },
+    {
+      "q_idx": 144,
+      "question": "How long does John usually hold the yoga pose he shared with Tim?",
+      "expected_answer": "30-60 seconds",
+      "relevant_facts": [
+        "Tim is interested in trying a yoga pose that John enjoys and plans to give the Warrior II pose a shot. | Involving: Tim (user), John",
+        "John enjoys practicing specific yoga poses, including Warrior II (which he finds makes him feel strong and works legs/core) and another that helps with balance and stability. He loves how these poses challenge his body and mind and shared a photo of himself doing Warrior II. | Involving: John",
+        "John typically holds the Warrior II yoga pose for 30-60 seconds, finding it helps build strength and stability. | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 145,
+      "question": "Where was the forest picture shared by John on December 1,2023 taken?",
+      "expected_answer": "near his hometown",
+      "relevant_facts": [
+        "John shared a photo of a tranquil forest located near his hometown. | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 146,
+      "question": "What did Tim recently start learning in addition to being part of a travel club and working on studies?",
+      "expected_answer": "an instrument",
+      "relevant_facts": [
+        "Tim is working on studies and recently started learning an instrument, which he finds challenging but fun, having always admired musicians. | Involving: Tim",
+        "Tim joined a travel club and is interested in different cultures and countries, looking forward to meeting new people and learning about them. | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 147,
+      "question": "What instrument is Tim learning to play in December 2023?",
+      "expected_answer": "violin",
+      "relevant_facts": [
+        "Tim is learning to play the violin and is interested in classical music, jazz, and film scores, finding it a great way to chill and get creative. | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 148,
+      "question": "How long has Tim been playing the piano for, as of December 2023?",
+      "expected_answer": "about four months",
+      "relevant_facts": [
+        "Tim started learning to play the piano and finds the progress satisfying. | Involving: Tim",
+        "Tim has been playing an unspecified activity for about four months and is enjoying the progress he is making. | Involving: Tim (user)"
+      ]
+    },
+    {
+      "q_idx": 149,
+      "question": "What book did Tim just finish reading on 8th December, 2023?",
+      "expected_answer": "\"A Dance with Dragons\"",
+      "relevant_facts": [
+        "Tim just finished reading and highly recommends \"A Dance with Dragons\". | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 150,
+      "question": "Which book did Tim recommend to John as a good story on 8th December, 2023?",
+      "expected_answer": "\"A Dance with Dragons\"",
+      "relevant_facts": [
+        "Tim and John are friends and mutually appreciate their friendship. They both share an interest in fantasy books and movies. | Involving: Tim, John",
+        "Tim has only read the \"Game of Thrones\" (GoT) series by George R. R. Martin. | Involving: Tim, George R. R. Martin",
+        "Tim just finished reading and highly recommends \"A Dance with Dragons\". | Involving: Tim",
+        "John plans to check out the book recommended by Tim. | Involving: John, Tim",
+        "John commits to letting Tim know his thoughts after reading the book. | Involving: John, Tim",
+        "Tim recently reorganized his bookshelf, which contains fantasy novels such as 'Game of Thrones', 'Harry Potter', and 'Lord of the Rings'. | When: Recently, around December 01, 2023 | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 151,
+      "question": "What is the topic of discussion between John and Tim on 11 December, 2023?",
+      "expected_answer": "Academic achievements and sports successes",
+      "relevant_facts": []
+    },
+    {
+      "q_idx": 152,
+      "question": "What kind of game did John have a career-high in assists in?",
+      "expected_answer": "basketball",
+      "relevant_facts": [
+        "John achieved a career-high in assists during a big basketball game against a rival. | When: Last Friday | Involving: John | It was a significant personal achievement in a big game against a rival."
+      ]
+    },
+    {
+      "q_idx": 153,
+      "question": "What was John's way of dealing with doubts and stress when he was younger?",
+      "expected_answer": "practicing basketball outside for hours",
+      "relevant_facts": [
+        "A picture reminds John of his youth, when he practiced basketball outside for hours, dreaming of playing in big games, and using it as a way to deal with doubts and stress. | When: When John was younger | Involving: John | Explains the significance of basketball in his life and how he coped with stress."
+      ]
+    },
+    {
+      "q_idx": 154,
+      "question": "How did John feel about the atmosphere during the big game against the rival team?",
+      "expected_answer": "electric and intense",
+      "relevant_facts": [
+        "John felt great making plays for his team, enjoying creating opportunities for teammates' success. The arena atmosphere was electric, and playing rivals added intensity, making it a memorable night. | When: Last Friday | Involving: John, John's teammates, John's rivals | Describes his experience during his career-high game."
+      ]
+    },
+    {
+      "q_idx": 155,
+      "question": "How did John feel after being able to jog without pain?",
+      "expected_answer": "It was a huge success.",
+      "relevant_facts": [
+        "John and his wife hosted a small get-together with friends and family. | Involving: John, John's wife, friends, family | To celebrate John's milestone of jogging without pain.",
+        "John achieved a milestone at the gym by jogging without any pain, which was a huge relief and success after being out for so long. | When: Last Friday | Involving: John | It was a significant step in his recovery after being out for a long time."
+      ]
+    },
+    {
+      "q_idx": 156,
+      "question": "What kind of deal did John get in December?",
+      "expected_answer": "Deal with a renowned outdoor gear company",
+      "relevant_facts": [
+        "John secured an endorsement deal with a renowned outdoor gear company. | When: Last week | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 157,
+      "question": "Where was the photoshoot done for John's gear deal?",
+      "expected_answer": "In a gorgeous forest",
+      "relevant_facts": [
+        "The photoshoot for John's outdoor gear endorsement deal was conducted in a gorgeous forest and yielded epic shots. | Involving: John, photographer | It was part of his endorsement deal."
+      ]
+    },
+    {
+      "q_idx": 158,
+      "question": "In which area has John's team seen the most growth during training?",
+      "expected_answer": "Communication and bonding",
+      "relevant_facts": [
+        "John's team has experienced significant growth in communication and bonding, which has improved their performances by allowing them to understand each other's strengths and weaknesses. | Involving: John, John's team | The growth in communication and bonding has positively impacted their team's performance."
+      ]
+    },
+    {
+      "q_idx": 159,
+      "question": "What type of seminars is John conducting?",
+      "expected_answer": "Sports and marketing seminars",
+      "relevant_facts": [
+        "John started doing seminars to help people with their sports and marketing. | When: This week (week of December 26, 2023) | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 160,
+      "question": "What activity did Tim do after reading the stories about the Himalayan trek?",
+      "expected_answer": "visited a travel agency",
+      "relevant_facts": [
+        "The book described the Himalayan trek as tough but worth it, involving challenging terrain, altitude sickness, and bad weather, but the hikers made it and saw amazing sights, which motivated Tim. | Involving: Tim, hikers | The story motivated Tim for his own travel plans.",
+        "Tim read a story about two hikers who trekked through the Himalayas. | Involving: Tim, two hikers",
+        "Tim visited a travel agency to inquire about the requirements for his next dream trip. | When: Recently | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 161,
+      "question": "What is one cause that John supports with his influence and resources?",
+      "expected_answer": "youth sports and fair chances in sports",
+      "relevant_facts": [
+        "John has been working on supporting youth sports and fighting for fair chances in sports for underserved communities, collaborating with organizations to create more opportunities for young athletes. | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 162,
+      "question": "What new fantasy TV series is Tim excited about?",
+      "expected_answer": "\"The Wheel of Time\"",
+      "relevant_facts": [
+        "Tim is excited about a new fantasy TV series called \"The Wheel of Time\" which is scheduled to be released next month (January 2024) and is based on a book series he loves. | When: next month (January 2024) | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 163,
+      "question": "Which language is Tim learning?",
+      "expected_answer": "German",
+      "relevant_facts": [
+        "Tim finds learning German tough but worth it, appreciating its structure, which he finds easier than French, a language he studied in high school. | Involving: Tim",
+        "Tim is learning German, which he finds tough but fun. | Involving: Tim",
+        "Tim plans to keep up with his German lessons. | Involving: Tim (user)"
+      ]
+    },
+    {
+      "q_idx": 164,
+      "question": "What language does Tim know besides German?",
+      "expected_answer": "Spanish",
+      "relevant_facts": []
+    },
+    {
+      "q_idx": 165,
+      "question": "What book did Tim get in Italy that inspired him to cook?",
+      "expected_answer": "a cooking book",
+      "relevant_facts": []
+    },
+    {
+      "q_idx": 166,
+      "question": "What is John's favorite book series?",
+      "expected_answer": "Harry Potter",
+      "relevant_facts": [
+        "John loves \"Harry Potter and the Philosopher's Stone\" and owns the entire Harry Potter movie collection. | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 167,
+      "question": "According to John, who is his favorite character from Lord of the Rings?",
+      "expected_answer": "Aragorn",
+      "relevant_facts": [
+        "John is a huge fan of Lord of the Rings. | Involving: John | He appreciates the adventure, the world, and the characters.",
+        "John's favorite character is Aragorn, whom he finds inspiring due to his growth, leadership qualities (puts others first, becomes king), bravery, selflessness, down-to-earth attitude, perseverance, and commitment to justice. | Involving: John, Aragorn",
+        "John has a painting of Aragorn in his room to remind him to stay true and be a leader. | Involving: John, Aragorn | To remind him to stay true and be a leader."
+      ]
+    },
+    {
+      "q_idx": 168,
+      "question": "Why does John like Aragorn from Lord of the Rings?",
+      "expected_answer": "brave, selfless, down-to-earth attitude",
+      "relevant_facts": [
+        "John's favorite character is Aragorn, whom he finds inspiring due to his growth, leadership qualities (puts others first, becomes king), bravery, selflessness, down-to-earth attitude, perseverance, and commitment to justice. | Involving: John, Aragorn"
+      ]
+    },
+    {
+      "q_idx": 169,
+      "question": "What kind of painting does John have in his room as a reminder?",
+      "expected_answer": "a painting of Aragorn",
+      "relevant_facts": [
+        "John has a painting of Aragorn in his room to remind him to stay true and be a leader. | Involving: John, Aragorn | To remind him to stay true and be a leader."
+      ]
+    },
+    {
+      "q_idx": 170,
+      "question": "What is the painting of Aragorn a reminder for John to be in everything he does?",
+      "expected_answer": "be a leader",
+      "relevant_facts": [
+        "John has a painting of Aragorn in his room to remind him to stay true and be a leader. | Involving: John, Aragorn | To remind him to stay true and be a leader."
+      ]
+    },
+    {
+      "q_idx": 171,
+      "question": "What map does Tim show to his friend John?",
+      "expected_answer": "a map of Middle-earth from LOTR",
+      "relevant_facts": []
+    },
+    {
+      "q_idx": 172,
+      "question": "Where will Tim be going for a semester abroad?",
+      "expected_answer": "Ireland",
+      "relevant_facts": [
+        "Tim was accepted into a study abroad program and will go to Ireland for a semester next month. | When: Friday, January 5, 2024 | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 173,
+      "question": "Which city in Ireland will Tim be staying in during his semester abroad?",
+      "expected_answer": "Galway",
+      "relevant_facts": [
+        "Tim plans to stay in Galway, Ireland, which he notes is known for its arts, Irish music, and vibrant atmosphere. | When: Next month (February 2024) | Involving: Tim",
+        "Tim was accepted into a study abroad program and will go to Ireland for a semester next month. | When: Friday, January 5, 2024 | Involving: Tim"
+      ]
+    },
+    {
+      "q_idx": 174,
+      "question": "What charity event did John organize recently in 2024?",
+      "expected_answer": "benefit basketball game",
+      "relevant_facts": [
+        "John's benefit basketball game was a total success, with many attendees and money raised for charity. | When: Last week (between December 31, 2023, and January 6, 2024) | Involving: John",
+        "John held a benefit basketball game. | When: Last week (between December 31, 2023, and January 6, 2024) | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 175,
+      "question": "What achievement did John share with Tim in January 2024?",
+      "expected_answer": "endorsement with a popular beverage company",
+      "relevant_facts": [
+        "John will keep Tim updated on his choices for endorsement brands. | Involving: John, Tim",
+        "John secured an endorsement deal with a popular beverage company, which he considers a dream come true. | When: Last week (around January 5, 2024) | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 176,
+      "question": "What was Johns's reaction to sealing the deal with the beverage company?",
+      "expected_answer": "crazy feeling, sense of accomplishment",
+      "relevant_facts": [
+        "John felt crazy and accomplished after sealing the endorsement deal, believing his hard work and training hours had paid off. | Involving: John | It validated his hard work and training.",
+        "John secured an endorsement deal with a popular beverage company, which he considers a dream come true. | When: Last week (around January 5, 2024) | Involving: John"
+      ]
+    },
+    {
+      "q_idx": 177,
+      "question": "Which city did John recommend to Tim in January 2024?",
+      "expected_answer": "Barcelona",
+      "relevant_facts": [
+        "John recommended Barcelona to Tim, highlighting its culture, architecture, food, and beaches as reasons to visit. | Involving: John, Tim | As a travel destination for Tim.",
+        "Tim was accepted into a study abroad program and will go to Ireland for a semester next month. | When: Friday, January 5, 2024 | Involving: Tim"
+      ]
+    }
+  ],
+  "data_dir": "/var/folders/jr/v77hsnmd2w94rjdrxq5kvby80000gn/T/hindsight-reranker-bench-kvw33ls0",
+  "bank_id": "rrb_shared_conv43_1772476822"
+}
