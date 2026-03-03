@@ -1,0 +1,29 @@
+{
+  "fixed_reranker": "local-minilm-l6",
+  "embeddings": [
+    {
+      "embedding_id": "bge-small-en-v1.5",
+      "display_name": "BGE Small EN v1.5",
+      "provider": "local",
+      "provider_name": "Local CPU",
+      "provider_icon": "/huggingface.png",
+      "pricing_type": "free",
+      "price_per_query": 0.0,
+      "model": "BAAI/bge-small-en-v1.5",
+      "dimensions": 384,
+      "notes": "BAAI/bge-small-en-v1.5 via sentence-transformers. 384-dim. Runs on CPU in Docker."
+    },
+    {
+      "embedding_id": "all-minilm-l6-v2",
+      "display_name": "all-MiniLM-L6-v2",
+      "provider": "local",
+      "provider_name": "Local CPU",
+      "provider_icon": "/huggingface.png",
+      "pricing_type": "free",
+      "price_per_query": 0.0,
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "dimensions": 384,
+      "notes": "sentence-transformers/all-MiniLM-L6-v2. General-purpose 384-dim bi-encoder. Runs on CPU in Docker."
+    }
+  ]
+}

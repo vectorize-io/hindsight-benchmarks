@@ -4,3 +4,6 @@ benchmark-runner/.env
 # Exclude uncompressed result files (keep only .gz versions)
 results/*.json
 !results/*.json.gz
+
+# Machine-specific benchmark metadata (temp dir paths)
+benchmark-runner/datasets/embedding_banks.json

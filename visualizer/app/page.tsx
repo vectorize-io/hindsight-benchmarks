@@ -4,6 +4,7 @@ import React from 'react'
 import { loadLongMemEval, loadLoComo } from '@/lib/data'
 import { loadLeaderboardData, getLeaderboardStats } from '@/lib/leaderboard'
 import { loadRerankerData, getRerankerStats } from '@/lib/reranker'
+import { loadEmbeddingsData, getEmbeddingsStats } from '@/lib/embeddings'
 
 function StatBlock({ value, label, highlight }: { value: string | number; label: string; highlight?: boolean }) {
   return (
@@ -93,6 +94,8 @@ export default function Home() {
   const leaderboardStats = getLeaderboardStats(leaderboardModels)
   const rerankers = loadRerankerData()
   const rerankerStats = getRerankerStats(rerankers)
+  const embeddingModels = loadEmbeddingsData()
+  const embeddingsStats = getEmbeddingsStats(embeddingModels)
 
   return (
     <main className="min-h-screen">
@@ -186,6 +189,17 @@ export default function Home() {
                 stats={[
                   { value: rerankerStats.count, label: 'Rerankers', highlight: true },
                   ...(rerankerStats.topReranker ? [{ value: rerankerStats.topReranker.score.toFixed(1), label: 'Top Score' }] : []),
+                ]}
+                cta="View leaderboard"
+              />
+              <BenchmarkCard
+                href="/leaderboard/embeddings"
+                tag="Leaderboard"
+                title="Embeddings Leaderboard"
+                description={<>Ranked embedding models for <span className="gradient-primary-text font-semibold">recall()</span> — which embedding retrieves the most relevant facts.</>}
+                stats={[
+                  { value: embeddingsStats.count, label: 'Models', highlight: true },
+                  ...(embeddingsStats.topEmbedding ? [{ value: embeddingsStats.topEmbedding.score.toFixed(1), label: 'Top Score' }] : []),
                 ]}
                 cta="View leaderboard"
               />
