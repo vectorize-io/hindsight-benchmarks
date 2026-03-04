@@ -90,6 +90,17 @@ export default function EmbeddingsLeaderboardPage() {
                   R@5 asks: <em>&ldquo;is any of the top 5 results relevant?&rdquo;</em>
                 </td>
               </tr>
+              <tr className="align-top">
+                <td className="px-6 py-4 font-semibold text-foreground whitespace-nowrap">Cost</td>
+                <td className="px-6 py-4 whitespace-nowrap">$ per recall()</td>
+                <td className="px-6 py-4">
+                  Published list price per embedding API call for the query vector only (ingestion is a one-time cost not measured here).
+                  Local models score 100 (free). API pricing is estimated at ~50 tokens per query:
+                  OpenAI <code className="mx-1 px-1.5 py-0.5 bg-secondary rounded text-xs font-mono">text-embedding-3-small</code> ($0.02/1M tokens ≈ $0.000001/query).
+                  Cohere <code className="mx-1 px-1.5 py-0.5 bg-secondary rounded text-xs font-mono">embed-english-*-v3.0</code> ($0.10/1M tokens ≈ $0.000005/query).
+                  Scores use <code className="mx-1 px-1.5 py-0.5 bg-secondary rounded text-xs font-mono">100 × 0.0001 / (0.0001 + price)</code> — embedding queries are very cheap so cost rarely dominates.
+                </td>
+              </tr>
               <tr className="align-top bg-secondary/20">
                 <td className="px-6 py-4 font-semibold text-foreground whitespace-nowrap">Latency</td>
                 <td className="px-6 py-4 whitespace-nowrap">avg s/recall</td>
@@ -105,6 +116,7 @@ export default function EmbeddingsLeaderboardPage() {
                   Benchmark uses the <strong className="text-foreground">LoComo</strong> long-term conversation
                   dataset (conv-43, 165 questions with annotated ground truth).
                   Each embedding model ingests the conversation into its own bank (separate volume, since dimensions are fixed at schema creation).
+                  Models above <strong className="text-foreground">2000 dimensions</strong> are excluded due to pgvector&apos;s HNSW index limit.
                   Fixed reranker: <strong className="text-foreground">MiniLM-L6</strong> (cross-encoder/ms-marco-MiniLM-L-6-v2) for all runs.
                   Candidates per recall: <strong className="text-foreground">300</strong> (budget=mid).
                   Ground truth is annotated <strong className="text-foreground">per model</strong> — each model gets its own GT file,
@@ -118,38 +130,6 @@ export default function EmbeddingsLeaderboardPage() {
         </div>
       </div>
 
-      {/* Interpretation notes */}
-      <div className="mt-8 space-y-4">
-        <h2 className="text-xl font-heading font-bold text-foreground">Interpreting the results</h2>
-
-        <div className="rounded-lg border border-border bg-card p-5 text-sm text-muted-foreground space-y-2">
-          <p className="font-semibold text-foreground">Why does each embedding model need its own bank?</p>
-          <p>
-            Hindsight stores vectors in a PostgreSQL table with a fixed-width column set at bank creation time.
-            The vector dimension is determined by the embedding model used during the first <code className="mx-1 px-1.5 py-0.5 bg-secondary rounded text-xs font-mono">retain()</code> call
-            and cannot change afterwards. Switching embedding models requires a fresh database volume and
-            re-ingesting the entire conversation from scratch.
-          </p>
-          <p className="text-xs pt-1 border-t border-border">
-            <strong className="text-foreground">Practical implication:</strong> the ingestion latency is not counted in the benchmark results —
-            only <code className="mx-1 px-1.5 py-0.5 bg-secondary rounded text-xs font-mono">recall()</code> latency is measured, which includes
-            vector search + reranking. Ingestion is a one-time cost per model per conversation.
-          </p>
-        </div>
-
-        <div className="rounded-lg border border-border bg-card p-5 text-sm text-muted-foreground space-y-2">
-          <p className="font-semibold text-foreground">Why is the reranker fixed (MiniLM-L6)?</p>
-          <p>
-            To isolate the contribution of the embedding model. By holding the reranker constant across all runs,
-            differences in MRR and Recall@K reflect only the quality of the embedding model&apos;s vector space —
-            how well it represents semantic similarity for short conversational facts.
-            The reranker is the top performer from the{' '}
-            <a href="/leaderboard/reranker" className="text-foreground underline underline-offset-2 hover:text-primary transition-colors">
-              Reranker Leaderboard
-            </a>.
-          </p>
-        </div>
-      </div>
     </main>
   )
 }

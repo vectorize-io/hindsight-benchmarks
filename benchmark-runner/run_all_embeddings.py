@@ -59,11 +59,21 @@ RETAIN_MODEL = "gemini-2.5-flash"
 RETAIN_API_KEY = GEMINI_API_KEY
 
 # Embedding models to benchmark: (embedding_id, provider, model)
-# All models must produce exactly 384-dimensional vectors (Hindsight DB constraint).
+# Hindsight auto-detects the embedding dimension at startup — any dimension is supported.
+# Each model gets its own Docker volume (separate bank) because the schema is fixed at
+# schema-creation time per bank (different dims require different banks).
 EMBEDDING_MODELS = [
     # Local models (no API key required, run on CPU in Docker)
-    ("bge-small-en-v1.5",  "local", "BAAI/bge-small-en-v1.5"),
-    ("all-minilm-l6-v2",   "local", "sentence-transformers/all-MiniLM-L6-v2"),
+    ("bge-small-en-v1.5",       "local",  "BAAI/bge-small-en-v1.5"),
+    ("all-minilm-l6-v2",        "local",  "sentence-transformers/all-MiniLM-L6-v2"),
+    ("bge-base-en-v1.5",        "local",  "BAAI/bge-base-en-v1.5"),
+    ("bge-large-en-v1.5",       "local",  "BAAI/bge-large-en-v1.5"),
+    # OpenAI embedding API
+    ("text-embedding-3-small",  "openai", "text-embedding-3-small"),
+    # text-embedding-3-large (3072-dim) exceeds pgvector HNSW 2000-dim limit — excluded
+    # Cohere embedding API
+    ("cohere-embed-english-light-v3.0", "cohere", "embed-english-light-v3.0"),
+    ("cohere-embed-english-v3.0",       "cohere", "embed-english-v3.0"),
 ]
 
 
@@ -92,6 +102,7 @@ def _base_env(embedding_provider: str, embedding_model: str) -> dict:
     }
     if embedding_provider == "local" and embedding_model:
         env["HINDSIGHT_API_EMBEDDINGS_LOCAL_MODEL"] = embedding_model
+        env["HINDSIGHT_API_EMBEDDINGS_LOCAL_TRUST_REMOTE_CODE"] = "true"
     elif embedding_provider == "openai" and embedding_model:
         env["HINDSIGHT_API_EMBEDDINGS_OPENAI_MODEL"] = embedding_model
         env["HINDSIGHT_API_EMBEDDINGS_OPENAI_API_KEY"] = OPENAI_API_KEY
@@ -110,9 +121,23 @@ def _benchmark_env(embedding_provider: str, embedding_model: str) -> dict:
     return env
 
 
+HF_HUB_CACHE_DIR = Path.home() / ".cache" / "huggingface" / "hub"
+
+
 def _start_hindsight(data_dir: str, env: dict) -> tuple[DockerContainer, str]:
     c = DockerContainer(HINDSIGHT_IMAGE)
     c.with_volume_mapping(data_dir, "/app/data", "rw")
+    # Mount host HF cache so models aren't re-downloaded on each container start.
+    # HOME is /app/data in the container, so we must set HF_HOME explicitly to override
+    # the default HOME-based path. Mount 'hub' and 'modules' separately to avoid
+    # token file permission issues with the parent directory.
+    hf_base = Path.home() / ".cache" / "huggingface"
+    (hf_base / "hub").mkdir(parents=True, exist_ok=True)
+    (hf_base / "modules").mkdir(parents=True, exist_ok=True)
+    c.with_volume_mapping(str(hf_base / "hub"), "/hf_cache/hub", "rw")
+    c.with_volume_mapping(str(hf_base / "modules"), "/hf_cache/modules", "rw")
+    c.with_env("HF_HOME", "/hf_cache")
+    c.with_env("HF_HUB_OFFLINE", "1")  # use only cached models, no network calls
     c.with_exposed_ports(HINDSIGHT_PORT)
     for k, v in env.items():
         c.with_env(k, v)

@@ -218,6 +218,35 @@ export default function EmbeddingsTable({ embeddings }: EmbeddingsTableProps) {
       },
       size: 130,
     },
+    {
+      id: 'costScore',
+      accessorFn: row => row.score.costScore,
+      header: () => (
+        <div>
+          <div>Cost</div>
+          <div className="text-xs font-normal text-muted-foreground normal-case">$ per recall()</div>
+        </div>
+      ),
+      cell: ({ getValue, row }) => {
+        const score = getValue() as number
+        const { pricePerQuery, pricingType } = row.original.score
+        const priceLabel = pricingType === 'free' || pricePerQuery === 0
+          ? 'Free'
+          : pricePerQuery < 0.0001
+            ? `$${(pricePerQuery * 1_000_000).toFixed(2)}/1M`
+            : `$${pricePerQuery.toFixed(5)}`
+        return (
+          <div className="relative px-6 py-4" style={{ backgroundColor: scoreToBackground(score) }}>
+            <div className="absolute inset-0" style={{ width: `${score}%`, backgroundColor: scoreToBar(score) }} />
+            <div className="relative z-10">
+              <div className="text-sm font-semibold" style={{ color: scoreToText(score) }}>{score.toFixed(1)}</div>
+              <div className="text-xs text-muted-foreground">{priceLabel}</div>
+            </div>
+          </div>
+        )
+      },
+      size: 130,
+    },
   ]
 
   const table = useReactTable({
