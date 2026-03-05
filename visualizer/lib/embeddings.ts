@@ -86,7 +86,7 @@ export function loadEmbeddingsData(): EmbeddingRow[] {
       provider_name: result.provider,
       provider_icon: '',
       pricing_type: 'free',
-      price_per_query: 0,
+      price_per_1m_tokens: 0,
     }
     return {
       ...result,
