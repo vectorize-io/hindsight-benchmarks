@@ -75,7 +75,7 @@ export default function EmbeddingsLeaderboardPage() {
                   Weighted composite: <strong className="text-foreground">MRR 70%</strong> + <strong className="text-foreground">Speed 15%</strong> + <strong className="text-foreground">Cost 15%</strong>.
                   MRR is scaled directly to 0–100 (MRR × 100).
                   Speed uses <code className="mx-1 px-1.5 py-0.5 bg-secondary rounded text-xs font-mono">100 × 1 / (1 + latency_s)</code> (1s reference).
-                  Cost uses <code className="mx-1 px-1.5 py-0.5 bg-secondary rounded text-xs font-mono">100 × 0.0001 / (0.0001 + price_per_query)</code>.
+                  Cost uses <code className="mx-1 px-1.5 py-0.5 bg-secondary rounded text-xs font-mono">100 × 0.10 / (0.10 + price_per_1m_tokens)</code> ($0.10/1M reference).
                   R@K metrics are shown for reference but not included in the total score.
                 </td>
               </tr>
@@ -114,7 +114,7 @@ export default function EmbeddingsLeaderboardPage() {
                 <td className="px-6 py-4 whitespace-nowrap">—</td>
                 <td className="px-6 py-4">
                   Benchmark uses the <strong className="text-foreground">LoComo</strong> long-term conversation
-                  dataset (conv-43, 165 questions with annotated ground truth).
+                  dataset (conv-43). 178 non-adversarial questions are annotated per model; questions with zero relevant facts are skipped, leaving ~165–171 evaluated per model.
                   Each embedding model ingests the conversation into its own bank (separate volume, since dimensions are fixed at schema creation).
                   Models above <strong className="text-foreground">2000 dimensions</strong> are excluded due to pgvector&apos;s HNSW index limit.
                   Fixed reranker: <strong className="text-foreground">MiniLM-L6</strong> (cross-encoder/ms-marco-MiniLM-L-6-v2) for all runs.
