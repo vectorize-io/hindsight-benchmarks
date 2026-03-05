@@ -200,7 +200,7 @@ export default function Home() {
                 href="/leaderboard/embeddings"
                 tag="Leaderboard"
                 title="Embeddings Leaderboard"
-                description={<>Ranked embedding models for <span className="gradient-primary-text font-semibold">recall()</span> — which embedding retrieves the most relevant facts.</>}
+                description={<>Ranked embedding models for Hindsight — affects both <span className="gradient-primary-text font-semibold">retain()</span> storage and <span className="gradient-primary-text font-semibold">recall()</span> retrieval quality.</>}
                 stats={[
                   { value: embeddingsStats.count, label: 'Models', highlight: true },
                 ]}

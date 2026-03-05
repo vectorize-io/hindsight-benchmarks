@@ -11,8 +11,8 @@ export default function EmbeddingsLeaderboardPage() {
           Embeddings Leaderboard
         </h1>
         <p className="text-lg text-muted-foreground">
-          Which embedding model retrieves the most relevant facts from{' '}
-          <code className="px-1.5 py-0.5 bg-secondary rounded text-sm font-mono">recall()</code>?
+          Which embedding model works best with Hindsight? Rankings cover retrieval quality, speed, and cost —
+          the embedding model affects both memory storage (<code className="px-1.5 py-0.5 bg-secondary rounded text-sm font-mono">retain()</code>) and search (<code className="px-1.5 py-0.5 bg-secondary rounded text-sm font-mono">recall()</code>).
         </p>
       </div>
 
