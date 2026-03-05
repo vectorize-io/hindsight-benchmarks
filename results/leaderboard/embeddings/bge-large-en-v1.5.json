@@ -1,0 +1,13 @@
+{
+  "embedding_id": "bge-large-en-v1.5",
+  "provider": "local",
+  "model": "BAAI/bge-large-en-v1.5",
+  "reranker_id": "local-minilm-l6",
+  "recall_at_1": 0.6168,
+  "recall_at_3": 0.8263,
+  "recall_at_5": 0.9102,
+  "mrr": 0.7358,
+  "avg_latency_s": 3.77,
+  "total_questions": 167,
+  "sample_id": "conv-43"
+}

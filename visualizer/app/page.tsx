@@ -4,6 +4,7 @@ import React from 'react'
 import { loadLongMemEval, loadLoComo } from '@/lib/data'
 import { loadLeaderboardData, getLeaderboardStats } from '@/lib/leaderboard'
 import { loadRerankerData, getRerankerStats } from '@/lib/reranker'
+import { loadEmbeddingsData, getEmbeddingsStats } from '@/lib/embeddings'
 
 function StatBlock({ value, label, highlight }: { value: string | number; label: string; highlight?: boolean }) {
   return (
@@ -93,6 +94,8 @@ export default function Home() {
   const leaderboardStats = getLeaderboardStats(leaderboardModels)
   const rerankers = loadRerankerData()
   const rerankerStats = getRerankerStats(rerankers)
+  const embeddingModels = loadEmbeddingsData()
+  const embeddingsStats = getEmbeddingsStats(embeddingModels)
 
   return (
     <main className="min-h-screen">
@@ -185,8 +188,27 @@ export default function Home() {
                 description={<>Ranked rerankers for <span className="gradient-primary-text font-semibold">recall()</span> — which reranker surfaces the most relevant facts first.</>}
                 stats={[
                   { value: rerankerStats.count, label: 'Rerankers', highlight: true },
-                  ...(rerankerStats.topReranker ? [{ value: rerankerStats.topReranker.score.toFixed(1), label: 'Top Score' }] : []),
                 ]}
+                winner={rerankerStats.topReranker ? {
+                  name: rerankerStats.topReranker.name,
+                  providerIcon: rerankerStats.topReranker.providerIcon,
+                  providerName: rerankerStats.topReranker.providerName,
+                } : null}
+                cta="View leaderboard"
+              />
+              <BenchmarkCard
+                href="/leaderboard/embeddings"
+                tag="Leaderboard"
+                title="Embeddings Leaderboard"
+                description={<>Ranked embedding models for Hindsight — affects both <span className="gradient-primary-text font-semibold">retain()</span> storage and <span className="gradient-primary-text font-semibold">recall()</span> retrieval quality.</>}
+                stats={[
+                  { value: embeddingsStats.count, label: 'Models', highlight: true },
+                ]}
+                winner={embeddingsStats.topEmbedding ? {
+                  name: embeddingsStats.topEmbedding.name,
+                  providerIcon: embeddingsStats.topEmbedding.providerIcon,
+                  providerName: embeddingsStats.topEmbedding.providerName,
+                } : null}
                 cta="View leaderboard"
               />
             </div>

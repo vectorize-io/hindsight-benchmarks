@@ -1,0 +1,13 @@
+{
+  "embedding_id": "cohere-embed-english-v3.0",
+  "provider": "cohere",
+  "model": "embed-english-v3.0",
+  "reranker_id": "local-minilm-l6",
+  "recall_at_1": 0.6446,
+  "recall_at_3": 0.8614,
+  "recall_at_5": 0.9157,
+  "mrr": 0.7641,
+  "avg_latency_s": 1.95,
+  "total_questions": 166,
+  "sample_id": "conv-43"
+}
