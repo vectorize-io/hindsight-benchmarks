@@ -5,8 +5,9 @@ import { EmbeddingsResult } from './types'
 // Speed reference: a model at this latency scores 50.
 const LATENCY_REFERENCE = 1.0
 
-// Cost reference: a model at this price per query scores 50.
-const COST_REFERENCE = 0.0001
+// Cost reference: a model at this price per 1M tokens scores 50.
+// $0.10/1M tokens (roughly Cohere pricing) → score ~50.
+const COST_REFERENCE_PER_1M = 0.10
 
 export interface EmbeddingConfig {
   embedding_id: string
@@ -15,34 +16,34 @@ export interface EmbeddingConfig {
   provider_name: string
   provider_icon: string
   pricing_type: 'free' | 'pay-per-use'
-  price_per_query: number
+  price_per_1m_tokens: number  // $ per 1M tokens (applies to both ingestion and queries)
   model?: string
   dimensions?: number
   notes?: string
 }
 
 export interface EmbeddingScore {
-  totalScore: number    // 0–100 composite
-  rankingScore: number  // 0–100 from MRR
-  speedScore: number    // 0–100 from latency
-  costScore: number     // 0–100 from price per query
-  pricePerQuery: number
+  totalScore: number       // 0–100 composite
+  rankingScore: number     // 0–100 from MRR
+  speedScore: number       // 0–100 from latency
+  costScore: number        // 0–100 from price per 1M tokens
+  pricePer1mTokens: number
   pricingType: 'free' | 'pay-per-use'
 }
 
 export function calculateEmbeddingScore(
   mrr: number,
   avg_latency_s: number,
-  price_per_query: number,
+  price_per_1m_tokens: number,
   pricing_type: 'free' | 'pay-per-use',
 ): EmbeddingScore {
   const rankingScore = mrr * 100
   const speedScore = avg_latency_s === 0
     ? 0
     : (LATENCY_REFERENCE / (LATENCY_REFERENCE + avg_latency_s)) * 100
-  const costScore = price_per_query === 0
+  const costScore = price_per_1m_tokens === 0
     ? 100
-    : (COST_REFERENCE / (COST_REFERENCE + price_per_query)) * 100
+    : (COST_REFERENCE_PER_1M / (COST_REFERENCE_PER_1M + price_per_1m_tokens)) * 100
 
   // Weights: MRR 70%, Speed 15%, Cost 15%
   const totalScore = rankingScore * 0.70 + speedScore * 0.15 + costScore * 0.15
@@ -52,7 +53,7 @@ export function calculateEmbeddingScore(
     rankingScore: Math.round(rankingScore * 10) / 10,
     speedScore: Math.round(speedScore * 10) / 10,
     costScore: Math.round(costScore * 10) / 10,
-    pricePerQuery: price_per_query,
+    pricePer1mTokens: price_per_1m_tokens,
     pricingType: pricing_type,
   }
 }
@@ -93,7 +94,7 @@ export function loadEmbeddingsData(): EmbeddingRow[] {
       score: calculateEmbeddingScore(
         result.mrr,
         result.avg_latency_s,
-        config.price_per_query,
+        config.price_per_1m_tokens,
         config.pricing_type,
       ),
     }
@@ -105,6 +106,12 @@ export function getEmbeddingsStats(rows: EmbeddingRow[]) {
   const top = [...rows].sort((a, b) => b.score.totalScore - a.score.totalScore)[0]
   return {
     count: rows.length,
-    topEmbedding: top ? { id: top.embedding_id, score: top.score.totalScore } : null,
+    topEmbedding: top ? {
+      id: top.embedding_id,
+      name: top.config.display_name,
+      providerIcon: top.config.provider_icon,
+      providerName: top.config.provider_name,
+      score: top.score.totalScore,
+    } : null,
   }
 }

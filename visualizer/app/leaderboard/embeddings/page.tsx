@@ -92,13 +92,13 @@ export default function EmbeddingsLeaderboardPage() {
               </tr>
               <tr className="align-top">
                 <td className="px-6 py-4 font-semibold text-foreground whitespace-nowrap">Cost</td>
-                <td className="px-6 py-4 whitespace-nowrap">$ per recall()</td>
+                <td className="px-6 py-4 whitespace-nowrap">$ per 1M tokens</td>
                 <td className="px-6 py-4">
-                  Published list price per embedding API call for the query vector only (ingestion is a one-time cost not measured here).
-                  Local models score 100 (free). API pricing is estimated at ~50 tokens per query:
-                  OpenAI <code className="mx-1 px-1.5 py-0.5 bg-secondary rounded text-xs font-mono">text-embedding-3-small</code> ($0.02/1M tokens ≈ $0.000001/query).
-                  Cohere <code className="mx-1 px-1.5 py-0.5 bg-secondary rounded text-xs font-mono">embed-english-*-v3.0</code> ($0.10/1M tokens ≈ $0.000005/query).
-                  Scores use <code className="mx-1 px-1.5 py-0.5 bg-secondary rounded text-xs font-mono">100 × 0.0001 / (0.0001 + price)</code> — embedding queries are very cheap so cost rarely dominates.
+                  Published list price per 1M tokens — the same rate applies to both <strong className="text-foreground">ingestion</strong> (embedding facts during <code className="mx-1 px-1.5 py-0.5 bg-secondary rounded text-xs font-mono">retain()</code>) and <strong className="text-foreground">queries</strong> (embedding the search query on each <code className="mx-1 px-1.5 py-0.5 bg-secondary rounded text-xs font-mono">recall()</code>).
+                  Local models score 100 (free).
+                  OpenAI <code className="mx-1 px-1.5 py-0.5 bg-secondary rounded text-xs font-mono">text-embedding-3-small</code>: $0.02/1M tokens.
+                  Cohere <code className="mx-1 px-1.5 py-0.5 bg-secondary rounded text-xs font-mono">embed-english-*-v3.0</code>: $0.10/1M tokens.
+                  Score formula: <code className="mx-1 px-1.5 py-0.5 bg-secondary rounded text-xs font-mono">100 × 0.10 / (0.10 + price)</code> — $0.10/1M reference, so Cohere scores ~50 and OpenAI small scores ~83.
                 </td>
               </tr>
               <tr className="align-top bg-secondary/20">

@@ -188,8 +188,12 @@ export default function Home() {
                 description={<>Ranked rerankers for <span className="gradient-primary-text font-semibold">recall()</span> — which reranker surfaces the most relevant facts first.</>}
                 stats={[
                   { value: rerankerStats.count, label: 'Rerankers', highlight: true },
-                  ...(rerankerStats.topReranker ? [{ value: rerankerStats.topReranker.score.toFixed(1), label: 'Top Score' }] : []),
                 ]}
+                winner={rerankerStats.topReranker ? {
+                  name: rerankerStats.topReranker.name,
+                  providerIcon: rerankerStats.topReranker.providerIcon,
+                  providerName: rerankerStats.topReranker.providerName,
+                } : null}
                 cta="View leaderboard"
               />
               <BenchmarkCard
@@ -199,8 +203,12 @@ export default function Home() {
                 description={<>Ranked embedding models for <span className="gradient-primary-text font-semibold">recall()</span> — which embedding retrieves the most relevant facts.</>}
                 stats={[
                   { value: embeddingsStats.count, label: 'Models', highlight: true },
-                  ...(embeddingsStats.topEmbedding ? [{ value: embeddingsStats.topEmbedding.score.toFixed(1), label: 'Top Score' }] : []),
                 ]}
+                winner={embeddingsStats.topEmbedding ? {
+                  name: embeddingsStats.topEmbedding.name,
+                  providerIcon: embeddingsStats.topEmbedding.providerIcon,
+                  providerName: embeddingsStats.topEmbedding.providerName,
+                } : null}
                 cta="View leaderboard"
               />
             </div>

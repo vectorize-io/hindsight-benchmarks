@@ -8,7 +8,7 @@
       "provider_name": "Local CPU",
       "provider_icon": "/huggingface.png",
       "pricing_type": "free",
-      "price_per_query": 0.0,
+      "price_per_1m_tokens": 0.0,
       "model": "BAAI/bge-small-en-v1.5",
       "dimensions": 384,
       "notes": "BAAI/bge-small-en-v1.5 via sentence-transformers. 384-dim."
@@ -20,7 +20,7 @@
       "provider_name": "Local CPU",
       "provider_icon": "/huggingface.png",
       "pricing_type": "free",
-      "price_per_query": 0.0,
+      "price_per_1m_tokens": 0.0,
       "model": "sentence-transformers/all-MiniLM-L6-v2",
       "dimensions": 384,
       "notes": "sentence-transformers/all-MiniLM-L6-v2. General-purpose 384-dim bi-encoder."
@@ -32,7 +32,7 @@
       "provider_name": "Local CPU",
       "provider_icon": "/huggingface.png",
       "pricing_type": "free",
-      "price_per_query": 0.0,
+      "price_per_1m_tokens": 0.0,
       "model": "BAAI/bge-base-en-v1.5",
       "dimensions": 768,
       "notes": "BAAI/bge-base-en-v1.5. 768-dim. Stronger than bge-small."
@@ -44,7 +44,7 @@
       "provider_name": "Local CPU",
       "provider_icon": "/huggingface.png",
       "pricing_type": "free",
-      "price_per_query": 0.0,
+      "price_per_1m_tokens": 0.0,
       "model": "BAAI/bge-large-en-v1.5",
       "dimensions": 1024,
       "notes": "BAAI/bge-large-en-v1.5. 1024-dim. Largest local BGE model."
@@ -56,10 +56,10 @@
       "provider_name": "OpenAI",
       "provider_icon": "/openai.png",
       "pricing_type": "pay-per-use",
-      "price_per_query": 0.000001,
+      "price_per_1m_tokens": 0.02,
       "model": "text-embedding-3-small",
       "dimensions": 1536,
-      "notes": "OpenAI text-embedding-3-small. 1536-dim. $0.02/1M tokens (~$0.000001/query at 50 tok)."
+      "notes": "OpenAI text-embedding-3-small. 1536-dim. $0.02/1M tokens."
     },
     {
       "embedding_id": "cohere-embed-english-light-v3.0",
@@ -68,10 +68,10 @@
       "provider_name": "Cohere",
       "provider_icon": "/cohere.png",
       "pricing_type": "pay-per-use",
-      "price_per_query": 0.000005,
+      "price_per_1m_tokens": 0.10,
       "model": "embed-english-light-v3.0",
       "dimensions": 384,
-      "notes": "Cohere embed-english-light-v3.0. 384-dim. $0.10/1M tokens (~$0.000005/query at 50 tok)."
+      "notes": "Cohere embed-english-light-v3.0. 384-dim. $0.10/1M tokens."
     },
     {
       "embedding_id": "cohere-embed-english-v3.0",
@@ -80,10 +80,10 @@
       "provider_name": "Cohere",
       "provider_icon": "/cohere.png",
       "pricing_type": "pay-per-use",
-      "price_per_query": 0.000005,
+      "price_per_1m_tokens": 0.10,
       "model": "embed-english-v3.0",
       "dimensions": 1024,
-      "notes": "Cohere embed-english-v3.0. 1024-dim. $0.10/1M tokens (~$0.000005/query at 50 tok)."
+      "notes": "Cohere embed-english-v3.0. 1024-dim. $0.10/1M tokens."
     }
   ]
 }

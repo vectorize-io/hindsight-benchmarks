@@ -106,6 +106,12 @@ export function getRerankerStats(rows: RerankerRow[]) {
   const top = [...rows].sort((a, b) => b.score.totalScore - a.score.totalScore)[0]
   return {
     count: rows.length,
-    topReranker: top ? { id: top.reranker_id, score: top.score.totalScore } : null,
+    topReranker: top ? {
+      id: top.reranker_id,
+      name: top.config.display_name,
+      providerIcon: top.config.provider_icon,
+      providerName: top.config.provider_name,
+      score: top.score.totalScore,
+    } : null,
   }
 }

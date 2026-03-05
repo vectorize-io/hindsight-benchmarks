@@ -224,17 +224,15 @@ export default function EmbeddingsTable({ embeddings }: EmbeddingsTableProps) {
       header: () => (
         <div>
           <div>Cost</div>
-          <div className="text-xs font-normal text-muted-foreground normal-case">$ per recall()</div>
+          <div className="text-xs font-normal text-muted-foreground normal-case">$ per 1M tokens</div>
         </div>
       ),
       cell: ({ getValue, row }) => {
         const score = getValue() as number
-        const { pricePerQuery, pricingType } = row.original.score
-        const priceLabel = pricingType === 'free' || pricePerQuery === 0
+        const { pricePer1mTokens, pricingType } = row.original.score
+        const priceLabel = pricingType === 'free' || pricePer1mTokens === 0
           ? 'Free'
-          : pricePerQuery < 0.0001
-            ? `$${(pricePerQuery * 1_000_000).toFixed(2)}/1M`
-            : `$${pricePerQuery.toFixed(5)}`
+          : `$${pricePer1mTokens.toFixed(2)}/1M tok`
         return (
           <div className="relative px-6 py-4" style={{ backgroundColor: scoreToBackground(score) }}>
             <div className="absolute inset-0" style={{ width: `${score}%`, backgroundColor: scoreToBar(score) }} />
