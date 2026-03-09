@@ -1,0 +1,21 @@
+{
+  "model_id": "gpt-5.4",
+  "provider_id": "openai",
+  "quality": {
+    "accuracy": 86.8,
+    "correct": 210,
+    "total": 242,
+    "model_id": "gpt-5.4",
+    "provider_id": "openai",
+    "sample_id": "conv-43"
+  },
+  "reflect": {
+    "accuracy": 76.9,
+    "correct": 186,
+    "total": 242,
+    "avg_latency_s": 9.769,
+    "model_id": "gpt-5.4",
+    "provider_id": "openai",
+    "sample_id": "conv-43"
+  }
+}

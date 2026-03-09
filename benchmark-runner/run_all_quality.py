@@ -30,6 +30,7 @@ MODELS = [
     ("openai", "gpt-5-nano",        "openai", "gpt-5-nano",        OPENAI_API_KEY),
     ("openai", "gpt-5-mini",        "openai", "gpt-5-mini",        OPENAI_API_KEY),
     ("openai", "gpt-5.2",           "openai", "gpt-5.2",           OPENAI_API_KEY),
+    ("openai", "gpt-5.4",           "openai", "gpt-5.4",           OPENAI_API_KEY),
     # Groq
     ("groq", "openai-gpt-oss-20b",       "groq", "openai/gpt-oss-20b",       GROQ_API_KEY),
     ("groq", "openai-gpt-oss-120b",      "groq", "openai/gpt-oss-120b",      GROQ_API_KEY),
