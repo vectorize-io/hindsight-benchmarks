@@ -106,6 +106,36 @@
       "benchmarks": ["retain", "quality", "reflect"]
     },
     {
+      "provider_id": "openai",
+      "provider_name": "OpenAI",
+      "provider_icon": "/openai.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "gpt-5.4-mini",
+      "model_name": "gpt-5.4-mini",
+      "api_model": "gpt-5.4-mini",
+      "method": "url",
+      "url": "https://api.openai.com",
+      "api_key_env": "OPENAI_API_KEY",
+      "input_price_per_1m": 0.40,
+      "output_price_per_1m": 1.60,
+      "benchmarks": ["retain", "quality", "reflect"]
+    },
+    {
+      "provider_id": "openai",
+      "provider_name": "OpenAI",
+      "provider_icon": "/openai.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "gpt-5.4-nano",
+      "model_name": "gpt-5.4-nano",
+      "api_model": "gpt-5.4-nano",
+      "method": "url",
+      "url": "https://api.openai.com",
+      "api_key_env": "OPENAI_API_KEY",
+      "input_price_per_1m": 0.10,
+      "output_price_per_1m": 0.40,
+      "benchmarks": ["retain", "quality", "reflect"]
+    },
+    {
       "provider_id": "groq",
       "provider_name": "Groq",
       "provider_icon": "/groq.png",
