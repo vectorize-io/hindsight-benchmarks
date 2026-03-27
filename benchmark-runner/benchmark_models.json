@@ -26,8 +26,8 @@
       "method": "url",
       "url": "https://api.openai.com",
       "api_key_env": "OPENAI_API_KEY",
-      "input_price_per_1m": 0.15,
-      "output_price_per_1m": 0.6,
+      "input_price_per_1m": 0.40,
+      "output_price_per_1m": 1.60,
       "benchmarks": ["retain", "quality", "reflect"]
     },
     {
@@ -41,8 +41,8 @@
       "method": "url",
       "url": "https://api.openai.com",
       "api_key_env": "OPENAI_API_KEY",
-      "input_price_per_1m": 0.075,
-      "output_price_per_1m": 0.3,
+      "input_price_per_1m": 0.10,
+      "output_price_per_1m": 0.40,
       "benchmarks": ["retain", "quality", "reflect"]
     },
     {
@@ -116,8 +116,8 @@
       "method": "url",
       "url": "https://api.openai.com",
       "api_key_env": "OPENAI_API_KEY",
-      "input_price_per_1m": 0.40,
-      "output_price_per_1m": 1.60,
+      "input_price_per_1m": 0.75,
+      "output_price_per_1m": 4.50,
       "benchmarks": ["retain", "quality", "reflect"]
     },
     {
@@ -131,8 +131,8 @@
       "method": "url",
       "url": "https://api.openai.com",
       "api_key_env": "OPENAI_API_KEY",
-      "input_price_per_1m": 0.10,
-      "output_price_per_1m": 0.40,
+      "input_price_per_1m": 0.20,
+      "output_price_per_1m": 1.25,
       "benchmarks": ["retain", "quality", "reflect"]
     },
     {
