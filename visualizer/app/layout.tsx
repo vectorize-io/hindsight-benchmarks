@@ -22,11 +22,48 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ['400', '500'],
 })
 
+const siteUrl = 'https://benchmarks.hindsight.vectorize.io'
+
 export const metadata: Metadata = {
-  title: 'Hindsight Benchmarks',
-  description: 'Analyze and visualize benchmark results for Hindsight',
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: 'Hindsight Benchmarks — #1 on Agent Memory Benchmark',
+    template: '%s | Hindsight Benchmarks',
+  },
+  description:
+    'Hindsight leads every dataset on the Agent Memory Benchmark. Explore results across LongMemEval, LoComo, BEAM, LifeBench, and PersonaMem — plus model leaderboards for LLMs, rerankers, and embeddings.',
   icons: {
     icon: '/favicon.png',
+  },
+  openGraph: {
+    type: 'website',
+    siteName: 'Hindsight Benchmarks',
+    title: 'Hindsight Benchmarks — #1 on Agent Memory Benchmark',
+    description:
+      'Hindsight leads every dataset on the Agent Memory Benchmark. Explore benchmark results and model leaderboards for LLMs, rerankers, and embeddings.',
+    url: siteUrl,
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Hindsight Benchmarks — #1 on Agent Memory Benchmark',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Hindsight Benchmarks — #1 on Agent Memory Benchmark',
+    description:
+      'Hindsight leads every dataset on the Agent Memory Benchmark. Explore benchmark results and model leaderboards.',
+    images: ['/og-image.png'],
+  },
+  alternates: {
+    canonical: siteUrl,
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 }
 

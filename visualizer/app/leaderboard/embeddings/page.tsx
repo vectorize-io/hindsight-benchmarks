@@ -1,5 +1,12 @@
+import type { Metadata } from 'next'
 import { loadEmbeddingsData } from '@/lib/embeddings'
 import EmbeddingsTable from '@/components/leaderboard/EmbeddingsTable'
+
+export const metadata: Metadata = {
+  title: 'Embeddings Leaderboard — Best Embedding Models',
+  description:
+    'Ranked embedding models for Hindsight — compare retrieval quality (MRR, recall@k), latency, and cost across local and API-based embeddings.',
+}
 
 export default function EmbeddingsLeaderboardPage() {
   const embeddings = loadEmbeddingsData()

@@ -1,6 +1,13 @@
+import type { Metadata } from 'next'
 import { loadLeaderboardData } from '@/lib/leaderboard'
 import LeaderboardTable from '@/components/leaderboard/LeaderboardTable'
 import NonViableModels from '@/components/leaderboard/NonViableModels'
+
+export const metadata: Metadata = {
+  title: 'Retain Leaderboard — Best LLMs for Fact Extraction',
+  description:
+    'Ranked LLMs for the Hindsight retain() operation — compare quality, speed, cost, and reliability across models from OpenAI, Google, Groq, and more.',
+}
 
 export default function LeaderboardPage() {
   const allModels = loadLeaderboardData()

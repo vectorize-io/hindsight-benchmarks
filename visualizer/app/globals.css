@@ -76,3 +76,8 @@
     border-image: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%) 1;
   }
 }
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}

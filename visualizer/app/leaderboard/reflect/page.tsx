@@ -1,5 +1,12 @@
+import type { Metadata } from 'next'
 import { loadLeaderboardData } from '@/lib/leaderboard'
 import LeaderboardTable from '@/components/leaderboard/LeaderboardTable'
+
+export const metadata: Metadata = {
+  title: 'Reflect Leaderboard — Best LLMs for Memory Reflection',
+  description:
+    'Ranked LLMs for the Hindsight reflect() operation — compare quality, speed, and cost across models from OpenAI, Google, Groq, and more.',
+}
 
 export default function ReflectLeaderboardPage() {
   const allModels = loadLeaderboardData()

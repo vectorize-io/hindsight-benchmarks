@@ -1,5 +1,12 @@
+import type { Metadata } from 'next'
 import { loadRerankerData } from '@/lib/reranker'
 import RerankerTable from '@/components/leaderboard/RerankerTable'
+
+export const metadata: Metadata = {
+  title: 'Reranker Leaderboard — Best Rerankers for Recall',
+  description:
+    'Ranked rerankers for the Hindsight recall() operation — compare MRR, recall@k, speed, and cost across cross-encoder and API rerankers.',
+}
 
 export default function RerankerLeaderboardPage() {
   const rerankers = loadRerankerData()
