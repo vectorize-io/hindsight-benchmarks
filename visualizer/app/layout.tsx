@@ -81,11 +81,60 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="antialiased font-body min-h-screen bg-background text-foreground">
         <header className="border-b border-border bg-background/80 backdrop-blur-sm sticky top-0 z-50">
           <div className="container mx-auto max-w-5xl px-4 h-14 flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-3">
-              <span className="font-heading font-bold text-sm gradient-primary-text">Hindsight</span>
+            <div className="flex items-center gap-3">
+              <Link href="/" className="font-heading font-bold text-sm gradient-primary-text">
+                Hindsight
+              </Link>
               <span className="text-border text-sm select-none">/</span>
-              <span className="text-muted-foreground text-sm">Benchmarks</span>
-            </Link>
+              <div className="relative group">
+                <button
+                  type="button"
+                  className="text-muted-foreground text-sm hover:text-foreground transition-colors flex items-center gap-1"
+                >
+                  Benchmarks
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div className="absolute left-0 top-full pt-2 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity z-50">
+                  <div className="w-64 rounded-md border border-border bg-background shadow-lg py-1">
+                    {[
+                      { name: 'LongMemEval', split: 'S', href: 'https://agentmemorybenchmark.ai/run/outputs/longmemeval/hindsight/rag/s.json.gz' },
+                      { name: 'LoComo', split: '10', href: 'https://agentmemorybenchmark.ai/run/outputs/locomo/locomo-hindsight/rag/locomo10.json.gz' },
+                      { name: 'PersonaMem', split: '32K', href: 'https://agentmemorybenchmark.ai/run/outputs/personamem/hindsight/rag/32k.json.gz' },
+                      { name: 'BEAM', split: '100K', href: 'https://agentmemorybenchmark.ai/run/outputs/beam/hindsight/single-query/100k.json' },
+                      { name: 'BEAM', split: '1M', href: 'https://agentmemorybenchmark.ai/run/outputs/beam/hindsight/single-query/1m.json' },
+                      { name: 'LifeBench', split: 'EN', href: 'https://agentmemorybenchmark.ai/run/outputs/lifebench/hindsight/rag/en.json.gz' },
+                      { name: 'BEAM', split: '500K', href: 'https://agentmemorybenchmark.ai/run/outputs/beam/hindsight/single-query/500k.json' },
+                      { name: 'BEAM', split: '10M', href: 'https://agentmemorybenchmark.ai/run/outputs/beam/hindsight/single-query/10m.json' },
+                    ].map((b) => (
+                      <a
+                        key={`${b.name}-${b.split}`}
+                        href={b.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-between px-3 py-2 text-xs text-muted-foreground hover:bg-secondary/50 hover:text-foreground transition-colors"
+                      >
+                        <span className="font-medium">{b.name}</span>
+                        <span className="font-mono text-[10px] text-muted-foreground/70">{b.split}</span>
+                      </a>
+                    ))}
+                    <div className="my-1 border-t border-border" />
+                    <a
+                      href="https://agentmemorybenchmark.ai"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 px-3 py-2 text-xs text-muted-foreground hover:bg-secondary/50 hover:text-foreground transition-colors"
+                    >
+                      View full comparison
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div className="flex items-center gap-4">
               <a
                 href="https://join.slack.com/t/hindsight-space/shared_invite/zt-3nhbm4w29-LeSJ5Ixi6j8PdiYOCPlOgg"

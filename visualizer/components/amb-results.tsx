@@ -2,21 +2,24 @@
 
 import { useEffect, useState } from 'react'
 
+const AMB_RUN = 'https://agentmemorybenchmark.ai/run'
+
 const AMB_RESULTS = [
-  { benchmark: 'LongMemEval', split: 'S', score: 94.6 },
-  { benchmark: 'LoComo', split: '10', score: 92.0 },
-  { benchmark: 'PersonaMem', split: '32K', score: 86.6 },
-  { benchmark: 'BEAM', split: '100K', score: 75.0 },
-  { benchmark: 'BEAM', split: '1M', score: 73.9 },
-  { benchmark: 'LifeBench', split: 'EN', score: 71.5 },
-  { benchmark: 'BEAM', split: '500K', score: 71.1 },
-  { benchmark: 'BEAM', split: '10M', score: 64.1 },
+  { benchmark: 'LongMemEval', split: 'S', score: 94.6, href: `${AMB_RUN}/outputs/longmemeval/hindsight/rag/s.json.gz` },
+  { benchmark: 'LoComo', split: '10', score: 92.0, href: `${AMB_RUN}/outputs/locomo/locomo-hindsight/rag/locomo10.json.gz` },
+  { benchmark: 'PersonaMem', split: '32K', score: 86.6, href: `${AMB_RUN}/outputs/personamem/hindsight/rag/32k.json.gz` },
+  { benchmark: 'BEAM', split: '100K', score: 75.0, href: `${AMB_RUN}/outputs/beam/hindsight/single-query/100k.json` },
+  { benchmark: 'BEAM', split: '1M', score: 73.9, href: `${AMB_RUN}/outputs/beam/hindsight/single-query/1m.json` },
+  { benchmark: 'LifeBench', split: 'EN', score: 71.5, href: `${AMB_RUN}/outputs/lifebench/hindsight/rag/en.json.gz` },
+  { benchmark: 'BEAM', split: '500K', score: 71.1, href: `${AMB_RUN}/outputs/beam/hindsight/single-query/500k.json` },
+  { benchmark: 'BEAM', split: '10M', score: 64.1, href: `${AMB_RUN}/outputs/beam/hindsight/single-query/10m.json` },
 ]
 
-function ScoreBar({ benchmark, split, score, index, animate }: {
+function ScoreBar({ benchmark, split, score, href, index, animate }: {
   benchmark: string
   split: string
   score: number
+  href: string
   index: number
   animate: boolean
 }) {
@@ -24,8 +27,12 @@ function ScoreBar({ benchmark, split, score, index, animate }: {
   const delay = index * 80
 
   return (
-    <div
-      className="group relative"
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      title={`View ${benchmark} ${split} results on agentmemorybenchmark.ai`}
+      className="group relative block rounded-sm -mx-2 px-2 py-1 transition-colors hover:bg-secondary/30"
       style={{ animationDelay: `${delay}ms` }}
     >
       <div className="flex items-center gap-4">
@@ -68,7 +75,7 @@ function ScoreBar({ benchmark, split, score, index, animate }: {
         </div>
 
         {/* Score */}
-        <div className="w-[60px] shrink-0">
+        <div className="w-[60px] shrink-0 flex items-center gap-1">
           <span
             className="text-lg font-heading font-bold tabular-nums"
             style={{
@@ -77,9 +84,17 @@ function ScoreBar({ benchmark, split, score, index, animate }: {
           >
             {score}%
           </span>
+          <svg
+            className="w-3 h-3 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
         </div>
       </div>
-    </div>
+    </a>
   )
 }
 
@@ -129,6 +144,7 @@ export function AMBResults() {
               benchmark={r.benchmark}
               split={r.split}
               score={r.score}
+              href={r.href}
               index={i}
               animate={animate}
             />
