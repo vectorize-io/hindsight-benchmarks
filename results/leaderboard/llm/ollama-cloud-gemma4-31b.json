@@ -1,0 +1,167 @@
+{
+  "model_id": "gemma4-31b",
+  "provider_id": "ollama-cloud",
+  "retain": {
+    "timestamp": "2026-04-07T16:59:57.063796+00:00",
+    "model_id": "gemma4-31b",
+    "model_name": "gemma4:31b",
+    "provider_id": "ollama-cloud",
+    "size_gb": 0.0,
+    "dataset": "locomo_5k",
+    "concurrency": 1,
+    "wall_s": 336.55970668792725,
+    "summary": {
+      "success": 12,
+      "total": 12,
+      "wall_s": 336.56,
+      "avg_latency_s": 28.041,
+      "throughput_rps": 0.036,
+      "completion_toks_s": 44.2,
+      "total_toks_s": 275.2,
+      "out_in_ratio": 0.191,
+      "tokens_per_fact": 79.9
+    },
+    "tests": [
+      {
+        "test_index": 1,
+        "latency_s": 29.389194011688232,
+        "num_facts": 13,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 6330,
+        "completion_tokens": 1044,
+        "error": ""
+      },
+      {
+        "test_index": 2,
+        "latency_s": 22.159809827804565,
+        "num_facts": 16,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 6362,
+        "completion_tokens": 1223,
+        "error": ""
+      },
+      {
+        "test_index": 3,
+        "latency_s": 28.328299045562744,
+        "num_facts": 20,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 6651,
+        "completion_tokens": 1582,
+        "error": ""
+      },
+      {
+        "test_index": 4,
+        "latency_s": 19.529977083206177,
+        "num_facts": 14,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 6605,
+        "completion_tokens": 1069,
+        "error": ""
+      },
+      {
+        "test_index": 5,
+        "latency_s": 19.85693597793579,
+        "num_facts": 12,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 6264,
+        "completion_tokens": 1070,
+        "error": ""
+      },
+      {
+        "test_index": 6,
+        "latency_s": 32.9364697933197,
+        "num_facts": 18,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 6210,
+        "completion_tokens": 1373,
+        "error": ""
+      },
+      {
+        "test_index": 7,
+        "latency_s": 29.633368968963623,
+        "num_facts": 14,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 6742,
+        "completion_tokens": 1137,
+        "error": ""
+      },
+      {
+        "test_index": 8,
+        "latency_s": 25.60027289390564,
+        "num_facts": 15,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 6664,
+        "completion_tokens": 1267,
+        "error": ""
+      },
+      {
+        "test_index": 9,
+        "latency_s": 27.067739963531494,
+        "num_facts": 19,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 6364,
+        "completion_tokens": 1502,
+        "error": ""
+      },
+      {
+        "test_index": 10,
+        "latency_s": 27.52513098716736,
+        "num_facts": 21,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 6420,
+        "completion_tokens": 1215,
+        "error": ""
+      },
+      {
+        "test_index": 11,
+        "latency_s": 29.348703861236572,
+        "num_facts": 12,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 6603,
+        "completion_tokens": 1320,
+        "error": ""
+      },
+      {
+        "test_index": 12,
+        "latency_s": 45.119953870773315,
+        "num_facts": 12,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 6548,
+        "completion_tokens": 1062,
+        "error": ""
+      }
+    ]
+  },
+  "quality": {
+    "accuracy": 86.0,
+    "correct": 208,
+    "total": 242,
+    "model_id": "gemma4-31b",
+    "provider_id": "ollama-cloud",
+    "sample_id": "conv-43"
+  }
+}

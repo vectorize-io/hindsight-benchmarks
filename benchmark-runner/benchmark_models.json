@@ -234,6 +234,21 @@
       "benchmarks": ["retain", "quality", "reflect"]
     },
     {
+      "provider_id": "ollama-cloud",
+      "provider_name": "Ollama Cloud",
+      "provider_icon": "/ollama.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "gemma4-31b",
+      "model_name": "gemma4:31b",
+      "api_model": "gemma4:31b",
+      "method": "url",
+      "url": "https://ollama.com",
+      "api_key_env": "OLLAMA_API_KEY",
+      "input_price_per_1m": 0,
+      "output_price_per_1m": 0,
+      "benchmarks": ["retain"]
+    },
+    {
       "provider_id": "local-ollama",
       "provider_name": "Ollama (Local)",
       "provider_icon": "/ollama.png",

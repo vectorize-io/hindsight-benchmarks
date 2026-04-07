@@ -20,6 +20,7 @@ RESULTS_DIR = BENCHMARK_RUNNER_DIR.parent / "results" / "leaderboard" / "llm"
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "")
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
+OLLAMA_API_KEY = os.environ.get("OLLAMA_API_KEY", "")
 
 # Models to benchmark: (provider_id, model_id, hindsight_provider, hindsight_model, api_key)
 MODELS = [
@@ -42,7 +43,14 @@ MODELS = [
     ("gemini", "gemini-2.5-flash",       "gemini", "gemini-2.5-flash",       GEMINI_API_KEY),
     ("gemini", "gemini-2.5-flash-lite",  "gemini", "gemini-2.5-flash-lite",  GEMINI_API_KEY),
     ("gemini", "gemini-3-flash-preview", "gemini", "gemini-3-flash-preview", GEMINI_API_KEY),
+    # Ollama Cloud (OpenAI-compatible with custom base URL)
+    ("ollama-cloud", "gemma4-31b", "openai", "gemma4:31b", OLLAMA_API_KEY),
 ]
+
+# Models that need a custom LLM base URL
+MODEL_BASE_URLS = {
+    "gemma4-31b": "https://ollama.com/v1",
+}
 
 BASE_CONFIG = {
     "HINDSIGHT_API_EMBEDDINGS_PROVIDER": "local",
@@ -58,14 +66,17 @@ BASE_CONFIG = {
 }
 
 
-def make_config(hindsight_provider: str, hindsight_model: str, api_key: str, run_ts: int) -> dict:
-    return {
+def make_config(hindsight_provider: str, hindsight_model: str, api_key: str, run_ts: int, model_id: str = "") -> dict:
+    config = {
         **BASE_CONFIG,
         "HINDSIGHT_API_LLM_PROVIDER": hindsight_provider,
         "HINDSIGHT_API_LLM_MODEL": hindsight_model,
         "HINDSIGHT_API_LLM_API_KEY": api_key,
         "HINDSIGHT_API_DATABASE_URL": f"pg0://quality-bench-{run_ts}",
     }
+    if model_id in MODEL_BASE_URLS:
+        config["HINDSIGHT_API_LLM_BASE_URL"] = MODEL_BASE_URLS[model_id]
+    return config
 
 
 def _write_error(provider_id: str, model_id: str, message: str):
@@ -113,7 +124,7 @@ def main():
 
         run_ts = int(time.time())
         profile = f"qb-{run_ts}"
-        config = make_config(h_provider, h_model, api_key, run_ts)
+        config = make_config(h_provider, h_model, api_key, run_ts, model_id=model_id)
 
         print(f"  Starting Hindsight daemon (profile={profile})...")
         if not mgr.ensure_running(config, profile):
