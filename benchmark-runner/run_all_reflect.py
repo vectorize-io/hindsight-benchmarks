@@ -41,6 +41,7 @@ HINDSIGHT_PORT = 8888
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "")
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
+OLLAMA_API_KEY = os.environ.get("OLLAMA_API_KEY", "")
 
 # Constant retain model — always gemini-2.5-flash
 RETAIN_PROVIDER = "gemini"
@@ -68,7 +69,14 @@ MODELS = [
     ("gemini", "gemini-2.5-flash",       "gemini", "gemini-2.5-flash",       GEMINI_API_KEY),
     ("gemini", "gemini-2.5-flash-lite",  "gemini", "gemini-2.5-flash-lite",  GEMINI_API_KEY),
     ("gemini", "gemini-3-flash-preview", "gemini", "gemini-3-flash-preview", GEMINI_API_KEY),
+    # Ollama Cloud (OpenAI-compatible with custom base URL)
+    ("ollama-cloud", "gemma4-31b", "openai", "gemma4:31b", OLLAMA_API_KEY),
 ]
+
+# Models that need a custom reflect LLM base URL
+REFLECT_BASE_URLS = {
+    "gemma4-31b": "https://ollama.com/v1",
+}
 
 BASE_ENV = {
     "HINDSIGHT_ENABLE_CP": "false",
@@ -95,14 +103,17 @@ BASE_ENV = {
 }
 
 
-def _make_env(reflect_provider: str, reflect_model: str, reflect_api_key: str) -> dict:
-    return {
+def _make_env(reflect_provider: str, reflect_model: str, reflect_api_key: str, model_id: str = "") -> dict:
+    env = {
         **BASE_ENV,
         "HINDSIGHT_API_REFLECT_LLM_PROVIDER": reflect_provider,
         "HINDSIGHT_API_REFLECT_LLM_MODEL": reflect_model,
         "HINDSIGHT_API_REFLECT_LLM_API_KEY": reflect_api_key,
         "HINDSIGHT_API_REFLECT_LLM_TIMEOUT": "60",
     }
+    if model_id in REFLECT_BASE_URLS:
+        env["HINDSIGHT_API_REFLECT_LLM_BASE_URL"] = REFLECT_BASE_URLS[model_id]
+    return env
 
 
 def _start_hindsight(data_dir: str, env: dict) -> tuple[DockerContainer, str]:
@@ -250,7 +261,7 @@ def main():
 
         model_container = None
         try:
-            env = _make_env(r_provider, r_model, r_api_key)
+            env = _make_env(r_provider, r_model, r_api_key, model_id=model_id)
             model_container, api_url = _start_hindsight(data_dir, env)
             print(f"  Container ready at {api_url}. Running reflect benchmark...")
             result = benchmark.run_with_bank(

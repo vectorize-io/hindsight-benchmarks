@@ -163,5 +163,14 @@
     "model_id": "gemma4-31b",
     "provider_id": "ollama-cloud",
     "sample_id": "conv-43"
+  },
+  "reflect": {
+    "accuracy": 90.1,
+    "correct": 218,
+    "total": 242,
+    "avg_latency_s": 8.791,
+    "model_id": "gemma4-31b",
+    "provider_id": "ollama-cloud",
+    "sample_id": "conv-43"
   }
 }
