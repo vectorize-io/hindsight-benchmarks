@@ -234,6 +234,34 @@
       "benchmarks": ["retain", "quality", "reflect"]
     },
     {
+      "provider_id": "gemini",
+      "provider_name": "Google",
+      "provider_icon": "/gemini.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "gemini-3.1-flash-lite",
+      "model_name": "gemini-3.1-flash-lite",
+      "gemini_model": "gemini-3.1-flash-lite",
+      "method": "gemini",
+      "api_key_env": "GEMINI_API_KEY",
+      "input_price_per_1m": 0.25,
+      "output_price_per_1m": 1.50,
+      "benchmarks": ["retain", "quality", "reflect"]
+    },
+    {
+      "provider_id": "gemini",
+      "provider_name": "Google",
+      "provider_icon": "/gemini.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "gemini-3.5-flash",
+      "model_name": "gemini-3.5-flash",
+      "gemini_model": "gemini-3.5-flash",
+      "method": "gemini",
+      "api_key_env": "GEMINI_API_KEY",
+      "input_price_per_1m": 1.50,
+      "output_price_per_1m": 9.00,
+      "benchmarks": ["retain", "quality", "reflect"]
+    },
+    {
       "provider_id": "ollama-cloud",
       "provider_name": "Ollama Cloud",
       "provider_icon": "/ollama.png",
@@ -246,7 +274,7 @@
       "api_key_env": "OLLAMA_API_KEY",
       "input_price_per_1m": 0,
       "output_price_per_1m": 0,
-      "benchmarks": ["retain"]
+      "benchmarks": ["retain", "quality", "reflect"]
     },
     {
       "provider_id": "local-ollama",
@@ -377,6 +405,214 @@
       "url": "http://localhost:11434",
       "size_gb": 3.0,
       "benchmarks": ["retain"]
+    },
+    {
+      "provider_id": "gemini",
+      "provider_name": "Google",
+      "provider_icon": "/gemini.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "gemini-3.1-pro-preview",
+      "model_name": "gemini-3.1-pro-preview",
+      "method": "gemini",
+      "gemini_model": "gemini-3.1-pro-preview",
+      "api_key_env": "GEMINI_API_KEY",
+      "input_price_per_1m": 2.00,
+      "output_price_per_1m": 12.00,
+      "benchmarks": [
+        "retain",
+        "quality",
+        "reflect"
+      ]
+    },
+    {
+      "provider_id": "openrouter",
+      "provider_name": "OpenRouter",
+      "provider_icon": "/openrouter.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "nvidia-nemotron-3-nano-30b-a3b",
+      "model_name": "nvidia/nemotron-3-nano-30b-a3b",
+      "method": "url",
+      "api_model": "nvidia/nemotron-3-nano-30b-a3b",
+      "url": "https://openrouter.ai/api",
+      "api_key_env": "OPENROUTER_API_KEY",
+      "input_price_per_1m": 0.05,
+      "output_price_per_1m": 0.2,
+      "notes": "Slow reasoning model (~240s/call): often returns empty output on long extraction prompts, so retain is partial and quality could not complete. Only reflect is representative.",
+      "benchmarks": [
+        "retain",
+        "reflect"
+      ]
+    },
+    {
+      "provider_id": "openrouter",
+      "provider_name": "OpenRouter",
+      "provider_icon": "/openrouter.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "gpt-oss-20b",
+      "model_name": "openai/gpt-oss-20b",
+      "method": "url",
+      "api_model": "openai/gpt-oss-20b",
+      "url": "https://openrouter.ai/api",
+      "api_key_env": "OPENROUTER_API_KEY",
+      "input_price_per_1m": 0.029,
+      "output_price_per_1m": 0.14,
+      "benchmarks": [
+        "retain",
+        "quality",
+        "reflect"
+      ]
+    },
+    {
+      "provider_id": "openrouter",
+      "provider_name": "OpenRouter",
+      "provider_icon": "/openrouter.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "gpt-oss-120b",
+      "model_name": "openai/gpt-oss-120b",
+      "method": "url",
+      "api_model": "openai/gpt-oss-120b",
+      "url": "https://openrouter.ai/api",
+      "api_key_env": "OPENROUTER_API_KEY",
+      "input_price_per_1m": 0.039,
+      "output_price_per_1m": 0.18,
+      "benchmarks": [
+        "retain",
+        "quality",
+        "reflect"
+      ]
+    },
+    {
+      "provider_id": "openrouter",
+      "provider_name": "OpenRouter",
+      "provider_icon": "/openrouter.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "meta-llama-llama-3.2-3b-instruct",
+      "model_name": "meta-llama/llama-3.2-3b-instruct",
+      "method": "url",
+      "api_model": "meta-llama/llama-3.2-3b-instruct",
+      "url": "https://openrouter.ai/api",
+      "api_key_env": "OPENROUTER_API_KEY",
+      "input_price_per_1m": 0.051,
+      "output_price_per_1m": 0.335,
+      "benchmarks": [
+        "retain",
+        "quality",
+        "reflect"
+      ]
+    },
+    {
+      "provider_id": "openrouter",
+      "provider_name": "OpenRouter",
+      "provider_icon": "/openrouter.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "google-gemma-4-26b-a4b-it",
+      "model_name": "google/gemma-4-26b-a4b-it",
+      "method": "url",
+      "api_model": "google/gemma-4-26b-a4b-it",
+      "url": "https://openrouter.ai/api",
+      "api_key_env": "OPENROUTER_API_KEY",
+      "input_price_per_1m": 0.06,
+      "output_price_per_1m": 0.33,
+      "benchmarks": [
+        "retain",
+        "quality",
+        "reflect"
+      ]
+    },
+    {
+      "provider_id": "openrouter",
+      "provider_name": "OpenRouter",
+      "provider_icon": "/openrouter.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "nvidia-nemotron-3-super-120b-a12b",
+      "model_name": "nvidia/nemotron-3-super-120b-a12b",
+      "method": "url",
+      "api_model": "nvidia/nemotron-3-super-120b-a12b",
+      "url": "https://openrouter.ai/api",
+      "api_key_env": "OPENROUTER_API_KEY",
+      "input_price_per_1m": 0.09,
+      "output_price_per_1m": 0.45,
+      "benchmarks": [
+        "retain",
+        "quality",
+        "reflect"
+      ]
+    },
+    {
+      "provider_id": "openrouter",
+      "provider_name": "OpenRouter",
+      "provider_icon": "/openrouter.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "qwen-qwen3-next-80b-a3b-instruct",
+      "model_name": "qwen/qwen3-next-80b-a3b-instruct",
+      "method": "url",
+      "api_model": "qwen/qwen3-next-80b-a3b-instruct",
+      "url": "https://openrouter.ai/api",
+      "api_key_env": "OPENROUTER_API_KEY",
+      "input_price_per_1m": 0.09,
+      "output_price_per_1m": 1.1,
+      "benchmarks": [
+        "retain",
+        "quality",
+        "reflect"
+      ]
+    },
+    {
+      "provider_id": "openrouter",
+      "provider_name": "OpenRouter",
+      "provider_icon": "/openrouter.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "meta-llama-llama-3.3-70b-instruct",
+      "model_name": "meta-llama/llama-3.3-70b-instruct",
+      "method": "url",
+      "api_model": "meta-llama/llama-3.3-70b-instruct",
+      "url": "https://openrouter.ai/api",
+      "api_key_env": "OPENROUTER_API_KEY",
+      "input_price_per_1m": 0.1,
+      "output_price_per_1m": 0.32,
+      "benchmarks": [
+        "retain",
+        "quality",
+        "reflect"
+      ]
+    },
+    {
+      "provider_id": "openrouter",
+      "provider_name": "OpenRouter",
+      "provider_icon": "/openrouter.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "google-gemma-4-31b-it",
+      "model_name": "google/gemma-4-31b-it",
+      "method": "url",
+      "api_model": "google/gemma-4-31b-it",
+      "url": "https://openrouter.ai/api",
+      "api_key_env": "OPENROUTER_API_KEY",
+      "input_price_per_1m": 0.12,
+      "output_price_per_1m": 0.35,
+      "benchmarks": [
+        "retain",
+        "quality",
+        "reflect"
+      ]
+    },
+    {
+      "provider_id": "openrouter",
+      "provider_name": "OpenRouter",
+      "provider_icon": "/openrouter.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "nvidia-nemotron-3-ultra-550b-a55b",
+      "model_name": "nvidia/nemotron-3-ultra-550b-a55b",
+      "method": "url",
+      "api_model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "url": "https://openrouter.ai/api",
+      "api_key_env": "OPENROUTER_API_KEY",
+      "input_price_per_1m": 0.5,
+      "output_price_per_1m": 2.2,
+      "benchmarks": [
+        "retain",
+        "quality",
+        "reflect"
+      ]
     }
   ]
 }

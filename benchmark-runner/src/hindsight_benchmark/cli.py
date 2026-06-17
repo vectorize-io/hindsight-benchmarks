@@ -91,6 +91,8 @@ def main():
                    help="Model name to send in API request (for --url, e.g. 'ministral-3:14b-cloud' for Ollama)")
     p.add_argument("--provider-id", metavar="PROVIDER", default="",
                    help="Provider identifier (e.g., 'openai', 'groq', 'ollama-cloud', 'local'). Auto-detected if not specified.")
+    p.add_argument("--only", metavar="MODEL_ID", default="",
+                   help="With --run-all, run only models whose model_id contains this substring.")
     available_datasets = sorted(p.stem for p in DATASETS_DIR.glob("*.json"))
     p.add_argument("--dataset", required=True, choices=available_datasets,
                    help=f"Dataset to benchmark against. Available: {', '.join(available_datasets)}")
@@ -107,10 +109,17 @@ def main():
         with open(config_path) as f:
             config = json.load(f)
 
-        print(f"\nRunning {len(config['models'])} models from {config_path}")
+        models = config['models']
+        if args.only:
+            from .models_config import select_ids
+            sel = select_ids([m["model_id"] for m in models], args.only)
+            models = [m for m in models if m["model_id"] in sel]
+            print(f"Filtered to models matching '{args.only}': {[m['model_id'] for m in models]}")
+
+        print(f"\nRunning {len(models)} models from {config_path}")
         print(f"Dataset: {args.dataset}, Concurrency: {args.concurrency}\n")
 
-        for model_config in config['models']:
+        for model_config in models:
             provider_id = model_config["provider_id"]
             model_id = model_config["model_id"]
             model_name = model_config["model_name"]

@@ -1,0 +1,256 @@
+{
+  "model_id": "nvidia-nemotron-3-nano-30b-a3b",
+  "provider_id": "openrouter",
+  "retain": {
+    "timestamp": "2026-06-16T17:42:37.622740+00:00",
+    "model_id": "nvidia-nemotron-3-nano-30b-a3b",
+    "model_name": "nvidia/nemotron-3-nano-30b-a3b",
+    "provider_id": "openrouter",
+    "size_gb": 0.0,
+    "dataset": "locomo_3k",
+    "concurrency": 4,
+    "wall_s": 1313.670998096466,
+    "summary": {
+      "success": 8,
+      "total": 20,
+      "wall_s": 1313.671,
+      "avg_latency_s": 240.474,
+      "throughput_rps": 0.006,
+      "completion_toks_s": 43.5,
+      "total_toks_s": 83.0,
+      "out_in_ratio": 1.102,
+      "tokens_per_fact": 879.9
+    },
+    "tests": [
+      {
+        "test_index": 1,
+        "latency_s": 531.6110639572144,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: "
+      },
+      {
+        "test_index": 2,
+        "latency_s": 376.3457717895508,
+        "num_facts": 7,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 6397,
+        "completion_tokens": 11537,
+        "error": ""
+      },
+      {
+        "test_index": 3,
+        "latency_s": 340.81489777565,
+        "num_facts": 10,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 6574,
+        "completion_tokens": 10292,
+        "error": ""
+      },
+      {
+        "test_index": 4,
+        "latency_s": 534.4992201328278,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: "
+      },
+      {
+        "test_index": 5,
+        "latency_s": 146.57639503479004,
+        "num_facts": 6,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 6272,
+        "completion_tokens": 4111,
+        "error": ""
+      },
+      {
+        "test_index": 6,
+        "latency_s": 16.0204861164093,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: exception: 'NoneType' object is not subscriptable"
+      },
+      {
+        "test_index": 7,
+        "latency_s": 236.1808567047119,
+        "num_facts": 8,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 6583,
+        "completion_tokens": 6811,
+        "error": ""
+      },
+      {
+        "test_index": 8,
+        "latency_s": 16.283907175064087,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: exception: 'NoneType' object is not subscriptable"
+      },
+      {
+        "test_index": 9,
+        "latency_s": 15.891833782196045,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: exception: 'NoneType' object is not subscriptable"
+      },
+      {
+        "test_index": 10,
+        "latency_s": 15.86217188835144,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: exception: 'NoneType' object is not subscriptable"
+      },
+      {
+        "test_index": 11,
+        "latency_s": 15.956476926803589,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: exception: 'NoneType' object is not subscriptable"
+      },
+      {
+        "test_index": 12,
+        "latency_s": 207.84949398040771,
+        "num_facts": 6,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 6568,
+        "completion_tokens": 6256,
+        "error": ""
+      },
+      {
+        "test_index": 13,
+        "latency_s": 15.936227798461914,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: exception: 'NoneType' object is not subscriptable"
+      },
+      {
+        "test_index": 14,
+        "latency_s": 259.0646049976349,
+        "num_facts": 13,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 6407,
+        "completion_tokens": 7876,
+        "error": ""
+      },
+      {
+        "test_index": 15,
+        "latency_s": 543.6188652515411,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting value: line 1 column 1 (char 0) | raw: "
+      },
+      {
+        "test_index": 16,
+        "latency_s": 195.72983121871948,
+        "num_facts": 8,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 6588,
+        "completion_tokens": 5849,
+        "error": ""
+      },
+      {
+        "test_index": 17,
+        "latency_s": 570.9575700759888,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Invalid control character at: line 5 column 3 (char 105) | raw: {\n  \"facts\": [\n    {\n      \"what\": \"Evan bought a new Prius and sold sold his old Prius after repair\",\n\",\n      \"when\": \" \"May 18,  2023\",\n      \"where\": \" \"N/A\",\n      \" \"who\": \"Evan\",\n      \"why\":\": \"N/A\"\n    },\n    {\n      \"what\":\": \"Evan took his family on a road trip to Jasper via Icefields Par"
+      },
+      {
+        "test_index": 18,
+        "latency_s": 16.564995050430298,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: exception: 'NoneType' object is not subscriptable"
+      },
+      {
+        "test_index": 19,
+        "latency_s": 15.93463397026062,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: exception: 'NoneType' object is not subscriptable"
+      },
+      {
+        "test_index": 20,
+        "latency_s": 161.2341010570526,
+        "num_facts": 7,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 6486,
+        "completion_tokens": 4459,
+        "error": ""
+      }
+    ]
+  },
+  "reflect": {
+    "accuracy": 80.6,
+    "correct": 195,
+    "total": 242,
+    "avg_latency_s": 73.264,
+    "model_id": "nvidia-nemotron-3-nano-30b-a3b",
+    "provider_id": "openrouter",
+    "sample_id": "conv-43"
+  }
+}
