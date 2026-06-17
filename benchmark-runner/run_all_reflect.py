@@ -48,35 +48,19 @@ RETAIN_PROVIDER = "gemini"
 RETAIN_MODEL = "gemini-2.5-flash"
 RETAIN_API_KEY = GEMINI_API_KEY
 
-# Models to benchmark: (provider_id, model_id, reflect_provider, reflect_model, reflect_api_key)
+# Model list is sourced from benchmark_models.json (single source of truth).
+# Add a model with `rag-benchmark add ...` — no edits needed here.
+# Tuple shape: (provider_id, model_id, reflect_provider, reflect_model, reflect_api_key)
+from hindsight_benchmark.models_config import load_models
+
+_REFLECT_MODELS = load_models("reflect")
 MODELS = [
-    # OpenAI
-    ("openai", "gpt-4o-mini",       "openai", "gpt-4o-mini",       OPENAI_API_KEY),
-    ("openai", "gpt-4.1-mini",      "openai", "gpt-4.1-mini",      OPENAI_API_KEY),
-    ("openai", "gpt-4.1-nano",      "openai", "gpt-4.1-nano",      OPENAI_API_KEY),
-    ("openai", "gpt-5-nano",        "openai", "gpt-5-nano",        OPENAI_API_KEY),
-    ("openai", "gpt-5-mini",        "openai", "gpt-5-mini",        OPENAI_API_KEY),
-    ("openai", "gpt-5.2",           "openai", "gpt-5.2",           OPENAI_API_KEY),
-    ("openai", "gpt-5.4",           "openai", "gpt-5.4",           OPENAI_API_KEY),
-    ("openai", "gpt-5.4-mini",      "openai", "gpt-5.4-mini",      OPENAI_API_KEY),
-    ("openai", "gpt-5.4-nano",      "openai", "gpt-5.4-nano",      OPENAI_API_KEY),
-    # Groq
-    ("groq", "openai-gpt-oss-20b",       "groq", "openai/gpt-oss-20b",       GROQ_API_KEY),
-    ("groq", "openai-gpt-oss-120b",      "groq", "openai/gpt-oss-120b",      GROQ_API_KEY),
-    ("groq", "llama-3.1-8b-instant",     "groq", "llama-3.1-8b-instant",     GROQ_API_KEY),
-    ("groq", "llama-3.3-70b-versatile",  "groq", "llama-3.3-70b-versatile",  GROQ_API_KEY),
-    # Gemini
-    ("gemini", "gemini-2.5-flash",       "gemini", "gemini-2.5-flash",       GEMINI_API_KEY),
-    ("gemini", "gemini-2.5-flash-lite",  "gemini", "gemini-2.5-flash-lite",  GEMINI_API_KEY),
-    ("gemini", "gemini-3-flash-preview", "gemini", "gemini-3-flash-preview", GEMINI_API_KEY),
-    # Ollama Cloud (OpenAI-compatible with custom base URL)
-    ("ollama-cloud", "gemma4-31b", "openai", "gemma4:31b", OLLAMA_API_KEY),
+    (m["provider_id"], m["model_id"], m["hindsight_provider"], m["hindsight_model"], m["api_key"])
+    for m in _REFLECT_MODELS
 ]
 
-# Models that need a custom reflect LLM base URL
-REFLECT_BASE_URLS = {
-    "gemma4-31b": "https://ollama.com/v1",
-}
+# Models that need a custom reflect LLM base URL (e.g. Ollama Cloud)
+REFLECT_BASE_URLS = {m["model_id"]: m["base_url"] for m in _REFLECT_MODELS if m["base_url"]}
 
 BASE_ENV = {
     "HINDSIGHT_ENABLE_CP": "false",
@@ -208,7 +192,8 @@ def main():
     filter_model = sys.argv[1] if len(sys.argv) > 1 else None
     models_to_run = MODELS
     if filter_model:
-        models_to_run = [m for m in MODELS if filter_model in m[1]]
+        tokens = [t.strip() for t in filter_model.split(",") if t.strip()]
+        models_to_run = [m for m in MODELS if any(t in m[1] for t in tokens)]
         print(f"Filtered to models matching '{filter_model}': {[m[1] for m in models_to_run]}")
 
     benchmark = ReflectBenchmark(

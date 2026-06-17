@@ -104,6 +104,7 @@ export interface ModelConfig {
   output_price_per_1m?: number
   size_gb?: number
   benchmarks?: string[]  // e.g. ["retain", "quality", "reflect"]
+  notes?: string  // optional caveat shown under the model name (e.g. slow/unreliable)
 }
 
 export interface QualityResult {

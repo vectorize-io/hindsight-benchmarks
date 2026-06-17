@@ -85,12 +85,25 @@ export default function LeaderboardTable({ models, type, variant = 'retain' }: L
       id: 'modelId',
       accessorFn: (row) => row.config.model_name,
       header: 'Model',
-      cell: ({ row }) => (
-        <div className="px-6 py-4">
-          <span className="text-sm font-medium text-foreground">{row.original.config.model_name}</span>
-        </div>
-      ),
-      size: 220,
+      cell: ({ row }) => {
+        const notes = row.original.config.notes
+        return (
+          <div className="px-6 py-4">
+            <div className="flex items-center gap-1">
+              <span className="text-sm font-medium text-foreground">{row.original.config.model_name}</span>
+              {notes && (
+                <span className="text-amber-400 cursor-help" title={notes} aria-label={notes}>*</span>
+              )}
+            </div>
+            {notes && (
+              <div className="mt-0.5 text-xs text-amber-400/80 max-w-[220px] whitespace-normal leading-snug">
+                {notes}
+              </div>
+            )}
+          </div>
+        )
+      },
+      size: 240,
     },
     ...(type === 'pay-per-use' || type === 'subscription' || type === 'mixed' ? [{
       id: 'provider',
