@@ -111,7 +111,9 @@ def main():
 
         models = config['models']
         if args.only:
-            models = [m for m in models if args.only in m["model_id"]]
+            from .models_config import select_ids
+            sel = select_ids([m["model_id"] for m in models], args.only)
+            models = [m for m in models if m["model_id"] in sel]
             print(f"Filtered to models matching '{args.only}': {[m['model_id'] for m in models]}")
 
         print(f"\nRunning {len(models)} models from {config_path}")

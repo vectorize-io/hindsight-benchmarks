@@ -86,8 +86,9 @@ def main():
     filter_model = sys.argv[1] if len(sys.argv) > 1 else None
     models_to_run = MODELS
     if filter_model:
-        tokens = [t.strip() for t in filter_model.split(",") if t.strip()]
-        models_to_run = [m for m in MODELS if any(t in m[1] for t in tokens)]
+        from hindsight_benchmark.models_config import select_ids
+        sel = select_ids([m[1] for m in MODELS], filter_model)
+        models_to_run = [m for m in MODELS if m[1] in sel]
         print(f"Filtered to models matching '{filter_model}': {[m[1] for m in models_to_run]}")
 
     benchmark = QualityBenchmark(

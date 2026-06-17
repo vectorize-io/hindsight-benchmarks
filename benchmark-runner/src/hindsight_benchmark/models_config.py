@@ -85,6 +85,26 @@ def _normalize(m: dict) -> dict:
     }
 
 
+def select_ids(all_ids, spec: str) -> set:
+    """Resolve a comma-separated filter spec to a set of matching model_ids.
+
+    A token matches by EXACT id first; it only falls back to substring matching
+    when the token is not itself an exact model_id of some model. This keeps the
+    convenience of partial filters (e.g. "gemini-3.") while preventing a precise
+    id like "gpt-oss-20b" from also matching another provider's
+    "openai-gpt-oss-20b".
+    """
+    tokens = [t.strip() for t in spec.split(",") if t.strip()]
+    idset = set(all_ids)
+    out = set()
+    for mid in all_ids:
+        for t in tokens:
+            if t == mid or (t not in idset and t in mid):
+                out.add(mid)
+                break
+    return out
+
+
 def load_models(benchmark: str | None = None) -> list[dict]:
     """Return normalized model dicts, optionally filtered to one benchmark.
 
