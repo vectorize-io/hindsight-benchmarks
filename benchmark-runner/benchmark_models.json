@@ -442,6 +442,378 @@
         "retain",
         "reflect"
       ]
+    },
+    {
+      "provider_id": "gcp",
+      "provider_name": "GCP (self-hosted)",
+      "provider_icon": "/gcp.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "gemma-4-e4b",
+      "model_name": "Gemma 4 E4B",
+      "method": "url",
+      "api_model": "gemma-4-e4b-it",
+      "url": "http://127.0.0.1:8811",
+      "input_price_per_1m": 0.02,
+      "output_price_per_1m": 0.1,
+      "notes": "Pricing: market median across providers (no first-party API)",
+      "benchmarks": [
+        "retain",
+        "quality"
+      ]
+    },
+    {
+      "provider_id": "gcp",
+      "provider_name": "GCP (self-hosted)",
+      "provider_icon": "/gcp.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "gemma-4-12b",
+      "model_name": "Gemma 4 12B",
+      "method": "url",
+      "api_model": "gemma-4-12b-it",
+      "url": "http://127.0.0.1:8811",
+      "input_price_per_1m": 0.1,
+      "output_price_per_1m": 0.3,
+      "notes": "Pricing: market median across providers (no first-party API)",
+      "benchmarks": [
+        "retain",
+        "quality"
+      ]
+    },
+    {
+      "provider_id": "gcp",
+      "provider_name": "GCP (self-hosted)",
+      "provider_icon": "/gcp.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "gemma-4-e4b-reasoning",
+      "model_name": "Gemma 4 E4B (reasoning)",
+      "method": "url",
+      "api_model": "gemma-4-e4b-it",
+      "url": "http://127.0.0.1:8811",
+      "input_price_per_1m": 0.02,
+      "output_price_per_1m": 0.1,
+      "notes": "Pricing: market median across providers (no first-party API)",
+      "benchmarks": [
+        "retain",
+        "quality"
+      ]
+    },
+    {
+      "provider_id": "gcp",
+      "provider_name": "GCP (self-hosted)",
+      "provider_icon": "/gcp.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "qwen3.8-27b",
+      "model_name": "Qwen3.8 27B",
+      "method": "url",
+      "api_model": "Qwen/Qwen3.8-27B",
+      "url": "http://127.0.0.1:8811",
+      "input_price_per_1m": 0.425,
+      "output_price_per_1m": 2.55,
+      "notes": "Pricing: market median across providers",
+      "benchmarks": [
+        "retain",
+        "quality"
+      ]
+    },
+    {
+      "provider_id": "gcp",
+      "provider_name": "GCP (self-hosted)",
+      "provider_icon": "/gcp.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "qwen3.8-27b-low",
+      "model_name": "Qwen3.8 27B (low reasoning)",
+      "method": "url",
+      "api_model": "Qwen/Qwen3.8-27B",
+      "url": "http://127.0.0.1:8811",
+      "input_price_per_1m": 0.425,
+      "output_price_per_1m": 2.55,
+      "notes": "Pricing: market median across providers",
+      "benchmarks": [
+        "retain",
+        "quality"
+      ]
+    },
+    {
+      "provider_id": "gcp",
+      "provider_name": "GCP (self-hosted)",
+      "provider_icon": "/gcp.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "qwen3.8-27b-medium",
+      "model_name": "Qwen3.8 27B (medium reasoning)",
+      "method": "url",
+      "api_model": "Qwen/Qwen3.8-27B",
+      "url": "http://127.0.0.1:8811",
+      "input_price_per_1m": 0.425,
+      "output_price_per_1m": 2.55,
+      "notes": "Pricing: market median across providers",
+      "benchmarks": [
+        "retain",
+        "quality"
+      ]
+    },
+    {
+      "provider_id": "gemini",
+      "provider_name": "Google",
+      "provider_icon": "/gemini.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "gemini-3.7-flash-low",
+      "reasoning_effort": "low",
+      "model_name": "gemini-3.7-flash (low reasoning)",
+      "method": "gemini",
+      "gemini_model": "gemini-3.7-flash",
+      "api_key_env": "GEMINI_API_KEY",
+      "input_price_per_1m": 0.75,
+      "output_price_per_1m": 3.75,
+      "notes": "Judge model for the quality benchmark; ranked row shown for disclosure. Pricing: introductory rate through 2026-12-31 (standard $1.50/$7.50 from 2027-01-01).",
+      "benchmarks": [
+        "retain",
+        "quality"
+      ]
+    },
+    {
+      "provider_id": "gemini",
+      "provider_name": "Google",
+      "provider_icon": "/gemini.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "gemini-3.7-flash-high",
+      "reasoning_effort": "high",
+      "model_name": "gemini-3.7-flash (high reasoning)",
+      "method": "gemini",
+      "gemini_model": "gemini-3.7-flash",
+      "api_key_env": "GEMINI_API_KEY",
+      "input_price_per_1m": 0.75,
+      "output_price_per_1m": 3.75,
+      "notes": "Judge model for the quality benchmark; ranked row shown for disclosure. Pricing: introductory rate through 2026-12-31 (standard $1.50/$7.50 from 2027-01-01).",
+      "benchmarks": [
+        "retain",
+        "quality"
+      ]
+    },
+    {
+      "provider_id": "gcp",
+      "provider_name": "GCP (self-hosted)",
+      "provider_icon": "/gcp.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "gpt-oss-20b-low",
+      "reasoning_effort": "low",
+      "model_name": "gpt-oss 20B (low reasoning)",
+      "method": "url",
+      "api_model": "openai/gpt-oss@gpt-oss-20b",
+      "url": "http://127.0.0.1:8811",
+      "input_price_per_1m": 0.08,
+      "output_price_per_1m": 0.35,
+      "notes": "Pricing: Artificial Analysis median across providers. Serving: Model Garden catalog config (image, weights path, tensor-parallel) with explicit --max-model-len and --reasoning-parser=gpt-oss added.",
+      "benchmarks": [
+        "retain",
+        "quality"
+      ]
+    },
+    {
+      "provider_id": "gcp",
+      "provider_name": "GCP (self-hosted)",
+      "provider_icon": "/gcp.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "gpt-oss-20b-medium",
+      "reasoning_effort": "medium",
+      "model_name": "gpt-oss 20B (medium reasoning)",
+      "method": "url",
+      "api_model": "openai/gpt-oss@gpt-oss-20b",
+      "url": "http://127.0.0.1:8811",
+      "input_price_per_1m": 0.08,
+      "output_price_per_1m": 0.35,
+      "notes": "Pricing: Artificial Analysis median across providers. Serving: Model Garden catalog config (image, weights path, tensor-parallel) with explicit --max-model-len and --reasoning-parser=gpt-oss added.",
+      "benchmarks": [
+        "retain",
+        "quality"
+      ]
+    },
+    {
+      "provider_id": "gcp",
+      "provider_name": "GCP (self-hosted)",
+      "provider_icon": "/gcp.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "gpt-oss-120b-low",
+      "reasoning_effort": "low",
+      "model_name": "gpt-oss 120B (low reasoning)",
+      "method": "url",
+      "api_model": "openai/gpt-oss@gpt-oss-120b",
+      "url": "http://127.0.0.1:8811",
+      "input_price_per_1m": 0.15,
+      "output_price_per_1m": 0.69,
+      "notes": "Pricing: Artificial Analysis median across providers. Serving: Model Garden catalog config (image, weights path, tensor-parallel) with explicit --max-model-len and --reasoning-parser=gpt-oss added.",
+      "benchmarks": [
+        "retain",
+        "quality"
+      ]
+    },
+    {
+      "provider_id": "gcp",
+      "provider_name": "GCP (self-hosted)",
+      "provider_icon": "/gcp.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "gpt-oss-120b-medium",
+      "reasoning_effort": "medium",
+      "model_name": "gpt-oss 120B (medium reasoning)",
+      "method": "url",
+      "api_model": "openai/gpt-oss@gpt-oss-120b",
+      "url": "http://127.0.0.1:8811",
+      "input_price_per_1m": 0.15,
+      "output_price_per_1m": 0.69,
+      "notes": "Pricing: Artificial Analysis median across providers. Serving: Model Garden catalog config (image, weights path, tensor-parallel) with explicit --max-model-len and --reasoning-parser=gpt-oss added.",
+      "benchmarks": [
+        "retain",
+        "quality"
+      ]
+    },
+    {
+      "provider_id": "openai",
+      "provider_name": "OpenAI",
+      "provider_icon": "/openai.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "gpt-5.6-luna-none",
+      "reasoning_effort": "none",
+      "model_name": "GPT-5.6 Luna (reasoning off)",
+      "method": "url",
+      "api_model": "gpt-5.6-luna",
+      "url": "https://api.openai.com",
+      "api_key_env": "OPENAI_API_KEY",
+      "input_price_per_1m": 0.2,
+      "output_price_per_1m": 1.2,
+      "notes": "Pricing: OpenAI list price (reduced 2026-07-30 from $1.00/$6.00).",
+      "benchmarks": [
+        "retain",
+        "quality"
+      ]
+    },
+    {
+      "provider_id": "openai",
+      "provider_name": "OpenAI",
+      "provider_icon": "/openai.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "gpt-5.6-luna-low",
+      "reasoning_effort": "low",
+      "model_name": "GPT-5.6 Luna (low reasoning)",
+      "method": "url",
+      "api_model": "gpt-5.6-luna",
+      "url": "https://api.openai.com",
+      "api_key_env": "OPENAI_API_KEY",
+      "input_price_per_1m": 0.2,
+      "output_price_per_1m": 1.2,
+      "notes": "Pricing: OpenAI list price (reduced 2026-07-30 from $1.00/$6.00).",
+      "benchmarks": [
+        "retain",
+        "quality"
+      ]
+    },
+    {
+      "provider_id": "gcp",
+      "provider_name": "GCP (self-hosted)",
+      "provider_icon": "/gcp.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "granite-4.2-3b",
+      "model_name": "Granite 4.2 3B",
+      "method": "url",
+      "api_model": "ibm-granite/granite-4.2-3b",
+      "url": "http://127.0.0.1:8811",
+      "input_price_per_1m": 0.017,
+      "output_price_per_1m": 0.112,
+      "notes": "Pricing: Artificial Analysis median for Granite 4.1 (4.2 released 2026-08-25, not yet priced by AA). Weights from HuggingFace; not in Model Garden.",
+      "benchmarks": [
+        "retain",
+        "quality"
+      ]
+    },
+    {
+      "provider_id": "gcp",
+      "provider_name": "GCP (self-hosted)",
+      "provider_icon": "/gcp.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "granite-4.2-3b-thinking",
+      "model_name": "Granite 4.2 3B (thinking)",
+      "method": "url",
+      "api_model": "ibm-granite/granite-4.2-3b",
+      "url": "http://127.0.0.1:8811",
+      "input_price_per_1m": 0.017,
+      "output_price_per_1m": 0.112,
+      "notes": "Pricing: Artificial Analysis median for Granite 4.1 (4.2 released 2026-08-25, not yet priced by AA). Weights from HuggingFace; not in Model Garden.",
+      "benchmarks": [
+        "retain",
+        "quality"
+      ]
+    },
+    {
+      "provider_id": "gcp",
+      "provider_name": "GCP (self-hosted)",
+      "provider_icon": "/gcp.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "granite-4.2-8b",
+      "model_name": "Granite 4.2 8B",
+      "method": "url",
+      "api_model": "ibm-granite/granite-4.2-8b",
+      "url": "http://127.0.0.1:8811",
+      "input_price_per_1m": 0.05,
+      "output_price_per_1m": 0.1,
+      "notes": "Pricing: Artificial Analysis median for Granite 4.1 (4.2 released 2026-08-25, not yet priced by AA). Weights from HuggingFace; not in Model Garden.",
+      "benchmarks": [
+        "retain",
+        "quality"
+      ]
+    },
+    {
+      "provider_id": "gcp",
+      "provider_name": "GCP (self-hosted)",
+      "provider_icon": "/gcp.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "granite-4.2-8b-thinking",
+      "model_name": "Granite 4.2 8B (thinking)",
+      "method": "url",
+      "api_model": "ibm-granite/granite-4.2-8b",
+      "url": "http://127.0.0.1:8811",
+      "input_price_per_1m": 0.05,
+      "output_price_per_1m": 0.1,
+      "notes": "Pricing: Artificial Analysis median for Granite 4.1 (4.2 released 2026-08-25, not yet priced by AA). Weights from HuggingFace; not in Model Garden.",
+      "benchmarks": [
+        "retain",
+        "quality"
+      ]
+    },
+    {
+      "provider_id": "gcp",
+      "provider_name": "GCP (self-hosted)",
+      "provider_icon": "/gcp.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "deepseek-v4-flash-low",
+      "reasoning_effort": "low",
+      "model_name": "DeepSeek V4 Flash (low reasoning)",
+      "method": "url",
+      "api_model": "deepseek-ai/deepseek-v4@deepseek-v4-flash-0731",
+      "url": "http://127.0.0.1:8811",
+      "input_price_per_1m": 0.22,
+      "output_price_per_1m": 0.66,
+      "notes": "Pricing: DeepSeek first-party off-peak list price (peak rates are $0.44/$1.32; peak/off-peak billing began 2026-08-16). Serving: Model Garden B200 config (matches official vLLM recipe) plus explicit --max-model-len.",
+      "benchmarks": [
+        "retain",
+        "quality"
+      ]
+    },
+    {
+      "provider_id": "gcp",
+      "provider_name": "GCP (self-hosted)",
+      "provider_icon": "/gcp.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "deepseek-v4-flash-high",
+      "reasoning_effort": "high",
+      "model_name": "DeepSeek V4 Flash (high reasoning)",
+      "method": "url",
+      "api_model": "deepseek-ai/deepseek-v4@deepseek-v4-flash-0731",
+      "url": "http://127.0.0.1:8811",
+      "input_price_per_1m": 0.22,
+      "output_price_per_1m": 0.66,
+      "notes": "Pricing: DeepSeek first-party off-peak list price (peak rates are $0.44/$1.32; peak/off-peak billing began 2026-08-16). Serving: Model Garden B200 config (matches official vLLM recipe) plus explicit --max-model-len.",
+      "benchmarks": [
+        "retain",
+        "quality"
+      ]
     }
   ]
 }
