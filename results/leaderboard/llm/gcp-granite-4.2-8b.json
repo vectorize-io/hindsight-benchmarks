@@ -1,0 +1,678 @@
+{
+  "model_id": "granite-4.2-8b",
+  "provider_id": "gcp",
+  "retain": {
+    "timestamp": "2026-08-27T14:49:01.968223+00:00",
+    "model_id": "granite-4.2-8b",
+    "model_name": "Granite 4.2 8B",
+    "provider_id": "gcp",
+    "size_gb": 0.0,
+    "dataset": "locomo_3k_50",
+    "concurrency": 4,
+    "wall_s": 300.9760160446167,
+    "summary": {
+      "success": 37,
+      "total": 50,
+      "wall_s": 300.976,
+      "avg_latency_s": 23.607,
+      "throughput_rps": 0.123,
+      "completion_toks_s": 155.0,
+      "total_toks_s": 738.0,
+      "out_in_ratio": 0.266,
+      "tokens_per_fact": 77.4
+    },
+    "tests": [
+      {
+        "test_index": 1,
+        "latency_s": 71.29509496688843,
+        "num_facts": 21,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4689,
+        "completion_tokens": 1939,
+        "error": ""
+      },
+      {
+        "test_index": 2,
+        "latency_s": 58.14145088195801,
+        "num_facts": 12,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4796,
+        "completion_tokens": 1134,
+        "error": ""
+      },
+      {
+        "test_index": 3,
+        "latency_s": 61.204838037490845,
+        "num_facts": 17,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4630,
+        "completion_tokens": 1324,
+        "error": ""
+      },
+      {
+        "test_index": 4,
+        "latency_s": 56.47265386581421,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting ':' delimiter: line 1 column 3324 (char 3323) | raw: {\"facts\": [{\"what\": \"Joanna is deeply invested in her script project and determined to make it happen despite challenges\", \"when\": \"N/A\", \"where\": \"N/A\", \"who\": \"Joanna\", \"why\": \"N/A\", \"entities\": [\"Joanna\", \"script\"]}, {\"what\": \"Joanna joined a writers group called 'Finding Home' and feels motivate"
+      },
+      {
+        "test_index": 5,
+        "latency_s": 13.024748086929321,
+        "num_facts": 10,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4732,
+        "completion_tokens": 790,
+        "error": ""
+      },
+      {
+        "test_index": 6,
+        "latency_s": 15.453614950180054,
+        "num_facts": 9,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4777,
+        "completion_tokens": 938,
+        "error": ""
+      },
+      {
+        "test_index": 7,
+        "latency_s": 22.702354907989502,
+        "num_facts": 15,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4689,
+        "completion_tokens": 1401,
+        "error": ""
+      },
+      {
+        "test_index": 8,
+        "latency_s": 18.534507036209106,
+        "num_facts": 15,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4873,
+        "completion_tokens": 1128,
+        "error": ""
+      },
+      {
+        "test_index": 9,
+        "latency_s": 20.111927032470703,
+        "num_facts": 12,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4538,
+        "completion_tokens": 1226,
+        "error": ""
+      },
+      {
+        "test_index": 10,
+        "latency_s": 21.097063779830933,
+        "num_facts": 14,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4536,
+        "completion_tokens": 1283,
+        "error": ""
+      },
+      {
+        "test_index": 11,
+        "latency_s": 34.6531081199646,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting ':' delimiter: line 1 column 1104 (char 1103) | raw: {\"facts\": [{\"what\": \"James finds video games give him tons of joy and excitement, motivating him\", \"when\": \"N/A\", \"where\": \"N/A\", \"who\": \"James\", \"why\": \"N/A\", \"entities\": [\"James\", \"video games\"]}, {\"what\": \"John is a big video game fan who uses games to relax after long days\", \"when\": \"N/A\", \"wher"
+      },
+      {
+        "test_index": 12,
+        "latency_s": 20.994301080703735,
+        "num_facts": 18,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4848,
+        "completion_tokens": 1272,
+        "error": ""
+      },
+      {
+        "test_index": 13,
+        "latency_s": 10.635922908782959,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting property name enclosed in double quotes: line 1 column 116 (char 115) | raw: {\"facts\": [{\"what\": \"Caroline attended an LGBTQ+ pride parade and felt a sense of belonging and community growth\", who=\"Caroline\", when=\"last week (relative to July 2023)\", entities=[\"Caroline\", \"LGBTQ+\", \"pride parade\"], fact_kind=\"event\"}, {\"what\": \"Caroline is considering counseling and mental he"
+      },
+      {
+        "test_index": 14,
+        "latency_s": 18.156004905700684,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting ':' delimiter: line 1 column 3512 (char 3511) | raw: {\"facts\": [{\"what\": \"Andrew started a new job as a Financial Analyst last week, which is a change from his previous job\", \"when\": \"last week (relative to March 27, 2023)\", \"where\": \"N/A\", \"who\": \"Andrew\", \"why\": \"N/A\", \"entities\": [\"Andrew\", \"Financial Analyst\"]}, {\"what\": \"Audrey has three dogs nam"
+      },
+      {
+        "test_index": 15,
+        "latency_s": 32.67342209815979,
+        "num_facts": 21,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4895,
+        "completion_tokens": 1991,
+        "error": ""
+      },
+      {
+        "test_index": 16,
+        "latency_s": 19.252546072006226,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting ':' delimiter: line 1 column 449 (char 448) | raw: {\"facts\": [{\"what\": \"Dave dreams of building a custom car from scratch and is currently working on a project and assisting customers\", \"when\": \"N/A\", \"where\": \"N/A\", \"who\": \"Dave\", \"why\": \"N/A\", \"entities\": [\"Dave\", \"custom car\"]}, {\"what\": \"Calvin uses long drives in his car to relax, describing th"
+      },
+      {
+        "test_index": 17,
+        "latency_s": 33.21299624443054,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting ':' delimiter: line 1 column 4110 (char 4109) | raw: {\"facts\": [{\"what\": \"Jon lost his job as a banker on 4:04 pm, 20 January 2023\", \"when\": \"2023-01-20\", \"where\": \"N/A\", \"who\": \"Jon\", \"why\": \"N/A\", \"entities\": [\"Jon\", \"banker\"]}, {\"what\": \"Jon is starting a dance studio because he is passionate about dancing and wants to share the joy with others\", \""
+      },
+      {
+        "test_index": 18,
+        "latency_s": 8.589915990829468,
+        "num_facts": 7,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4804,
+        "completion_tokens": 515,
+        "error": ""
+      },
+      {
+        "test_index": 19,
+        "latency_s": 12.543960094451904,
+        "num_facts": 10,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4608,
+        "completion_tokens": 759,
+        "error": ""
+      },
+      {
+        "test_index": 20,
+        "latency_s": 31.333988189697266,
+        "num_facts": 24,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4817,
+        "completion_tokens": 1958,
+        "error": ""
+      },
+      {
+        "test_index": 21,
+        "latency_s": 20.479008197784424,
+        "num_facts": 18,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4848,
+        "completion_tokens": 1282,
+        "error": ""
+      },
+      {
+        "test_index": 22,
+        "latency_s": 21.91121196746826,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting ':' delimiter: line 1 column 449 (char 448) | raw: {\"facts\": [{\"what\": \"Dave dreams of building a custom car from scratch and is currently working on a project and assisting customers\", \"when\": \"N/A\", \"where\": \"N/A\", \"who\": \"Dave\", \"why\": \"N/A\", \"entities\": [\"Dave\", \"custom car\"]}, {\"what\": \"Calvin uses long drives in his car to relax, describing th"
+      },
+      {
+        "test_index": 23,
+        "latency_s": 39.772940158843994,
+        "num_facts": 28,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4796,
+        "completion_tokens": 2482,
+        "error": ""
+      },
+      {
+        "test_index": 24,
+        "latency_s": 14.724411964416504,
+        "num_facts": 9,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4777,
+        "completion_tokens": 914,
+        "error": ""
+      },
+      {
+        "test_index": 25,
+        "latency_s": 21.3858859539032,
+        "num_facts": 22,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4817,
+        "completion_tokens": 1334,
+        "error": ""
+      },
+      {
+        "test_index": 26,
+        "latency_s": 8.449815034866333,
+        "num_facts": 7,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4804,
+        "completion_tokens": 519,
+        "error": ""
+      },
+      {
+        "test_index": 27,
+        "latency_s": 21.140159130096436,
+        "num_facts": 14,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4536,
+        "completion_tokens": 1315,
+        "error": ""
+      },
+      {
+        "test_index": 28,
+        "latency_s": 16.96321201324463,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting ':' delimiter: line 1 column 449 (char 448) | raw: {\"facts\": [{\"what\": \"Dave dreams of building a custom car from scratch and is currently working on a project and assisting customers\", \"when\": \"N/A\", \"where\": \"N/A\", \"who\": \"Dave\", \"why\": \"N/A\", \"entities\": [\"Dave\", \"custom car\"]}, {\"what\": \"Calvin uses long drives in his car to relax, describing th"
+      },
+      {
+        "test_index": 29,
+        "latency_s": 19.72160816192627,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting ':' delimiter: line 1 column 3768 (char 3767) | raw: {\"facts\": [{\"what\": \"Joanna is deeply invested in her script project and determined to make it happen despite challenges\", \"when\": \"N/A\", \"where\": \"N/A\", \"who\": \"Joanna\", \"why\": \"N/A\", \"entities\": [\"Joanna\", \"script\"]}, {\"what\": \"Nate supports Joanna emotionally and encourages her to keep working on"
+      },
+      {
+        "test_index": 30,
+        "latency_s": 18.071588039398193,
+        "num_facts": 23,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4661,
+        "completion_tokens": 1112,
+        "error": ""
+      },
+      {
+        "test_index": 31,
+        "latency_s": 12.760625123977661,
+        "num_facts": 10,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4732,
+        "completion_tokens": 795,
+        "error": ""
+      },
+      {
+        "test_index": 32,
+        "latency_s": 15.63815975189209,
+        "num_facts": 11,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4796,
+        "completion_tokens": 964,
+        "error": ""
+      },
+      {
+        "test_index": 33,
+        "latency_s": 25.967355012893677,
+        "num_facts": 21,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4878,
+        "completion_tokens": 1608,
+        "error": ""
+      },
+      {
+        "test_index": 34,
+        "latency_s": 27.476619005203247,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting ':' delimiter: line 1 column 1104 (char 1103) | raw: {\"facts\": [{\"what\": \"James finds video games give him tons of joy and excitement, motivating him\", \"when\": \"N/A\", \"where\": \"N/A\", \"who\": \"James\", \"why\": \"N/A\", \"entities\": [\"James\", \"video games\"]}, {\"what\": \"John is a big video game fan who uses games to relax after long days\", \"when\": \"N/A\", \"wher"
+      },
+      {
+        "test_index": 35,
+        "latency_s": 32.41271114349365,
+        "num_facts": 26,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4895,
+        "completion_tokens": 2022,
+        "error": ""
+      },
+      {
+        "test_index": 36,
+        "latency_s": 24.060293912887573,
+        "num_facts": 22,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4823,
+        "completion_tokens": 1494,
+        "error": ""
+      },
+      {
+        "test_index": 37,
+        "latency_s": 19.372668981552124,
+        "num_facts": 24,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4661,
+        "completion_tokens": 1171,
+        "error": ""
+      },
+      {
+        "test_index": 38,
+        "latency_s": 17.767297983169556,
+        "num_facts": 11,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4538,
+        "completion_tokens": 1112,
+        "error": ""
+      },
+      {
+        "test_index": 39,
+        "latency_s": 13.527416944503784,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting property name enclosed in double quotes: line 1 column 116 (char 115) | raw: {\"facts\": [{\"what\": \"Caroline attended an LGBTQ+ pride parade and felt a sense of belonging and community growth\", who=\"Caroline\", when=\"last week (relative to July 2023)\", entities=[\"Caroline\", \"LGBTQ+\", \"pride parade\"], fact_kind=\"event\", fact_type=\"world\"}, {\"what\": \"Caroline is considering couns"
+      },
+      {
+        "test_index": 40,
+        "latency_s": 10.335204839706421,
+        "num_facts": 10,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4608,
+        "completion_tokens": 643,
+        "error": ""
+      },
+      {
+        "test_index": 41,
+        "latency_s": 10.328224182128906,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting property name enclosed in double quotes: line 1 column 116 (char 115) | raw: {\"facts\": [{\"what\": \"Caroline attended an LGBTQ+ pride parade and felt a sense of belonging and community growth\", who=\"Caroline\", when=\"last week (relative to July 2023)\", entities=[\"Caroline\", \"LGBTQ+\", \"pride parade\"], fact_kind=\"event\", fact_type=\"world\"}, {\"what\": \"Caroline is considering couns"
+      },
+      {
+        "test_index": 42,
+        "latency_s": 19.7607479095459,
+        "num_facts": 18,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4536,
+        "completion_tokens": 1243,
+        "error": ""
+      },
+      {
+        "test_index": 43,
+        "latency_s": 11.235410928726196,
+        "num_facts": 10,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4863,
+        "completion_tokens": 705,
+        "error": ""
+      },
+      {
+        "test_index": 44,
+        "latency_s": 23.96729278564453,
+        "num_facts": 21,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4873,
+        "completion_tokens": 1510,
+        "error": ""
+      },
+      {
+        "test_index": 45,
+        "latency_s": 17.734955072402954,
+        "num_facts": 23,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4661,
+        "completion_tokens": 1112,
+        "error": ""
+      },
+      {
+        "test_index": 46,
+        "latency_s": 10.426162004470825,
+        "num_facts": 8,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4732,
+        "completion_tokens": 641,
+        "error": ""
+      },
+      {
+        "test_index": 47,
+        "latency_s": 30.142746925354004,
+        "num_facts": 26,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4873,
+        "completion_tokens": 1888,
+        "error": ""
+      },
+      {
+        "test_index": 48,
+        "latency_s": 22.34744381904602,
+        "num_facts": 17,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4878,
+        "completion_tokens": 1401,
+        "error": ""
+      },
+      {
+        "test_index": 49,
+        "latency_s": 30.028937101364136,
+        "num_facts": 0,
+        "valid_json": false,
+        "success": false,
+        "retries": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "error": "attempt 1: invalid_json: Expecting ',' delimiter: line 66 column 13 (char 2169) | raw: {\n  \"facts\": [\n    {\n      \"what\": \"Deborah's mother passed away a few years ago; Deborah visits her old house and sits on a special bench near the window to stay connected to her mother\",\n      \"when\": \"N/A\",\n      \"where\": \"mother's old house\",\n      \"who\": \"Deborah, her mother\",\n      \"why\": \"N/A"
+      },
+      {
+        "test_index": 50,
+        "latency_s": 27.808110237121582,
+        "num_facts": 19,
+        "valid_json": true,
+        "success": true,
+        "retries": 0,
+        "prompt_tokens": 4630,
+        "completion_tokens": 1741,
+        "error": ""
+      }
+    ]
+  },
+  "quality": {
+    "accuracy": 35.0,
+    "correct": 28,
+    "total": 80,
+    "dataset": "beam_128k_subset",
+    "judge_model": "gemini-3.7-flash",
+    "context_mode": "facts_only",
+    "hindsight_version": "0.9.2",
+    "stored_fact_tokens": 133853,
+    "token_counter": "cl100k_base",
+    "per_ability": {
+      "abstention": {
+        "correct": 3,
+        "total": 8
+      },
+      "contradiction_resolution": {
+        "correct": 0,
+        "total": 8
+      },
+      "event_ordering": {
+        "correct": 0,
+        "total": 8
+      },
+      "information_extraction": {
+        "correct": 4,
+        "total": 8
+      },
+      "instruction_following": {
+        "correct": 6,
+        "total": 8
+      },
+      "knowledge_update": {
+        "correct": 3,
+        "total": 8
+      },
+      "multi_session_reasoning": {
+        "correct": 3,
+        "total": 8
+      },
+      "preference_following": {
+        "correct": 7,
+        "total": 8
+      },
+      "summarization": {
+        "correct": 0,
+        "total": 8
+      },
+      "temporal_reasoning": {
+        "correct": 2,
+        "total": 8
+      }
+    },
+    "generation_errors": 0,
+    "judge_errors": 0,
+    "partial": false,
+    "model_id": "granite-4.2-8b",
+    "provider_id": "gcp",
+    "sample_ids": [
+      "beam-100k-1",
+      "beam-100k-13",
+      "beam-100k-16",
+      "beam-100k-18"
+    ]
+  },
+  "deployment": {
+    "endpoint_name": "projects/399667963969/locations/us-central1/endpoints/mg-endpoint-6f81a5b6-a37a-4ce7-a838-6a10472d3a01",
+    "dedicated_domain": "mg-endpoint-6f81a5b6-a37a-4ce7-a838-6a10472d3a01.us-central1-422305962726.prediction.vertexai.goog",
+    "machine_type": "g4-standard-48",
+    "accelerator_type": "NVIDIA_RTX_PRO_6000",
+    "accelerator_count": 1,
+    "region": "us-central1",
+    "serving": "vertex-model-garden",
+    "container": {
+      "image": "us-docker.pkg.dev/agent-platform-mg-public/containers/pytorch-vllm-serve:model-garden.pytorch-vllm-serve-release_20260818.00_p0",
+      "args": [
+        "python3",
+        "-m",
+        "vllm.entrypoints.openai.api_server",
+        "--host=0.0.0.0",
+        "--port=8080",
+        "--model=ibm-granite/granite-4.2-8b",
+        "--served-model-name=granite-4.2-8b",
+        "--dtype=bfloat16",
+        "--max-model-len=131072",
+        "--gpu-memory-utilization=0.9",
+        "--enforce-eager",
+        "--trust-remote-code",
+        "--tensor-parallel-size=1",
+        "--enable-chunked-prefill",
+        "--reasoning-parser=nemotron_v3"
+      ]
+    },
+    "llm_extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    "max_model_len": 131072,
+    "max_model_len_source": "engine startup log (vLLM reported served context)",
+    "retain_concurrency": 16
+  }
+}
