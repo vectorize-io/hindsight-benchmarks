@@ -34,7 +34,7 @@ export default function LeaderboardPage() {
           </a>.
         </span>
         <span className="mx-1 text-border">|</span>
-        <span>Want to see another model here?</span>
+        <span>Want another model here, or spotted a deployment issue?</span>
         <a
           href="https://github.com/vectorize-io/hindsight-benchmarks/issues"
           target="_blank"
