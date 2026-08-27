@@ -104,7 +104,8 @@ export interface ModelConfig {
   output_price_per_1m?: number
   size_gb?: number
   benchmarks?: string[]  // e.g. ["retain", "quality", "reflect"]
-  notes?: string  // optional caveat shown under the model name (e.g. slow/unreliable)
+  notes?: string  // provenance for the repo (serving config, pricing source); not rendered
+  price_note?: string  // pricing caveat, shown as a tooltip on the Cost cell
   reasoning_effort?: string  // "none" = thinking disabled for this model's runs
 }
 

@@ -87,24 +87,11 @@ export default function LeaderboardTable({ models, type, variant = 'retain' }: L
       id: 'modelId',
       accessorFn: (row) => row.config.model_name,
       header: 'Model',
-      cell: ({ row }) => {
-        const notes = row.original.config.notes
-        return (
-          <div className="px-6 py-4">
-            <div className="flex items-center gap-1">
-              <span className="text-sm font-medium text-foreground">{row.original.config.model_name}</span>
-              {notes && (
-                <span className="text-amber-400 cursor-help" title={notes} aria-label={notes}>*</span>
-              )}
-            </div>
-            {notes && (
-              <div className="mt-0.5 text-xs text-amber-400/80 max-w-[220px] whitespace-normal leading-snug">
-                {notes}
-              </div>
-            )}
-          </div>
-        )
-      },
+      cell: ({ row }) => (
+        <div className="px-6 py-4">
+          <span className="text-sm font-medium text-foreground">{row.original.config.model_name}</span>
+        </div>
+      ),
       size: 240,
     },
     ...(type === 'pay-per-use' || type === 'subscription' || type === 'mixed' ? [{
@@ -352,13 +339,18 @@ export default function LeaderboardTable({ models, type, variant = 'retain' }: L
         const value = getValue() as number
         const inputPrice = row.original.score.inputPricePerM
         const outputPrice = row.original.score.outputPricePerM
+        const priceNote = row.original.config.price_note
 
         return (
           <div className="relative px-6 py-4" style={{ backgroundColor: scoreToBackground(value) }}>
             <div className="absolute inset-0" style={{ width: `${value}%`, backgroundColor: scoreToBar(value) }} />
             <div className="relative z-10">
               <div className="text-sm font-semibold" style={{ color: scoreToText(value) }}>{value.toFixed(1)}</div>
-              <div className="text-xs text-muted-foreground">
+              <div
+                className={`text-xs text-muted-foreground${priceNote ? ' cursor-help underline decoration-dotted underline-offset-2' : ''}`}
+                title={priceNote}
+                aria-label={priceNote ? `Price: ${priceNote}` : undefined}
+              >
                 {inputPrice === 0 && outputPrice === 0 ? (
                   'Free'
                 ) : (

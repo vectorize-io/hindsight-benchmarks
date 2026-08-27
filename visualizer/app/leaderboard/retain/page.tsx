@@ -58,10 +58,7 @@ export default function LeaderboardPage() {
 
       {/* About Section */}
       <div className="mt-12 pt-8 border-t border-border">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-heading font-bold text-foreground">About This Benchmark</h2>
-          <span className="text-xs text-muted-foreground font-mono bg-secondary px-2 py-1 rounded">Engine version shown per row</span>
-        </div>
+        <h2 className="text-2xl font-heading font-bold text-foreground mb-6">About This Benchmark</h2>
         <div className="border border-border rounded-lg overflow-hidden bg-card">
           <table className="min-w-full divide-y divide-border">
             <thead className="bg-secondary/50">

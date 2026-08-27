@@ -456,6 +456,7 @@
       "input_price_per_1m": 0.02,
       "output_price_per_1m": 0.1,
       "notes": "Pricing: market median across providers (no first-party API)",
+      "price_note": "Market median across providers (no first-party API)",
       "benchmarks": [
         "retain",
         "quality"
@@ -474,6 +475,7 @@
       "input_price_per_1m": 0.1,
       "output_price_per_1m": 0.3,
       "notes": "Pricing: market median across providers (no first-party API)",
+      "price_note": "Market median across providers (no first-party API)",
       "benchmarks": [
         "retain",
         "quality"
@@ -492,6 +494,7 @@
       "input_price_per_1m": 0.02,
       "output_price_per_1m": 0.1,
       "notes": "Pricing: market median across providers (no first-party API)",
+      "price_note": "Market median across providers (no first-party API)",
       "benchmarks": [
         "retain",
         "quality"
@@ -510,6 +513,7 @@
       "input_price_per_1m": 0.425,
       "output_price_per_1m": 2.55,
       "notes": "Pricing: market median across providers",
+      "price_note": "Market median across providers",
       "benchmarks": [
         "retain",
         "quality"
@@ -528,6 +532,7 @@
       "input_price_per_1m": 0.425,
       "output_price_per_1m": 2.55,
       "notes": "Pricing: market median across providers",
+      "price_note": "Market median across providers",
       "benchmarks": [
         "retain",
         "quality"
@@ -546,6 +551,7 @@
       "input_price_per_1m": 0.425,
       "output_price_per_1m": 2.55,
       "notes": "Pricing: market median across providers",
+      "price_note": "Market median across providers",
       "benchmarks": [
         "retain",
         "quality"
@@ -565,6 +571,7 @@
       "input_price_per_1m": 0.75,
       "output_price_per_1m": 3.75,
       "notes": "Judge model for the quality benchmark; ranked row shown for disclosure. Pricing: introductory rate through 2026-12-31 (standard $1.50/$7.50 from 2027-01-01).",
+      "price_note": "Introductory rate through 2026-12-31 (standard $1.50/$7.50 from 2027-01-01)",
       "benchmarks": [
         "retain",
         "quality"
@@ -584,6 +591,7 @@
       "input_price_per_1m": 0.75,
       "output_price_per_1m": 3.75,
       "notes": "Judge model for the quality benchmark; ranked row shown for disclosure. Pricing: introductory rate through 2026-12-31 (standard $1.50/$7.50 from 2027-01-01).",
+      "price_note": "Introductory rate through 2026-12-31 (standard $1.50/$7.50 from 2027-01-01)",
       "benchmarks": [
         "retain",
         "quality"
@@ -603,6 +611,7 @@
       "input_price_per_1m": 0.08,
       "output_price_per_1m": 0.35,
       "notes": "Pricing: Artificial Analysis median across providers. Serving: Model Garden catalog config (image, weights path, tensor-parallel) with explicit --max-model-len and --reasoning-parser=gpt-oss added.",
+      "price_note": "Artificial Analysis median across providers",
       "benchmarks": [
         "retain",
         "quality"
@@ -622,6 +631,7 @@
       "input_price_per_1m": 0.08,
       "output_price_per_1m": 0.35,
       "notes": "Pricing: Artificial Analysis median across providers. Serving: Model Garden catalog config (image, weights path, tensor-parallel) with explicit --max-model-len and --reasoning-parser=gpt-oss added.",
+      "price_note": "Artificial Analysis median across providers",
       "benchmarks": [
         "retain",
         "quality"
@@ -641,6 +651,7 @@
       "input_price_per_1m": 0.15,
       "output_price_per_1m": 0.69,
       "notes": "Pricing: Artificial Analysis median across providers. Serving: Model Garden catalog config (image, weights path, tensor-parallel) with explicit --max-model-len and --reasoning-parser=gpt-oss added.",
+      "price_note": "Artificial Analysis median across providers",
       "benchmarks": [
         "retain",
         "quality"
@@ -660,6 +671,7 @@
       "input_price_per_1m": 0.15,
       "output_price_per_1m": 0.69,
       "notes": "Pricing: Artificial Analysis median across providers. Serving: Model Garden catalog config (image, weights path, tensor-parallel) with explicit --max-model-len and --reasoning-parser=gpt-oss added.",
+      "price_note": "Artificial Analysis median across providers",
       "benchmarks": [
         "retain",
         "quality"
@@ -680,6 +692,7 @@
       "input_price_per_1m": 0.2,
       "output_price_per_1m": 1.2,
       "notes": "Pricing: OpenAI list price (reduced 2026-07-30 from $1.00/$6.00).",
+      "price_note": "OpenAI list price (reduced 2026-07-30 from $1.00/$6.00)",
       "benchmarks": [
         "retain",
         "quality"
@@ -700,6 +713,7 @@
       "input_price_per_1m": 0.2,
       "output_price_per_1m": 1.2,
       "notes": "Pricing: OpenAI list price (reduced 2026-07-30 from $1.00/$6.00).",
+      "price_note": "OpenAI list price (reduced 2026-07-30 from $1.00/$6.00)",
       "benchmarks": [
         "retain",
         "quality"
@@ -718,6 +732,7 @@
       "input_price_per_1m": 0.017,
       "output_price_per_1m": 0.112,
       "notes": "Pricing: Artificial Analysis median for Granite 4.1 (4.2 released 2026-08-25, not yet priced by AA). Weights from HuggingFace; not in Model Garden.",
+      "price_note": "Artificial Analysis median for Granite 4.1 (4.2 released 2026-08-25, not yet priced by AA)",
       "benchmarks": [
         "retain",
         "quality"
@@ -736,6 +751,7 @@
       "input_price_per_1m": 0.017,
       "output_price_per_1m": 0.112,
       "notes": "Pricing: Artificial Analysis median for Granite 4.1 (4.2 released 2026-08-25, not yet priced by AA). Weights from HuggingFace; not in Model Garden.",
+      "price_note": "Artificial Analysis median for Granite 4.1 (4.2 released 2026-08-25, not yet priced by AA)",
       "benchmarks": [
         "retain",
         "quality"
@@ -754,6 +770,7 @@
       "input_price_per_1m": 0.05,
       "output_price_per_1m": 0.1,
       "notes": "Pricing: Artificial Analysis median for Granite 4.1 (4.2 released 2026-08-25, not yet priced by AA). Weights from HuggingFace; not in Model Garden.",
+      "price_note": "Artificial Analysis median for Granite 4.1 (4.2 released 2026-08-25, not yet priced by AA)",
       "benchmarks": [
         "retain",
         "quality"
@@ -772,6 +789,7 @@
       "input_price_per_1m": 0.05,
       "output_price_per_1m": 0.1,
       "notes": "Pricing: Artificial Analysis median for Granite 4.1 (4.2 released 2026-08-25, not yet priced by AA). Weights from HuggingFace; not in Model Garden.",
+      "price_note": "Artificial Analysis median for Granite 4.1 (4.2 released 2026-08-25, not yet priced by AA)",
       "benchmarks": [
         "retain",
         "quality"
@@ -791,6 +809,7 @@
       "input_price_per_1m": 0.22,
       "output_price_per_1m": 0.66,
       "notes": "Pricing: DeepSeek first-party off-peak list price (peak rates are $0.44/$1.32; peak/off-peak billing began 2026-08-16). Serving: Model Garden B200 config (matches official vLLM recipe) plus explicit --max-model-len.",
+      "price_note": "DeepSeek first-party off-peak list price (peak rates are $0.44/$1.32; peak/off-peak billing began 2026-08-16)",
       "benchmarks": [
         "retain",
         "quality"
@@ -810,6 +829,7 @@
       "input_price_per_1m": 0.22,
       "output_price_per_1m": 0.66,
       "notes": "Pricing: DeepSeek first-party off-peak list price (peak rates are $0.44/$1.32; peak/off-peak billing began 2026-08-16). Serving: Model Garden B200 config (matches official vLLM recipe) plus explicit --max-model-len.",
+      "price_note": "DeepSeek first-party off-peak list price (peak rates are $0.44/$1.32; peak/off-peak billing began 2026-08-16)",
       "benchmarks": [
         "retain",
         "quality"

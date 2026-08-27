@@ -12,8 +12,11 @@ export const metadata: Metadata = {
 export default function LegacyLeaderboardPage() {
   const allModels = loadLeaderboardData()
 
+  // Only models that actually have a LoComo score belong here. Matching on the
+  // retain run instead would pull in every model benchmarked on BEAM, whose
+  // numbers are not comparable to this board.
   const viableModels = allModels.filter(m =>
-    (m.result && m.result.summary.success > 0) || (m.legacyQualityResult && m.legacyQualityResult.total > 0)
+    m.legacyQualityResult && m.legacyQualityResult.total > 0
   )
 
   return (
