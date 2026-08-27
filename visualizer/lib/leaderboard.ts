@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { ModelConfig, ModelWithResult, BenchmarkRun, QualityResult, ReflectResult } from './types'
+import { ModelConfig, ModelWithResult, BenchmarkRun, QualityResult, ReflectResult, DeploymentInfo } from './types'
 import { calculateModelScore, calculateReflectScore } from './scoring'
 
 export function loadLeaderboardData(): ModelWithResult[] {
@@ -20,7 +20,9 @@ export function loadLeaderboardData(): ModelWithResult[] {
   // Build maps keyed by "provider_id-model_id"
   const retainMap = new Map<string, BenchmarkRun>()
   const qualityMap = new Map<string, QualityResult>()
+  const legacyQualityMap = new Map<string, QualityResult>()
   const reflectMap = new Map<string, ReflectResult>()
+  const deploymentMap = new Map<string, DeploymentInfo>()
 
   for (const file of unifiedFiles) {
     const filePath = path.join(leaderboardDir, file)
@@ -28,8 +30,19 @@ export function loadLeaderboardData(): ModelWithResult[] {
     const key = `${unified.provider_id}-${unified.model_id}`
 
     if (unified.retain)   retainMap.set(key, unified.retain)
-    if (unified.quality)  qualityMap.set(key, unified.quality)
+    // Quality blocks without a dataset field are legacy LoComo runs, not
+    // comparable to the BEAM facts-only benchmark; they feed only the legacy
+    // leaderboard. Partial blocks come from truncated smoke runs; their
+    // accuracy and efficiency are not comparable to anything. Skip those.
+    if (unified.quality?.partial) {
+      // dropped
+    } else if (unified.quality?.dataset) {
+      qualityMap.set(key, unified.quality)
+    } else if (unified.quality) {
+      legacyQualityMap.set(key, unified.quality)
+    }
     if (unified.reflect)  reflectMap.set(key, unified.reflect)
+    if (unified.deployment) deploymentMap.set(key, unified.deployment)
   }
 
   // Match configs with results and quality scores
@@ -37,9 +50,11 @@ export function loadLeaderboardData(): ModelWithResult[] {
     const key = `${config.provider_id}-${config.model_id}`
     return {
       config,
-      result:        retainMap.get(key)   || null,
-      qualityResult: qualityMap.get(key)  || null,
-      reflectResult: reflectMap.get(key)  || null,
+      result:              retainMap.get(key)        || null,
+      qualityResult:       qualityMap.get(key)       || null,
+      legacyQualityResult: legacyQualityMap.get(key) || null,
+      reflectResult:       reflectMap.get(key)       || null,
+      deployment:          deploymentMap.get(key)    || null,
     }
   })
 

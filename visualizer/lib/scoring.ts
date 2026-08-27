@@ -7,10 +7,12 @@ export interface Provider {
 
 export interface ModelScore {
   totalScore: number        // 0-100 composite score
-  qualityScore: number      // 0-100 based on tokens/fact
+  qualityScore: number      // 0-100 BEAM facts-only accuracy
+  efficiencyScore: number   // 0-100 accuracy per stored fact token
   speedScore: number        // 0-100 based on latency
   costScore: number         // 0-100 based on cost per request
-  reliabilityScore: number  // 0-100 based on success rate
+  conformanceScore: number  // 0-100 valid-JSON rate
+  storedFactTokens: number | null // extraction footprint (tokens stored in memory)
   avgCostPerRequest: number // $ per request (total)
   avgInputCost: number      // $ per request (input)
   avgOutputCost: number     // $ per request (output)
@@ -41,10 +43,16 @@ const COST_REF_OUTPUT_TOKENS = 500
 // Score = 100 * REF / (REF + normalizedCost)
 const COST_REFERENCE = 0.001
 
+// Reference point for efficiency: accuracy points per 1k stored fact tokens at
+// which a model scores 50. Provisional until the first full BEAM fleet run;
+// then recalibrated to that run's median and frozen.
+const EFFICIENCY_REFERENCE = 2.0
+
 interface ModelWithResult {
   config: ModelConfig
   result: BenchmarkRun | null
   qualityResult?: QualityResult | null
+  legacyQualityResult?: QualityResult | null
   reflectResult?: ReflectResult | null
 }
 
@@ -58,9 +66,11 @@ export function calculateReflectScore(model: ModelWithResult): ModelScore {
     return {
       totalScore: 0,
       qualityScore: 0,
+      efficiencyScore: 0,
       speedScore: 0,
       costScore: 0,
-      reliabilityScore: 0,
+      conformanceScore: 0,
+      storedFactTokens: null,
       avgCostPerRequest: 0,
       avgInputCost: 0,
       avgOutputCost: 0,
@@ -94,9 +104,60 @@ export function calculateReflectScore(model: ModelWithResult): ModelScore {
   return {
     totalScore: Math.round(totalScore * 10) / 10,
     qualityScore: Math.round(qualityScore * 10) / 10,
+    efficiencyScore: 0,
     speedScore: Math.round(speedScore * 10) / 10,
     costScore: Math.round(costScore * 10) / 10,
-    reliabilityScore: 0,
+    conformanceScore: 0,
+    storedFactTokens: null,
+    avgCostPerRequest: 0,
+    avgInputCost: 0,
+    avgOutputCost: 0,
+    inputPricePerM,
+    outputPricePerM,
+    provider,
+  }
+}
+
+// Legacy retain scoring: the LoComo-era formula (Quality 40 / Speed 25 /
+// Cost 20 / Reliability 15), fed by the legacy quality numbers. Serves only
+// /leaderboard/retain-legacy, kept until the old board is retired.
+export function calculateLegacyModelScore(model: ModelWithResult): ModelScore {
+  const inputPricePerM = model.config.input_price_per_1m || 0
+  const outputPricePerM = model.config.output_price_per_1m || 0
+  const provider = { name: model.config.provider_name, iconUrl: model.config.provider_icon }
+
+  const qualityScore = model.legacyQualityResult?.accuracy || 0
+
+  const normalizedCost =
+    (COST_REF_INPUT_TOKENS * inputPricePerM + COST_REF_OUTPUT_TOKENS * outputPricePerM) / 1_000_000
+  const hasCostData = model.result ? (model.result.summary?.success ?? 0) > 0 : !!model.legacyQualityResult?.total
+  const costScore = !hasCostData
+    ? 0
+    : normalizedCost === 0
+      ? 100
+      : (COST_REFERENCE / (COST_REFERENCE + normalizedCost)) * 100
+
+  const summary = model.result?.summary
+  const latency = summary?.avg_latency_s || 0
+  const speedScore = latency === 0
+    ? 0
+    : (LATENCY_REFERENCE / (LATENCY_REFERENCE + latency)) * 100
+  const reliabilityScore = summary?.total
+    ? (summary.success / summary.total) * 100
+    : 0
+
+  const totalScore = model.result
+    ? (qualityScore * 0.40) + (speedScore * 0.25) + (costScore * 0.20) + (reliabilityScore * 0.15)
+    : (qualityScore * 0.40) + (costScore * 0.20)
+
+  return {
+    totalScore: Math.round(totalScore * 10) / 10,
+    qualityScore: Math.round(qualityScore * 10) / 10,
+    efficiencyScore: 0,
+    speedScore: Math.round(speedScore * 10) / 10,
+    costScore: Math.round(costScore * 10) / 10,
+    conformanceScore: Math.round(reliabilityScore * 10) / 10,
+    storedFactTokens: null,
     avgCostPerRequest: 0,
     avgInputCost: 0,
     avgOutputCost: 0,
@@ -111,8 +172,20 @@ export function calculateModelScore(model: ModelWithResult): ModelScore {
   const outputPricePerM = model.config.output_price_per_1m || 0
   const provider = { name: model.config.provider_name, iconUrl: model.config.provider_icon }
 
-  // 1. Quality Score (40% weight) - based on LoComo accuracy via Hindsight
+  // 1. Quality Score (30% weight) - BEAM facts-only accuracy via Hindsight
   const qualityScore = model.qualityResult?.accuracy || 0
+
+  // 2. Efficiency Score (10% weight) - accuracy per 1k stored fact tokens.
+  // Punishes extractors that dump near-verbatim conversation into memory.
+  // A missing token count means the quality run was incomplete; the row scores
+  // 0 on this dimension (shown as a dash) until the model is re-run.
+  const storedFactTokens = model.qualityResult?.stored_fact_tokens ?? null
+  const efficiencyRaw = storedFactTokens && storedFactTokens > 0
+    ? qualityScore / (storedFactTokens / 1000)
+    : null
+  const efficiencyScore = efficiencyRaw === null
+    ? 0
+    : (efficiencyRaw / (efficiencyRaw + EFFICIENCY_REFERENCE)) * 100
 
   // 3. Cost Score (20% weight) - based purely on pricing, not actual token usage.
   const normalizedCost =
@@ -125,14 +198,16 @@ export function calculateModelScore(model: ModelWithResult): ModelScore {
       : (COST_REFERENCE / (COST_REFERENCE + normalizedCost)) * 100
 
   if (!model.result) {
-    // Only quality data available — omit speed and reliability from total score weighting
-    const totalScore = qualityScore * 0.40 + costScore * 0.20
+    // Only quality data available — omit speed and conformance from total score weighting
+    const totalScore = qualityScore * 0.30 + efficiencyScore * 0.10 + costScore * 0.20
     return {
       totalScore: Math.round(totalScore * 10) / 10,
       qualityScore: Math.round(qualityScore * 10) / 10,
+      efficiencyScore: Math.round(efficiencyScore * 10) / 10,
       speedScore: 0,
       costScore: Math.round(costScore * 10) / 10,
-      reliabilityScore: 0,
+      conformanceScore: 0,
+      storedFactTokens,
       avgCostPerRequest: 0,
       avgInputCost: 0,
       avgOutputCost: 0,
@@ -144,7 +219,7 @@ export function calculateModelScore(model: ModelWithResult): ModelScore {
 
   const summary = model.result.summary
 
-  // 2. Speed Score (25% weight) - hyperbolic decay on latency
+  // 4. Speed Score (20% weight) - hyperbolic decay on latency
   const latency = summary?.avg_latency_s || 0
   const speedScore = latency === 0
     ? 0
@@ -162,24 +237,26 @@ export function calculateModelScore(model: ModelWithResult): ModelScore {
   const avgInputCost = (avgPromptTokens / 1_000_000) * inputPricePerM
   const avgOutputCost = (avgCompletionTokens / 1_000_000) * outputPricePerM
 
-  // 4. Reliability Score (15% weight) - straight success rate percentage
-  const successRate = summary?.total
+  // 5. JSON Conformance Score (20% weight) - valid-JSON rate on the extraction tests
+  const conformanceScore = summary?.total
     ? (summary.success / summary.total) * 100
     : 0
-  const reliabilityScore = successRate
 
   const totalScore =
-    (qualityScore * 0.40) +
-    (speedScore * 0.25) +
-    (costScore * 0.20) +
-    (reliabilityScore * 0.15)
+    (qualityScore * 0.30) +
+    (efficiencyScore * 0.10) +
+    (conformanceScore * 0.20) +
+    (speedScore * 0.20) +
+    (costScore * 0.20)
 
   return {
     totalScore: Math.round(totalScore * 10) / 10,
     qualityScore: Math.round(qualityScore * 10) / 10,
+    efficiencyScore: Math.round(efficiencyScore * 10) / 10,
     speedScore: Math.round(speedScore * 10) / 10,
     costScore: Math.round(costScore * 10) / 10,
-    reliabilityScore: Math.round(reliabilityScore * 10) / 10,
+    conformanceScore: Math.round(conformanceScore * 10) / 10,
+    storedFactTokens,
     avgCostPerRequest: Math.round(avgCostPerRequest * 1000) / 1000,
     avgInputCost: Math.round(avgInputCost * 1000) / 1000,
     avgOutputCost: Math.round(avgOutputCost * 1000) / 1000,

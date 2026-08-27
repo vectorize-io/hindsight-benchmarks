@@ -105,6 +105,7 @@ export interface ModelConfig {
   size_gb?: number
   benchmarks?: string[]  // e.g. ["retain", "quality", "reflect"]
   notes?: string  // optional caveat shown under the model name (e.g. slow/unreliable)
+  reasoning_effort?: string  // "none" = thinking disabled for this model's runs
 }
 
 export interface QualityResult {
@@ -113,7 +114,17 @@ export interface QualityResult {
   total: number
   model_id: string
   provider_id: string
-  sample_id: string
+  // Legacy LoComo runs carried a single sample_id and none of the fields below.
+  // The loader drops quality blocks without `dataset`, so scored results always
+  // come from the BEAM facts-only benchmark.
+  sample_id?: string
+  dataset?: string
+  judge_model?: string
+  context_mode?: string
+  hindsight_version?: string | null
+  stored_fact_tokens?: number | null
+  per_ability?: Record<string, { correct: number; total: number }>
+  sample_ids?: string[]
 }
 
 export interface ReflectResult {
@@ -153,9 +164,28 @@ export interface EmbeddingsResult {
   sample_id: string
 }
 
+// Hardware and serving config for self-hosted (GCP) rows, written by
+// run_gcp_model.py so speed numbers carry their conditions.
+export interface DeploymentInfo {
+  machine_type?: string
+  accelerator_type?: string
+  accelerator_count?: number
+  region?: string
+  serving?: string
+  container?: { image?: string; args?: string[] }
+  max_model_len?: number
+  max_model_len_source?: string
+  reasoning_effort?: string
+  llm_extra_body?: { chat_template_kwargs?: { enable_thinking?: boolean; reasoning_effort?: string } } & Record<string, unknown>
+}
+
 export interface ModelWithResult {
   config: ModelConfig
   result: BenchmarkRun | null
   qualityResult?: QualityResult | null
+  // LoComo-era quality numbers (no `dataset` field), shown only on the legacy
+  // retain leaderboard.
+  legacyQualityResult?: QualityResult | null
   reflectResult?: ReflectResult | null
+  deployment?: DeploymentInfo | null
 }

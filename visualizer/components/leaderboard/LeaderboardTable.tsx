@@ -10,7 +10,7 @@ import {
 } from '@tanstack/react-table'
 import { useState, useMemo } from 'react'
 import { ModelWithResult } from '@/lib/types'
-import { calculateModelScore, calculateReflectScore, ModelScore } from '@/lib/scoring'
+import { calculateModelScore, calculateReflectScore, calculateLegacyModelScore, ModelScore } from '@/lib/scoring'
 
 // Dark-mode score cell: score 0–100 → dark HSL background (red→yellow→green)
 function scoreToBackground(score: number): string {
@@ -31,7 +31,7 @@ function scoreToText(score: number): string {
 interface LeaderboardTableProps {
   models: ModelWithResult[]
   type: 'pay-per-use' | 'subscription' | 'local' | 'mixed'
-  variant?: 'retain' | 'reflect'
+  variant?: 'retain' | 'reflect' | 'retain-legacy'
 }
 
 interface TableRow extends ModelWithResult {
@@ -40,7 +40,9 @@ interface TableRow extends ModelWithResult {
 }
 
 export default function LeaderboardTable({ models, type, variant = 'retain' }: LeaderboardTableProps) {
-  const scoreCalculator = variant === 'reflect' ? calculateReflectScore : calculateModelScore
+  const scoreCalculator = variant === 'reflect' ? calculateReflectScore
+    : variant === 'retain-legacy' ? calculateLegacyModelScore
+    : calculateModelScore
   const tableData: TableRow[] = useMemo(() => {
     const withScores = models.map(model => ({
       ...model,
@@ -134,7 +136,9 @@ export default function LeaderboardTable({ models, type, variant = 'retain' }: L
         <div>
           <div>Total Score</div>
           <div className="text-xs font-normal text-muted-foreground normal-case">
-            {variant === 'reflect' ? 'Quality + Speed + Cost' : 'Quality + Speed + Cost + Reliability'}
+            {variant === 'reflect' ? 'Quality + Speed + Cost'
+              : variant === 'retain-legacy' ? 'Quality + Speed + Cost + Reliability'
+              : 'Quality + Efficiency + Conformance + Speed + Cost'}
           </div>
         </div>
       ),
@@ -165,16 +169,26 @@ export default function LeaderboardTable({ models, type, variant = 'retain' }: L
       header: () => (
         <div>
           <div>Quality</div>
-          <div className="text-xs font-normal text-muted-foreground normal-case">LoComo accuracy</div>
+          <div className="text-xs font-normal text-muted-foreground normal-case">
+            {variant === 'retain' ? 'BEAM extraction accuracy' : 'LoComo accuracy'}
+          </div>
         </div>
       ),
       cell: ({ getValue, row }) => {
         const value = getValue() as number
         const accuracy = variant === 'reflect'
           ? (row.original.reflectResult?.accuracy ?? null)
-          : (row.original.qualityResult?.accuracy ?? null)
+          : variant === 'retain-legacy'
+            ? (row.original.legacyQualityResult?.accuracy ?? null)
+            : (row.original.qualityResult?.accuracy ?? null)
+        const perAbility = variant === 'retain' ? row.original.qualityResult?.per_ability : undefined
+        const abilityTooltip = perAbility
+          ? Object.entries(perAbility)
+              .map(([ability, s]) => `${ability.replace(/_/g, ' ')}: ${s.correct}/${s.total}`)
+              .join('\n')
+          : undefined
         return (
-          <div className="relative px-6 py-4" style={{ backgroundColor: scoreToBackground(value) }}>
+          <div className="relative px-6 py-4" style={{ backgroundColor: scoreToBackground(value) }} title={abilityTooltip}>
             <div className="absolute inset-0" style={{ width: `${value}%`, backgroundColor: scoreToBar(value) }} />
             <div className="relative z-10">
               <div className="text-sm font-semibold" style={{ color: scoreToText(value) }}>{value.toFixed(1)}</div>
@@ -187,6 +201,94 @@ export default function LeaderboardTable({ models, type, variant = 'retain' }: L
       },
       size: 130,
     },
+    ...(variant === 'retain' ? [{
+      id: 'reasoningEffort',
+      accessorFn: (row: TableRow) => {
+        const dep = row.deployment
+        const kwargs = dep?.llm_extra_body?.chat_template_kwargs
+        if (dep?.reasoning_effort === 'none' || kwargs?.enable_thinking === false || row.config.reasoning_effort === 'none') return 'off'
+        if (kwargs?.reasoning_effort) return kwargs.reasoning_effort
+        if (kwargs?.enable_thinking === true) return 'on'
+        return dep?.reasoning_effort || row.config.reasoning_effort || 'default'
+      },
+      header: () => (
+        <div>
+          <div>Reasoning</div>
+          <div className="text-xs font-normal text-muted-foreground normal-case">Effort tested</div>
+        </div>
+      ),
+      cell: ({ getValue }: any) => {
+        const value = getValue() as string
+        return (
+          <div className="px-6 py-4">
+            <span className={`text-sm font-medium ${value === 'off' ? 'text-foreground' : 'text-amber-400'}`}>
+              {value}
+            </span>
+          </div>
+        )
+      },
+      size: 100,
+    }, {
+      id: 'testConfig',
+      accessorFn: (row: TableRow) => row.config.model_id,
+      enableSorting: false,
+      header: () => (
+        <div>
+          <div>Serving</div>
+          <div className="text-xs font-normal text-muted-foreground normal-case">Context · hardware</div>
+        </div>
+      ),
+      cell: ({ row }: any) => {
+        const dep = row.original.deployment
+        const ctx = dep?.max_model_len ? `${Math.round(dep.max_model_len / 1024)}K ctx` : null
+        const gpu = dep?.accelerator_type
+          ? `${dep.accelerator_count || 1}× ${dep.accelerator_type.replace('NVIDIA_', '').replace(/_/g, ' ')}`
+          : null
+        const ctxFlagged = dep?.container?.args?.some((a: string) => a.startsWith('--max-model-len'))
+        const ctxLine = dep?.max_model_len
+          ? `context length: ${dep.max_model_len.toLocaleString()} tokens ${ctxFlagged ? '(--max-model-len)' : '(model native; no flag set)'}`
+          : null
+        const servingTooltip = dep?.container?.args?.length
+          ? [dep.container.image, ctxLine, '', ...dep.container.args].filter(l => l !== null).join('\n')
+          : ctxLine || undefined
+        const hsVersion = row.original.qualityResult?.hindsight_version
+        return (
+          <div className="px-6 py-4 text-xs text-muted-foreground leading-relaxed" title={servingTooltip}>
+            {ctx && <div>{ctx}</div>}
+            {gpu && <div>{gpu}</div>}
+            {!dep && <div>API provider</div>}
+            {hsVersion && <div>Hindsight v{hsVersion}</div>}
+          </div>
+        )
+      },
+      size: 130,
+    }, {
+      id: 'efficiencyScore',
+      accessorFn: (row: TableRow) => row.score.efficiencyScore,
+      header: () => (
+        <div>
+          <div>Efficiency</div>
+          <div className="text-xs font-normal text-muted-foreground normal-case">Accuracy per stored token</div>
+        </div>
+      ),
+      cell: ({ getValue, row }: any) => {
+        const value = getValue() as number
+        const storedTokens = row.original.score.storedFactTokens
+        if (!storedTokens) {
+          return <div className="px-6 py-4 text-sm text-muted-foreground">—</div>
+        }
+        return (
+          <div className="relative px-6 py-4" style={{ backgroundColor: scoreToBackground(value) }}>
+            <div className="absolute inset-0" style={{ width: `${value}%`, backgroundColor: scoreToBar(value) }} />
+            <div className="relative z-10">
+              <div className="text-sm font-semibold" style={{ color: scoreToText(value) }}>{value.toFixed(1)}</div>
+              <div className="text-xs text-muted-foreground">{(storedTokens / 1000).toFixed(1)}k tokens stored</div>
+            </div>
+          </div>
+        )
+      },
+      size: 140,
+    }] : []),
     {
       id: 'speedScore',
       accessorFn: (row) => row.score.speedScore,
@@ -312,13 +414,15 @@ export default function LeaderboardTable({ models, type, variant = 'retain' }: L
       },
       size: 120,
     }]),
-    ...(variant === 'retain' ? [{
-      id: 'reliabilityScore',
-      accessorFn: (row: TableRow) => row.score.reliabilityScore,
+    ...(variant === 'retain' || variant === 'retain-legacy' ? [{
+      id: 'conformanceScore',
+      accessorFn: (row: TableRow) => row.score.conformanceScore,
       header: () => (
         <div>
-          <div>Reliability</div>
-          <div className="text-xs font-normal text-muted-foreground normal-case">Schema conformance</div>
+          <div>{variant === 'retain-legacy' ? 'Reliability' : 'JSON Conformance'}</div>
+          <div className="text-xs font-normal text-muted-foreground normal-case">
+            {variant === 'retain-legacy' ? 'Schema conformance' : 'Valid JSON / total tests'}
+          </div>
         </div>
       ),
       cell: ({ getValue, row }: any) => {
