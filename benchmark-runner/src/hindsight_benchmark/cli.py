@@ -163,7 +163,8 @@ def main():
                     api_model = model_config["api_model"]
                     run = run_url(url, model_id=model_id, model_name=model_name,
                                 provider_id=provider_id, concurrency=args.concurrency,
-                                dataset=args.dataset, api_key=api_key, model=api_model)
+                                dataset=args.dataset, api_key=api_key, model=api_model,
+                                reasoning_effort=model_config.get("reasoning_effort", ""))
                     save_run(provider_id, model_id, run)
                     _print_summary(run)
 

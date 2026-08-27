@@ -48,6 +48,14 @@ PROVIDER_DEFAULTS = {
         "pricing_type": "local", "method": "url", "model_field": "api_model",
         "url": "http://localhost:11434", "api_key_env": None,
     },
+    "gcp": {
+        # Self-hosted on Vertex AI via run_gcp_model.py; the result file's
+        # `deployment` block records the exact hardware. The runners never
+        # call these entries directly — the url is the run-time token proxy.
+        "provider_name": "GCP (self-hosted)", "provider_icon": "/gcp.png",
+        "pricing_type": "local", "method": "url", "model_field": "api_model",
+        "url": "http://127.0.0.1:8811", "api_key_env": None,
+    },
 }
 
 
@@ -82,6 +90,9 @@ def _normalize(m: dict) -> dict:
         "api_key_env": api_key_env,
         "api_key": os.environ.get(api_key_env, "") if api_key_env else "",
         "benchmarks": m.get("benchmarks", list(ALL_BENCHMARKS)),
+        # "none" disables thinking on reasoning models; unset sends no
+        # reasoning parameter at all (each model runs at its own default).
+        "reasoning_effort": m.get("reasoning_effort"),
     }
 
 

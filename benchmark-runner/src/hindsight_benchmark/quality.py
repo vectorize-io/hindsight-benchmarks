@@ -1,175 +1,149 @@
 """
-Quality benchmark — measures answer accuracy via Hindsight memory recall on LoComo conv-43.
+Quality benchmark — extraction quality via Hindsight memory recall on a frozen
+BEAM 128K subset (4 conversations, 80 ability-tagged questions).
+
+The answer context is built from the extracted facts only. Source chunks are
+deliberately excluded: they contain the raw conversation verbatim, so including
+them lets a weak extractor score like a strong one as long as retrieval lands
+the right chunk. Facts-only makes the score attributable to the model that ran
+retain(). Production recall does return chunks, so this is a harder setting
+than production; the leaderboard labels it extraction quality.
 """
 
 import json
+import os
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, Optional
 
-import requests
 from openai import OpenAI
 
 from .benchmark import DATASETS_DIR, LEADERBOARD_DIR
 
-ANSWER_GENERATOR_MODEL = "gemini-2.5-flash-lite"
-JUDGE_MODEL = "gemini-2.5-flash-lite"
+ANSWER_GENERATOR_MODEL = "gemini-3.7-flash"
+JUDGE_MODEL = "gemini-3.7-flash"
+# Same model via Vertex AI (Google-hosted, billed to GCP credits).
+VERTEX_JUDGE_MODEL = "google/gemini-3.7-flash"
+VERTEX_JUDGE_PROXY_PORT = 8812
+
+DATASET_NAME = "beam_128k_subset"
+CONTEXT_MODE = "facts_only"
+
+# Abort the run when generator or judge errors pass this count; the score would
+# measure API availability, not extraction.
+MAX_LLM_ERRORS = 4
+
+# One BEAM session is ~90 extraction chunks; slow models need well over the
+# client's synchronous per-request budget, so retain runs async and is polled.
+RETAIN_POLL_INTERVAL_S = 15
+# The largest BEAM session takes ~27 min with thinking off and ~3x that with a
+# reasoning model, so an hour rejects work that is progressing normally. This
+# is a stuck-job backstop, not a performance bound; the daemon reports failures
+# through the operation status, which is what actually ends a bad run.
+RETAIN_DEADLINE_S = int(os.getenv("HINDSIGHT_BENCH_RETAIN_DEADLINE_S", "21600"))
+
+# ── token counting ────────────────────────────────────────────────────────────
+
+try:
+    import tiktoken
+    _ENCODER = tiktoken.get_encoding("cl100k_base")
+    TOKEN_COUNTER = "cl100k_base"
+
+    def count_tokens(text: str) -> int:
+        return len(_ENCODER.encode(text))
+except ImportError:
+    TOKEN_COUNTER = "chars_div_4"
+
+    def count_tokens(text: str) -> int:
+        # Rough approximation. The result JSON records which counter ran;
+        # mixing counters across a fleet shifts efficiency scores.
+        return len(text) // 4
 
 # ── prompts ───────────────────────────────────────────────────────────────────
 
 CONTEXT_INSTRUCTIONS = """**Understanding the Retrieved Context:**
-The context contains memory facts extracted from previous conversations, each with its source chunk.
+The context contains memory facts extracted from previous conversations between the user and the assistant.
 
-1. **Fact**: A high-level summary/atomic fact (e.g., "User loves hiking in mountains")
-   - This is the searchable summary of what was stored
+1. **Fact**: An atomic fact extracted from the conversation (e.g., "User loves hiking in mountains")
+   - Facts are all you have. There is no raw transcript available.
 
-2. **Source Chunk**: The actual raw conversation where the fact was extracted from
-   - **This is your primary source for detailed information**
-   - Look here for specifics, context, quotes, and evidence
-   - Prioritize information from chunks when facts seem ambiguous
-
-3. **Temporal Information**:
+2. **Temporal Information**:
    - "occurred": When the event actually happened
    - "mentioned": When it was discussed in conversation
    - Use this to understand the timeline and resolve conflicts (prefer more recent info)
 
-4. **Context**: Additional metadata about the conversation session
-
 **Date Calculations (CRITICAL - read carefully):**
 - When calculating days between two dates: count the days from Date A to Date B as (B - A)
-- Example: Jan 1 to Jan 8 = 7 days (not 8)
 - "X days ago" from Question Date means: Question Date minus X days
 - When a fact says "three weeks ago" on a certain mentioned date, that refers to 3 weeks before THAT mentioned date, NOT the question date
 - Always convert relative times ("last Friday", "two weeks ago") to absolute dates BEFORE comparing
 - Double-check your arithmetic - off-by-one errors are very common
-- **Important**: Read questions carefully for time anchors. "How many days ago did X happen when Y happened?" asks for the time between X and Y, NOT between X and the question date
 
-**Handling Relative Times in Facts:**
-- If a fact says "last Friday" or "two weeks ago", anchor it to the fact's "mentioned" date, NOT the question date
-- First convert ALL relative references to absolute dates, then answer the question
-- Show your date conversion work in your reasoning
+**Counting and Ordering Questions:**
+- Scan ALL facts before counting or ordering - don't stop early
+- List each item explicitly in your reasoning before giving the count or order
+- Watch for duplicates: the same item may appear in multiple facts. Deduplicate by checking if two facts refer to the same underlying item/event
+- When in doubt, undercount: it's better to miss a duplicate than to count the same thing twice
 
-**Counting Questions (CRITICAL for "how many" questions):**
-- **Scan ALL facts first** - go through every single fact before counting, don't stop early
-- **List each item explicitly in your reasoning** before giving the count: "1. X, 2. Y, 3. Z = 3 total"
-- **Check all facts and chunks** before giving your final count
-- **Watch for duplicates**: The same item may appear in multiple facts. Deduplicate by checking if two facts refer to the same underlying item/event
-- **Watch for different descriptions of same thing**: "Dr. Patel (ENT specialist)" and "the ENT specialist" might be the same doctor
-- **Don't over-interpret**: A project you "completed" is different from a project you're "leading"
-- **Don't double-count**: If the same charity event is mentioned in two conversations, it's still one event
-
-**Disambiguation Guidance (CRITICAL - many errors come from over-counting):**
-- **Assume overlap by default**: If two facts describe similar events (same type, similar timeframe, similar details), assume they are the SAME event unless there's clear evidence they are different
-- If a person has a name AND a role mentioned, check if they're the same person before counting separately
-- If an amount is mentioned multiple times on different dates, check if it's the same event or different events
-- When facts reference the same underlying event from different sessions, count it once
-- **Check for aliases**: "my college roommate's wedding" and "Emily's wedding" might be the same event
-- **Check for time period overlap**: Two "week-long breaks" mentioned in overlapping time periods are likely the same break
-- **When in doubt, undercount**: It's better to miss a duplicate than to count the same thing twice
-
-**Question Interpretation (read carefully):**
-- "How many X before Y?" - count only X that happened BEFORE Y, not Y itself
-- "How many properties viewed before making an offer on Z?" - count OTHER properties, not Z
-- "How many X in the last week/month?" - calculate the exact date range from the question date, then filter
-- Pay attention to qualifiers like "before", "after", "initially", "currently", "in total"
+**Contradictions:**
+- If the facts contain contradictory information about the question topic, say so explicitly and describe both statements rather than picking one silently
 
 **When to Say "I Don't Know":**
 - If the question asks about something not in the retrieved context, say "I don't have information about X"
-- If comparing two things (e.g., "which happened first, X or Y?") but only one is mentioned, explicitly say the other is missing
-- Don't guess or infer dates that aren't explicitly stated in the facts or chunks
-- If you cannot find a specific piece of information after checking all facts and chunks, admit it
-- **Partial knowledge is OK**: If asked about two things and you only have info on one, provide what you know and note what's missing (don't just say "I don't know")
-
-**For Recommendation/Preference Questions (tips, suggestions, advice):**
-- **DO NOT invent specific recommendations** (no made-up product names, course names, paper titles, channel names, etc.)
-- **DO mention specific brands/products the user ALREADY uses** from the context
-- Describe WHAT KIND of recommendation the user would prefer, referencing their existing tools/brands
-- Keep answers concise - focus on key preferences (brand, quality level, specific interests) not exhaustive category lists
-- First scan ALL facts for user's existing tools, brands, stated preferences
+- Don't guess or infer details that aren't stated in the facts
+- Partial knowledge is OK: if asked about two things and you only have info on one, provide what you know and note what's missing
 
 **How to Answer:**
 1. Scan ALL facts to find relevant memories - don't stop after finding a few
-2. **Read the source chunks carefully** - they contain the actual details you need
-3. Convert all relative times to absolute dates
-4. Use temporal information to understand when things happened
-5. Synthesize information from multiple facts if needed
-6. If facts conflict, prefer more recent information
-7. Double-check any date calculations before answering
-8. **For counting questions ("how many")**: First list each unique item in your reasoning (1. X, 2. Y, 3. Z...), then count them
-9. **For recommendations**: Reference the user's existing tools, experiences, or preferences explicitly
+2. Convert all relative times to absolute dates
+3. Use temporal information to understand when things happened
+4. Synthesize information from multiple facts if needed
+5. If facts conflict, prefer more recent information unless the question asks about the conflict itself
+6. Double-check any date calculations before answering
 
 """
 
-LOCOMO_JUDGE_PROMPT = """Your task is to label an answer to a question as 'CORRECT' or 'WRONG'. You will be given the following data:
-        (1) a question (posed by one user to another user),
-        (2) a 'gold' (ground truth) answer,
-        (3) a generated answer
-    which you will score as CORRECT/WRONG.
+JUDGE_PROMPT = """Your task is to label a generated answer to a question as CORRECT or WRONG.
+You will be given:
+    (1) the question (asked by a user about their own prior conversations with an assistant),
+    (2) grading material: a gold answer, a rubric of required points, or both,
+    (3) the generated answer.
 
-    The point of the question is to ask about something one user should know about the other user based on their prior conversations.
-    The gold answer will usually be a concise and short answer that includes the referenced topic, for example:
-    Question: Do you remember what I got the last time I went to Hawaii?
-    Gold answer: A shell necklace
-    The generated answer might be much longer, but you should be generous with your grading - as long as it touches on the same topic as the gold answer, it should be counted as CORRECT.
-
-    For time related questions, the gold answer will be a specific date, month, year, etc. The generated answer might be much longer or use relative time references (like "last Tuesday" or "next month"), but you should be generous with your grading - as long as it refers to the same date or time period as the gold answer, it should be counted as CORRECT. Even if the format differs (e.g., "May 7th" vs "7 May"), consider it CORRECT if it's the same date.
-    There's an edge case where the actual answer can't be found in the data and in that case the gold answer will say so (e.g. 'You did not mention this information.'); if the generated answer says that it cannot be answered or it doesn't know all the details, it should be counted as CORRECT.
+Grade generously on form, strictly on substance:
+- The generated answer may be much longer than the gold answer. As long as it contains the key information from the gold answer, it is CORRECT.
+- For time questions, different formats of the same date/period are CORRECT ("May 7th" vs "7 May").
+- When a rubric is given, the generated answer must cover the substance of the rubric points. Minor wording differences are fine; missing or contradicting a rubric point is WRONG.
+- If the gold answer says the information was never mentioned or is unanswerable, the generated answer is CORRECT if it says it doesn't know or lacks that information, and WRONG if it invents an answer.
+- An answer that hedges but still commits to wrong specifics is WRONG.
 """
 
 # ── helpers ───────────────────────────────────────────────────────────────────
 
-def _direct_recall(api_url: str, bank_id: str, query: str, timeout: float = 60.0):
-    url = f"{api_url}/v1/default/banks/{bank_id}/memories/recall"
-    payload = {
-        "query": query,
-        "budget": "low",
-        "max_tokens": 4096,
-        "include": {"entities": {"max_tokens": 500}},
-    }
-    resp = requests.post(url, json=payload, timeout=timeout)
-    resp.raise_for_status()
-    data = resp.json()
 
-    class SimpleRecallResult:
-        def __init__(self, r):
-            self.text = r.get("text", "")
-            self.context = r.get("context")
-            self.occurred_start = r.get("occurred_start")
-            self.occurred_end = r.get("occurred_end")
-            self.mentioned_at = r.get("mentioned_at")
-            self.chunk_id = r.get("chunk_id")
-
-    class SimpleChunk:
-        def __init__(self, c):
-            self.text = c.get("text", "") if isinstance(c, dict) else ""
-
-    class SimpleRecallResponse:
-        def __init__(self, d):
-            self.results = [SimpleRecallResult(r) for r in d.get("results", [])]
-            raw_chunks = d.get("chunks") or {}
-            self.chunks = {k: SimpleChunk(v) for k, v in raw_chunks.items()}
-            raw_entities = d.get("entities") or {}
-            self.entities = {
-                k: type("E", (), {"observations": v.get("observations", []) if isinstance(v, dict) else []})()
-                for k, v in raw_entities.items()
-            }
-
-    return SimpleRecallResponse(data)
-
-
-def _parse_date(date_string: str) -> datetime:
-    dt = datetime.strptime(date_string, "%I:%M %p on %d %B, %Y")
-    return dt.replace(tzinfo=timezone.utc)
+def _facts_only_recall(client, bank_id: str, query: str, query_timestamp: Optional[datetime] = None):
+    """Recall extracted facts. Chunks stay excluded: they hold the raw
+    conversation and would decouple the score from the model's extraction.
+    Entities stay excluded too: hindsight 0.9.x fills observations from mental
+    models, which this pipeline does not build, so the block is always empty.
+    query_timestamp anchors relative-time resolution to the conversation's
+    era instead of today's wall clock."""
+    return client.recall(
+        bank_id=bank_id,
+        query=query,
+        budget="low",
+        max_tokens=4096,
+        include_chunks=False,
+        query_timestamp=query_timestamp.isoformat() if query_timestamp else None,
+    )
 
 
 def _format_context(recall_response) -> str:
+    """Facts-only context: extracted facts, no chunks."""
     results = recall_response.results or []
-    chunks = recall_response.chunks or {}
-    entities = recall_response.entities or {}
 
-    if not results and not entities:
+    if not results:
         return "No memories found."
 
     parts = []
@@ -184,24 +158,95 @@ def _format_context(recall_response) -> str:
             fp.append(f"Occurred: {occ}")
         if fact.mentioned_at:
             fp.append(f"Mentioned: {fact.mentioned_at}")
-        if fact.chunk_id and chunks:
-            chunk = chunks.get(fact.chunk_id)
-            if chunk and chunk.text:
-                fp.append(f'Source:\n  "{chunk.text}"')
         parts.append("\n".join(fp))
 
-    if entities:
-        ep = ["=== Entity Observations ==="]
-        for name, state in entities.items():
-            obs = getattr(state, "observations", None) or (state.get("observations", []) if isinstance(state, dict) else [])
-            if obs:
-                ep.append(f"\nEntity: {name}")
-                for o in obs:
-                    ep.append(f"  - {o.get('text', '') if isinstance(o, dict) else getattr(o, 'text', '')}")
-        if len(ep) > 1:
-            parts.append("\n".join(ep))
-
     return "\n\n---\n\n".join(parts)
+
+
+def _format_grading_material(answer: Optional[str], rubric: list[str]) -> str:
+    parts = []
+    if answer:
+        parts.append(f"Gold answer: {answer}")
+    if rubric:
+        points = "\n".join(f"- {r}" for r in rubric)
+        parts.append(f"Rubric (required points):\n{points}")
+    return "\n".join(parts) if parts else "Gold answer: (none provided)"
+
+
+def _retain_with_polling(client, bank_id: str, content: str, context: str, timestamp: datetime, document_id: str):
+    """Submit retain asynchronously and poll until the server finishes.
+
+    A synchronous retain of a full BEAM session blows through any reasonable
+    HTTP timeout (a TimeoutError with an empty message, ~10 minutes in). The
+    async path returns an operation id immediately; extraction progress is
+    the server's business.
+    """
+    resp = client.retain(
+        bank_id=bank_id,
+        content=content,
+        context=context,
+        timestamp=timestamp,
+        document_id=document_id,
+        retain_async=True,
+    )
+    op_ids = resp.operation_ids or ([resp.operation_id] if resp.operation_id else [])
+    if not op_ids:
+        raise RuntimeError(f"Async retain returned no operation id for {document_id}")
+
+    deadline = time.time() + RETAIN_DEADLINE_S
+    pending = list(op_ids)
+    while pending:
+        if time.time() > deadline:
+            raise RuntimeError(f"Retain of {document_id} exceeded {RETAIN_DEADLINE_S}s (pending: {pending})")
+        time.sleep(RETAIN_POLL_INTERVAL_S)
+        # client.operations is the raw async API; run its coroutines through
+        # the same loop helper the sync wrapper methods use.
+        from hindsight_client.hindsight_client import _run_async
+
+        still_pending = []
+        for op_id in pending:
+            status = _run_async(client.operations.get_operation_status(bank_id, op_id))
+            # Server enum: pending, processing, completed, failed, cancelled, not_found
+            if status.status == "completed":
+                continue
+            if status.status in ("failed", "cancelled", "not_found"):
+                raise RuntimeError(
+                    f"Retain operation {op_id} for {document_id} {status.status}: {status.error_message}"
+                )
+            still_pending.append(op_id)
+        pending = still_pending
+
+
+def _count_stored_fact_tokens(client, bank_id: str) -> Optional[int]:
+    """Sum tokens over all fact texts stored in the bank.
+
+    This is the extraction footprint of the model under test: what it chose to
+    write into memory. Verbose extractors pay here. Returns None when the
+    listing fails, so efficiency reads as missing rather than as a perfect
+    zero.
+    """
+    total = 0
+    offset = 0
+    page_size = 500
+    try:
+        expected = None
+        while True:
+            page = client.list_memories(bank_id=bank_id, limit=page_size, offset=offset)
+            items = page.items or []
+            if expected is None:
+                expected = page.total or 0
+            if not items:
+                break
+            total += sum(count_tokens(str(it.get("text", ""))) for it in items)
+            offset += page_size
+            # Bounded by the server-reported total, so a server that ignores
+            # `offset` cannot loop this forever.
+            if len(items) < page_size or offset >= expected:
+                break
+        return total
+    except Exception as e:
+        print(f"Warning: could not count stored facts ({e})", flush=True)
+        return None
 
 
 def _save_quality_result(provider_id: str, model_id: str, result: dict):
@@ -219,32 +264,76 @@ def _save_quality_result(provider_id: str, model_id: str, result: dict):
         json.dump(existing, f, indent=2)
     return path
 
+
 # ── benchmark class ───────────────────────────────────────────────────────────
 
+
 class QualityBenchmark:
-    """Measures answer accuracy via Hindsight memory recall on LoComo conv-43."""
+    """Extraction quality via Hindsight memory recall on the BEAM 128K subset."""
 
-    DATASET_PATH = DATASETS_DIR / "locomo_quality.json"
-    TARGET_CONVERSATION = "conv-43"
+    DATASET_PATH = DATASETS_DIR / f"{DATASET_NAME}.json"
 
-    def __init__(self, gemini_api_key: str = None, openai_api_key: str = None):
-        if gemini_api_key:
-            print(f"Using {ANSWER_GENERATOR_MODEL} for judge and generator")
+    def __init__(
+        self,
+        vertex_project: Optional[str] = None,
+        gemini_api_key: Optional[str] = None,
+        vertex_judge_port: int = VERTEX_JUDGE_PROXY_PORT,
+    ):
+        if vertex_project:
+            from .gcp import start_token_proxy, vertex_openai_upstream
+            start_token_proxy(vertex_openai_upstream(vertex_project), vertex_judge_port)
+            self.llm_client = OpenAI(
+                api_key="vertex-proxy",
+                base_url=f"http://127.0.0.1:{vertex_judge_port}/v1",
+                timeout=120.0,
+            )
+            self.model_name = VERTEX_JUDGE_MODEL
+        elif gemini_api_key:
             self.llm_client = OpenAI(
                 api_key=gemini_api_key,
                 base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
                 timeout=120.0,
             )
             self.model_name = ANSWER_GENERATOR_MODEL
-        elif openai_api_key:
-            print("GEMINI_API_KEY not set, falling back to OpenAI gpt-4o-mini")
-            self.llm_client = OpenAI(api_key=openai_api_key, timeout=90.0)
-            self.model_name = "gpt-4o-mini"
         else:
-            self.llm_client = None
-            self.model_name = None
+            raise ValueError(
+                "A vertex_project or GEMINI_API_KEY is required: the "
+                f"generator/judge is pinned to {JUDGE_MODEL}."
+            )
+        print(f"Using {self.model_name} for generator and judge")
+        self._verify_judge()
 
-    def run(self, model_id: str, provider_id: str, api_url: str, max_questions: Optional[int] = None) -> Dict[str, Any]:
+    def _verify_judge(self):
+        """One throwaway completion before any spend: a judge model id that
+        does not resolve would otherwise surface as accuracy 0.0 after the
+        full ingest cost."""
+        try:
+            response = self.llm_client.chat.completions.create(
+                model=self.model_name,
+                messages=[{"role": "user", "content": "Reply with the single word: ok"}],
+                max_tokens=100,
+            )
+            content = (response.choices[0].message.content or "").strip()
+        except Exception as e:
+            raise RuntimeError(f"Judge model {self.model_name} preflight failed: {e}") from e
+        if not content:
+            raise RuntimeError(f"Judge model {self.model_name} preflight returned empty content")
+        print(f"Judge preflight ok ({content[:20]!r})")
+
+    def run(
+        self,
+        model_id: str,
+        provider_id: str,
+        api_url: str,
+        max_questions_per_conversation: Optional[int] = None,
+        max_conversations: Optional[int] = None,
+        save: bool = True,
+        reuse_bank_ts: Optional[int] = None,
+    ) -> Dict[str, Any]:
+        """reuse_bank_ts: re-evaluate against banks from an earlier run (its
+        bank-id timestamp) instead of ingesting. The extraction under test is
+        already stored, so only recall, generation, and judging run. Used to
+        recover a run whose judge failed mid-flight."""
         try:
             from hindsight_client import Hindsight
         except ImportError:
@@ -253,119 +342,168 @@ class QualityBenchmark:
 
         with open(self.DATASET_PATH) as f:
             dataset = json.load(f)
+        if max_conversations:
+            dataset = dataset[:max_conversations]
 
-        item = next((i for i in dataset if i["sample_id"] == self.TARGET_CONVERSATION), None)
-        if item is None:
-            raise ValueError(f"Conversation {self.TARGET_CONVERSATION} not found in dataset")
-
-        sample_id = item["sample_id"]
-        print(f"\n=== Quality Benchmark ===")
+        print(f"\n=== Quality Benchmark ({DATASET_NAME}, {CONTEXT_MODE}) ===")
         print(f"Model: {provider_id}/{model_id}")
-        print(f"Conversation: {sample_id}")
+        print(f"Conversations: {[c['sample_id'] for c in dataset]}")
         print(f"Hindsight API: {api_url}")
 
-        client = Hindsight(base_url=api_url)
+        # 600s per request: one retain() call carries a full session (up to
+        # ~265k chars, ~90 server-side extraction calls); the client default of
+        # 300s times out on slow providers.
+        client = Hindsight(base_url=api_url, timeout=600.0)
         run_ts = int(time.time())
-        bank_id = (
-            f"qb_{provider_id}_{model_id}_{sample_id}_{run_ts}"
-            .replace("/", "_").replace("-", "_").replace(".", "_")
-        )
-        print(f"\nCreating fresh bank: {bank_id}")
-        client.create_bank(bank_id=bank_id)
 
-        print("\nIngesting conversation...")
-        conv = item["conversation"]
-        speaker_a = conv["speaker_a"]
-        speaker_b = conv["speaker_b"]
-        session_keys = sorted(k for k in conv if k.startswith("session_") and not k.endswith("_date_time"))
-        last_session_date = None
-
-        for session_key in session_keys:
-            if not isinstance(conv.get(session_key), list):
-                continue
-            session_date = _parse_date(conv[f"{session_key}_date_time"])
-            last_session_date = session_date
-            client.retain(
-                bank_id=bank_id,
-                content=json.dumps(conv[session_key]),
-                context=f"Conversation between {speaker_a} and {speaker_b} ({session_key})",
-                timestamp=session_date,
-                document_id=f"{sample_id}_{session_key}_{run_ts}",
-            )
-            print(f"  ✓ Ingested {session_key}", flush=True)
-
-        qa_pairs = item["qa"][:max_questions] if max_questions else item["qa"]
-        print(f"\nEvaluating {len(qa_pairs)} questions...")
+        # The engine version is a test condition like hardware: retrieval and
+        # extraction plumbing change between releases, and rows from different
+        # versions coexist on the board.
+        try:
+            hindsight_version = client.get_version().api_version
+        except Exception:
+            hindsight_version = None
 
         correct = 0
-        for i, qa in enumerate(qa_pairs, 1):
-            question = qa["question"]
-            expected = qa.get("answer", "You did not mention this information.")
+        total = 0
+        per_ability: Dict[str, Dict[str, int]] = {}
+        stored_fact_tokens = 0
+        stored_tokens_known = True
+        self.generation_errors = 0
+        self.judge_errors = 0
 
-            recall_response = None
-            for attempt in range(2):
-                try:
-                    recall_response = _direct_recall(api_url, bank_id, question)
-                    break
-                except Exception as e:
-                    if attempt < 1:
-                        print(f"  Recall attempt {attempt + 1} failed ({e}), retrying...", flush=True)
-                        time.sleep(2)
-                    else:
-                        print(f"  Recall failed after 2 attempts: {e}", flush=True)
-                        recall_response = type("obj", (), {"results": [], "chunks": {}, "entities": {}})()
+        for item in dataset:
+            sample_id = item["sample_id"]
+            bank_ts = reuse_bank_ts or run_ts
+            bank_id = (
+                f"qb_{provider_id}_{model_id}_{sample_id}_{bank_ts}"
+                .replace("/", "_").replace("-", "_").replace(".", "_")
+            )
 
-            predicted = self._generate_answer(question, recall_response, last_session_date)
-            is_correct = self._judge_answer(question, expected, predicted)
-            print(f"  {'✓' if is_correct else '✗'} Q{i}: {question[:60]}...", flush=True)
-            if is_correct:
-                correct += 1
+            last_session_date = datetime.fromisoformat(item["sessions"][-1]["date_time"])
+            if reuse_bank_ts:
+                print(f"\n[{sample_id}] Reusing bank {bank_id}")
+            else:
+                print(f"\n[{sample_id}] Creating bank {bank_id}")
+                client.create_bank(bank_id=bank_id)
+                for si, session in enumerate(item["sessions"], 1):
+                    session_date = datetime.fromisoformat(session["date_time"])
+                    t0 = time.time()
+                    _retain_with_polling(
+                        client,
+                        bank_id=bank_id,
+                        content=json.dumps(session["messages"]),
+                        context=f"Chat between user and assistant about {item['title']} (session {si})",
+                        timestamp=session_date,
+                        document_id=f"{sample_id}_session_{si}_{run_ts}",
+                    )
+                    print(f"  ✓ Ingested session {si}/{len(item['sessions'])} ({time.time() - t0:.0f}s)", flush=True)
 
-        total = len(qa_pairs)
+            bank_tokens = _count_stored_fact_tokens(client, bank_id)
+            if bank_tokens is None:
+                stored_tokens_known = False
+            else:
+                stored_fact_tokens += bank_tokens
+                print(f"  Stored fact tokens: {bank_tokens}")
+
+            qa_pairs = item["qa"]
+            if max_questions_per_conversation:
+                qa_pairs = qa_pairs[:max_questions_per_conversation]
+            print(f"  Evaluating {len(qa_pairs)} questions...")
+
+            for i, qa in enumerate(qa_pairs, 1):
+                question = qa["question"]
+                ability = qa.get("ability", "unknown")
+
+                recall_response = None
+                for attempt in range(2):
+                    try:
+                        recall_response = _facts_only_recall(client, bank_id, question, last_session_date)
+                        break
+                    except Exception as e:
+                        if attempt < 1:
+                            print(f"  Recall attempt {attempt + 1} failed ({e}), retrying...", flush=True)
+                            time.sleep(2)
+                        else:
+                            print(f"  Recall failed after 2 attempts: {e}", flush=True)
+                            recall_response = type("obj", (), {"results": []})()
+
+                predicted = self._generate_answer(question, recall_response, last_session_date)
+                is_correct = self._judge_answer(question, qa.get("answer"), qa.get("rubric") or [], predicted)
+                print(f"  {'✓' if is_correct else '✗'} [{ability}] Q{i}: {question[:60]}...", flush=True)
+                if not is_correct:
+                    expected_str = qa.get("answer") or f"rubric: {(qa.get('rubric') or [])[:2]}"
+                    print(f"      expected: {str(expected_str)[:150]}", flush=True)
+                    print(f"      predicted: {predicted[:150]}", flush=True)
+
+                # Abort rather than let a broken judge/generator masquerade as
+                # bad extraction: past this threshold the accuracy is about the
+                # API weather, not the model.
+                if self.generation_errors > MAX_LLM_ERRORS or self.judge_errors > MAX_LLM_ERRORS:
+                    raise RuntimeError(
+                        f"Aborting: {self.generation_errors} generation errors, "
+                        f"{self.judge_errors} judge errors (max {MAX_LLM_ERRORS})"
+                    )
+
+                total += 1
+                stats = per_ability.setdefault(ability, {"correct": 0, "total": 0})
+                stats["total"] += 1
+                if is_correct:
+                    correct += 1
+                    stats["correct"] += 1
+
         accuracy = round(correct / total * 100, 1) if total > 0 else 0
         print(f"\n=== Results ===")
         print(f"Accuracy: {accuracy}% ({correct}/{total})")
+        for ability in sorted(per_ability):
+            s = per_ability[ability]
+            print(f"  {ability}: {s['correct']}/{s['total']}")
 
+        partial = bool(max_questions_per_conversation or max_conversations)
         result = {
             "accuracy": accuracy,
             "correct": correct,
             "total": total,
+            "dataset": DATASET_NAME,
+            "judge_model": JUDGE_MODEL,
+            "context_mode": CONTEXT_MODE,
+            "hindsight_version": hindsight_version,
+            "stored_fact_tokens": stored_fact_tokens if stored_tokens_known else None,
+            "token_counter": TOKEN_COUNTER,
+            "per_ability": per_ability,
+            "generation_errors": self.generation_errors,
+            "judge_errors": self.judge_errors,
+            "partial": partial,
             "model_id": model_id,
             "provider_id": provider_id,
-            "sample_id": sample_id,
+            "sample_ids": [c["sample_id"] for c in dataset],
         }
-        path = _save_quality_result(provider_id, model_id, result)
-        print(f"Results saved to {path}")
+        if save:
+            path = _save_quality_result(provider_id, model_id, result)
+            print(f"Results saved to {path}")
+        else:
+            print("Not saving results (--no-save)")
         return result
 
     def _generate_answer(self, question: str, recall_response, question_date: Optional[datetime] = None) -> str:
-        if not self.llm_client:
-            return recall_response.results[0].text if recall_response.results else "No memories found"
-
         context = _format_context(recall_response)
         qdate = question_date.strftime("%Y-%m-%d %H:%M:%S UTC") if question_date else "Not specified"
-        prompt = f"""You are a helpful assistant that must answer user questions based on the previous conversations.
+        prompt = f"""You are a helpful assistant that must answer user questions based on memories of previous conversations.
 
 {CONTEXT_INSTRUCTIONS}**Answer Guidelines:**
-1. Start by scanning retrieved context to understand the facts and events that happened and the timeline.
+1. Start by scanning the retrieved facts to understand what happened and the timeline.
 2. Reason about all the memories and find the right answer, considering the most recent memory as an update of the current facts.
 3. If you have 2 possible answers, just say both.
 
-In general the answer must be comprehensive and plenty of details from the retrieved context.
+The answer must be comprehensive, using the details from the retrieved context that are relevant.
 
-For quantitative/counting questions ("how many..."): First list each unique item in your reasoning (1. X, 2. Y, 3. Z...), scanning ALL facts, then count them for your answer.
-If questions asks a location (where...?) make sure to include the location name.
-For recommendation questions ("can you recommend...", "suggest...", "any tips..."): DO NOT give actual recommendations. Instead, describe what KIND the user would prefer based on their context. Example answer format: "The user would prefer recommendations for [category] that focus on [their interest]. They would not prefer [what to avoid based on context]."
-For questions asking for help or instructions, consider the users' recent memories and previous interactions with the assistant to understand their current situation better (recent purchases, specific product models used..)
-For specific number/value questions, use the context to understand what is the most up-to-date number based on recency, but also include the reasoning (in the answer) on previous possible values and why you think are less relevant.
-For open questions, include as much details as possible from different sources that are relevant.
-For questions where a specific entity/role is mentioned and it's different from your memory, just say the truth, don't make up anything just to fulfill the question. For example, if the question is about a specific sport, you should consider if the memories and the question are about the same sport. (e.g. american football vs soccer, shows vs podcasts)
-For comparative questions, say you don't know the answer if you don't have information about both sides. (or more sides)
-For questions related to time/date, carefully review the question date and the memories date to correctly answer the question.
-For questions related to time/date calculation (e.g. How many days passed between X and Y?), carefully review the memories date to correctly answer the question and only provide an answer if you have information about both X and Y, otherwise say it's not possible to calculate and why.
-
-Consider assistant's previous actions (e.g., bookings, reminders) as impactful to the user experiences.
-
+For quantitative/counting questions ("how many..."): first list each unique item in your reasoning, scanning ALL facts, then count them for your answer.
+For ordering questions, list the items with when each happened, then give the order.
+If a question asks a location (where...?) make sure to include the location name.
+For questions where the facts contradict each other on the asked topic, point out the contradiction explicitly instead of silently picking one side.
+For questions related to time/date, carefully review the question date and the memory dates to correctly answer the question.
+For questions related to time/date calculation (e.g. How many days passed between X and Y?), only provide an answer if you have information about both X and Y, otherwise say it's not possible to calculate and why.
+If the retrieved facts do not contain the asked information, say you don't have that information. Do not invent details.
 
 Question: {question}
 Question Date: {qdate}
@@ -376,39 +514,53 @@ Retrieved Context:
 
 Answer:
 """
-        try:
-            response = self.llm_client.chat.completions.create(
-                model=self.model_name,
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.1,
-            )
-            return response.choices[0].message.content.strip()
-        except Exception as e:
-            print(f"Warning: Answer generation failed ({e})", flush=True)
-            return "Error generating answer"
+        for attempt in range(2):
+            try:
+                response = self.llm_client.chat.completions.create(
+                    model=self.model_name,
+                    messages=[{"role": "user", "content": prompt}],
+                    temperature=0.1,
+                )
+                return (response.choices[0].message.content or "").strip()
+            except Exception as e:
+                if attempt < 1:
+                    print(f"Warning: answer generation failed ({e}), retrying...", flush=True)
+                    time.sleep(3)
+                else:
+                    print(f"Warning: answer generation failed twice ({e})", flush=True)
+        self.generation_errors += 1
+        return "Error generating answer"
 
-    def _judge_answer(self, question: str, expected: str, predicted: str) -> bool:
-        if not self.llm_client:
-            return expected.lower() in predicted.lower()
-
-        prompt = f"""{LOCOMO_JUDGE_PROMPT}
+    def _judge_answer(self, question: str, expected: Optional[str], rubric: list[str], predicted: str) -> bool:
+        grading = _format_grading_material(expected, rubric)
+        prompt = f"""{JUDGE_PROMPT}
 
 Question: {question}
-Gold answer: {expected}
+{grading}
 Generated answer: {predicted}
+
 First, provide a short (one sentence) explanation of your reasoning. Short reasoning is preferred.
 If it's correct, set correct=true.
 
 Respond with JSON: {{"reasoning": "...", "correct": true or false}}"""
 
-        try:
-            response = self.llm_client.chat.completions.create(
-                model=self.model_name,
-                messages=[{"role": "user", "content": prompt}],
-                response_format={"type": "json_object"},
-                temperature=0,
-            )
-            return bool(json.loads(response.choices[0].message.content).get("correct", False))
-        except Exception as e:
-            print(f"Warning: Judge failed ({e}), falling back to string matching", flush=True)
-            return expected.lower() in predicted.lower()
+        for attempt in range(2):
+            try:
+                response = self.llm_client.chat.completions.create(
+                    model=self.model_name,
+                    messages=[{"role": "user", "content": prompt}],
+                    response_format={"type": "json_object"},
+                    temperature=0,
+                )
+                return bool(json.loads(response.choices[0].message.content).get("correct", False))
+            except Exception as e:
+                if attempt < 1:
+                    print(f"Warning: judge failed ({e}), retrying...", flush=True)
+                    time.sleep(3)
+                else:
+                    print(f"Warning: judge failed twice ({e})", flush=True)
+        # Counted, scored wrong, and aborted past MAX_LLM_ERRORS. A silent
+        # string-match fallback would grade rubric-only questions wrong forever
+        # while looking like a judgment.
+        self.judge_errors += 1
+        return False

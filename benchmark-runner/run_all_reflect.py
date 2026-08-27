@@ -29,7 +29,7 @@ import requests
 from testcontainers.core.container import DockerContainer
 
 from hindsight_benchmark.reflect import ReflectBenchmark
-from hindsight_benchmark.quality import _parse_date
+from hindsight_benchmark.locomo import parse_locomo_date
 
 BENCHMARK_RUNNER_DIR = Path(__file__).parent
 RESULTS_DIR = BENCHMARK_RUNNER_DIR.parent / "results" / "leaderboard" / "llm"
@@ -155,7 +155,7 @@ def _ingest_shared_bank(api_url: str, run_ts: int) -> str:
     for session_key in session_keys:
         if not isinstance(conv.get(session_key), list):
             continue
-        session_date = _parse_date(conv[f"{session_key}_date_time"])
+        session_date = parse_locomo_date(conv[f"{session_key}_date_time"])
         client.retain(
             bank_id=bank_id,
             content=json.dumps(conv[session_key]),
