@@ -717,6 +717,25 @@
         "retain",
         "quality"
       ]
+    },
+    {
+      "provider_id": "gcp",
+      "provider_name": "GCP (self-hosted)",
+      "provider_icon": "/gcp.png",
+      "pricing_type": "pay-per-use",
+      "model_id": "qwen3.6-35b-a3b",
+      "model_name": "Qwen3.6 35B-A3B",
+      "method": "url",
+      "api_model": "Qwen/Qwen3.6-35B-A3B-FP8",
+      "url": "http://127.0.0.1:8811",
+      "input_price_per_1m": 0.15,
+      "output_price_per_1m": 1.0,
+      "notes": "Pricing: Artificial Analysis provider median across OSS providers",
+      "price_note": "Artificial Analysis provider median across OSS providers",
+      "benchmarks": [
+        "retain",
+        "quality"
+      ]
     }
   ]
 }
