@@ -44,9 +44,9 @@ const COST_REF_OUTPUT_TOKENS = 500
 const COST_REFERENCE = 0.001
 
 // Reference point for efficiency: accuracy points per 1k stored fact tokens at
-// which a model scores 50. Provisional until the first full BEAM fleet run;
-// then recalibrated to that run's median and frozen.
-const EFFICIENCY_REFERENCE = 2.0
+// which a model scores 50. Frozen at the median of the first full BEAM fleet
+// run (15 models, raw values 0.163-0.548).
+const EFFICIENCY_REFERENCE = 0.306
 
 // Accuracy anchors for the quality subscore: this benchmark's accuracies cluster
 // in a narrow band, so the raw number is rescaled to 0-100 before weighting.
@@ -187,7 +187,7 @@ export function calculateModelScore(model: ModelWithResult): ModelScore {
   const accuracy = model.qualityResult?.accuracy || 0
   const qualityScore = scaleQuality(accuracy)
 
-  // 2. Efficiency Score (10% weight) - accuracy per 1k stored fact tokens.
+  // 2. Efficiency Score (20% weight) - accuracy per 1k stored fact tokens.
   // Punishes extractors that dump near-verbatim conversation into memory.
   // A missing token count means the quality run was incomplete; the row scores
   // 0 on this dimension (shown as a dash) until the model is re-run.
@@ -199,7 +199,7 @@ export function calculateModelScore(model: ModelWithResult): ModelScore {
     ? 0
     : (efficiencyRaw / (efficiencyRaw + EFFICIENCY_REFERENCE)) * 100
 
-  // 3. Cost Score (10% weight) - based purely on pricing, not actual token usage.
+  // 3. Cost Score (5% weight) - based purely on pricing, not actual token usage.
   const normalizedCost =
     (COST_REF_INPUT_TOKENS * inputPricePerM + COST_REF_OUTPUT_TOKENS * outputPricePerM) / 1_000_000
   const hasCostData = model.result ? (model.result.summary?.success ?? 0) > 0 : !!model.qualityResult?.total
@@ -211,7 +211,7 @@ export function calculateModelScore(model: ModelWithResult): ModelScore {
 
   if (!model.result) {
     // Only quality data available — omit speed and conformance from total score weighting
-    const totalScore = qualityScore * 0.60 + efficiencyScore * 0.10 + costScore * 0.10
+    const totalScore = qualityScore * 0.60 + efficiencyScore * 0.20 + costScore * 0.05
     return {
       totalScore: Math.round(totalScore * 10) / 10,
       qualityScore: Math.round(qualityScore * 10) / 10,
@@ -249,17 +249,17 @@ export function calculateModelScore(model: ModelWithResult): ModelScore {
   const avgInputCost = (avgPromptTokens / 1_000_000) * inputPricePerM
   const avgOutputCost = (avgCompletionTokens / 1_000_000) * outputPricePerM
 
-  // 5. JSON Conformance Score (10% weight) - valid-JSON rate on the extraction tests
+  // 5. JSON Conformance Score (5% weight) - valid-JSON rate on the extraction tests
   const conformanceScore = summary?.total
     ? (summary.success / summary.total) * 100
     : 0
 
   const totalScore =
     (qualityScore * 0.60) +
-    (efficiencyScore * 0.10) +
-    (conformanceScore * 0.10) +
+    (efficiencyScore * 0.20) +
+    (conformanceScore * 0.05) +
     (speedScore * 0.10) +
-    (costScore * 0.10)
+    (costScore * 0.05)
 
   return {
     totalScore: Math.round(totalScore * 10) / 10,

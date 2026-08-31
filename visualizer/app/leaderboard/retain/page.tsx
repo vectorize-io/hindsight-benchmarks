@@ -135,7 +135,7 @@ export default function LeaderboardPage() {
                 <td className="px-6 py-4 font-semibold text-foreground whitespace-nowrap">Total Score</td>
                 <td className="px-6 py-4 whitespace-nowrap">0 – 100</td>
                 <td className="px-6 py-4">
-                  Weighted composite: <strong className="text-foreground">Quality 60%</strong> + <strong className="text-foreground">Efficiency 10%</strong> + <strong className="text-foreground">JSON Conformance 10%</strong> + <strong className="text-foreground">Speed 10%</strong> + <strong className="text-foreground">Cost 10%</strong>.
+                  Weighted composite: <strong className="text-foreground">Quality 60%</strong> + <strong className="text-foreground">Efficiency 20%</strong> + <strong className="text-foreground">Speed 10%</strong> + <strong className="text-foreground">JSON Conformance 5%</strong> + <strong className="text-foreground">Cost 5%</strong>.
                   Each dimension is normalised to a 0–100 scale before weighting. Quality maps accuracy onto that
                   scale with fixed anchors, <code className="mx-1 px-1.5 py-0.5 bg-secondary rounded text-xs font-mono">25% → 0</code>
                   and <code className="mx-1 px-1.5 py-0.5 bg-secondary rounded text-xs font-mono">65% → 100</code>,
