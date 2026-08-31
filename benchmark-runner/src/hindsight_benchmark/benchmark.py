@@ -405,7 +405,7 @@ def _validate(content: str) -> tuple[bool, str, int]:
     return True, "", len(facts)
 
 
-async def _call_inference(client: AsyncOpenAI, text: str, use_short_prompt: bool, model: str) -> TestResult:
+async def _call_inference(client: AsyncOpenAI, text: str, use_short_prompt: bool, model: str, reasoning_effort: str = "", extra_body: Optional[dict] = None) -> TestResult:
     """Call OpenAI-compatible API asynchronously."""
     user_msg = USER_MESSAGE_TEMPLATE.format(text=text)
     prompt = SHORT_PROMPT if use_short_prompt else FULL_PROMPT
@@ -420,6 +420,16 @@ async def _call_inference(client: AsyncOpenAI, text: str, use_short_prompt: bool
         "model": model or "default",  # Some servers require a model field
         "messages": messages,
     }
+
+    # reasoning_effort is the parameter OpenAI and vLLM both take, and the one
+    # the Hindsight daemon sends, so the fast benchmark and the quality run
+    # exercise the same thinking level. Models that steer thinking through
+    # other body fields (Gemma/Qwen chat_template_kwargs) pass them in
+    # extra_body instead, which is forwarded verbatim.
+    if reasoning_effort:
+        kwargs["reasoning_effort"] = reasoning_effort
+    if extra_body:
+        kwargs["extra_body"] = dict(extra_body)
 
     # GPT-5 models have different parameter requirements
     model_name = (model or "").lower()
@@ -459,7 +469,7 @@ async def _call_inference(client: AsyncOpenAI, text: str, use_short_prompt: bool
 
 # ── test runner ───────────────────────────────────────────────────────────────
 
-async def _run_tests(run: BenchmarkRun, texts: list[str], url: str, use_short_prompt: bool, concurrency: int, api_key: str = "", model: str = ""):
+async def _run_tests(run: BenchmarkRun, texts: list[str], url: str, use_short_prompt: bool, concurrency: int, api_key: str = "", model: str = "", reasoning_effort: str = "", extra_body: Optional[dict] = None):
     """Run all texts against url asynchronously, populating run.tests. Respects concurrency."""
     t_start = time.time()
 
@@ -474,7 +484,7 @@ async def _run_tests(run: BenchmarkRun, texts: list[str], url: str, use_short_pr
 
     async def run_single(idx: int, text: str) -> TestResult:
         async with semaphore:
-            result = await _call_inference(client, text, use_short_prompt, model)
+            result = await _call_inference(client, text, use_short_prompt, model, reasoning_effort, extra_body)
             result.test_index = idx
             # Print as soon as result is ready
             retry_str = f"  [{result.retries} retr{'y' if result.retries == 1 else 'ies'}]" if result.retries else ""
@@ -500,7 +510,7 @@ def _print_result(result):
 
 # ── remote url backend ────────────────────────────────────────────────────────
 
-def run_url(url: str, model_id: str, model_name: str, provider_id: str = "remote", concurrency: int = 1, dataset: str = "", api_key: str = "", model: str = "") -> BenchmarkRun:
+def run_url(url: str, model_id: str, model_name: str, provider_id: str = "remote", concurrency: int = 1, dataset: str = "", api_key: str = "", model: str = "", reasoning_effort: str = "", extra_body: Optional[dict] = None) -> BenchmarkRun:
     texts = load_dataset(dataset)
     print(f"\n{'='*60}")
     print(f"  {model_name} via {url}  [concurrency={concurrency}]  [dataset={dataset}, {len(texts)} texts]")
@@ -515,7 +525,7 @@ def run_url(url: str, model_id: str, model_name: str, provider_id: str = "remote
         dataset=dataset,
         concurrency=concurrency,
     )
-    asyncio.run(_run_tests(run, texts, url, use_short_prompt=False, concurrency=concurrency, api_key=api_key, model=model))
+    asyncio.run(_run_tests(run, texts, url, use_short_prompt=False, concurrency=concurrency, api_key=api_key, model=model, reasoning_effort=reasoning_effort, extra_body=extra_body))
     return run
 
 

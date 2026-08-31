@@ -15,7 +15,7 @@ from typing import Any, Dict, Optional
 from openai import OpenAI
 
 from .benchmark import DATASETS_DIR, LEADERBOARD_DIR
-from .quality import _parse_date, LOCOMO_JUDGE_PROMPT
+from .locomo import parse_locomo_date, LOCOMO_JUDGE_PROMPT
 
 JUDGE_MODEL = "gemini-2.5-flash-lite"
 
@@ -105,7 +105,7 @@ class ReflectBenchmark:
         for session_key in session_keys:
             if not isinstance(conv.get(session_key), list):
                 continue
-            session_date = _parse_date(conv[f"{session_key}_date_time"])
+            session_date = parse_locomo_date(conv[f"{session_key}_date_time"])
             last_session_date = session_date
             client.retain(
                 bank_id=bank_id,

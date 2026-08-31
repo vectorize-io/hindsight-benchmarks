@@ -7,3 +7,9 @@ results/*.json
 
 # Machine-specific benchmark metadata (temp dir paths)
 benchmark-runner/datasets/embedding_banks.json
+.env.local
+
+# Local dev config, OS cruft, and branch working notes
+.DS_Store
+.claude/
+docs/superpowers/

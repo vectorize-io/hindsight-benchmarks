@@ -17,7 +17,7 @@ export default function Home() {
     {
       href: '/leaderboard/retain',
       title: 'Retain',
-      description: <>Ranked LLMs for <span className="gradient-primary-text font-semibold">retain()</span> — fact extraction quality, speed, cost, and reliability.</>,
+      description: <>Ranked LLMs for <span className="gradient-primary-text font-semibold">retain()</span> — fact extraction quality, efficiency, JSON conformance, speed, and cost.</>,
       modelCount: leaderboardStats.viableModels,
       winner: leaderboardStats.topRetainModel,
     },

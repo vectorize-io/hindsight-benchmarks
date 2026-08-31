@@ -12,6 +12,7 @@ dependencies = [
     "hindsight-embed",
     "hindsight-client",
     "testcontainers>=4.14.1",
+    "tiktoken>=0.7.0",
 ]
 
 [project.scripts]

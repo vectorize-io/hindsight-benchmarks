@@ -103,7 +103,7 @@ class EmbeddingsBenchmark:
     def ingest_bank(self, api_url: str, embedding_id: str, run_ts: int) -> str:
         """Ingest LoComo conv-43 into a new bank. Returns bank_id."""
         from hindsight_client import Hindsight
-        from .quality import _parse_date
+        from .locomo import parse_locomo_date
 
         with open(DATASET_PATH) as f:
             dataset = json.load(f)
@@ -127,7 +127,7 @@ class EmbeddingsBenchmark:
         for session_key in session_keys:
             if not isinstance(conv.get(session_key), list):
                 continue
-            session_date = _parse_date(conv[f"{session_key}_date_time"])
+            session_date = parse_locomo_date(conv[f"{session_key}_date_time"])
             client.retain(
                 bank_id=bank_id,
                 content=json.dumps(conv[session_key]),
