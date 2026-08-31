@@ -48,6 +48,17 @@ const COST_REFERENCE = 0.001
 // then recalibrated to that run's median and frozen.
 const EFFICIENCY_REFERENCE = 2.0
 
+// Accuracy anchors for the quality subscore: this benchmark's accuracies cluster
+// in a narrow band, so the raw number is rescaled to 0-100 before weighting.
+// Fixed rather than field-relative, so adding a model leaves other scores alone.
+const QUALITY_FLOOR = 25
+const QUALITY_CEILING = 65
+
+function scaleQuality(accuracy: number): number {
+  const scaled = ((accuracy - QUALITY_FLOOR) / (QUALITY_CEILING - QUALITY_FLOOR)) * 100
+  return Math.max(0, Math.min(100, scaled))
+}
+
 interface ModelWithResult {
   config: ModelConfig
   result: BenchmarkRun | null
@@ -172,8 +183,9 @@ export function calculateModelScore(model: ModelWithResult): ModelScore {
   const outputPricePerM = model.config.output_price_per_1m || 0
   const provider = { name: model.config.provider_name, iconUrl: model.config.provider_icon }
 
-  // 1. Quality Score (30% weight) - BEAM facts-only accuracy via Hindsight
-  const qualityScore = model.qualityResult?.accuracy || 0
+  // 1. Quality Score (60% weight) - BEAM facts-only accuracy via Hindsight
+  const accuracy = model.qualityResult?.accuracy || 0
+  const qualityScore = scaleQuality(accuracy)
 
   // 2. Efficiency Score (10% weight) - accuracy per 1k stored fact tokens.
   // Punishes extractors that dump near-verbatim conversation into memory.
@@ -181,13 +193,13 @@ export function calculateModelScore(model: ModelWithResult): ModelScore {
   // 0 on this dimension (shown as a dash) until the model is re-run.
   const storedFactTokens = model.qualityResult?.stored_fact_tokens ?? null
   const efficiencyRaw = storedFactTokens && storedFactTokens > 0
-    ? qualityScore / (storedFactTokens / 1000)
+    ? accuracy / (storedFactTokens / 1000)
     : null
   const efficiencyScore = efficiencyRaw === null
     ? 0
     : (efficiencyRaw / (efficiencyRaw + EFFICIENCY_REFERENCE)) * 100
 
-  // 3. Cost Score (20% weight) - based purely on pricing, not actual token usage.
+  // 3. Cost Score (10% weight) - based purely on pricing, not actual token usage.
   const normalizedCost =
     (COST_REF_INPUT_TOKENS * inputPricePerM + COST_REF_OUTPUT_TOKENS * outputPricePerM) / 1_000_000
   const hasCostData = model.result ? (model.result.summary?.success ?? 0) > 0 : !!model.qualityResult?.total
@@ -199,7 +211,7 @@ export function calculateModelScore(model: ModelWithResult): ModelScore {
 
   if (!model.result) {
     // Only quality data available — omit speed and conformance from total score weighting
-    const totalScore = qualityScore * 0.30 + efficiencyScore * 0.10 + costScore * 0.20
+    const totalScore = qualityScore * 0.60 + efficiencyScore * 0.10 + costScore * 0.10
     return {
       totalScore: Math.round(totalScore * 10) / 10,
       qualityScore: Math.round(qualityScore * 10) / 10,
@@ -219,7 +231,7 @@ export function calculateModelScore(model: ModelWithResult): ModelScore {
 
   const summary = model.result.summary
 
-  // 4. Speed Score (20% weight) - hyperbolic decay on latency
+  // 4. Speed Score (10% weight) - hyperbolic decay on latency
   const latency = summary?.avg_latency_s || 0
   const speedScore = latency === 0
     ? 0
@@ -237,17 +249,17 @@ export function calculateModelScore(model: ModelWithResult): ModelScore {
   const avgInputCost = (avgPromptTokens / 1_000_000) * inputPricePerM
   const avgOutputCost = (avgCompletionTokens / 1_000_000) * outputPricePerM
 
-  // 5. JSON Conformance Score (20% weight) - valid-JSON rate on the extraction tests
+  // 5. JSON Conformance Score (10% weight) - valid-JSON rate on the extraction tests
   const conformanceScore = summary?.total
     ? (summary.success / summary.total) * 100
     : 0
 
   const totalScore =
-    (qualityScore * 0.30) +
+    (qualityScore * 0.60) +
     (efficiencyScore * 0.10) +
-    (conformanceScore * 0.20) +
-    (speedScore * 0.20) +
-    (costScore * 0.20)
+    (conformanceScore * 0.10) +
+    (speedScore * 0.10) +
+    (costScore * 0.10)
 
   return {
     totalScore: Math.round(totalScore * 10) / 10,

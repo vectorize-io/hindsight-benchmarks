@@ -135,8 +135,11 @@ export default function LeaderboardPage() {
                 <td className="px-6 py-4 font-semibold text-foreground whitespace-nowrap">Total Score</td>
                 <td className="px-6 py-4 whitespace-nowrap">0 – 100</td>
                 <td className="px-6 py-4">
-                  Weighted composite: <strong className="text-foreground">Quality 30%</strong> + <strong className="text-foreground">Efficiency 10%</strong> + <strong className="text-foreground">JSON Conformance 20%</strong> + <strong className="text-foreground">Speed 20%</strong> + <strong className="text-foreground">Cost 20%</strong>.
-                  Each dimension is normalised to a 0–100 scale before weighting. Speed uses the formula
+                  Weighted composite: <strong className="text-foreground">Quality 60%</strong> + <strong className="text-foreground">Efficiency 10%</strong> + <strong className="text-foreground">JSON Conformance 10%</strong> + <strong className="text-foreground">Speed 10%</strong> + <strong className="text-foreground">Cost 10%</strong>.
+                  Each dimension is normalised to a 0–100 scale before weighting. Quality maps accuracy onto that
+                  scale with fixed anchors, <code className="mx-1 px-1.5 py-0.5 bg-secondary rounded text-xs font-mono">25% → 0</code>
+                  and <code className="mx-1 px-1.5 py-0.5 bg-secondary rounded text-xs font-mono">65% → 100</code>,
+                  so accuracy differences carry the weight the raw range would compress. Speed uses the formula
                   <code className="mx-1 px-1.5 py-0.5 bg-secondary rounded text-xs font-mono">100 × 10 / (10 + latency_s)</code>
                   so a 10-second response scores 50; Cost uses
                   <code className="mx-1 px-1.5 py-0.5 bg-secondary rounded text-xs font-mono">100 × 0.001 / (0.001 + cost_per_req)</code>
