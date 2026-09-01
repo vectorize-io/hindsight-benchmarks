@@ -45,8 +45,13 @@ class TokenCache:
             self._token = ""
 
 
-def start_token_proxy(upstream_base: str, port: int) -> http.server.ThreadingHTTPServer:
+def start_token_proxy(
+    upstream_base: str, port: int, bind_host: str = "127.0.0.1"
+) -> http.server.ThreadingHTTPServer:
     """Forward requests to upstream_base with a fresh bearer token.
+
+    bind_host defaults to loopback. Pass "0.0.0.0" when a Docker container has
+    to reach the proxy on the host, which a loopback-only bind refuses.
 
     Clients speak /v1/chat/completions; the upstream path already carries its
     own /v1(beta1) prefix, so the incoming /v1 is stripped. Runs in a daemon
@@ -103,9 +108,9 @@ def start_token_proxy(upstream_base: str, port: int) -> http.server.ThreadingHTT
         def log_message(self, *args):
             pass
 
-    server = http.server.ThreadingHTTPServer(("127.0.0.1", port), Handler)
+    server = http.server.ThreadingHTTPServer((bind_host, port), Handler)
     threading.Thread(target=server.serve_forever, daemon=True).start()
-    print(f"Token proxy on http://127.0.0.1:{port} -> {upstream_base}", flush=True)
+    print(f"Token proxy on http://{bind_host}:{port} -> {upstream_base}", flush=True)
     return server
 
 

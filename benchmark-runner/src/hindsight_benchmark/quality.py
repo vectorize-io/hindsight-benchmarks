@@ -329,11 +329,18 @@ class QualityBenchmark:
         max_conversations: Optional[int] = None,
         save: bool = True,
         reuse_bank_ts: Optional[int] = None,
+        bank_ts: Optional[int] = None,
     ) -> Dict[str, Any]:
         """reuse_bank_ts: re-evaluate against banks from an earlier run (its
         bank-id timestamp) instead of ingesting. The extraction under test is
         already stored, so only recall, generation, and judging run. Used to
-        recover a run whose judge failed mid-flight."""
+        recover a run whose judge failed mid-flight.
+
+        bank_ts: stamp newly created banks with this instead of the wall clock.
+        A caller that ingests once and then re-evaluates under several
+        configurations has to know the stamp in advance; without it the ingest
+        run picks its own timestamp at call time and no later run can name the
+        banks it wrote."""
         try:
             from hindsight_client import Hindsight
         except ImportError:
@@ -374,9 +381,9 @@ class QualityBenchmark:
 
         for item in dataset:
             sample_id = item["sample_id"]
-            bank_ts = reuse_bank_ts or run_ts
+            effective_bank_ts = reuse_bank_ts or bank_ts or run_ts
             bank_id = (
-                f"qb_{provider_id}_{model_id}_{sample_id}_{bank_ts}"
+                f"qb_{provider_id}_{model_id}_{sample_id}_{effective_bank_ts}"
                 .replace("/", "_").replace("-", "_").replace(".", "_")
             )
 

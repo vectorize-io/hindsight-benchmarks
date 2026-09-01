@@ -1,0 +1,19 @@
+{
+  "reranker_id": "bge-reranker-base__fact__c300",
+  "provider": "tei",
+  "model": "BAAI/bge-reranker-base",
+  "recall_at_1": 0.7844,
+  "recall_at_3": 0.9281,
+  "recall_at_5": 0.9461,
+  "mrr": 0.855,
+  "avg_latency_s": 0.176,
+  "total_questions": 167,
+  "sample_id": "conv-43",
+  "model_id": "bge-reranker-base",
+  "hf_model": "BAAI/bge-reranker-base",
+  "mode": "fact",
+  "extraction_mode": "concise",
+  "max_candidates": 300,
+  "serving": "tei-1.8.3-l4-fp16",
+  "annotation_model": "google/gemini-3.7-flash"
+}

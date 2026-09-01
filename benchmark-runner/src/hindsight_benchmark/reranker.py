@@ -50,14 +50,24 @@ class RerankerBenchmark:
             self.llm_client = None
             self.annotation_model = None
 
-    def create_annotations(self, api_url: str, bank_id: str, gt_path: Path = GT_PATH) -> Path:
-        """Annotate ground truth relevance for the 178 non-adversarial QA pairs.
+    def create_annotations(
+        self, api_url: str, bank_id: str, gt_path: Path = GT_PATH,
+        conversation: str = TARGET_CONVERSATION,
+        min_annotated_frac: float = 0.0,
+        dataset_path: Path = DATASET_PATH,
+    ) -> Path:
+        """Annotate ground truth relevance for the non-adversarial QA pairs.
 
         Calls recall(budget="high") for each question, then uses LLM to identify
         which recalled facts contain information relevant to the expected answer.
 
-        Idempotent — skips if gt_path already exists.
-        Returns the path to the saved ground truth file.
+        Always re-annotates (each call spends LLM money); callers decide reuse.
+        min_annotated_frac guards against an annotation run degraded by LLM or
+        recall outages: every failure in the loop degrades to an empty
+        relevant_facts list, so a low fraction of non-empty annotations is the
+        only visible symptom of a half-dead run. Raising here leaves no gt file
+        behind, so a resume redoes the conversation instead of accepting a
+        poisoned ground truth. Returns the path to the saved ground truth file.
         """
         if not self.llm_client:
             raise RuntimeError("LLM client required for annotation (set GEMINI_API_KEY)")
@@ -67,12 +77,15 @@ class RerankerBenchmark:
         except ImportError:
             raise RuntimeError("hindsight_client not installed")
 
-        with open(DATASET_PATH) as f:
+        # The caller's path wins: the package-relative DATASET_PATH resolves
+        # wrong in the flattened bench-box layout (package at ~/rq/ rather
+        # than under src/), where the dataset lives beside the eval script.
+        with open(dataset_path) as f:
             dataset = json.load(f)
 
-        item = next((i for i in dataset if i["sample_id"] == TARGET_CONVERSATION), None)
+        item = next((i for i in dataset if i["sample_id"] == conversation), None)
         if item is None:
-            raise ValueError(f"Conversation {TARGET_CONVERSATION} not found in dataset")
+            raise ValueError(f"Conversation {conversation} not found in dataset")
 
         # Only non-adversarial QA pairs (Q1-Q178: those with "answer" key)
         qa_pairs = [qa for qa in item["qa"] if "answer" in qa]
@@ -124,6 +137,24 @@ class RerankerBenchmark:
             found = len(relevant_facts)
             print(f"  Q{i}/{len(qa_pairs)}: {len(results)} candidates → {found} relevant | {question[:50]}...", flush=True)
 
+        annotated = sum(1 for a in annotations if a["relevant_facts"])
+        frac = annotated / len(annotations) if annotations else 0.0
+        print(f"  {annotated}/{len(annotations)} questions have relevant facts ({frac:.3f})")
+        if frac < min_annotated_frac:
+            # Keep the rejected annotations for diagnosis: without them a
+            # conversation that legitimately sits below the floor is
+            # indistinguishable from an outage, and every resume re-spends a
+            # full annotation pass to reproduce the same mystery.
+            rejected_path = gt_path.with_suffix(".rejected.json")
+            with open(rejected_path, "w") as f:
+                json.dump({"annotations": annotations, "annotated_frac": frac}, f, indent=2)
+            raise RuntimeError(
+                f"annotation health check failed for {conversation}: only {annotated}/"
+                f"{len(annotations)} questions ({frac:.3f}) got relevant facts, below the "
+                f"{min_annotated_frac} floor. Not writing {gt_path.name}; rejected "
+                f"annotations kept at {rejected_path.name} for diagnosis."
+            )
+
         gt_data = {"annotations": annotations}
         gt_path.parent.mkdir(parents=True, exist_ok=True)
         with open(gt_path, "w") as f:
@@ -139,6 +170,7 @@ class RerankerBenchmark:
         api_url: str,
         bank_id: str,
         gt_path: Path = GT_PATH,
+        sample_id: str = TARGET_CONVERSATION,
     ) -> Dict[str, Any]:
         """Run reranker benchmark against an already-ingested shared bank.
 
@@ -166,6 +198,7 @@ class RerankerBenchmark:
         print(f"Hindsight API: {api_url}")
 
         ranks_first_match: List[Optional[int]] = []
+        per_question: List[Dict[str, Any]] = []
         recall_at_k = {1: 0, 3: 0, 5: 0}
         total_latency = 0.0
         successful_calls = 0
@@ -197,10 +230,15 @@ class RerankerBenchmark:
                         print(f"  Q{i} recall attempt failed ({err_str[:80]}), retrying...", flush=True)
                         time.sleep(2)
                     else:
-                        print(f"  Q{i} recall failed after 2 attempts: {err_str[:80]}", flush=True)
+                        # ANY post-retry failure counts toward the abort: an
+                        # HTTP 500 loop or read-timeout storm zeroes every
+                        # question just as surely as a refused connection, and
+                        # counting only connection errors let those write a
+                        # legitimate-looking near-zero MRR.
+                        kind = "connection" if is_connection_err else "error"
+                        print(f"  Q{i} recall failed after 2 attempts ({kind}): {err_str[:80]}", flush=True)
                         recall_response = {"results": []}
-                        if is_connection_err:
-                            consecutive_failures += 1
+                        consecutive_failures += 1
 
             if call_succeeded:
                 consecutive_failures = 0
@@ -208,8 +246,15 @@ class RerankerBenchmark:
                 successful_calls += 1
 
             if consecutive_failures >= MAX_CONSECUTIVE_FAILURES:
-                print(f"\n  ABORT: {consecutive_failures} consecutive connection failures — daemon likely crashed.", flush=True)
-                break
+                # Raise instead of writing a truncated result: a break here
+                # used to leave a complete-looking file computed over an
+                # order-biased prefix, counted as success, and skipped forever
+                # on re-run. No file means the re-run redoes the row.
+                raise RuntimeError(
+                    f"aborting {reranker_id}: {consecutive_failures} consecutive recall "
+                    f"failures at question {i}/{len(eval_annotations)} — daemon likely "
+                    f"crashed. No result file written."
+                )
 
             results = recall_response.get("results", []) if recall_response else []
             returned_texts = [r.get("text", "") for r in results]
@@ -222,6 +267,9 @@ class RerankerBenchmark:
                     break
 
             ranks_first_match.append(first_rank)
+            # Persisted per question so two models scored on the same bank can
+            # be compared with a paired test instead of two noisy averages.
+            per_question.append({"q_idx": ann["q_idx"], "rank": first_rank})
 
             # Recall@K: does any relevant fact appear in top-K?
             top_texts = set(returned_texts[:1])
@@ -263,7 +311,8 @@ class RerankerBenchmark:
             "mrr": mrr,
             "avg_latency_s": avg_latency_s,
             "total_questions": total,
-            "sample_id": TARGET_CONVERSATION,
+            "sample_id": sample_id,
+            "per_question": per_question,
         }
 
         RERANKER_RESULTS_DIR.mkdir(parents=True, exist_ok=True)

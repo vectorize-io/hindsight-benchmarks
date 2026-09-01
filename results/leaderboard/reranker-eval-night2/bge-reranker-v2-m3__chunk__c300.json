@@ -1,0 +1,19 @@
+{
+  "reranker_id": "bge-reranker-v2-m3__chunk__c300",
+  "provider": "tei",
+  "model": "BAAI/bge-reranker-v2-m3",
+  "recall_at_1": 0.4444,
+  "recall_at_3": 0.6944,
+  "recall_at_5": 0.8194,
+  "mrr": 0.5938,
+  "avg_latency_s": 1.052,
+  "total_questions": 72,
+  "sample_id": "conv-43",
+  "model_id": "bge-reranker-v2-m3",
+  "hf_model": "BAAI/bge-reranker-v2-m3",
+  "mode": "chunk",
+  "extraction_mode": "chunks",
+  "max_candidates": 300,
+  "serving": "tei-1.8.3-l4-fp16",
+  "annotation_model": "google/gemini-3.7-flash"
+}

@@ -1,0 +1,28 @@
+{
+  "A_long": {
+    "wins": 7,
+    "n": 20,
+    "mean_margin": -0.3987234175205231
+  },
+  "A_short": {
+    "wins": 12,
+    "n": 20,
+    "mean_margin": -0.17742400839924813
+  },
+  "B": {
+    "wins": 20,
+    "n": 20,
+    "mean_margin": 6.373809550702572
+  },
+  "C_long": {
+    "mean_abs_shift": 0.09199808537960052,
+    "flips": 4,
+    "n": 20
+  },
+  "C_short": {
+    "mean_abs_shift": 0.09071312248706817,
+    "flips": 3,
+    "n": 20
+  },
+  "D_relevance_margin": 13.59525725543499
+}

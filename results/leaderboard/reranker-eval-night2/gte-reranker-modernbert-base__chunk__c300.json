@@ -1,0 +1,19 @@
+{
+  "reranker_id": "gte-reranker-modernbert-base__chunk__c300",
+  "provider": "tei",
+  "model": "Alibaba-NLP/gte-reranker-modernbert-base",
+  "recall_at_1": 0.4306,
+  "recall_at_3": 0.6389,
+  "recall_at_5": 0.7361,
+  "mrr": 0.5666,
+  "avg_latency_s": 0.595,
+  "total_questions": 72,
+  "sample_id": "conv-43",
+  "model_id": "gte-reranker-modernbert-base",
+  "hf_model": "Alibaba-NLP/gte-reranker-modernbert-base",
+  "mode": "chunk",
+  "extraction_mode": "chunks",
+  "max_candidates": 300,
+  "serving": "tei-1.8.3-l4-fp16",
+  "annotation_model": "google/gemini-3.7-flash"
+}
