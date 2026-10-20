@@ -10,6 +10,7 @@ import {
 } from '@tanstack/react-table'
 import { useState, useMemo } from 'react'
 import { EmbeddingRow } from '@/lib/embeddings'
+import { compareEmbeddingRows } from '@/lib/embeddingRank'
 
 function scoreToBackground(score: number): string {
   const hue = Math.round(score * 1.2)
@@ -48,7 +49,7 @@ interface TableRow extends EmbeddingRow {
 
 export default function EmbeddingsTable({ embeddings }: EmbeddingsTableProps) {
   const tableData: TableRow[] = useMemo(() => {
-    const sorted = [...embeddings].sort((a, b) => b.score.totalScore - a.score.totalScore)
+    const sorted = [...embeddings].sort(compareEmbeddingRows)
     const rankMap = new Map<string, number>()
     sorted.forEach((r, i) => rankMap.set(r.embedding_id, i + 1))
     return embeddings.map(r => ({ ...r, fixedRank: rankMap.get(r.embedding_id) ?? 999 }))
@@ -112,6 +113,7 @@ export default function EmbeddingsTable({ embeddings }: EmbeddingsTableProps) {
     {
       id: 'totalScore',
       accessorFn: row => row.score.totalScore,
+      sortingFn: (a, b) => -compareEmbeddingRows(a.original, b.original),
       header: () => (
         <div>
           <div>Total Score</div>

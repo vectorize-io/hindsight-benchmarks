@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { EmbeddingsResult } from './types'
+import { compareEmbeddingRows } from './embeddingRank'
 
 // Speed reference: a model at this latency scores 50.
 const LATENCY_REFERENCE = 1.0
@@ -103,7 +104,7 @@ export function loadEmbeddingsData(): EmbeddingRow[] {
 
 export function getEmbeddingsStats(rows: EmbeddingRow[]) {
   if (rows.length === 0) return { count: 0, topEmbedding: null }
-  const top = [...rows].sort((a, b) => b.score.totalScore - a.score.totalScore)[0]
+  const top = [...rows].sort(compareEmbeddingRows)[0]
   return {
     count: rows.length,
     topEmbedding: top ? {

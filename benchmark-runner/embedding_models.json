@@ -68,7 +68,7 @@
       "provider_name": "Cohere",
       "provider_icon": "/cohere.png",
       "pricing_type": "pay-per-use",
-      "price_per_1m_tokens": 0.10,
+      "price_per_1m_tokens": 0.1,
       "model": "embed-english-light-v3.0",
       "dimensions": 384,
       "notes": "Cohere embed-english-light-v3.0. 384-dim. $0.10/1M tokens."
@@ -80,10 +80,22 @@
       "provider_name": "Cohere",
       "provider_icon": "/cohere.png",
       "pricing_type": "pay-per-use",
-      "price_per_1m_tokens": 0.10,
+      "price_per_1m_tokens": 0.1,
       "model": "embed-english-v3.0",
       "dimensions": 1024,
       "notes": "Cohere embed-english-v3.0. 1024-dim. $0.10/1M tokens."
+    },
+    {
+      "embedding_id": "nemotron-3.5-embed-1b",
+      "display_name": "Nemotron 3.5 Embed 1B",
+      "provider": "local",
+      "provider_name": "NVIDIA (self-hosted)",
+      "provider_icon": "/huggingface.png",
+      "pricing_type": "free",
+      "price_per_1m_tokens": 0.0,
+      "model": "nvidia/Nemotron-3.5-Embed-1B-BF16",
+      "dimensions": 1536,
+      "notes": "NVIDIA Nemotron 3.5 Embed 1B, served on a GPU through an OpenAI-compatible endpoint with its query:/passage: prompts. Native 2048-dim, truncated to 1536 (Matryoshka) to fit pgvector's 2000-dim HNSW limit."
     }
   ]
 }

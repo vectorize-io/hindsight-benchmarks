@@ -54,9 +54,28 @@ GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "")
 COHERE_API_KEY = os.environ.get("COHERE_API_KEY", "")
 
-RETAIN_PROVIDER = "gemini"
-RETAIN_MODEL = "gemini-2.5-flash"
-RETAIN_API_KEY = GEMINI_API_KEY
+OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY", "")
+
+# Gemini 2.5 Flash does the retain extraction and the ground-truth labelling. Without a Google
+# key the same model is reached through OpenRouter.
+if GEMINI_API_KEY:
+    RETAIN_PROVIDER, RETAIN_MODEL, RETAIN_API_KEY = "gemini", "gemini-2.5-flash", GEMINI_API_KEY
+else:
+    RETAIN_PROVIDER, RETAIN_MODEL, RETAIN_API_KEY = "openrouter", "google/gemini-2.5-flash", OPENROUTER_API_KEY
+
+# Self-hosted OpenAI-compatible endpoints: extra container settings per embedding id. The URL is
+# read at run time so the endpoint can move between machines.
+SELF_HOSTED = {
+    # NVIDIA Nemotron 3.5 Embed 1B behind any OpenAI-compatible embeddings server (NEMOTRON_EMBED_URL).
+    # Its 2048-dim output exceeds pgvector's 2000-dim HNSW limit, so it is truncated (Matryoshka).
+    "nemotron-3.5-embed-1b": lambda: {
+        "HINDSIGHT_API_EMBEDDINGS_OPENAI_BASE_URL": os.environ["NEMOTRON_EMBED_URL"],
+        "HINDSIGHT_API_EMBEDDINGS_OPENAI_API_KEY": "unused",
+        "HINDSIGHT_API_EMBEDDINGS_OPENAI_DIMENSIONS": os.environ.get("NEMOTRON_EMBED_DIMENSIONS", "1536"),
+        "HINDSIGHT_API_EMBEDDINGS_QUERY_PREFIX": "query: ",
+        "HINDSIGHT_API_EMBEDDINGS_PASSAGE_PREFIX": "passage: ",
+    },
+}
 
 # Embedding models to benchmark: (embedding_id, provider, model)
 # Hindsight auto-detects the embedding dimension at startup — any dimension is supported.
@@ -74,10 +93,12 @@ EMBEDDING_MODELS = [
     # Cohere embedding API
     ("cohere-embed-english-light-v3.0", "cohere", "embed-english-light-v3.0"),
     ("cohere-embed-english-v3.0",       "cohere", "embed-english-v3.0"),
+    # Self-hosted OpenAI-compatible endpoint (see SELF_HOSTED)
+    ("nemotron-3.5-embed-1b",   "openai", "nemotron-3.5-embed-1b"),
 ]
 
 
-def _base_env(embedding_provider: str, embedding_model: str) -> dict:
+def _base_env(embedding_provider: str, embedding_model: str, embedding_id: str = "") -> dict:
     """Build environment variables for a Hindsight container with the given embedding model."""
     env = {
         "HOME": "/app/data",
@@ -109,12 +130,14 @@ def _base_env(embedding_provider: str, embedding_model: str) -> dict:
     elif embedding_provider == "cohere" and embedding_model:
         env["HINDSIGHT_API_EMBEDDINGS_COHERE_MODEL"] = embedding_model
         env["HINDSIGHT_API_EMBEDDINGS_COHERE_API_KEY"] = COHERE_API_KEY
+    if embedding_id in SELF_HOSTED:
+        env.update(SELF_HOSTED[embedding_id]())
     return env
 
 
-def _benchmark_env(embedding_provider: str, embedding_model: str) -> dict:
+def _benchmark_env(embedding_provider: str, embedding_model: str, embedding_id: str = "") -> dict:
     """Build env for a benchmark run: same embedding model + fixed MiniLM-L6 reranker."""
-    env = _base_env(embedding_provider, embedding_model)
+    env = _base_env(embedding_provider, embedding_model, embedding_id)
     env["HINDSIGHT_API_RERANKER_PROVIDER"] = FIXED_RERANKER_PROVIDER
     env["HINDSIGHT_API_RERANKER_LOCAL_MODEL"] = FIXED_RERANKER_MODEL
     env["HINDSIGHT_API_LAZY_RERANKER"] = "true"
@@ -172,11 +195,11 @@ def main():
         models_to_run = [m for m in EMBEDDING_MODELS if filter_model in m[0]]
         print(f"Filtered to models matching '{filter_model}': {[m[0] for m in models_to_run]}")
 
-    if not GEMINI_API_KEY:
-        print("ERROR: GEMINI_API_KEY is required (used for retain LLM and GT annotation)")
+    if not RETAIN_API_KEY:
+        print("ERROR: GEMINI_API_KEY or OPENROUTER_API_KEY is required (retain LLM and GT annotation)")
         sys.exit(1)
 
-    benchmark = EmbeddingsBenchmark(gemini_api_key=GEMINI_API_KEY)
+    benchmark = EmbeddingsBenchmark(gemini_api_key=GEMINI_API_KEY, openrouter_api_key=OPENROUTER_API_KEY)
     run_ts = int(time.time())
 
     total = len(models_to_run)
@@ -187,7 +210,7 @@ def main():
         print(f"  Fixed reranker: {FIXED_RERANKER_MODEL}")
         print(f"{'='*60}")
 
-        if provider == "openai" and not OPENAI_API_KEY:
+        if provider == "openai" and not OPENAI_API_KEY and embedding_id not in SELF_HOSTED:
             print("  SKIP: OPENAI_API_KEY not set")
             continue
         if provider == "cohere" and not COHERE_API_KEY:
@@ -208,7 +231,7 @@ def main():
             data_dir = tempfile.mkdtemp(prefix=f"hindsight-emb-{embedding_id[:20]}-")
             print(f"\n  Phase 1: Ingesting + annotating, volume: {data_dir}")
 
-            ingest_env = _base_env(provider, model)
+            ingest_env = _base_env(provider, model, embedding_id)
             ingest_container = None
             bank_id = None
             try:
@@ -233,7 +256,7 @@ def main():
         print(f"\n  Phase 2: Running benchmark (bank={bank_id})")
         bench_container = None
         try:
-            bench_env = _benchmark_env(provider, model)
+            bench_env = _benchmark_env(provider, model, embedding_id)
             bench_container, bench_url = _start_hindsight(data_dir, bench_env)
             print(f"  Container ready at {bench_url}. Running embeddings benchmark...")
             result = benchmark.run_with_bank(
