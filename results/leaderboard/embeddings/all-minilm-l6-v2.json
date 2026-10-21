@@ -3,11 +3,11 @@
   "provider": "local",
   "model": "sentence-transformers/all-MiniLM-L6-v2",
   "reranker_id": "local-minilm-l6",
-  "recall_at_1": 0.6265,
-  "recall_at_3": 0.8675,
-  "recall_at_5": 0.9277,
-  "mrr": 0.7538,
-  "avg_latency_s": 1.901,
-  "total_questions": 166,
+  "recall_at_1": 0.7861,
+  "recall_at_3": 0.9017,
+  "recall_at_5": 0.9306,
+  "mrr": 0.8503,
+  "avg_latency_s": 1.303,
+  "total_questions": 173,
   "sample_id": "conv-43"
 }

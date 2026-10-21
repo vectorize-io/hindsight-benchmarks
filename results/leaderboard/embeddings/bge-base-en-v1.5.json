@@ -3,11 +3,11 @@
   "provider": "local",
   "model": "BAAI/bge-base-en-v1.5",
   "reranker_id": "local-minilm-l6",
-  "recall_at_1": 0.6667,
-  "recall_at_3": 0.8571,
-  "recall_at_5": 0.9286,
-  "mrr": 0.7754,
-  "avg_latency_s": 2.483,
-  "total_questions": 168,
+  "recall_at_1": 0.7791,
+  "recall_at_3": 0.9186,
+  "recall_at_5": 0.936,
+  "mrr": 0.8493,
+  "avg_latency_s": 1.352,
+  "total_questions": 172,
   "sample_id": "conv-43"
 }

@@ -62,7 +62,7 @@ class EmbeddingsBenchmark:
     Each model gets its own GT annotation since fact texts differ per ingest.
     """
 
-    def __init__(self, gemini_api_key: str = None):
+    def __init__(self, gemini_api_key: str = None, openrouter_api_key: str = None):
         if gemini_api_key:
             self.llm_client = OpenAI(
                 api_key=gemini_api_key,
@@ -70,6 +70,10 @@ class EmbeddingsBenchmark:
                 timeout=120.0,
             )
             self.annotation_model = ANNOTATION_MODEL
+        elif openrouter_api_key:
+            # The same annotation model, reached through OpenRouter.
+            self.llm_client = OpenAI(api_key=openrouter_api_key, base_url="https://openrouter.ai/api/v1", timeout=120.0)
+            self.annotation_model = f"google/{ANNOTATION_MODEL}"
         else:
             self.llm_client = None
             self.annotation_model = None
