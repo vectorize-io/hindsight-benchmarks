@@ -1,0 +1,128 @@
+{
+  "schema_version": 2,
+  "reranker_id": "rrf",
+  "provider": "rrf",
+  "model": null,
+  "dataset": "scifact-evidence",
+  "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+  "run_sha256": "992182931786adc22b2c20d1d77c395aa8456c3aec037958eaeadc5c5c90fa73",
+  "total_questions": 188,
+  "groups": 188,
+  "sample_id": "scifact-original-dev-evidence",
+  "scored_queries": 300,
+  "evaluation_label_sha256": "beda364a4f1275a81891e95e6cead7f6d866f5af7abe765fff9f2dfd34695265",
+  "label_view": {
+    "schema_version": 1,
+    "name": "scifact-evidence",
+    "source": "https://scifact.s3-us-west-2.amazonaws.com/release/latest/data.tar.gz",
+    "source_sha256": "11c621288d41ac144d29b13b0f8503b3820b7d6e8b1f6ff24dff335c196d76be",
+    "source_split": "original SciFact claims_dev.jsonl",
+    "rule": "Only documents explicitly annotated SUPPORT or CONTRADICT count as relevant; questions without either are excluded uniformly before comparing models.",
+    "label_sha256": "beda364a4f1275a81891e95e6cead7f6d866f5af7abe765fff9f2dfd34695265"
+  },
+  "mrr": 0.8331706389343296,
+  "ndcg_at_10": 0.8576295913205126,
+  "recall_at_1": 0.7256205673758864,
+  "hit_at_1": 0.75,
+  "recall_at_3": 0.8781028368794327,
+  "hit_at_3": 0.8936170212765957,
+  "recall_at_5": 0.9064716312056738,
+  "hit_at_5": 0.9202127659574468,
+  "recall_at_10": 0.9585106382978723,
+  "hit_at_10": 0.973404255319149,
+  "confidence_intervals": {
+    "mrr": [
+      0.788674015383345,
+      0.8753240513775862
+    ],
+    "ndcg_at_10": [
+      0.8196594365012906,
+      0.8933725378790882
+    ],
+    "recall_at_1": [
+      0.6622340425531915,
+      0.7863475177304965
+    ],
+    "hit_at_1": [
+      0.6861702127659575,
+      0.8085106382978723
+    ],
+    "recall_at_3": [
+      0.8302304964539006,
+      0.9215425531914894
+    ],
+    "hit_at_3": [
+      0.8457446808510638,
+      0.9361702127659575
+    ],
+    "recall_at_5": [
+      0.8643617021276596,
+      0.9441489361702128
+    ],
+    "hit_at_5": [
+      0.8776595744680851,
+      0.9574468085106383
+    ],
+    "recall_at_10": [
+      0.9305851063829786,
+      0.9824468085106383
+    ],
+    "hit_at_10": [
+      0.9468085106382979,
+      0.9946808510638298
+    ]
+  },
+  "confidence_method": "5000 bootstrap samples; whole conversations for LoCoMo, queries for SciFact; 95% percentile interval",
+  "avg_latency_s": 2.912479450311908e-06,
+  "p50_latency_s": 2.0980005501769483e-06,
+  "p95_latency_s": 5.322005017660559e-06,
+  "retries": 0,
+  "failed_queries": 0,
+  "usage": {},
+  "estimated_api_cost_usd": 0.0,
+  "cost_basis": "No additional reranking",
+  "metadata": {
+    "config": {
+      "reranker_id": "rrf",
+      "display_name": "Unreranked hybrid candidates",
+      "provider": "rrf",
+      "provider_name": "Baseline",
+      "provider_icon": "",
+      "pricing_type": "free",
+      "model": null
+    },
+    "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+    "adapter_sha256": "b27902c1a4bf93a16537c7eeacfce66778c695f2200059ea52ef636def0856fe",
+    "versions": {
+      "sentence-transformers": "5.7.0",
+      "torch": "2.14.1",
+      "transformers": "5.18.0",
+      "numpy": "2.5.3",
+      "httpx": "0.28.1",
+      "rank-bm25": "0.2.2"
+    },
+    "python": "3.12.8",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "max_length": null,
+    "batch_size": 32,
+    "concurrency": 64,
+    "requests_per_second": 10.0,
+    "jev_question": null
+  },
+  "retrieval_ceiling_recall": 0.9946808510638298,
+  "by_category": {
+    "fact-checking": {
+      "mrr": 0.8331706389343296,
+      "ndcg_at_10": 0.8576295913205126,
+      "recall_at_1": 0.7256205673758864,
+      "hit_at_1": 0.75,
+      "recall_at_3": 0.8781028368794327,
+      "hit_at_3": 0.8936170212765957,
+      "recall_at_5": 0.9064716312056738,
+      "hit_at_5": 0.9202127659574468,
+      "recall_at_10": 0.9585106382978723,
+      "hit_at_10": 0.973404255319149
+    }
+  },
+  "by_group": {}
+}

@@ -1,0 +1,69 @@
+"""BM25-only full-corpus candidate ablation, with verified pointwise cache reuse."""
+import os, re, sys, time
+from pathlib import Path
+from types import SimpleNamespace
+import numpy as np
+import pytrec_eval
+from rank_bm25 import BM25Okapi
+sys.path.insert(0,'benchmark-runner')
+from memgovern_prepare import DEFAULT_DATA,DEFAULT_WORK,read_items,source_manifest
+from memgovern_experiment import validate_pool,aggregate,single_positive_metrics,cached_pair_scores,run_metadata,merge_pair_scores
+from rerank_eval import read_json,write_json,digest,load_records,rank_scores,ROOT
+from summarize_rerankers import paired_interval
+import torch
+from sentence_transformers import CrossEncoder
+source=source_manifest(DEFAULT_DATA)
+assert source==read_json(DEFAULT_WORK/'source.json')
+config=next(c for c in read_json(ROOT/'reranker_models.json')['rerankers'] if c['reranker_id']=='ettin-150m')
+config={**config,'revision':'025501c4e0f9bbeb4c5b198318e0089ff061cc14'}
+execution={'gpu_uuid':os.environ['CUDA_VISIBLE_DEVICES'],'hardware':torch.cuda.get_device_name(0),'dtype':'bfloat16','batch_size':32}
+meta={'source_sha256':digest(source),'config':config,'execution':execution,'protocol':'Full repository BM25Okapi lowercase regex word tokens, stable top100; same frozen 200 queries per bank; baseline Ettin pointwise logits reused after provenance verification.'}
+fingerprint=digest(meta)
+out=DEFAULT_WORK/'bm25-ettin';out.mkdir(exist_ok=True)
+if (out/'metadata.json').exists():assert read_json(out/'metadata.json')==meta
+write_json(out/'metadata.json',meta)
+torch.set_num_threads(8)
+model=CrossEncoder(config['model'],revision=config['revision'],device='cuda:0',max_length=config['max_length'],model_kwargs={'dtype':torch.bfloat16},local_files_only=True)
+model.predict([('Which planet is red?','Mars is red.')]*16,batch_size=32,activation_fn=torch.nn.Identity())
+all_rows=[];baseline_rows={};checks=0;total_cached=0
+for repo in source['repositories']:
+ base=DEFAULT_DATA/'Procedural/MemGovern'/repo
+ corpus=read_items(base/'corpus.jsonl');ids=[r['id'] for r in corpus];texts={r['id']:r['text'] for r in corpus}
+ bm25=BM25Okapi([re.findall(r'\w+',r['text'].lower()) for r in corpus])
+ gold={q:d for q,d,_ in (s.split('\t') for s in (base/'qrels.tsv').read_text().splitlines())}
+ pool=read_json(DEFAULT_WORK/'bge-small'/'pools'/f'{repo}.json.gz');validate_pool(pool)
+ baseline_path=DEFAULT_WORK/'bge-small'/'records'/'ettin-150m'/f'{repo}.jsonl'
+ baseline_meta=read_json(baseline_path.with_suffix('.metadata.json'))
+ assert baseline_meta==run_metadata(pool,config,1)
+ baseline_hash=digest(baseline_meta);baseline=load_records(baseline_path,baseline_hash)
+ dest=out/f'{repo}.jsonl';records=load_records(dest,fingerprint)
+ labels={};run={};current=[]
+ with dest.open('a') as stream:
+  for q in pool['queries']:
+   order=[ids[i] for i in np.argsort(-bm25.get_scores(re.findall(r'\w+',q['text'].lower())),kind='stable')[:100]]
+   cache=cached_pair_scores(q,q,baseline[q['id']])
+   if q['id'] not in records:
+    fresh=[d for d in order if d not in cache]
+    computed=model.predict([(q['text'],texts[d]) for d in fresh],batch_size=32,activation_fn=torch.nn.Identity()).astype(float).tolist() if fresh else []
+    scores,cached=merge_pair_scores(order,cache,computed)
+    row={'run_sha256':fingerprint,'query_id':q['id'],'group':repo,'candidates':order,'scores':scores,'order':rank_scores(scores,100),'cached_candidate_indices':cached,'cache_source_run_sha256':baseline_hash}
+    stream.write(__import__('json').dumps(row)+'\n');stream.flush();records[q['id']]=row
+   row=records[q['id']];assert row['candidates']==order and row['cache_source_run_sha256']==baseline_hash
+   for i in row['cached_candidate_indices']:assert row['scores'][i]==cache[order[i]]
+   ranked=[order[i] for i in row['order']];assert len(set(ranked))==100
+   positive=gold[q['source_id']]
+   scored={**row,'ranking':ranked,'metrics':single_positive_metrics(ranked,positive)};current.append(scored)
+   total_cached+=len(row['cached_candidate_indices'])
+   labels[q['id']]={positive:1};run[q['id']]={d:float(100-i) for i,d in enumerate(ranked)}
+   baseline_order=[q['hybrid'][i] for i in baseline[q['id']]['order']]
+   baseline_rows[q['id']]={'query_id':q['id'],'group':repo,'metrics':single_positive_metrics(baseline_order,positive)}
+ measured=pytrec_eval.RelevanceEvaluator(labels,{'ndcg_cut_10','recip_rank','recall_1','recall_5','recall_10','recall_100'}).evaluate(run)
+ for row in current:
+  for ours,theirs in [('ndcg_at_10','ndcg_cut_10'),('mrr','recip_rank')]+[(f'recall_at_{k}',f'recall_{k}') for k in [1,5,10,100]]:
+   assert abs(row['metrics'][ours]-measured[row['query_id']][theirs])<1e-10;checks+=1
+ all_rows.extend(current)
+ print('SCORED',repo,len(all_rows),'cached',total_cached,'ndcg',aggregate(all_rows)['repository_macro']['ndcg_at_10'],flush=True)
+summary=aggregate(all_rows);assert summary['queries']==9600 and summary['repositories']==48
+result={**meta,'summary':summary,'cached_pairs':total_cached,'computed_pairs':960000-total_cached,'independent_metric_checks':checks,'paired_minus_bge_hybrid':paired_interval({r['query_id']:r for r in all_rows},baseline_rows,'ndcg_at_10')}
+write_json(out/'records.json.gz',all_rows);write_json(out/'summary.json',result)
+print('COMPLETE',result,flush=True)

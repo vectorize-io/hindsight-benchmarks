@@ -1,0 +1,438 @@
+{
+  "dataset": "KaLM-Embedding/LMEB",
+  "revision": "f9d4294be4a24b8c16d6bfb59d56a6fec4bd95c0",
+  "repositories": {
+    "Azure_azure-sdk-for-python": {
+      "documents": 1952,
+      "queries": 1952,
+      "files": {
+        "corpus.jsonl": "73779c0d0f7e7fe38507fede4ec45edb078271b19f6bc81b0462332b3aff8cc3",
+        "queries.jsonl": "096482490ca1bcf768834dea95bc04e21810d6902240329bec06531f1048da60",
+        "qrels.tsv": "a32445af564d9057d4f55d93e04dec6f32fe8f75031561a1a14dcdfd570f32ff"
+      }
+    },
+    "ClusterHQ_flocker": {
+      "documents": 1346,
+      "queries": 1346,
+      "files": {
+        "corpus.jsonl": "34f18cdeb37b6f9d7d5955ff60484c92d2ea4b9babe1db98b217b8c887bd820b",
+        "queries.jsonl": "fe581d4ebf148cdda5a2f58ffd7ec68b348b4a1c54b690969e7cd83ef9266c10",
+        "qrels.tsv": "26a4f459d77aa1291d9e4b716d3219f8b9c58931ee65ebae8578e96adb275c55"
+      }
+    },
+    "DataDog_integrations-core": {
+      "documents": 4120,
+      "queries": 4120,
+      "files": {
+        "corpus.jsonl": "5863c26dfe534ffc349178c7a010cec217fb592bcc7a5d0dd5683c77e7f560e1",
+        "queries.jsonl": "654496a0264e98be73da640d157d8b2b3c204a2f19f7702115254dec447f6624",
+        "qrels.tsv": "d408715282fad7c1c25c8d2372bb5c820dfd64d43bf798059a4b2dd1bd1554a6"
+      }
+    },
+    "Microsoft_TypeScript": {
+      "documents": 779,
+      "queries": 779,
+      "files": {
+        "corpus.jsonl": "e4b761453eb259213ff8a21f498c250aa00bd7421cf96ed0afcb705c0c7eeb58",
+        "queries.jsonl": "ca03de681164cdd3361b4fbdee47a6198da078f27f12181d9357fe103d64db4d",
+        "qrels.tsv": "e151eb5f960376f98eee89fe8910195c7c4a44cd1c8229c5a2015b80b909f82c"
+      }
+    },
+    "PokemonGoF_PokemonGo-Bot": {
+      "documents": 1165,
+      "queries": 1165,
+      "files": {
+        "corpus.jsonl": "fa8e0574420ba3920b9d1f4d37d602f321af1fecb2ae7abab108264a92cfca52",
+        "queries.jsonl": "c0467f6af455156e10fba956590d3ede1df18e8955e7afd3a095f9ffde76eb89",
+        "qrels.tsv": "27849122e6ea6fcbde270c3ad64f4e793f472b4569afc60af9ac30afeb08109b"
+      }
+    },
+    "Qiskit_qiskit-terra": {
+      "documents": 2198,
+      "queries": 2198,
+      "files": {
+        "corpus.jsonl": "582425adc5ba83381aaeb0dca63e8c5fde330a52cc646ebe56bbf6894cee42e8",
+        "queries.jsonl": "e87eaa0583ae6edbb72ec9ebfe753c37276498a47f983cd1be0d79a30cebc1c5",
+        "qrels.tsv": "38de1ce59bb365449338c462bfb6665d6b7d560ef24b8e0481449e691ca927a9"
+      }
+    },
+    "StackStorm_st2": {
+      "documents": 1580,
+      "queries": 1580,
+      "files": {
+        "corpus.jsonl": "cd3dad7070b31e565d10d6110b017c43f76dd8c3b58ff49fd86e88b7e8d74b39",
+        "queries.jsonl": "89768c22fd6807944f0dd3e6b5fca74f04cd42b2eafb2ac9a973e853a027d287",
+        "qrels.tsv": "c0e244217efbc2470dedf7cc95a8db0e7dbdbc93c204f7f0dcf84347bfe98ec5"
+      }
+    },
+    "apache_airflow": {
+      "documents": 2075,
+      "queries": 2075,
+      "files": {
+        "corpus.jsonl": "97d89c7ecd00053779d0028d55edcc968b458f3e4c61ecc5d6f32ef5652d37ed",
+        "queries.jsonl": "2538939e09429b2f201c0ccfd60e9f18ac0a5552431ef9d5bd953b878cef0126",
+        "qrels.tsv": "30ee117a60ecbf09463249b3a6344ee664a5ca512618dd5fbdbeaf3055dbe138"
+      }
+    },
+    "apache_incubator-airflow": {
+      "documents": 2659,
+      "queries": 2659,
+      "files": {
+        "corpus.jsonl": "f76edd55bcf7f8da945d953c5b91dea060cf1295d356587608440fe70e42c3ab",
+        "queries.jsonl": "ce126831b2743296c2dc9440a82a0091985b8899832d013026a182f580332fa0",
+        "qrels.tsv": "0a9a1431dbde991da2a9e27357998914d6fc98cb5934399d46d5901fcd1db4d8"
+      }
+    },
+    "certbot_certbot": {
+      "documents": 1452,
+      "queries": 1452,
+      "files": {
+        "corpus.jsonl": "d37e3390562d348cdc07aca6cc4d86cdaf73f0a80bcacbd64f72818a8706b34f",
+        "queries.jsonl": "079374cd9c8f8098fa68baf2c71d42e2b3a6f601263cdee57ef4ecb62634f2b6",
+        "qrels.tsv": "41e8bf54b234c33368623e2824c203b2eed612af52d156b735e8bd0029129ecc"
+      }
+    },
+    "dask_dask": {
+      "documents": 2577,
+      "queries": 2577,
+      "files": {
+        "corpus.jsonl": "3e594a42955c86514cafdc58bfdd6fc1527dae644edff7d41487fd44013b410c",
+        "queries.jsonl": "4cdc47d0d5c20f09b011da65c3e953b1b543a0cc6da8624c983320257822540e",
+        "qrels.tsv": "0ec8bb4e8f849aaf3e937f14acf12960fbb168d4f9c990f7c63a6eb782f39187"
+      }
+    },
+    "datalad_datalad": {
+      "documents": 2024,
+      "queries": 2024,
+      "files": {
+        "corpus.jsonl": "e616cd7af1b2929092682d6402627976d18fe593948f15819845d19403115a49",
+        "queries.jsonl": "0a790421cb1a3834c8840f4c445254d0a3acc7ecb01a1478c8b298f50d82f931",
+        "qrels.tsv": "ed80f1c415023670f09e735c15712bf89ccc71c0a03759bc2239557557a8ba48"
+      }
+    },
+    "django_django": {
+      "documents": 1369,
+      "queries": 1369,
+      "files": {
+        "corpus.jsonl": "afd70da6595641abace9117c9824b2ac37bbdcbcd6c6cde20c51fd1110473f88",
+        "queries.jsonl": "94185bdcd1850341e94f9d54abbe93da603e69bac6b0fcbdd39c714bd26402cf",
+        "qrels.tsv": "6100d13c4490bf4a6edd13a1341fb47ccdd37a81e49608f747e089f93e43bee2"
+      }
+    },
+    "dmwm_WMCore": {
+      "documents": 2235,
+      "queries": 2235,
+      "files": {
+        "corpus.jsonl": "977e4cddc60bc91ed9604a3047b50f5323853e2ba72a67bdd338c7e07b27987f",
+        "queries.jsonl": "f2902f9541cac952ab27fff35fcc93169ac2f3a977d28c84f8ba295f2283f5da",
+        "qrels.tsv": "7f0c202ee0a1242efeaa0094d06b7330fa9011a9d52d160b8d125501e40c8aaa"
+      }
+    },
+    "encode_django-rest-framework": {
+      "documents": 1077,
+      "queries": 1077,
+      "files": {
+        "corpus.jsonl": "449c1a1118d26db19dff338ffa0372e3606e20531464c9b75d11209d337356f1",
+        "queries.jsonl": "a613a644586c882a5a6793499c6485c36ce4fde1ffde8855392284a57a41f51b",
+        "qrels.tsv": "f93c188d8a265551a347f1772d3a96f65b13f02be4cbe2cb73c740a2b2f1fd7b"
+      }
+    },
+    "facebook_react": {
+      "documents": 1604,
+      "queries": 1604,
+      "files": {
+        "corpus.jsonl": "12b8cac8155c3fd37b99c2fdca9048d6af35065b01e058658787f16ecf67a4af",
+        "queries.jsonl": "27243ba888711e09038e9e76a21f8a1c22a17dacaa3b887e68489fb929ae0571",
+        "qrels.tsv": "38e8c710dfea94b6bf50a3f54ca35ab1268d1065b49d22a289d9f3495cbb76a3"
+      }
+    },
+    "great-expectations_great_expectations": {
+      "documents": 1990,
+      "queries": 1990,
+      "files": {
+        "corpus.jsonl": "78f0ed87140240dc93bc0673995057817567a4c9c87262479594a9b0c7bd11f3",
+        "queries.jsonl": "1b7e9de3b0733824acd76d0b08abf9310b5183ba30334ff75df4bcbf1498c31b",
+        "qrels.tsv": "b7b700c6b66e45b8a5e03df52bc2943f102f2bc83ff3dca51549d75efe713512"
+      }
+    },
+    "home-assistant_core": {
+      "documents": 3255,
+      "queries": 3255,
+      "files": {
+        "corpus.jsonl": "fc00f491cc86f59acf9cf693f6c7f536c5f1a770fcd2038177ad5adfc06d020b",
+        "queries.jsonl": "40b6e45cdeb9cad55b10d89a5b1fccd9cf1c7c239a3a751a3dad2600c6a17fe9",
+        "qrels.tsv": "ecea912574830d553b85a2c65a41df6e950d879ff296ffc981d4cfcbc8fa1049"
+      }
+    },
+    "home-assistant_home-assistant": {
+      "documents": 6196,
+      "queries": 6196,
+      "files": {
+        "corpus.jsonl": "fca2faa7aaa713f0ad2633430bbd041002276d6834424850e12f4aa4cc202698",
+        "queries.jsonl": "d028f79923fede766ae9d07911aed17b82397edb0fac6de0161fffec32e6b605",
+        "qrels.tsv": "597fea5d6a8164a7e78018d6590d983b3b10a228d6414d8c608c1f31446d66d5"
+      }
+    },
+    "huggingface_transformers": {
+      "documents": 782,
+      "queries": 782,
+      "files": {
+        "corpus.jsonl": "dc6b86ed4b75700a572f6885e5a8af31020b2108dccb793c31c77142e5437b09",
+        "queries.jsonl": "a0a69d232b6bed2fe7791324e8b13ba036f491eb0aef4d62b85d383c014fbd65",
+        "qrels.tsv": "db602f327f9cac51c6836d751e7e0ee45dead5b12a6c938eed01414ffaa1c61e"
+      }
+    },
+    "kubernetes_kubernetes": {
+      "documents": 11339,
+      "queries": 11339,
+      "files": {
+        "corpus.jsonl": "cdf46fec54e78a8797d1d085c395f817d7f1924d5cda1d8b9b23c9755453c2a9",
+        "queries.jsonl": "b9fd5323047a7f28a6b1d5fa3884f55bacdb322f66f941d4c76133fce4131258",
+        "qrels.tsv": "03287a7e9ee794596ad1b41a2276c46b1aa7fd0aff942ccbc34610a39652cf68"
+      }
+    },
+    "mesonbuild_meson": {
+      "documents": 3090,
+      "queries": 3090,
+      "files": {
+        "corpus.jsonl": "007928d2208cf2bfb82213cae533b94f36452481d25686f3ab1d1cde6c82e19e",
+        "queries.jsonl": "c523c799ac171683e22136614db135d7ddf530d59c22d3f3c9d2ac4d62f4cd0f",
+        "qrels.tsv": "0356186c1f5b0b5c66cad950247c804a191ef294faae6e9a49985cfd8801b595"
+      }
+    },
+    "microsoft_vscode": {
+      "documents": 654,
+      "queries": 654,
+      "files": {
+        "corpus.jsonl": "0d5411b40511ab2c37c14523147872da5031fbf1bd163d276dcc9e21cffd1876",
+        "queries.jsonl": "f518767a15ef7c37559eadbb310750420dc6b6df781823f14be1099514ab139c",
+        "qrels.tsv": "3757c051fc2c583a867ff079ece459c737a5d2f382019a11339c3581d076e69f"
+      }
+    },
+    "mne-tools_mne-python": {
+      "documents": 3952,
+      "queries": 3952,
+      "files": {
+        "corpus.jsonl": "2bc5d403210a221aed05b66e965151344b85d559c56b60431702471499d07a34",
+        "queries.jsonl": "bfc8707c571786d77bac174316bc0d92c9b7633ad47067b95e912c9b6a9f5093",
+        "qrels.tsv": "67217a79dd42fd70f3c26de3d57a2df5911f4e1a0106e5329ec2f9cab0eb0b97"
+      }
+    },
+    "moby_moby": {
+      "documents": 892,
+      "queries": 892,
+      "files": {
+        "corpus.jsonl": "4bbecee86f135d1271dba364ac42e28fd72be413612d8a389ad8cc43c82dbd6c",
+        "queries.jsonl": "3c293811c4731a961c88282de29fad9f3f9efd17dc6a0b4993857398a03551bc",
+        "qrels.tsv": "671addfed884a0989cebf80763c6b281bc1cab6a36667ecb6283df6e4edfd649"
+      }
+    },
+    "napari_napari": {
+      "documents": 1860,
+      "queries": 1860,
+      "files": {
+        "corpus.jsonl": "f7701cbf3f93115db944a166f055dc73af97fd1c674d39ba83eeba84da1a849e",
+        "queries.jsonl": "c6ca249160663a1a7e3e49f9c562762cfc540adfd4038f264f71198346684cff",
+        "qrels.tsv": "d240c748cc5a8020d328e9c6295dd13614f19aed43818c57e316fe2ce1309199"
+      }
+    },
+    "numpy_numpy": {
+      "documents": 1335,
+      "queries": 1335,
+      "files": {
+        "corpus.jsonl": "fed9df5c6304267966414e9477a29edfb5aab83256580ec6909a96b04ab66678",
+        "queries.jsonl": "5858e645f17011350831c27ba15e04bd9ebc8236cb3ffa7f11305351c96293ce",
+        "qrels.tsv": "25889733f4e8ed6a234167eb7a0ce8d180e5a0033a20e1f05c0576abd3e1c2da"
+      }
+    },
+    "optuna_optuna": {
+      "documents": 1371,
+      "queries": 1371,
+      "files": {
+        "corpus.jsonl": "374a8ff16c9326b4a7e17d066de8fe2846461858ad56d6aadb54ad068dae79eb",
+        "queries.jsonl": "f2ba335c983e7954d02cf507b6ef44158dcfe23f03a59df137785d07c1d15fa6",
+        "qrels.tsv": "28839f9b7be101f3002bf996ce0c84f654ea385cf6da633f58fe490404de257d"
+      }
+    },
+    "pandas-dev_pandas": {
+      "documents": 2751,
+      "queries": 2751,
+      "files": {
+        "corpus.jsonl": "61c8dea64b98e9903ef7c6d85946d41df75f9814d516f03e93c339493e6df098",
+        "queries.jsonl": "befc0e41584220a477e91c47c02a2176b9ac1e53865f0622c8a49416647e07bd",
+        "qrels.tsv": "da17733da66c97425880677ce2ab19624df478ceb78a1a2ca312c6bba352af22"
+      }
+    },
+    "pydata_xarray": {
+      "documents": 1699,
+      "queries": 1699,
+      "files": {
+        "corpus.jsonl": "aeae1e1f929820b6c26c7b635b9e41c659a6e2b2473028082ce53877ee5b87dc",
+        "queries.jsonl": "7fa125765a19924bd68fcee61adf72bea0e950864abf6eafc1dba779452a38c3",
+        "qrels.tsv": "4d73ac6fa9cbe6c52dd4ac1939bf5cbbb3d468b5955d80ff0a0143c37c9599b6"
+      }
+    },
+    "pypa_pip": {
+      "documents": 2618,
+      "queries": 2618,
+      "files": {
+        "corpus.jsonl": "8db43c4da0e5f159d4495853555cfb18113f8ad27c901d14ebe5f28698f5756c",
+        "queries.jsonl": "4dc2c64a20da0a039c75ff4f42bd7456353060ae4dc1be64f8cca72be6deef4a",
+        "qrels.tsv": "1b155d81c717d8f3e9ff10ced2fe7065d7283d9707dd1767defbe39fe3b3a551"
+      }
+    },
+    "pytest-dev_pytest": {
+      "documents": 2293,
+      "queries": 2293,
+      "files": {
+        "corpus.jsonl": "d5ecf2165c80c75f7deca8b974d50461dc637a2e0427b4f974a262b27d0a1c79",
+        "queries.jsonl": "408b21be375db97e6a72491c9a6ce62046a48d1fe0d7cc7ea5d43a0306d00e81",
+        "qrels.tsv": "8aa71d63dfb96af8f8f54a0172306b9a17f05ed75e117239c7bb2e03d65155aa"
+      }
+    },
+    "pytorch_pytorch": {
+      "documents": 6492,
+      "queries": 6492,
+      "files": {
+        "corpus.jsonl": "ae6dea4752fc3a59d1a767b1d49d6f57ccbf9bcf40a2dd37958eac705dd42938",
+        "queries.jsonl": "f4f26aeabbb9d9ec6ba54fd2d3200a8793a8db160f0cb071f7baebad82c1fbb3",
+        "qrels.tsv": "94a37e6c6d9bd4409e8ef4819683cb588ec3fb9e06ab5e9ae76104146b2f7124"
+      }
+    },
+    "raiden-network_raiden": {
+      "documents": 1554,
+      "queries": 1554,
+      "files": {
+        "corpus.jsonl": "edc73fe50166dd7a5159d6d04a36f8febb9a2330ab941bc65ca04a1a31581aa3",
+        "queries.jsonl": "4a4da42f9a57a8936f8e40713faf0569552c54d9794ba2bcf3f487160ec627f8",
+        "qrels.tsv": "392225f28d3690da2a1af783d14536a5f53dd0b74e1b54ed31affe14c5a01720"
+      }
+    },
+    "rust-lang_rust": {
+      "documents": 9095,
+      "queries": 9095,
+      "files": {
+        "corpus.jsonl": "e6f6f3da4e1ff3913fe321dc688d329fa819f69b7894d8bb07c2c02b84ebc548",
+        "queries.jsonl": "7fe010c99849a15690afdacc94900c5a63712b2c37ae4824ebba8b92a4f91f48",
+        "qrels.tsv": "cb19635db86f4684d14e4b857c02b588918df16ed4077c579647e889a48640d4"
+      }
+    },
+    "saltstack_salt": {
+      "documents": 2363,
+      "queries": 2363,
+      "files": {
+        "corpus.jsonl": "b142667452832c0e842cc2195f0ca32314db52654725393b930f74c7756fa39c",
+        "queries.jsonl": "f6af4fd1b5f90602e65515c89d2576428e0742c478ef21f6c242814bad8eba46",
+        "qrels.tsv": "019cf00b20eb06078ceb2030912e2988db28778d6c8fbed6d5aae0dddbd6e670"
+      }
+    },
+    "scikit-learn_scikit-learn": {
+      "documents": 1821,
+      "queries": 1821,
+      "files": {
+        "corpus.jsonl": "3d662f3cd71847a5aac3582cf5da18dda592c691ea333b02ee3aad393969d49e",
+        "queries.jsonl": "7876af42dcddd5740dc594092224a59731021c73296bad74b4db7a1f25bea46f",
+        "qrels.tsv": "7cc49184bc6ba031654ed7d7f5c04318e32a0af3cc6d74c92be7ef7e8cc1122f"
+      }
+    },
+    "scipy_scipy": {
+      "documents": 1006,
+      "queries": 1006,
+      "files": {
+        "corpus.jsonl": "d9808fe741b84f1abac9fb381ba119723a1958a1e77b4b8097dd6404432ca583",
+        "queries.jsonl": "b49245e5f7d1f0a3c9e709015f3c88d88852c93751568cd395b4e969135e7e9c",
+        "qrels.tsv": "888a370afc52b25f71811f09d05aa2aceda81e410dfc59bf0d59be4ce3362649"
+      }
+    },
+    "scrapy_scrapy": {
+      "documents": 311,
+      "queries": 311,
+      "files": {
+        "corpus.jsonl": "1e07d2b6eded0c208d0e0cb18dafed5458bb565ebfd16dce6bb021dfd5cc8403",
+        "queries.jsonl": "3acf6a092802b27d3d603f0ba8d925514e494b62746cfd84a8c1432bfb04b5f3",
+        "qrels.tsv": "8675123e18c2f436c9cde56b1f69a01ad36fbe90934d4c054ede801a137edf4b"
+      }
+    },
+    "spack_spack": {
+      "documents": 6079,
+      "queries": 6079,
+      "files": {
+        "corpus.jsonl": "2643db3dd51de2a3e7b3c50e7b326aa5b191d813ed05b28c279e84e8c0289cea",
+        "queries.jsonl": "d8650f5d7f6f11c9b00a2ccc6ad4ff093b78a561b1ec1d3dce206636cb3203b4",
+        "qrels.tsv": "cf07ad10432e4b23c9a6aa87c94a4827c5555f2e8fd5d0aaa9dc3eb40953352e"
+      }
+    },
+    "sphinx-doc_sphinx": {
+      "documents": 1959,
+      "queries": 1959,
+      "files": {
+        "corpus.jsonl": "2896bd027dd324209121adeadba484f7958b43286b1c5b83bb117d1659c8f6b0",
+        "queries.jsonl": "6453f472e203111230aed8ed5111956f58fcc9b24dd0b3a91b4ab1a3c39cca77",
+        "qrels.tsv": "99319ad99d37733e00d424c27d7082fb9d03a69b69d943909d968f339dec2340"
+      }
+    },
+    "spotify_luigi": {
+      "documents": 1250,
+      "queries": 1250,
+      "files": {
+        "corpus.jsonl": "ad6b59780d4ef04826d93ef19041fe15da475eed3304af11c6a5c339e12fed87",
+        "queries.jsonl": "94eac3a683fcfc71919f443aea03a830783eca4a6ecf9d084f388758591e5769",
+        "qrels.tsv": "605f6dd4de1d444ed9906934cb053b9e30ff26d6fda941f3fe9498769cd1d607"
+      }
+    },
+    "spring-projects_spring-framework": {
+      "documents": 414,
+      "queries": 414,
+      "files": {
+        "corpus.jsonl": "2ad14db623373d2090fcc67c01d88abac6fcd2d24b3e6ecc5728bb530de9ddf2",
+        "queries.jsonl": "dd8701832d98de577f39c4e56d1455268752466daba98932b92ad9254083e123",
+        "qrels.tsv": "224c6906f52b507aa34cd740ed5948e4954ca35fac5e708915389dcf4396e272"
+      }
+    },
+    "spyder-ide_spyder": {
+      "documents": 1891,
+      "queries": 1891,
+      "files": {
+        "corpus.jsonl": "4c65609d6164d3370125982d460d4b7a30f0942981fb092390314a364f8d5531",
+        "queries.jsonl": "a0f95f83755e26baaa432c640629ffe8d9c9b55b774a2311f11aaac43fe48601",
+        "qrels.tsv": "4ed289a4d5ca526a06fda304355f49debeaad2a18244d3d312b3fa806d3c3d54"
+      }
+    },
+    "sympy_sympy": {
+      "documents": 6776,
+      "queries": 6776,
+      "files": {
+        "corpus.jsonl": "9085a6db3e007e344c18adc413fc64eb5394bca375fe285151c6e2964305ddef",
+        "queries.jsonl": "e31d9183312746c203715ed202bb676dde0f326a8aa1aa72a56b60eb8f31a859",
+        "qrels.tsv": "1fdc2e335ad315298f10d935fa51cdd80bee7566d829c268fcbacef8bf7146f0"
+      }
+    },
+    "tensorflow_tensorflow": {
+      "documents": 2093,
+      "queries": 2093,
+      "files": {
+        "corpus.jsonl": "7654f192c148906186735fc8da2aa02c2091e1e8862482944901e10c22d87a9d",
+        "queries.jsonl": "31736b45e093bfd71ab32183e047b26ad64941b17c346e9d48a455e4badbfa3f",
+        "qrels.tsv": "602fb19baaf78a8b67c7fc06408f0c31b8d12f0da08b1926f890914dc534c266"
+      }
+    },
+    "webpack_webpack": {
+      "documents": 813,
+      "queries": 813,
+      "files": {
+        "corpus.jsonl": "ed55a60d26b45a4f413a0e2490495a8986d4a62585cce0ee455a9a8a4f40b48f",
+        "queries.jsonl": "0d00e96bcb3d880f9c506e98db26b392a4a0260a4c46d68817d2c160c229598c",
+        "qrels.tsv": "b01a1dae0a9be130cc9e41f65d1702b902536cc8be4cc7908838fa5a18b35d27"
+      }
+    },
+    "xonsh_xonsh": {
+      "documents": 1269,
+      "queries": 1269,
+      "files": {
+        "corpus.jsonl": "3b9ac6d0c6033cff61137113388e431c86239028cfa8f6df38b275f542c38a63",
+        "queries.jsonl": "2e04a5308e8f09fdee71656a0b7ef7c501e2a178689fdf58c00f379608bc3c09",
+        "qrels.tsv": "34153207881034bedf0ba894bdc5f291ad1e5e22dbdfed44b6ca1bf1240913a4"
+      }
+    }
+  }
+}

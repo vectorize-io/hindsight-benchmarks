@@ -1,0 +1,50 @@
+[
+  {
+    "embedding": "bge-small",
+    "fixture_sha256": "29038d86470e8887979d9d11a3fa110cf39a1361798965802762329e75ad1abc",
+    "query_count": 1533,
+    "source_corpus_and_labels_match_bge": true,
+    "top100_evidence_recall": 0.878689496087847,
+    "unreranked_ndcg_at_10": 0.4514697822476974
+  },
+  {
+    "embedding": "granite",
+    "fixture_sha256": "59c549e671e542d61c957fd298474a46d90207e7a9d7215a9c7eca694fe9bd92",
+    "query_count": 1533,
+    "source_corpus_and_labels_match_bge": true,
+    "top100_evidence_recall": 0.8521191045439317,
+    "unreranked_ndcg_at_10": 0.4445367024756338
+  },
+  {
+    "embedding": "leaf",
+    "fixture_sha256": "ab964b2ed2f63bc235fa2e079389b18537d87b0e9199a13aed626cf71bca906d",
+    "query_count": 1533,
+    "source_corpus_and_labels_match_bge": true,
+    "top100_evidence_recall": 0.8862834802779851,
+    "unreranked_ndcg_at_10": 0.4932264293477392
+  },
+  {
+    "embedding": "voyage-1024",
+    "fixture_sha256": "e9ff217b5aaf3ee9506dff9efde78e574abb040401eabafb111352bdd3613216",
+    "query_count": 1533,
+    "source_corpus_and_labels_match_bge": true,
+    "top100_evidence_recall": 0.9340058075038656,
+    "unreranked_ndcg_at_10": 0.5371575252642773
+  },
+  {
+    "embedding": "bge",
+    "fixture_sha256": "3303c17bbb4e5ac762b25a2ef03e4545bc79e8f5079de83d82930c081cc932eb",
+    "query_count": 1533,
+    "source_corpus_and_labels_match_bge": true,
+    "top100_evidence_recall": 0.8759121171208502,
+    "unreranked_ndcg_at_10": 0.45900079190594256
+  },
+  {
+    "embedding": "voyage",
+    "fixture_sha256": "d30361120509f60b4426cd4a8376cfca40ebf38ff17ed2e07ac2d46457966b47",
+    "query_count": 1533,
+    "source_corpus_and_labels_match_bge": true,
+    "top100_evidence_recall": 0.9333263119613565,
+    "unreranked_ndcg_at_10": 0.5389602319018072
+  }
+]

@@ -1,0 +1,143 @@
+{
+  "schema_version": 2,
+  "reranker_id": "qwen3-0.6b",
+  "provider": "local",
+  "model": "Qwen/Qwen3-Reranker-0.6B",
+  "dataset": "scifact-evidence",
+  "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+  "run_sha256": "91e514fbb546fd6998d79c6c280e54eb4dceb9a89b10e77dd691e852696deb19",
+  "total_questions": 188,
+  "groups": 188,
+  "sample_id": "scifact-original-dev-evidence",
+  "scored_queries": 300,
+  "evaluation_label_sha256": "beda364a4f1275a81891e95e6cead7f6d866f5af7abe765fff9f2dfd34695265",
+  "label_view": {
+    "schema_version": 1,
+    "name": "scifact-evidence",
+    "source": "https://scifact.s3-us-west-2.amazonaws.com/release/latest/data.tar.gz",
+    "source_sha256": "11c621288d41ac144d29b13b0f8503b3820b7d6e8b1f6ff24dff335c196d76be",
+    "source_split": "original SciFact claims_dev.jsonl",
+    "rule": "Only documents explicitly annotated SUPPORT or CONTRADICT count as relevant; questions without either are excluded uniformly before comparing models.",
+    "label_sha256": "beda364a4f1275a81891e95e6cead7f6d866f5af7abe765fff9f2dfd34695265"
+  },
+  "mrr": 0.9060309762202754,
+  "ndcg_at_10": 0.9209981486125783,
+  "recall_at_1": 0.8293439716312057,
+  "hit_at_1": 0.8563829787234043,
+  "recall_at_3": 0.924822695035461,
+  "hit_at_3": 0.9468085106382979,
+  "recall_at_5": 0.9620567375886525,
+  "hit_at_5": 0.9787234042553191,
+  "recall_at_10": 0.9829787234042554,
+  "hit_at_10": 0.9840425531914894,
+  "confidence_intervals": {
+    "mrr": [
+      0.8700370254484773,
+      0.9384773936170212
+    ],
+    "ndcg_at_10": [
+      0.8903610382712208,
+      0.9477381570520514
+    ],
+    "recall_at_1": [
+      0.7743794326241136,
+      0.8798869680851064
+    ],
+    "hit_at_1": [
+      0.8031914893617021,
+      0.9042553191489362
+    ],
+    "recall_at_3": [
+      0.8874955673758866,
+      0.9574468085106383
+    ],
+    "hit_at_3": [
+      0.9148936170212766,
+      0.973404255319149
+    ],
+    "recall_at_5": [
+      0.9359020390070921,
+      0.9837765957446808
+    ],
+    "hit_at_5": [
+      0.9574468085106383,
+      0.9946808510638298
+    ],
+    "recall_at_10": [
+      0.9627659574468085,
+      0.998936170212766
+    ],
+    "hit_at_10": [
+      0.9627659574468085,
+      1.0
+    ]
+  },
+  "confidence_method": "5000 bootstrap samples; whole conversations for LoCoMo, queries for SciFact; 95% percentile interval",
+  "avg_latency_s": 1.36918738498354,
+  "p50_latency_s": 1.2943654299961054,
+  "p95_latency_s": 2.082069773038529,
+  "retries": 0,
+  "failed_queries": 0,
+  "usage": {
+    "truncated_pairs": 0
+  },
+  "estimated_api_cost_usd": null,
+  "cost_basis": "Local compute/electricity not measured",
+  "metadata": {
+    "config": {
+      "reranker_id": "qwen3-0.6b",
+      "display_name": "Qwen3 0.6B",
+      "provider": "local",
+      "provider_name": "Local GPU",
+      "provider_icon": "/huggingface.png",
+      "pricing_type": "local",
+      "model": "Qwen/Qwen3-Reranker-0.6B",
+      "max_length": 8192
+    },
+    "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+    "adapter_sha256": "b27902c1a4bf93a16537c7eeacfce66778c695f2200059ea52ef636def0856fe",
+    "versions": {
+      "sentence-transformers": "5.7.0",
+      "torch": "2.14.1",
+      "transformers": "5.18.0",
+      "numpy": "2.5.3",
+      "httpx": "0.28.1",
+      "rank-bm25": "0.2.2"
+    },
+    "python": "3.12.8",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "max_length": 8192,
+    "batch_size": 32,
+    "concurrency": 64,
+    "requests_per_second": 10.0,
+    "jev_question": null,
+    "model_revision": "e61197ed45024b0ed8a2d74b80b4d909f1255473",
+    "precision": "bfloat16",
+    "score_activation": "identity (raw model score)",
+    "hardware": {
+      "name": "NVIDIA RTX PRO 5000 Blackwell",
+      "memory_bytes": 51311607808,
+      "cuda_version": "13.0",
+      "compute_capability": [
+        12,
+        0
+      ]
+    }
+  },
+  "retrieval_ceiling_recall": 0.9946808510638298,
+  "by_category": {
+    "fact-checking": {
+      "mrr": 0.9060309762202754,
+      "ndcg_at_10": 0.9209981486125783,
+      "recall_at_1": 0.8293439716312057,
+      "hit_at_1": 0.8563829787234043,
+      "recall_at_3": 0.924822695035461,
+      "hit_at_3": 0.9468085106382979,
+      "recall_at_5": 0.9620567375886525,
+      "hit_at_5": 0.9787234042553191,
+      "recall_at_10": 0.9829787234042554,
+      "hit_at_10": 0.9840425531914894
+    }
+  },
+  "by_group": {}
+}

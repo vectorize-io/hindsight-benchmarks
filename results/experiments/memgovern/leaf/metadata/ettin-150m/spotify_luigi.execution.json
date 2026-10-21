@@ -1,0 +1,6 @@
+{
+  "gpu_uuid": "GPU-13db0817-4937-36dc-3061-d51b47799ce9",
+  "hardware": "NVIDIA RTX A4000",
+  "dtype": "bfloat16",
+  "batch_size": 32
+}

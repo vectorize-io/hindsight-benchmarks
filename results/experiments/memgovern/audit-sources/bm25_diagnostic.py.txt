@@ -1,0 +1,50 @@
+from pathlib import Path
+import re,sys
+import numpy as np
+import pytrec_eval
+from rank_bm25 import BM25Okapi
+sys.path.insert(0,'benchmark-runner')
+from memgovern_prepare import DEFAULT_DATA,DEFAULT_WORK,MODEL_NAMES,read_items,source_manifest
+from memgovern_experiment import validate_pool,aggregate,single_positive_metrics
+from rerank_eval import read_json,write_json,digest
+from summarize_rerankers import paired_interval
+source=source_manifest(DEFAULT_DATA)
+assert source==read_json(DEFAULT_WORK/'source.json')
+rows={name:[] for name in ['bm25']+[model+'/hybrid' for model in MODEL_NAMES]}
+checks=0
+for repo in source['repositories']:
+ base=DEFAULT_DATA/'Procedural/MemGovern'/repo
+ corpus=read_items(base/'corpus.jsonl');ids=[r['id'] for r in corpus]
+ bm25=BM25Okapi([re.findall(r'\w+',r['text'].lower()) for r in corpus])
+ gold={q:d for q,d,_ in (s.split('\t') for s in (base/'qrels.tsv').read_text().splitlines())}
+ pools={model:read_json(DEFAULT_WORK/model/'pools'/f'{repo}.json.gz') for model in MODEL_NAMES}
+ for pool in pools.values():validate_pool(pool)
+ reference=pools['bge-small']['queries']
+ groups={model:{q['id']:q for q in pool['queries']} for model,pool in pools.items()}
+ for name in rows:
+  current=[];labels={};run={}
+  for q in reference:
+   if name=='bm25':
+    scores=bm25.get_scores(re.findall(r'\w+',q['text'].lower()))
+    order=[ids[i] for i in np.argsort(-scores,kind='stable')[:100]]
+   else:
+    model=name.split('/')[0];assert groups[model][q['id']]['text']==q['text']
+    order=groups[model][q['id']]['hybrid']
+   positive=gold[q['source_id']]
+   row={'query_id':q['id'],'group':repo,'metrics':single_positive_metrics(order,positive)}
+   current.append(row);labels[q['id']]={positive:1};run[q['id']]={d:float(100-i) for i,d in enumerate(order)}
+  measured=pytrec_eval.RelevanceEvaluator(labels,{'ndcg_cut_10','recip_rank','recall_1','recall_5','recall_10','recall_100'}).evaluate(run)
+  for row in current:
+   for ours,theirs in [('ndcg_at_10','ndcg_cut_10'),('mrr','recip_rank')]+[(f'recall_at_{k}',f'recall_{k}') for k in [1,5,10,100]]:
+    assert abs(row['metrics'][ours]-measured[row['query_id']][theirs])<1e-10;checks+=1
+  rows[name].extend(current)
+ print('DIAGNOSTIC',repo,flush=True)
+summaries={name:aggregate(values) for name,values in rows.items()}
+for name,summary in summaries.items():
+ assert summary['queries']==9600 and summary['repositories']==48
+ print(name,summary['repository_macro'],flush=True)
+by_id={name:{r['query_id']:r for r in values} for name,values in rows.items()}
+pairs={model:paired_interval(by_id[model+'/hybrid'],by_id['bge-small/hybrid'],'ndcg_at_10') for model in MODEL_NAMES if model!='bge-small'}
+output={'source_sha256':digest(source),'protocol':'Same full repository corpora, 9600 sampled queries; BM25Okapi lowercase regex word tokens; stable full-corpus top100; hybrid pools reused unchanged from the experiment. No reranking.', 'results':summaries,'paired_hybrid_against_bge_small':pairs,'independent_metric_checks':checks}
+write_json(DEFAULT_WORK/'bm25-diagnostic.json',output)
+print('COMPLETE',checks,flush=True)

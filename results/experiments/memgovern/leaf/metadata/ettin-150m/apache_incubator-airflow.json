@@ -1,0 +1,30 @@
+{
+  "pool_sha256": "9b77c6dac1fe6e6ac66e8cace679e8fc36732ad41eb199f88dcbb8136b6b7c15",
+  "config": {
+    "reranker_id": "ettin-150m",
+    "display_name": "Ettin 150M",
+    "provider": "local",
+    "provider_name": "Local GPU",
+    "provider_icon": "/huggingface.png",
+    "pricing_type": "local",
+    "model": "cross-encoder/ettin-reranker-150m-v1",
+    "max_length": 8192,
+    "revision": "025501c4e0f9bbeb4c5b198318e0089ff061cc14"
+  },
+  "versions": {
+    "sentence-transformers": "5.7.0",
+    "torch": "2.14.1",
+    "transformers": "5.18.0",
+    "numpy": "2.5.3",
+    "httpx": "0.28.1",
+    "rank-bm25": "0.2.2"
+  },
+  "protocol": "memgovern-frozen-hybrid-v1",
+  "workers": 1,
+  "adapter_sha256": "01a23ecd419d12286ad0146496fe94ff8094954a6d0526c19257eefb585319b3",
+  "listwise_adapter_sha256": "db658d8b9336521c0b89892d98cf4187723a7439223f2b71120e44f4323cfcbe",
+  "batch_size": 32,
+  "dtype": "bfloat16",
+  "requests_per_second_per_worker": null,
+  "timing": "Concurrent jobs; latency excludes queue wait; warmup excluded"
+}

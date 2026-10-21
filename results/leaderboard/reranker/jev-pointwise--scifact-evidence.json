@@ -1,0 +1,143 @@
+{
+  "schema_version": 2,
+  "reranker_id": "jev-pointwise",
+  "provider": "typesafe",
+  "model": "jev-1.13.0",
+  "dataset": "scifact-evidence",
+  "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+  "run_sha256": "e9e6e861b658fd8a9545e1e66838666c6281be63bfbe7ef7edbf16b737ea4b8c",
+  "total_questions": 188,
+  "groups": 188,
+  "sample_id": "scifact-original-dev-evidence",
+  "scored_queries": 300,
+  "evaluation_label_sha256": "beda364a4f1275a81891e95e6cead7f6d866f5af7abe765fff9f2dfd34695265",
+  "label_view": {
+    "schema_version": 1,
+    "name": "scifact-evidence",
+    "source": "https://scifact.s3-us-west-2.amazonaws.com/release/latest/data.tar.gz",
+    "source_sha256": "11c621288d41ac144d29b13b0f8503b3820b7d6e8b1f6ff24dff335c196d76be",
+    "source_split": "original SciFact claims_dev.jsonl",
+    "rule": "Only documents explicitly annotated SUPPORT or CONTRADICT count as relevant; questions without either are excluded uniformly before comparing models.",
+    "label_sha256": "beda364a4f1275a81891e95e6cead7f6d866f5af7abe765fff9f2dfd34695265"
+  },
+  "mrr": 0.9229314420803783,
+  "ndcg_at_10": 0.935799750153206,
+  "recall_at_1": 0.8490248226950355,
+  "hit_at_1": 0.8829787234042553,
+  "recall_at_3": 0.9418439716312057,
+  "hit_at_3": 0.9574468085106383,
+  "recall_at_5": 0.972163120567376,
+  "hit_at_5": 0.9787234042553191,
+  "recall_at_10": 0.9920212765957447,
+  "hit_at_10": 0.9946808510638298,
+  "confidence_intervals": {
+    "mrr": [
+      0.8891245567375886,
+      0.9531043144208038
+    ],
+    "ndcg_at_10": [
+      0.9089249377981314,
+      0.9595276768216139
+    ],
+    "recall_at_1": [
+      0.7971609042553192,
+      0.8960106382978723
+    ],
+    "hit_at_1": [
+      0.8351063829787234,
+      0.925531914893617
+    ],
+    "recall_at_3": [
+      0.9091289893617021,
+      0.9703014184397163
+    ],
+    "hit_at_3": [
+      0.925531914893617,
+      0.9840425531914894
+    ],
+    "recall_at_5": [
+      0.948404255319149,
+      0.9920212765957447
+    ],
+    "hit_at_5": [
+      0.9574468085106383,
+      0.9946808510638298
+    ],
+    "recall_at_10": [
+      0.9787234042553191,
+      1.0
+    ],
+    "hit_at_10": [
+      0.9840425531914894,
+      1.0
+    ]
+  },
+  "confidence_method": "5000 bootstrap samples; whole conversations for LoCoMo, queries for SciFact; 95% percentile interval",
+  "avg_latency_s": 2.1496127439360784,
+  "p50_latency_s": 2.128736332495464,
+  "p95_latency_s": 2.6477922605015918,
+  "retries": 0,
+  "failed_queries": 0,
+  "usage": {
+    "input_tokens": 14290667,
+    "output_tokens": 413600
+  },
+  "estimated_api_cost_usd": 0.6002080140000001,
+  "cost_basis": "API reported tokens × published list rate; excludes credits and failed-request billing",
+  "metadata": {
+    "config": {
+      "reranker_id": "jev-pointwise",
+      "display_name": "Jev 1.13 pointwise",
+      "provider": "typesafe",
+      "provider_name": "TypeSafe",
+      "provider_icon": "",
+      "pricing_type": "pay-per-use",
+      "model": "jev-1.13.0",
+      "endpoint": "https://api.typesafe.ai/v1/systemone",
+      "key_env": "TYPESAFE_API_KEY",
+      "key_file": "typesafe_api_key",
+      "usd_per_million_tokens": 0.042,
+      "pricing_source": "https://docs.typesafe.ai/models"
+    },
+    "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+    "adapter_sha256": "b27902c1a4bf93a16537c7eeacfce66778c695f2200059ea52ef636def0856fe",
+    "versions": {
+      "sentence-transformers": "5.7.0",
+      "torch": "2.14.1",
+      "transformers": "5.18.0",
+      "numpy": "2.5.3",
+      "httpx": "0.28.1",
+      "rank-bm25": "0.2.2"
+    },
+    "python": "3.12.8",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "max_length": null,
+    "batch_size": 32,
+    "concurrency": 64,
+    "requests_per_second": 60.0,
+    "jev_question": {
+      "type": "noul",
+      "instructions": "Does the candidate contain information useful for answering or verifying the query?",
+      "criteria": {
+        "true": "The candidate contains specific evidence useful for answering or verifying the query, including evidence that contradicts the query. Partial evidence for a question requiring several facts also counts.",
+        "false": "The candidate is unrelated, or merely discusses the same broad topic without evidence useful for answering or verifying the query."
+      }
+    }
+  },
+  "retrieval_ceiling_recall": 0.9946808510638298,
+  "by_category": {
+    "fact-checking": {
+      "mrr": 0.9229314420803783,
+      "ndcg_at_10": 0.935799750153206,
+      "recall_at_1": 0.8490248226950355,
+      "hit_at_1": 0.8829787234042553,
+      "recall_at_3": 0.9418439716312057,
+      "hit_at_3": 0.9574468085106383,
+      "recall_at_5": 0.972163120567376,
+      "hit_at_5": 0.9787234042553191,
+      "recall_at_10": 0.9920212765957447,
+      "hit_at_10": 0.9946808510638298
+    }
+  },
+  "by_group": {}
+}

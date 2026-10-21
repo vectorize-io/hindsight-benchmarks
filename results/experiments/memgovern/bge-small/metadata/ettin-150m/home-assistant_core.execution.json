@@ -1,0 +1,6 @@
+{
+  "gpu_uuid": "GPU-27368065-5d8b-6e5e-4e81-2e924bd9ce73",
+  "hardware": "NVIDIA RTX PRO 5000 Blackwell",
+  "dtype": "bfloat16",
+  "batch_size": 32
+}

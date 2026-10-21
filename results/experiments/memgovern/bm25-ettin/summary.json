@@ -1,0 +1,437 @@
+{
+  "source_sha256": "4d034120b9db16f2d8cb3a10e530b76bd971aa10eb5d0520bd1c2875748b99c7",
+  "config": {
+    "reranker_id": "ettin-150m",
+    "display_name": "Ettin 150M",
+    "provider": "local",
+    "provider_name": "Local GPU",
+    "provider_icon": "/huggingface.png",
+    "pricing_type": "local",
+    "model": "cross-encoder/ettin-reranker-150m-v1",
+    "max_length": 8192,
+    "revision": "025501c4e0f9bbeb4c5b198318e0089ff061cc14"
+  },
+  "execution": {
+    "gpu_uuid": "GPU-27368065-5d8b-6e5e-4e81-2e924bd9ce73",
+    "hardware": "NVIDIA RTX PRO 5000 Blackwell",
+    "dtype": "bfloat16",
+    "batch_size": 32
+  },
+  "protocol": "Full repository BM25Okapi lowercase regex word tokens, stable top100; same frozen 200 queries per bank; baseline Ettin pointwise logits reused after provenance verification.",
+  "summary": {
+    "queries": 9600,
+    "repositories": 48,
+    "repository_macro": {
+      "ndcg_at_10": 0.9419461559123242,
+      "mrr": 0.9288561675641352,
+      "recall_at_1": 0.8915625,
+      "recall_at_5": 0.9739583333333334,
+      "recall_at_10": 0.9831249999999999,
+      "recall_at_100": 0.99375
+    },
+    "query_macro": {
+      "ndcg_at_10": 0.9419461559123243,
+      "mrr": 0.9288561675641352,
+      "recall_at_1": 0.8915625,
+      "recall_at_5": 0.9739583333333334,
+      "recall_at_10": 0.983125,
+      "recall_at_100": 0.99375
+    },
+    "per_repository": {
+      "Azure_azure-sdk-for-python": {
+        "ndcg_at_10": 0.9683132485492966,
+        "mrr": 0.9610416666666667,
+        "recall_at_1": 0.94,
+        "recall_at_5": 0.985,
+        "recall_at_10": 0.99,
+        "recall_at_100": 0.99
+      },
+      "ClusterHQ_flocker": {
+        "ndcg_at_10": 0.9335350314895721,
+        "mrr": 0.9165208333333333,
+        "recall_at_1": 0.865,
+        "recall_at_5": 0.98,
+        "recall_at_10": 0.985,
+        "recall_at_100": 0.995
+      },
+      "DataDog_integrations-core": {
+        "ndcg_at_10": 0.8981040879206301,
+        "mrr": 0.874047619047619,
+        "recall_at_1": 0.81,
+        "recall_at_5": 0.955,
+        "recall_at_10": 0.975,
+        "recall_at_100": 0.995
+      },
+      "Microsoft_TypeScript": {
+        "ndcg_at_10": 0.9944639463035719,
+        "mrr": 0.9925,
+        "recall_at_1": 0.985,
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "recall_at_100": 1.0
+      },
+      "PokemonGoF_PokemonGo-Bot": {
+        "ndcg_at_10": 0.9442836778214311,
+        "mrr": 0.9305902777777777,
+        "recall_at_1": 0.88,
+        "recall_at_5": 0.985,
+        "recall_at_10": 0.985,
+        "recall_at_100": 0.995
+      },
+      "Qiskit_qiskit-terra": {
+        "ndcg_at_10": 0.9662991057155809,
+        "mrr": 0.955125,
+        "recall_at_1": 0.925,
+        "recall_at_5": 0.995,
+        "recall_at_10": 1.0,
+        "recall_at_100": 1.0
+      },
+      "StackStorm_st2": {
+        "ndcg_at_10": 0.9753261029468883,
+        "mrr": 0.9686923076923076,
+        "recall_at_1": 0.945,
+        "recall_at_5": 0.995,
+        "recall_at_10": 0.995,
+        "recall_at_100": 1.0
+      },
+      "apache_airflow": {
+        "ndcg_at_10": 0.9559510694473465,
+        "mrr": 0.9487045454545455,
+        "recall_at_1": 0.925,
+        "recall_at_5": 0.98,
+        "recall_at_10": 0.98,
+        "recall_at_100": 0.99
+      },
+      "apache_incubator-airflow": {
+        "ndcg_at_10": 0.9089830181712821,
+        "mrr": 0.8889855685962875,
+        "recall_at_1": 0.83,
+        "recall_at_5": 0.94,
+        "recall_at_10": 0.975,
+        "recall_at_100": 1.0
+      },
+      "certbot_certbot": {
+        "ndcg_at_10": 0.9472018528459732,
+        "mrr": 0.9330059523809524,
+        "recall_at_1": 0.89,
+        "recall_at_5": 0.975,
+        "recall_at_10": 0.99,
+        "recall_at_100": 0.995
+      },
+      "dask_dask": {
+        "ndcg_at_10": 0.9446920990642531,
+        "mrr": 0.9300833333333333,
+        "recall_at_1": 0.9,
+        "recall_at_5": 0.98,
+        "recall_at_10": 0.99,
+        "recall_at_100": 0.99
+      },
+      "datalad_datalad": {
+        "ndcg_at_10": 0.9286119472448032,
+        "mrr": 0.9108951832481245,
+        "recall_at_1": 0.86,
+        "recall_at_5": 0.975,
+        "recall_at_10": 0.985,
+        "recall_at_100": 1.0
+      },
+      "django_django": {
+        "ndcg_at_10": 0.9801185950714292,
+        "mrr": 0.9766666666666666,
+        "recall_at_1": 0.965,
+        "recall_at_5": 0.99,
+        "recall_at_10": 0.99,
+        "recall_at_100": 0.99
+      },
+      "dmwm_WMCore": {
+        "ndcg_at_10": 0.9454125283227188,
+        "mrr": 0.9310026709401709,
+        "recall_at_1": 0.885,
+        "recall_at_5": 0.985,
+        "recall_at_10": 0.99,
+        "recall_at_100": 1.0
+      },
+      "encode_django-rest-framework": {
+        "ndcg_at_10": 0.9396871483024488,
+        "mrr": 0.9251220746363061,
+        "recall_at_1": 0.88,
+        "recall_at_5": 0.98,
+        "recall_at_10": 0.985,
+        "recall_at_100": 1.0
+      },
+      "facebook_react": {
+        "ndcg_at_10": 0.969671454179031,
+        "mrr": 0.9612777777777778,
+        "recall_at_1": 0.935,
+        "recall_at_5": 0.995,
+        "recall_at_10": 0.995,
+        "recall_at_100": 1.0
+      },
+      "great-expectations_great_expectations": {
+        "ndcg_at_10": 0.9299062670566431,
+        "mrr": 0.9114500000000001,
+        "recall_at_1": 0.86,
+        "recall_at_5": 0.98,
+        "recall_at_10": 0.985,
+        "recall_at_100": 0.99
+      },
+      "home-assistant_core": {
+        "ndcg_at_10": 0.8532609588607472,
+        "mrr": 0.8244423105630002,
+        "recall_at_1": 0.75,
+        "recall_at_5": 0.925,
+        "recall_at_10": 0.945,
+        "recall_at_100": 0.975
+      },
+      "home-assistant_home-assistant": {
+        "ndcg_at_10": 0.8123127931522037,
+        "mrr": 0.7814447941986583,
+        "recall_at_1": 0.7,
+        "recall_at_5": 0.895,
+        "recall_at_10": 0.915,
+        "recall_at_100": 0.975
+      },
+      "huggingface_transformers": {
+        "ndcg_at_10": 0.9464288485594088,
+        "mrr": 0.9351410533910535,
+        "recall_at_1": 0.905,
+        "recall_at_5": 0.97,
+        "recall_at_10": 0.985,
+        "recall_at_100": 1.0
+      },
+      "kubernetes_kubernetes": {
+        "ndcg_at_10": 0.8948502039061319,
+        "mrr": 0.8767199262731324,
+        "recall_at_1": 0.825,
+        "recall_at_5": 0.93,
+        "recall_at_10": 0.955,
+        "recall_at_100": 0.99
+      },
+      "mesonbuild_meson": {
+        "ndcg_at_10": 0.9464598861172407,
+        "mrr": 0.9343846153846154,
+        "recall_at_1": 0.905,
+        "recall_at_5": 0.965,
+        "recall_at_10": 0.985,
+        "recall_at_100": 0.99
+      },
+      "microsoft_vscode": {
+        "ndcg_at_10": 0.9795825413750009,
+        "mrr": 0.9743333333333334,
+        "recall_at_1": 0.955,
+        "recall_at_5": 0.995,
+        "recall_at_10": 0.995,
+        "recall_at_100": 1.0
+      },
+      "mne-tools_mne-python": {
+        "ndcg_at_10": 0.9428467478321103,
+        "mrr": 0.9310902777777779,
+        "recall_at_1": 0.9,
+        "recall_at_5": 0.98,
+        "recall_at_10": 0.98,
+        "recall_at_100": 0.99
+      },
+      "moby_moby": {
+        "ndcg_at_10": 0.9650928413316407,
+        "mrr": 0.9589444444444445,
+        "recall_at_1": 0.94,
+        "recall_at_5": 0.975,
+        "recall_at_10": 0.985,
+        "recall_at_100": 0.99
+      },
+      "napari_napari": {
+        "ndcg_at_10": 0.9529423207530712,
+        "mrr": 0.9429446640316206,
+        "recall_at_1": 0.91,
+        "recall_at_5": 0.98,
+        "recall_at_10": 0.985,
+        "recall_at_100": 1.0
+      },
+      "numpy_numpy": {
+        "ndcg_at_10": 0.9690464876785728,
+        "mrr": 0.96,
+        "recall_at_1": 0.93,
+        "recall_at_5": 0.995,
+        "recall_at_10": 0.995,
+        "recall_at_100": 0.995
+      },
+      "optuna_optuna": {
+        "ndcg_at_10": 0.8819448510994286,
+        "mrr": 0.8594110726230292,
+        "recall_at_1": 0.795,
+        "recall_at_5": 0.95,
+        "recall_at_10": 0.955,
+        "recall_at_100": 0.985
+      },
+      "pandas-dev_pandas": {
+        "ndcg_at_10": 0.938694785708968,
+        "mrr": 0.9256274509803921,
+        "recall_at_1": 0.895,
+        "recall_at_5": 0.965,
+        "recall_at_10": 0.98,
+        "recall_at_100": 0.985
+      },
+      "pydata_xarray": {
+        "ndcg_at_10": 0.9575511970365276,
+        "mrr": 0.9471798245614035,
+        "recall_at_1": 0.92,
+        "recall_at_5": 0.98,
+        "recall_at_10": 0.99,
+        "recall_at_100": 0.995
+      },
+      "pypa_pip": {
+        "ndcg_at_10": 0.8906552226095273,
+        "mrr": 0.8736449209107567,
+        "recall_at_1": 0.825,
+        "recall_at_5": 0.93,
+        "recall_at_10": 0.95,
+        "recall_at_100": 0.99
+      },
+      "pytest-dev_pytest": {
+        "ndcg_at_10": 0.9241405822374236,
+        "mrr": 0.9026865079365081,
+        "recall_at_1": 0.845,
+        "recall_at_5": 0.975,
+        "recall_at_10": 0.99,
+        "recall_at_100": 0.995
+      },
+      "pytorch_pytorch": {
+        "ndcg_at_10": 0.9437887832729698,
+        "mrr": 0.9320012820512821,
+        "recall_at_1": 0.895,
+        "recall_at_5": 0.98,
+        "recall_at_10": 0.98,
+        "recall_at_100": 0.99
+      },
+      "raiden-network_raiden": {
+        "ndcg_at_10": 0.9366515240847286,
+        "mrr": 0.9191334033613444,
+        "recall_at_1": 0.87,
+        "recall_at_5": 0.975,
+        "recall_at_10": 0.99,
+        "recall_at_100": 0.995
+      },
+      "rust-lang_rust": {
+        "ndcg_at_10": 0.9342518036063732,
+        "mrr": 0.9198646480331263,
+        "recall_at_1": 0.885,
+        "recall_at_5": 0.965,
+        "recall_at_10": 0.98,
+        "recall_at_100": 0.99
+      },
+      "saltstack_salt": {
+        "ndcg_at_10": 0.9642423401211783,
+        "mrr": 0.9558055555555555,
+        "recall_at_1": 0.93,
+        "recall_at_5": 0.985,
+        "recall_at_10": 0.99,
+        "recall_at_100": 0.995
+      },
+      "scikit-learn_scikit-learn": {
+        "ndcg_at_10": 0.9472610833826041,
+        "mrr": 0.9314642857142857,
+        "recall_at_1": 0.89,
+        "recall_at_5": 0.98,
+        "recall_at_10": 0.995,
+        "recall_at_100": 0.995
+      },
+      "scipy_scipy": {
+        "ndcg_at_10": 0.9566865865926403,
+        "mrr": 0.9439285714285713,
+        "recall_at_1": 0.91,
+        "recall_at_5": 0.985,
+        "recall_at_10": 0.995,
+        "recall_at_100": 0.995
+      },
+      "scrapy_scrapy": {
+        "ndcg_at_10": 0.9833918389107157,
+        "mrr": 0.9775,
+        "recall_at_1": 0.955,
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "recall_at_100": 1.0
+      },
+      "spack_spack": {
+        "ndcg_at_10": 0.861514251960426,
+        "mrr": 0.8451132528134793,
+        "recall_at_1": 0.805,
+        "recall_at_5": 0.89,
+        "recall_at_10": 0.92,
+        "recall_at_100": 0.96
+      },
+      "sphinx-doc_sphinx": {
+        "ndcg_at_10": 0.9638881748179685,
+        "mrr": 0.9534999999999999,
+        "recall_at_1": 0.925,
+        "recall_at_5": 0.985,
+        "recall_at_10": 0.995,
+        "recall_at_100": 0.995
+      },
+      "spotify_luigi": {
+        "ndcg_at_10": 0.9544003445925179,
+        "mrr": 0.939375,
+        "recall_at_1": 0.9,
+        "recall_at_5": 0.99,
+        "recall_at_10": 1.0,
+        "recall_at_100": 1.0
+      },
+      "spring-projects_spring-framework": {
+        "ndcg_at_10": 0.9897719778617962,
+        "mrr": 0.98625,
+        "recall_at_1": 0.975,
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "recall_at_100": 1.0
+      },
+      "spyder-ide_spyder": {
+        "ndcg_at_10": 0.9542359241653681,
+        "mrr": 0.9447345938375351,
+        "recall_at_1": 0.915,
+        "recall_at_5": 0.985,
+        "recall_at_10": 0.985,
+        "recall_at_100": 1.0
+      },
+      "sympy_sympy": {
+        "ndcg_at_10": 0.9323416757656957,
+        "mrr": 0.9120438311688313,
+        "recall_at_1": 0.855,
+        "recall_at_5": 0.975,
+        "recall_at_10": 0.995,
+        "recall_at_100": 1.0
+      },
+      "tensorflow_tensorflow": {
+        "ndcg_at_10": 0.9764678973171539,
+        "mrr": 0.9685416666666667,
+        "recall_at_1": 0.945,
+        "recall_at_5": 0.995,
+        "recall_at_10": 1.0,
+        "recall_at_100": 1.0
+      },
+      "webpack_webpack": {
+        "ndcg_at_10": 0.9476046069274477,
+        "mrr": 0.9383832784862196,
+        "recall_at_1": 0.91,
+        "recall_at_5": 0.975,
+        "recall_at_10": 0.98,
+        "recall_at_100": 1.0
+      },
+      "xonsh_xonsh": {
+        "ndcg_at_10": 0.9805452217010826,
+        "mrr": 0.97375,
+        "recall_at_1": 0.95,
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "recall_at_100": 1.0
+      }
+    }
+  },
+  "cached_pairs": 654957,
+  "computed_pairs": 305043,
+  "independent_metric_checks": 57600,
+  "paired_minus_bge_hybrid": {
+    "delta": -0.001517010314779499,
+    "ci95": [
+      -0.0022917531477545275,
+      -0.0008036234520402199
+    ]
+  }
+}

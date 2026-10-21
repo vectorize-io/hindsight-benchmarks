@@ -132,6 +132,21 @@ Explore the results yourself on the [Benchmarks Visualizer](https://benchmarks.h
 <a href='https://benchmarks.hindsight.vectorize.io/'><img width="500" height="350" alt="Screenshot 2025-12-16 at 10 31 02" src="https://github.com/user-attachments/assets/151e5a37-419f-4804-a0a3-6284964b62d9" /></a>
 
 
+## Direct reranker comparisons
+
+The reranker benchmark evaluates frozen top-100 passage lists on all ten LoCoMo conversations and BEIR SciFact, with a separate SciFact label view using explicit human evidence annotations. Models use identical query/candidate text within each comparison. Quality, uncertainty, whole-query latency, retries, and API usage are reported separately; the public datasets do not establish unseen-data performance.
+
+See [methodology and reproduction commands](benchmark-runner/RERANKER_BENCHMARK.md), including why the previous March 2026 reranker metrics were retired, known annotation limitations, and disclosed model-selection exposure.
+
+The [measured results](benchmark-runner/RERANKER_RESULTS.md) include all local and hosted models, confidence intervals, and separate latency/API-cost columns. The separate [LoCoMo embedding comparison](benchmark-runner/EMBEDDING_RERANKER_RESULTS.md) evaluates BGE, Voyage 4 Nano and Granite Small English R2 retrieval with Jev listwise and Ettin 150M.
+
+```sh
+cd benchmark-runner
+uv run --no-project --script run_all_reranker.py run \
+  --fixture datasets/reranker/locomo10-top100.json.gz \
+  --model local-minilm-l6 --device cuda:0
+```
+
 ## LongMemEval
 
 ### Overview

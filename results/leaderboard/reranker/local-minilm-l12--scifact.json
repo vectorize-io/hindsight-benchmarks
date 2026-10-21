@@ -1,0 +1,135 @@
+{
+  "schema_version": 2,
+  "reranker_id": "local-minilm-l12",
+  "provider": "local",
+  "model": "cross-encoder/ms-marco-MiniLM-L12-v2",
+  "dataset": "scifact",
+  "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+  "run_sha256": "b2418561a33e57d3a9394b2997421f863a908bfac81af2c8767cc467910eb54c",
+  "total_questions": 300,
+  "groups": 300,
+  "sample_id": "scifact-beir-test",
+  "scored_queries": 300,
+  "evaluation_label_sha256": null,
+  "label_view": null,
+  "mrr": 0.6646050624912693,
+  "ndcg_at_10": 0.6892270009528945,
+  "recall_at_1": 0.5544444444444445,
+  "hit_at_1": 0.5766666666666667,
+  "recall_at_3": 0.6869999999999999,
+  "hit_at_3": 0.71,
+  "recall_at_5": 0.7482222222222222,
+  "hit_at_5": 0.7666666666666667,
+  "recall_at_10": 0.8055555555555555,
+  "hit_at_10": 0.8233333333333334,
+  "confidence_intervals": {
+    "mrr": [
+      0.6179837794649498,
+      0.7104371750417211
+    ],
+    "ndcg_at_10": [
+      0.6443786552573069,
+      0.7329256294772143
+    ],
+    "recall_at_1": [
+      0.5,
+      0.6097291666666665
+    ],
+    "hit_at_1": [
+      0.52,
+      0.63
+    ],
+    "recall_at_3": [
+      0.6342763888888889,
+      0.7383333333333333
+    ],
+    "hit_at_3": [
+      0.6566666666666666,
+      0.76
+    ],
+    "recall_at_5": [
+      0.6983319444444445,
+      0.796
+    ],
+    "hit_at_5": [
+      0.7166666666666667,
+      0.8133333333333334
+    ],
+    "recall_at_10": [
+      0.7596666666666667,
+      0.8483333333333334
+    ],
+    "hit_at_10": [
+      0.78,
+      0.8666666666666667
+    ]
+  },
+  "confidence_method": "5000 bootstrap samples; whole conversations for LoCoMo, queries for SciFact; 95% percentile interval",
+  "avg_latency_s": 0.10745183565333719,
+  "p50_latency_s": 0.10361233600997366,
+  "p95_latency_s": 0.13192248703926454,
+  "retries": 0,
+  "failed_queries": 0,
+  "usage": {
+    "truncated_pairs": 4410
+  },
+  "estimated_api_cost_usd": null,
+  "cost_basis": "Local compute/electricity not measured",
+  "metadata": {
+    "config": {
+      "reranker_id": "local-minilm-l12",
+      "display_name": "MiniLM L12",
+      "provider": "local",
+      "provider_name": "Local GPU",
+      "provider_icon": "/huggingface.png",
+      "pricing_type": "local",
+      "model": "cross-encoder/ms-marco-MiniLM-L12-v2",
+      "max_length": 512
+    },
+    "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+    "adapter_sha256": "b27902c1a4bf93a16537c7eeacfce66778c695f2200059ea52ef636def0856fe",
+    "versions": {
+      "sentence-transformers": "5.7.0",
+      "torch": "2.14.1",
+      "transformers": "5.18.0",
+      "numpy": "2.5.3",
+      "httpx": "0.28.1",
+      "rank-bm25": "0.2.2"
+    },
+    "python": "3.12.8",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "max_length": 512,
+    "batch_size": 32,
+    "concurrency": 64,
+    "requests_per_second": 10.0,
+    "jev_question": null,
+    "model_revision": "7b0235231ca2674cb8ca8f022859a6eba2b1c968",
+    "precision": "bfloat16",
+    "score_activation": "identity (raw model score)",
+    "hardware": {
+      "name": "NVIDIA RTX PRO 5000 Blackwell",
+      "memory_bytes": 51311607808,
+      "cuda_version": "13.0",
+      "compute_capability": [
+        12,
+        0
+      ]
+    }
+  },
+  "retrieval_ceiling_recall": 0.9693333333333334,
+  "by_category": {
+    "fact-checking": {
+      "mrr": 0.6646050624912693,
+      "ndcg_at_10": 0.6892270009528945,
+      "recall_at_1": 0.5544444444444445,
+      "hit_at_1": 0.5766666666666667,
+      "recall_at_3": 0.6869999999999999,
+      "hit_at_3": 0.71,
+      "recall_at_5": 0.7482222222222222,
+      "hit_at_5": 0.7666666666666667,
+      "recall_at_10": 0.8055555555555555,
+      "hit_at_10": 0.8233333333333334
+    }
+  },
+  "by_group": {}
+}

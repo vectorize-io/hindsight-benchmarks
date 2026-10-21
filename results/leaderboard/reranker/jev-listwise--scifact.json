@@ -1,0 +1,134 @@
+{
+  "schema_version": 2,
+  "reranker_id": "jev-listwise",
+  "provider": "typesafe",
+  "model": "jev-1.13.0",
+  "dataset": "scifact",
+  "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+  "run_sha256": "442a5c4a7138e0dd5272e3ffc3c6ddcaf728f03c0ddecb653dbd0d8270e51cba",
+  "total_questions": 300,
+  "groups": 300,
+  "sample_id": "scifact-beir-test",
+  "scored_queries": 300,
+  "evaluation_label_sha256": null,
+  "label_view": null,
+  "mrr": 0.789928028208488,
+  "ndcg_at_10": 0.8188012544994311,
+  "recall_at_1": 0.6799444444444444,
+  "hit_at_1": 0.7133333333333334,
+  "recall_at_3": 0.8303333333333334,
+  "hit_at_3": 0.8533333333333334,
+  "recall_at_5": 0.8893333333333334,
+  "hit_at_5": 0.9066666666666666,
+  "recall_at_10": 0.9335555555555556,
+  "hit_at_10": 0.94,
+  "confidence_intervals": {
+    "mrr": [
+      0.7500272809911459,
+      0.8285137093775744
+    ],
+    "ndcg_at_10": [
+      0.7830150708323839,
+      0.8520188746149455
+    ],
+    "recall_at_1": [
+      0.6273319444444444,
+      0.7316125
+    ],
+    "hit_at_1": [
+      0.66,
+      0.7633333333333333
+    ],
+    "recall_at_3": [
+      0.7875513888888888,
+      0.8707819444444445
+    ],
+    "hit_at_3": [
+      0.81,
+      0.8933333333333333
+    ],
+    "recall_at_5": [
+      0.8541083333333331,
+      0.9221111111111111
+    ],
+    "hit_at_5": [
+      0.87,
+      0.94
+    ],
+    "recall_at_10": [
+      0.9053333333333334,
+      0.9602222222222222
+    ],
+    "hit_at_10": [
+      0.9133333333333333,
+      0.9666666666666667
+    ]
+  },
+  "confidence_method": "5000 bootstrap samples; whole conversations for LoCoMo, queries for SciFact; 95% percentile interval",
+  "avg_latency_s": 0.6367915042302532,
+  "p50_latency_s": 0.6295830684975954,
+  "p95_latency_s": 0.7408889802500198,
+  "retries": 0,
+  "failed_queries": 0,
+  "usage": {
+    "input_tokens": 14614925,
+    "output_tokens": 341394,
+    "choice_calls": 900
+  },
+  "estimated_api_cost_usd": 0.6138268500000001,
+  "cost_basis": "API reported tokens × published list rate; excludes credits and failed-request billing",
+  "metadata": {
+    "config": {
+      "reranker_id": "jev-listwise",
+      "display_name": "Jev 1.13 Hindsight listwise",
+      "provider": "typesafe",
+      "provider_name": "TypeSafe",
+      "provider_icon": "",
+      "pricing_type": "pay-per-use",
+      "model": "jev-1.13.0",
+      "endpoint": "https://api.typesafe.ai/v1/systemone",
+      "key_env": "TYPESAFE_API_KEY",
+      "key_file": "typesafe_api_key",
+      "usd_per_million_tokens": 0.042,
+      "pricing_source": "https://docs.typesafe.ai/models",
+      "ranking_mode": "hindsight-choice",
+      "hindsight_revision": "f7dd3f4fd7420f7beec60c32c965e5e5cf7be066",
+      "prune_candidates": false
+    },
+    "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+    "adapter_sha256": "01a23ecd419d12286ad0146496fe94ff8094954a6d0526c19257eefb585319b3",
+    "versions": {
+      "sentence-transformers": "5.7.0",
+      "torch": "2.14.1",
+      "transformers": "5.18.0",
+      "numpy": "2.5.3",
+      "httpx": "0.28.1",
+      "rank-bm25": "0.2.2"
+    },
+    "python": "3.12.8",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "max_length": null,
+    "batch_size": 32,
+    "concurrency": 64,
+    "requests_per_second": 10.0,
+    "jev_question": null,
+    "listwise_adapter_sha256": "db658d8b9336521c0b89892d98cf4187723a7439223f2b71120e44f4323cfcbe",
+    "listwise_tokenizer": "toktok-rs==0.1.3/o200k_base"
+  },
+  "retrieval_ceiling_recall": 0.9693333333333334,
+  "by_category": {
+    "fact-checking": {
+      "mrr": 0.789928028208488,
+      "ndcg_at_10": 0.8188012544994311,
+      "recall_at_1": 0.6799444444444444,
+      "hit_at_1": 0.7133333333333334,
+      "recall_at_3": 0.8303333333333334,
+      "hit_at_3": 0.8533333333333334,
+      "recall_at_5": 0.8893333333333334,
+      "hit_at_5": 0.9066666666666666,
+      "recall_at_10": 0.9335555555555556,
+      "hit_at_10": 0.94
+    }
+  },
+  "by_group": {}
+}

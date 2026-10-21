@@ -1,0 +1,900 @@
+{
+  "schema_version": 1,
+  "name": "scifact-evidence",
+  "source": "https://scifact.s3-us-west-2.amazonaws.com/release/latest/data.tar.gz",
+  "source_sha256": "11c621288d41ac144d29b13b0f8503b3820b7d6e8b1f6ff24dff335c196d76be",
+  "source_split": "original SciFact claims_dev.jsonl",
+  "labels": {
+    "3": {
+      "14717500": 1
+    },
+    "5": {
+      "13734012": 1
+    },
+    "42": {
+      "18174210": 1
+    },
+    "48": {
+      "13734012": 1
+    },
+    "49": {
+      "5953485": 1
+    },
+    "50": {
+      "12580014": 1
+    },
+    "51": {
+      "45638119": 1
+    },
+    "53": {
+      "45638119": 1
+    },
+    "54": {
+      "49556906": 1
+    },
+    "56": {
+      "4709641": 1
+    },
+    "57": {
+      "4709641": 1
+    },
+    "70": {
+      "5956380": 1,
+      "4414547": 1
+    },
+    "100": {
+      "4381486": 1
+    },
+    "113": {
+      "6157837": 1
+    },
+    "115": {
+      "33872649": 1
+    },
+    "118": {
+      "6372244": 1
+    },
+    "124": {
+      "4883040": 1
+    },
+    "129": {
+      "27768226": 1
+    },
+    "130": {
+      "27768226": 1
+    },
+    "133": {
+      "16280642": 1
+    },
+    "137": {
+      "26016929": 1
+    },
+    "141": {
+      "14437255": 1
+    },
+    "142": {
+      "10582939": 1
+    },
+    "143": {
+      "10582939": 1
+    },
+    "146": {
+      "10582939": 1
+    },
+    "148": {
+      "1084345": 1
+    },
+    "163": {
+      "18872233": 1
+    },
+    "171": {
+      "12670680": 1
+    },
+    "179": {
+      "16322674": 1,
+      "27123743": 1,
+      "23557241": 1,
+      "17450673": 1
+    },
+    "180": {
+      "16966326": 1
+    },
+    "183": {
+      "12827098": 1
+    },
+    "185": {
+      "18340282": 1
+    },
+    "208": {
+      "13519661": 1
+    },
+    "212": {
+      "22038539": 1
+    },
+    "216": {
+      "21366394": 1
+    },
+    "217": {
+      "21366394": 1
+    },
+    "218": {
+      "21366394": 1
+    },
+    "219": {
+      "21366394": 1
+    },
+    "230": {
+      "3067015": 1
+    },
+    "233": {
+      "4388470": 1
+    },
+    "236": {
+      "4388470": 1
+    },
+    "239": {
+      "14079881": 1
+    },
+    "248": {
+      "1568684": 1
+    },
+    "249": {
+      "1568684": 1
+    },
+    "261": {
+      "1122279": 1,
+      "10697096": 1
+    },
+    "274": {
+      "11614737": 1
+    },
+    "275": {
+      "4961038": 1,
+      "14241418": 1
+    },
+    "279": {
+      "14376683": 1
+    },
+    "295": {
+      "20310709": 1
+    },
+    "298": {
+      "39381118": 1
+    },
+    "314": {
+      "4347374": 1
+    },
+    "327": {
+      "17997584": 1
+    },
+    "338": {
+      "23349986": 1
+    },
+    "343": {
+      "5884524": 1
+    },
+    "380": {
+      "19005293": 1
+    },
+    "385": {
+      "9955779": 1
+    },
+    "386": {
+      "16495649": 1
+    },
+    "399": {
+      "791050": 1
+    },
+    "415": {
+      "6309659": 1
+    },
+    "431": {
+      "28937856": 1
+    },
+    "436": {
+      "14637235": 1
+    },
+    "443": {
+      "10165258": 1
+    },
+    "452": {
+      "12804937": 1,
+      "464511": 1
+    },
+    "475": {
+      "18678095": 1
+    },
+    "501": {
+      "17930286": 1
+    },
+    "513": {
+      "13230773": 1
+    },
+    "516": {
+      "29564505": 1
+    },
+    "521": {
+      "34873974": 1
+    },
+    "525": {
+      "13639330": 1
+    },
+    "528": {
+      "5476778": 1
+    },
+    "532": {
+      "12991445": 1
+    },
+    "533": {
+      "12991445": 1
+    },
+    "536": {
+      "16056514": 1
+    },
+    "539": {
+      "13282296": 1
+    },
+    "540": {
+      "11886686": 1
+    },
+    "549": {
+      "9433958": 1
+    },
+    "569": {
+      "23460562": 1
+    },
+    "578": {
+      "8764879": 1
+    },
+    "589": {
+      "10984005": 1
+    },
+    "593": {
+      "19675911": 1
+    },
+    "597": {
+      "12779444": 1,
+      "36355784": 1,
+      "25742130": 1
+    },
+    "598": {
+      "25742130": 1
+    },
+    "613": {
+      "9638032": 1
+    },
+    "619": {
+      "20888849": 1
+    },
+    "636": {
+      "24294572": 1
+    },
+    "641": {
+      "5912283": 1
+    },
+    "674": {
+      "2095573": 1
+    },
+    "692": {
+      "24088502": 1
+    },
+    "693": {
+      "24088502": 1
+    },
+    "718": {
+      "17587795": 1
+    },
+    "721": {
+      "1834762": 1
+    },
+    "723": {
+      "5531479": 1
+    },
+    "728": {
+      "36444198": 1
+    },
+    "729": {
+      "26851674": 1
+    },
+    "742": {
+      "32159283": 1
+    },
+    "743": {
+      "32159283": 1
+    },
+    "744": {
+      "8460275": 1
+    },
+    "756": {
+      "2831620": 1
+    },
+    "759": {
+      "1805641": 1
+    },
+    "770": {
+      "15476777": 1
+    },
+    "781": {
+      "24338780": 1
+    },
+    "784": {
+      "2356950": 1
+    },
+    "793": {
+      "8551160": 1
+    },
+    "805": {
+      "22180793": 1
+    },
+    "808": {
+      "36606083": 1
+    },
+    "811": {
+      "19799455": 1
+    },
+    "823": {
+      "15319019": 1
+    },
+    "832": {
+      "30303335": 1
+    },
+    "837": {
+      "15928989": 1
+    },
+    "839": {
+      "1469751": 1
+    },
+    "845": {
+      "17741440": 1
+    },
+    "847": {
+      "16787954": 1
+    },
+    "852": {
+      "13843341": 1
+    },
+    "859": {
+      "1982286": 1
+    },
+    "873": {
+      "1180972": 1,
+      "19307912": 1,
+      "27393799": 1,
+      "29025270": 1,
+      "3315558": 1
+    },
+    "879": {
+      "8426046": 1
+    },
+    "880": {
+      "8426046": 1
+    },
+    "882": {
+      "14803797": 1
+    },
+    "903": {
+      "10648422": 1
+    },
+    "904": {
+      "7370282": 1
+    },
+    "911": {
+      "11254556": 1
+    },
+    "921": {
+      "1642727": 1
+    },
+    "922": {
+      "17077004": 1
+    },
+    "936": {
+      "5483793": 1
+    },
+    "957": {
+      "123859": 1
+    },
+    "960": {
+      "8780599": 1
+    },
+    "967": {
+      "8997410": 1
+    },
+    "971": {
+      "46695481": 1,
+      "27873158": 1,
+      "28617573": 1,
+      "9764256": 1
+    },
+    "982": {
+      "2988714": 1
+    },
+    "985": {
+      "6828370": 1
+    },
+    "993": {
+      "16472469": 1
+    },
+    "1012": {
+      "9745001": 1
+    },
+    "1019": {
+      "11603066": 1
+    },
+    "1020": {
+      "9433958": 1
+    },
+    "1021": {
+      "9433958": 1
+    },
+    "1024": {
+      "5373138": 1
+    },
+    "1029": {
+      "13923140": 1,
+      "13940200": 1,
+      "11899391": 1
+    },
+    "1041": {
+      "25254425": 1
+    },
+    "1049": {
+      "12486491": 1
+    },
+    "1062": {
+      "20381484": 1
+    },
+    "1086": {
+      "39281140": 1
+    },
+    "1088": {
+      "37549932": 1
+    },
+    "1089": {
+      "17628888": 1
+    },
+    "1104": {
+      "3898784": 1
+    },
+    "1107": {
+      "20532591": 1
+    },
+    "1110": {
+      "13770184": 1
+    },
+    "1121": {
+      "4456756": 1
+    },
+    "1130": {
+      "17997584": 1
+    },
+    "1132": {
+      "33499189": 1
+    },
+    "1137": {
+      "33370": 1
+    },
+    "1140": {
+      "12009265": 1
+    },
+    "1144": {
+      "10071552": 1
+    },
+    "1146": {
+      "13906581": 1
+    },
+    "1150": {
+      "11369420": 1
+    },
+    "1163": {
+      "15305881": 1
+    },
+    "1180": {
+      "31272411": 1
+    },
+    "1185": {
+      "16737210": 1
+    },
+    "1187": {
+      "52873726": 1
+    },
+    "1202": {
+      "3475317": 1
+    },
+    "1216": {
+      "24142891": 1
+    },
+    "1221": {
+      "19736671": 1
+    },
+    "1225": {
+      "9650982": 1
+    },
+    "1232": {
+      "13905670": 1
+    },
+    "1241": {
+      "4427392": 1
+    },
+    "1259": {
+      "24341590": 1
+    },
+    "1262": {
+      "44172171": 1
+    },
+    "1266": {
+      "37480103": 1
+    },
+    "1270": {
+      "13900610": 1
+    },
+    "1271": {
+      "13768432": 1
+    },
+    "1273": {
+      "11041152": 1
+    },
+    "1274": {
+      "4406819": 1
+    },
+    "1290": {
+      "4687948": 1
+    },
+    "1298": {
+      "11718220": 1
+    },
+    "1303": {
+      "12631697": 1
+    },
+    "1319": {
+      "16284655": 1
+    },
+    "1320": {
+      "16284655": 1
+    },
+    "1335": {
+      "27910499": 1
+    },
+    "1336": {
+      "27910499": 1
+    },
+    "1337": {
+      "20231138": 1
+    },
+    "1339": {
+      "15482274": 1
+    },
+    "1352": {
+      "12885341": 1
+    },
+    "1359": {
+      "11614737": 1
+    },
+    "1368": {
+      "2425364": 1
+    },
+    "1370": {
+      "2425364": 1
+    },
+    "1379": {
+      "16322674": 1,
+      "27123743": 1,
+      "23557241": 1,
+      "17450673": 1
+    },
+    "1382": {
+      "17755060": 1
+    },
+    "1385": {
+      "306006": 1
+    },
+    "1389": {
+      "23895668": 1
+    }
+  },
+  "excluded_queries": {
+    "1": "No explicit evidence annotation",
+    "13": "No explicit evidence annotation",
+    "36": "No explicit evidence annotation",
+    "72": "No explicit evidence annotation",
+    "75": "No explicit evidence annotation",
+    "94": "No explicit evidence annotation",
+    "99": "No explicit evidence annotation",
+    "127": "No explicit evidence annotation",
+    "128": "No explicit evidence annotation",
+    "132": "No explicit evidence annotation",
+    "198": "No explicit evidence annotation",
+    "213": "No explicit evidence annotation",
+    "232": "No explicit evidence annotation",
+    "237": "No explicit evidence annotation",
+    "238": "No explicit evidence annotation",
+    "268": "No explicit evidence annotation",
+    "269": "No explicit evidence annotation",
+    "294": "No explicit evidence annotation",
+    "300": "No explicit evidence annotation",
+    "303": "No explicit evidence annotation",
+    "312": "No explicit evidence annotation",
+    "324": "No explicit evidence annotation",
+    "350": "No explicit evidence annotation",
+    "354": "No explicit evidence annotation",
+    "362": "No explicit evidence annotation",
+    "384": "No explicit evidence annotation",
+    "388": "No explicit evidence annotation",
+    "410": "No explicit evidence annotation",
+    "411": "No explicit evidence annotation",
+    "421": "No explicit evidence annotation",
+    "437": "No explicit evidence annotation",
+    "439": "No explicit evidence annotation",
+    "440": "No explicit evidence annotation",
+    "478": "No explicit evidence annotation",
+    "491": "No explicit evidence annotation",
+    "502": "No explicit evidence annotation",
+    "507": "No explicit evidence annotation",
+    "508": "No explicit evidence annotation",
+    "514": "No explicit evidence annotation",
+    "517": "No explicit evidence annotation",
+    "527": "No explicit evidence annotation",
+    "535": "No explicit evidence annotation",
+    "544": "No explicit evidence annotation",
+    "551": "No explicit evidence annotation",
+    "552": "No explicit evidence annotation",
+    "554": "No explicit evidence annotation",
+    "560": "No explicit evidence annotation",
+    "575": "No explicit evidence annotation",
+    "577": "No explicit evidence annotation",
+    "587": "No explicit evidence annotation",
+    "623": "No explicit evidence annotation",
+    "628": "No explicit evidence annotation",
+    "637": "No explicit evidence annotation",
+    "644": "No explicit evidence annotation",
+    "649": "No explicit evidence annotation",
+    "659": "No explicit evidence annotation",
+    "660": "No explicit evidence annotation",
+    "684": "No explicit evidence annotation",
+    "690": "No explicit evidence annotation",
+    "691": "No explicit evidence annotation",
+    "700": "No explicit evidence annotation",
+    "702": "No explicit evidence annotation",
+    "715": "No explicit evidence annotation",
+    "716": "No explicit evidence annotation",
+    "727": "No explicit evidence annotation",
+    "768": "No explicit evidence annotation",
+    "775": "No explicit evidence annotation",
+    "783": "No explicit evidence annotation",
+    "785": "No explicit evidence annotation",
+    "800": "No explicit evidence annotation",
+    "814": "No explicit evidence annotation",
+    "820": "No explicit evidence annotation",
+    "821": "No explicit evidence annotation",
+    "830": "No explicit evidence annotation",
+    "831": "No explicit evidence annotation",
+    "834": "No explicit evidence annotation",
+    "870": "No explicit evidence annotation",
+    "887": "No explicit evidence annotation",
+    "907": "No explicit evidence annotation",
+    "913": "No explicit evidence annotation",
+    "914": "No explicit evidence annotation",
+    "956": "No explicit evidence annotation",
+    "975": "No explicit evidence annotation",
+    "1014": "No explicit evidence annotation",
+    "1099": "No explicit evidence annotation",
+    "1100": "No explicit evidence annotation",
+    "1175": "No explicit evidence annotation",
+    "1179": "No explicit evidence annotation",
+    "1191": "No explicit evidence annotation",
+    "1194": "No explicit evidence annotation",
+    "1196": "No explicit evidence annotation",
+    "1197": "No explicit evidence annotation",
+    "1199": "No explicit evidence annotation",
+    "1200": "No explicit evidence annotation",
+    "1204": "No explicit evidence annotation",
+    "1207": "No explicit evidence annotation",
+    "1213": "No explicit evidence annotation",
+    "1226": "No explicit evidence annotation",
+    "1245": "No explicit evidence annotation",
+    "1272": "No explicit evidence annotation",
+    "1278": "No explicit evidence annotation",
+    "1279": "No explicit evidence annotation",
+    "1280": "No explicit evidence annotation",
+    "1281": "No explicit evidence annotation",
+    "1282": "No explicit evidence annotation",
+    "1292": "No explicit evidence annotation",
+    "1316": "No explicit evidence annotation",
+    "1332": "No explicit evidence annotation",
+    "1344": "No explicit evidence annotation",
+    "1362": "No explicit evidence annotation",
+    "1363": "No explicit evidence annotation",
+    "1395": "No explicit evidence annotation"
+  },
+  "rule": "Only documents explicitly annotated SUPPORT or CONTRADICT count as relevant; questions without either are excluded uniformly before comparing models.",
+  "query_sha256": {
+    "3": "e972e3a7b47510d8c921dcbb6fc942b8d63868f8e399672ab2505d6c37c80b53",
+    "5": "5fd58c0385f5216a07852324ae0c5fbc4c870d2437d53f3ecaf2649965e60962",
+    "42": "e2bef1ded41f8664fc02e556fabb4cbd8eb768d513adc5778b756528bbd468f6",
+    "48": "99c3b3dfeccabdab91500141e3658e74ffa77be97689135c44eb87877eb2e197",
+    "49": "e7a7fd0383b268309fcab86c367b88971381ddc54579f3ae4cb7452d1d979d59",
+    "50": "a7632925b14f6f71c428cbd1e7634e7cf785fee843a530c0bd74dea578822804",
+    "51": "18765520c12f499374c8c8e96f6acab025a66cbfc04de2f4f9046bd77f61417e",
+    "53": "9b2dfe5b6a8eaf271a580900057e8f0f92d2f6320b510426bd9cff0a36cf000f",
+    "54": "3302315065db282a5a26c69859b6e9b5549da1b69ff085989ce142f55a0241f1",
+    "56": "22f4fcc500e9a39746c753e114898cb60045221fc94b0392162c9d664d4a5bcb",
+    "57": "37e95ed99a1e591a004f64d269deff7ed398eaf43a0cf6c1640b58aa60ee0ead",
+    "70": "37faf49fd9befbc234ab9c1dd54e9813a5cbc46ec6a47405783546c1ed4cb97f",
+    "100": "c31f775fd8bed13252278308d23a28afeddd991759ce923ccdfe29e32cd1579f",
+    "113": "1c012188408a4d67d6ebb4a65f4260a194a15f6553d6a5a3766c41a59ff9d200",
+    "115": "c9b8f57f1d9f9439baf23ed5cc1370fe25998ed3822edea8460caeb7cdad525f",
+    "118": "717d90fed7d3ee67f42b2115fd99152012680636d89be7aac769b12b7f3af23d",
+    "124": "ccd0d90bba24df8b44ae83b21296f81a40856af5ab57823a188b033d004a03aa",
+    "129": "39af56df82ebea36092a7ee07f7ed56d9f6d8933e16ea21078f5ab111e90f9a1",
+    "130": "395985d0c4f3e632b6e50bd262117c4298ee3cd959fdc7f008ff7e015520fa32",
+    "133": "b23a4d971446ae76c5fe1ffb3fc9e619aa7b59ac5264efc18f7c0967f5b8d1e0",
+    "137": "764d7f7aa9efa5b6083d565bb66f20c434bc6bf8955a9e0d93e4826f230492cc",
+    "141": "6ade2e8fc2eb356956073fa57e1c73536bb6db086fccaf75f7afc8131c240a52",
+    "142": "44624185b5aaa7d0cb873db38b1ffc4d5f0abad5eade16e6bb28483ecfa04e49",
+    "143": "039c3615fb92800748d876297bc0905558afb75baf0da64633cff87a9e05f6d5",
+    "146": "6a876ac3a53a11dc60e297c7484cb36d3172761e5f5b3cc21b836e9a05f95cbf",
+    "148": "bb97441eb718364034f5a215af616b3fde08ce901d8080a80d09174cc0640b24",
+    "163": "29fcfbaee23c010861e9076c1a974d24db38f2a1cdb5e1265cdf3d1002a804ef",
+    "171": "0d66257d03c48da709c1640f4556858325e7e8f0d0edc42baf607043f6fdadf5",
+    "179": "fdf5d41bf9320988be9b9d21f7e611a36bd184528617c7387b89c92cc050d0ab",
+    "180": "27c13780449392f60175316a8280fc9d078f58b03fcee5a8c2e5783ccad57af9",
+    "183": "3e727e9d35a08a64bc7f8a5eeef3a0fc2749876b32263011b2d84b58860fb5e8",
+    "185": "2a9b3f71602f31fa63bbc7a7ef3fc92b760872f072cd72459c0c0fb1a8eb22ee",
+    "208": "6a577249a8c5a8757bc7ed09dac511347146db4b0c98936d649d8a8356ed947d",
+    "212": "ffdef727ad758265da468fc599538f562c53c807f6af7f165a15406260e52775",
+    "216": "88797b39027c04b9bdd690082f5df1016c20697f45c70ee968e9df12d7b6c511",
+    "217": "3ec1289c1a15b149cfb6fdd8d6b1b6630f08f191577b5f157c885c96c6f1a3da",
+    "218": "4dfe7fcaa3554095d6a39168e6d37872a0471372288ad6f93696a26de8ec8794",
+    "219": "f4dfbf29fc7af35d40fb6431cac37f824b7ef76b242ca5fa1f5c43aacbdbc5f5",
+    "230": "2b5238f973d22b06bf8528a0619bc10fb2afb52502f5332667632fced5f4c034",
+    "233": "53385adb498e226083e879197ce9591cb542de5daa9a63e859786292abb4183d",
+    "236": "b9b652fd25f41ea1623837c2f76e3c7a3962cca2f07154f0e116eee164df64e0",
+    "239": "bc61ebb206c6cb707533ccf5305d6387853dc4a92703789bf61cd555d4d6f954",
+    "248": "d8bfd8eb57e3bdf73d1f3d13506bb7cbf0dbaf5d961d4ee02d4e83f821c1709e",
+    "249": "c27e99d504bfe060fea34d6f8a67136eeb2fed4e8f7843502061bbd2af2423d9",
+    "261": "a38e5b153fe118baef382ad00edc70313d5d1811fad8e7a5d27e693f76e2dd24",
+    "274": "37ecfd8edc39deed3ec2e7016aca82273930b4268cadcbafe0d5c59aace9bf0d",
+    "275": "56cd6d3ced44fad701c1e5dd298eddc3c9378fa4bccbad1f942d545bc34dfa79",
+    "279": "e928b4aba34b74ddc39d14c3592a746404fda9c6b45d0545826a5b3fa00e5c9d",
+    "295": "bd6aff3daf41ca1ca39210f5a9616e0807c16cbde26ceae974aa693e7897951a",
+    "298": "3099d92f9114ffba86a10edce2eb77bf734ae42332c77aaed1fe08d4ba4dd741",
+    "314": "e7791bb7f01aaac6761068856c5da0057b6beeb2250850f8dd9d67cd9451de0e",
+    "327": "80112a6e162b760d23eb45e601551ac4662dcb35a6d3b16017f3bb9f61ec5c0f",
+    "338": "ee48e1b9991ddc0328af8de708639638924ce6b251b5ae088026fa95e23d9554",
+    "343": "cfbebbe3773f1bf78de402e8811ba1df6f2e048152e8b44e76268d707a8947d9",
+    "380": "cd26fa6c6a09ccc9e518cb6057ae72c5f7b449615d89e9d4f94d537c758547d5",
+    "385": "ab255cf79560704cf23d8adfc4c50ad2e03a7b98f9bfd6a71ac9356f3b07d6f8",
+    "386": "ab576c20bcad14c0c8c29c80ff78ed257a5c4c92a248b21ecad670d027002309",
+    "399": "f038df3fc330e53b7d7770c09ff4a5df888628cd24931f13d15fa01da987ed6a",
+    "415": "9799ab77109c073140e989370568861862cfb0a1e95ad39718be617556e0f7a5",
+    "431": "2e42cb2dfac47a8d50891164d81142d5aa584845fd551207b5dfd38a03dde43b",
+    "436": "2ef0573e981591cab2d6de41c42abafc4b96415866bc8770cda31a7ebe017a51",
+    "443": "b0072de55892db7178f7d2c4515e5b86fb06130672cf25e3dc95a2c634b1a81e",
+    "452": "f5ef7ccb155453a66931f7300762c90b6898aea802e6b702e32e2f3c792a7420",
+    "475": "6625465278c997081ee501ab45feb03cb8ee33406b7743f44e7e513134ece353",
+    "501": "2b4313f5b4ffbd62ea3630aeae3fd968b66ab63023ec3d94f132c88e00ba2ea1",
+    "513": "b604e38c3ec70b96620437f4c9ee54317d7acd96da9da09d5f1e9959cdfdb23d",
+    "516": "390fdb4964a2555235270cb733df8b728dadf94607035079e0ebb81cf536fab8",
+    "521": "df0786000fb9a183b4599f9ba481ff71fd103fdac20929bb7c07887d54b4a0b1",
+    "525": "8c6cd074d8b6199f047f6672bacf92f7d4417d7a27864d54f294c0dc0d719012",
+    "528": "c93e2da0c3bcac139511cc24fdfb5e847e8efac8bfe375a6fcd840710caa83d0",
+    "532": "546e1ce34db0952945877eef45018fbdff9e2a85352409ea28655c04f6099b9b",
+    "533": "40ee59d129190707c39bbdf5c26d1eb122c3e82f07d5c8dac32d06616f05506a",
+    "536": "1ddb669d87023943600005d115085fbe2545674c7eee7f2ba46a9bcab3bbffd4",
+    "539": "5941bc4a97b557c02a9f0ceeef1ed12d16de46655d6e7c6ee95a877ef317bae1",
+    "540": "3863f355898194ce4eee76e2e02ac463cd3cc61dc8404b440df6f3cd521f7bfe",
+    "549": "1aeaf441becd8fe677df59c8fd1f897a4dfc4f7ecb22bff063b3cebfc70128de",
+    "569": "d2b75498bf0a82f4dc8327c09e14bdabd8f526e44a581dbcf535b92783d9c561",
+    "578": "914ea55ea00322859cb309928aeddc165b21ff7f8d01bc74edae51a3b34b0b1a",
+    "589": "309eafb3b4b8eb2d4d465f350ef787efa05aa995bc87f23f9aea11cedb11409f",
+    "593": "b6981f6e8e8dc57c73b6bdf6facdad5b6b08affefabfd4dce04e4d6b7bbb7f29",
+    "597": "a36bfcf73eaad604f6af903095cab6b8ff101f97ebcd90ca1211790203edabb2",
+    "598": "dc417054d77fe758b7a23b4274322d6774557cd9902370dc730f13aa40f86e2d",
+    "613": "9a6e217fb32c2b7cdcfb63a2d32650078a3214bc901921692bf88e6886a42c20",
+    "619": "20b24b5c414157ab7ec23e9e2a651b36e144cf7d653e88fc77d538f4fbf55af5",
+    "636": "69c042bfdaad584f12039ce69b35fa6141dab56dc919671617c83b12f49e725a",
+    "641": "e846de4e73864b6522368d2207b7eb28ca53e61460a1ac695a24f517700e629a",
+    "674": "cad856721fbd27e00dd7c84ec9371c133df67b655f055742fe7f6dc5687908b3",
+    "692": "1539fd936eeff6a45ae3b434eb949e6dd7fe8cffd5edeb7cffd026202c1b24be",
+    "693": "65ed510a4b191e73a4e88d5e38487b869018c43c31497195eee38bd717a5d60b",
+    "718": "63f306e86eb421485cb12d63f8b250c95cb4541fe7ba4df1ac72faf4584675a5",
+    "721": "dc0b22f7cbc25a2f9cc21f4f8956ec2755a489c89c29a6c27fb72f3fd268e295",
+    "723": "c7091bde577e30e9a6ab474f5b4f6c83cbcf8a2b3ffaddf009c4edc759418beb",
+    "728": "1a47dd8cb1f117467d2ff4cdea030a194ca5d4095c8a267f0c52579520b689ae",
+    "729": "7b6c1ba808e759842286a6c5298fe415e6c53b96e85d2b9a7d8b9b3e4e5e07cc",
+    "742": "501aa61b6c89d79f9289a62a84e32b1a3c086ce65531de69c112366b580431ce",
+    "743": "d3f06967755e3dac374b0d34c5aa87b217104286b83f9bfe545af1ab552ad590",
+    "744": "172a843b4049387ba40f533b9e4e794e0093fbbd367c52b6ff3e13584b960a62",
+    "756": "7541482281368eb5372e015385051c865ec50f9919811102e866e6301f3d7347",
+    "759": "b1c90d8f755c8d7c10c85f3c72b10d221e729739f05689a45e08e913b31b6366",
+    "770": "322ad4d21df0cd8f47f457b865dd3e3aeec37068a9e0607ad2b96bdb66e69899",
+    "781": "2e7a0a4dacda017e74dfd205e3bd3e1ef2800e8cff0a37626e897d491f99df16",
+    "784": "6f316db475364b66c163d36f36f3aecd0b65c677618c7a178653b4f00acd95b0",
+    "793": "7e0b51e0b1775e2b69053acece16ff094b207ed894ecd6ab108935e7d50e5d90",
+    "805": "90adf4e6f43eeb8a5a34454a0bdb1b6863c2aac3e7dfd66ba26e3249249bef60",
+    "808": "c358abeeb5204f0226789778478a6fdf875ab01b39c743b67113c93f5ef61c69",
+    "811": "36ef0a85cc1bf8ac7f60c6a5df674f825a4d603aef4200e70687336c769ab96e",
+    "823": "f9def664729cd82f748e1f22679ef9d87051ef200f5eb0376076d51c910b0cc0",
+    "832": "d69443cb3e8b268e4d9f8f384f07960ed7e4b7a52ce4e2f85839d9ed07736923",
+    "837": "4808bb53aefbfe7669477e2611f0853880fd0f330a493af75c1497c77f021e74",
+    "839": "d1058b31cb117409ef496c3dd6dad3432a62359da77141c6da2107de901feec8",
+    "845": "f744e0dd6df457fe03fd05829f539703df9b6ab08438a2b8293df0b7848743b1",
+    "847": "bb672a4f554f0245d17da2538ab2fcd2e42351db01489d56a63654df3fac4990",
+    "852": "0fe78ee4cae89d2ecfef0f6250f40168cdecb8e926227e645dd9c14d7734f7cf",
+    "859": "dae8dc46893fe3cd9e090c9718613d17fc57524d3eb765dd53c64ab84045daa0",
+    "873": "8c6e0029144db00c95dbad301074ea503fb47a026fbf78e78cae4184984a6123",
+    "879": "8e5577ed06989e2ca0e2782208fac5107b85f0967324d10a28c26cb642362170",
+    "880": "739fa8f6e5c423f0de020ac9818f1352136b8689a558093e3a5a5463312f30c5",
+    "882": "621181ac70182efee9180f93bd0f5d66cdeae4201928843ce43b98f15f31b8c8",
+    "903": "60507be04aca88f1909a5cfe7fe836f46b8144d0cc7886a38a613c9f925afa04",
+    "904": "b4946c564b4cec12e4d9c4aae22c974de433b241a30758b27a38d99d942d60d5",
+    "911": "194b986dc6bb957081fd5dfb60b726648b99f14791e73b8ac27f4408c22b08fa",
+    "921": "5ca53afa389f6682502cdb523647eb180570f51c911329107afb1ea36de7a8b4",
+    "922": "f7f256a1bb2a4c944348bb688efce02b89a2c7435789f8a99cf6ed4c37cd3380",
+    "936": "96a3f344f311ab277c566ee7cf648a7a1daeeec4baede20d737e04d25fabd950",
+    "957": "5ea9461fb01e7ab4990122485c185f4dad5ab5bf8c274af87e16e625c4ae15c6",
+    "960": "2c2b8cf8f84f725a1b7486b7418ca106574173e41ba1563fe63cf2e00910c101",
+    "967": "ee088cb38b79cc04a0ff7379e8640b41eccbe05f67fce49514d194fee7838c73",
+    "971": "d902fe3b4e4f47487dcf12e6fd0002d3656df0b566c75abc947f44ac9d7e63b7",
+    "982": "a47e4e20b77a8a6736c8cc81b9ea9df5d61846db2d6fa9e7ad25aabf26e845a8",
+    "985": "1aa6930b3ca526b543d299c1559982fa8233af82d6ca4174540212b3d8ca578d",
+    "993": "5984e064eaaef159ffa6a1a5c22b9480f6f705429ce681179494bbe991098e79",
+    "1012": "f7a0a34e4ed9582e7d10a0dc43f954f4807df38e1abeb092d307e43bb0fc852e",
+    "1019": "d8ff1fcb9b498ec4365014f7dd78c9c1bd7e9a1da374103f90ab43dd904ef677",
+    "1020": "73fd4183cf1f4dbaaecc2fe619ca24a0a6ffa1129c8c7b6a9a6cbab0b1f8468d",
+    "1021": "e1cd12b41ba61d8930b9528fe0cfdf6df482d60f70c8549bc030ef2105154512",
+    "1024": "132009378ca61e6b8f57892b3e76da4880f0ce0170be7e4f687da29cc42856bf",
+    "1029": "93ae53e6501bc2e921e55df8213f0e1f65209176410cab6b4bc9283c01958db4",
+    "1041": "1ca870b2636f7d14e5a82551c35df4f0b6b05262945599cbed3bd5ecce3fdbfc",
+    "1049": "0a9422defcde1603f93caad6513d9f3804a6b6e0ab1492630bdaa9b98a52ef69",
+    "1062": "0be45458128f812b9074980ae32e5c00db4e6225a541bf60014ecec4aa5058c5",
+    "1086": "f1bd1c9fabb2d0274dddc03b596ecb0e8f49d86511c2381fdea5f93d7aab4f83",
+    "1088": "3fe686fe7956a53d3ddb2effb35141851fa65f5d17ed344d46e5caff346e8f14",
+    "1089": "f02dd9e2d9a7c8a33854ac7c450f89b2e406f55199dd4ee25b0f59a5dde9d42b",
+    "1104": "ad58517d2428923cd868c1d9e5c94d26d3a19c45f1a8ce9bdebb644da14e59b8",
+    "1107": "c2de28c28f8126a857f94514e157ccc2f48a6f9f7a07b4180acf66a7991cafd9",
+    "1110": "8755ac9a47de564cf754682c3e123fefd2c0a2e916a6224ec72acc6a87b38ea6",
+    "1121": "ef02e5e6b619f95e35e4cb08a3a18a3c6cca9e4fea6af7fd442007899bbdc88e",
+    "1130": "8d0b9d31ee487ea7a39a2dfa0e8c24a51db2bddeb943674f0f1d3f75528c71b1",
+    "1132": "1ee7dad8c1e2fd790a3029647b65eb3fe7e53ab5e2fdca7e06ed7aa6fb2045e1",
+    "1137": "688c220a6610062954365583d01aa95c15129677bb572a1d68868f62b9855545",
+    "1140": "b406c7672755f714524b0b3b86651e809ebed4a9300c5252de995698a457ff8a",
+    "1144": "a612d156ae7518d1358ca696352252a5e031bd88c572c234009e91e3266f5dcd",
+    "1146": "6ce4b82a274ffff0543c99c4ab5c55681902ff32ef14e1bfd9816cab36ba0e75",
+    "1150": "6c15db570d4d8ebcb5c6336ef1c2168e71c2efb3410ff92b1b8da8309dc8456b",
+    "1163": "476e93ae2f976bc9442c82d796e1c26a38df2ac27de85bc958922234557b09ff",
+    "1180": "f10c61ab814f76499251572ba2ffdb23adf58c3f6243c414f2c314f57253f82f",
+    "1185": "0a0f04f3f83c2097259631e8e4bc7ab4007f569c6b5c67ae2c5491c07824e9ee",
+    "1187": "950daf7be6d4c1d64be2260f6d75efbe75fc26fa70093e2ae24633f122021273",
+    "1202": "e421173e98a76a0e954b1f20c7d789384964b26980a4af18b9a6bda043de0c06",
+    "1216": "51136de3030d6b6e49db79a6c8078de7201bd0a71d7baecd108c4c738163b1e9",
+    "1221": "c31c43ce66d96f7ea5aee254d4d4ef06299beeddf633bcf4ddadbcd0c50ec494",
+    "1225": "438ccac2b691a3f582b91afa75e5507b55519d334cde695d0acfa3edecfe7f5b",
+    "1232": "1a0f37f74dc9c5cae79e230ccf5baf4fbcd7a7a7317cd91f529141f925806626",
+    "1241": "8cda86daf4b4e183aafb15402f6d7b312ce59c6c467922963cff9fd5e8247d6a",
+    "1259": "62caff8170f5635043ac2ecbced7b1d8d7a5a5cab0aec1a6d63d264533b593c7",
+    "1262": "a966720c1e72c85f4125421c94b3acd475cd63f9384423e9d6c8d8f83c877912",
+    "1266": "72e2980487eb747fab328084f5eed4bb619dcdc8a4a980fcc882518eff4ad3a4",
+    "1270": "3449d724533d32b9c7580393b39bde2b519d4a68fadc2f382ddfaf4a7bb93e14",
+    "1271": "5bc608ac789955836444988f88df64f8a10ce6fed6cd2de8a0cf1129460a135f",
+    "1273": "cb0c4abb5f201437e9cedc531ef0d78d50752054d2b7bd98c897ad20d7be62de",
+    "1274": "4d994cbd9dcabb9301821a78067a44d12c3a47621ef23b0fef53979fd956f234",
+    "1290": "82bf5ea4c7646524d19f6f993478b12e05cf05905435c56c28c4433ee62954d5",
+    "1298": "365c0f0eb278d8d3c3d672207d205e62d852a049109c90db8ef40d7670e4664d",
+    "1303": "e36985c5a4b1c6e014bf48df04d48f0a011d9f1bca3e4154fbe5d787c3336bcf",
+    "1319": "639b44531b272d77eb1efa8c7d2dda9e691c4bc35af920ac19fe5caf6e61e189",
+    "1320": "26364e91058f8205a7ed4c942a859a6f577896a3bd97a8719dc6be631d8ae4fa",
+    "1335": "cf5137549afae36a627b217a7ea476e13fbdb5a8b4c5e1b3440873f892487c5d",
+    "1336": "03847eba1310fa620abb7c02ae2268979feb01ad0e193f1825110471ddcaaea1",
+    "1337": "048ffde412f0a6588b56ed0bdab67206800509d5e40c8bc6659637e1c10d484c",
+    "1339": "f9774ff5c58058ec6128daf014dc8d4ebcb6d0f1f0f594a2678333619bbdf9e6",
+    "1352": "364f086cf42ec71f978781a883f58a818178bddd736cb6fbaaa5b8c06b9a8c0c",
+    "1359": "300451c8154ab5ef39bcdf8eba582469b96dec0ab39379c703dfbcd91220a64d",
+    "1368": "e70fc6250dcfe787e5b4dd6100dd43ef49d1da61c20a293d0a14c3553daeee34",
+    "1370": "9bb0b7a659c204bffe2ede75337fdf16c3729b919982ead3bfafe52d79c53dcb",
+    "1379": "bdb0e883f83ed5b7ddcaeec12ccc8e32d8c11680f042c7c8f59d6134f3fb9c54",
+    "1382": "a1a8b8b52272e28251c83057cf80f2f4cff31787ffaa129c5fc2486d2716f29f",
+    "1385": "8eecfd9038e8ed7d9b94042c309eb07b9cde3b4b1bc9e02c834f53121a115387",
+    "1389": "ba472dbf3c478dcead941fa2a4678ac9674ba2b0789af2bba9809a1b4b0288fe"
+  },
+  "label_sha256": "beda364a4f1275a81891e95e6cead7f6d866f5af7abe765fff9f2dfd34695265"
+}

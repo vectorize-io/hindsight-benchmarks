@@ -1,0 +1,120 @@
+{
+  "schema_version": 2,
+  "reranker_id": "rrf",
+  "provider": "rrf",
+  "model": null,
+  "dataset": "scifact",
+  "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+  "run_sha256": "992182931786adc22b2c20d1d77c395aa8456c3aec037958eaeadc5c5c90fa73",
+  "total_questions": 300,
+  "groups": 300,
+  "sample_id": "scifact-beir-test",
+  "scored_queries": 300,
+  "evaluation_label_sha256": null,
+  "label_view": null,
+  "mrr": 0.6876690887082839,
+  "ndcg_at_10": 0.7157181506803252,
+  "recall_at_1": 0.5615,
+  "hit_at_1": 0.5866666666666667,
+  "recall_at_3": 0.7331666666666666,
+  "hit_at_3": 0.7533333333333333,
+  "recall_at_5": 0.7805,
+  "hit_at_5": 0.8,
+  "recall_at_10": 0.8405555555555555,
+  "hit_at_10": 0.8566666666666667,
+  "confidence_intervals": {
+    "mrr": [
+      0.6430195893897408,
+      0.7322393362934484
+    ],
+    "ndcg_at_10": [
+      0.6736930047972455,
+      0.7568813937840727
+    ],
+    "recall_at_1": [
+      0.5074416666666666,
+      0.6170555555555556
+    ],
+    "hit_at_1": [
+      0.53,
+      0.64
+    ],
+    "recall_at_3": [
+      0.6849416666666667,
+      0.7822791666666666
+    ],
+    "hit_at_3": [
+      0.7065833333333333,
+      0.8033333333333333
+    ],
+    "recall_at_5": [
+      0.7346666666666667,
+      0.825786111111111
+    ],
+    "hit_at_5": [
+      0.7533333333333333,
+      0.8434166666666655
+    ],
+    "recall_at_10": [
+      0.7999986111111111,
+      0.8795041666666666
+    ],
+    "hit_at_10": [
+      0.8166666666666667,
+      0.8933333333333333
+    ]
+  },
+  "confidence_method": "5000 bootstrap samples; whole conversations for LoCoMo, queries for SciFact; 95% percentile interval",
+  "avg_latency_s": 2.8771434153895826e-06,
+  "p50_latency_s": 2.1329979063011706e-06,
+  "p95_latency_s": 5.049547326052562e-06,
+  "retries": 0,
+  "failed_queries": 0,
+  "usage": {},
+  "estimated_api_cost_usd": 0.0,
+  "cost_basis": "No additional reranking",
+  "metadata": {
+    "config": {
+      "reranker_id": "rrf",
+      "display_name": "Unreranked hybrid candidates",
+      "provider": "rrf",
+      "provider_name": "Baseline",
+      "provider_icon": "",
+      "pricing_type": "free",
+      "model": null
+    },
+    "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+    "adapter_sha256": "b27902c1a4bf93a16537c7eeacfce66778c695f2200059ea52ef636def0856fe",
+    "versions": {
+      "sentence-transformers": "5.7.0",
+      "torch": "2.14.1",
+      "transformers": "5.18.0",
+      "numpy": "2.5.3",
+      "httpx": "0.28.1",
+      "rank-bm25": "0.2.2"
+    },
+    "python": "3.12.8",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "max_length": null,
+    "batch_size": 32,
+    "concurrency": 64,
+    "requests_per_second": 10.0,
+    "jev_question": null
+  },
+  "retrieval_ceiling_recall": 0.9693333333333334,
+  "by_category": {
+    "fact-checking": {
+      "mrr": 0.6876690887082839,
+      "ndcg_at_10": 0.7157181506803252,
+      "recall_at_1": 0.5615,
+      "hit_at_1": 0.5866666666666667,
+      "recall_at_3": 0.7331666666666666,
+      "hit_at_3": 0.7533333333333333,
+      "recall_at_5": 0.7805,
+      "hit_at_5": 0.8,
+      "recall_at_10": 0.8405555555555555,
+      "hit_at_10": 0.8566666666666667
+    }
+  },
+  "by_group": {}
+}

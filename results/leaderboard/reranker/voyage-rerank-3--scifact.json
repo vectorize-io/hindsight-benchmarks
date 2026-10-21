@@ -1,0 +1,127 @@
+{
+  "schema_version": 2,
+  "reranker_id": "voyage-rerank-3",
+  "provider": "voyage",
+  "model": "rerank-3",
+  "dataset": "scifact",
+  "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+  "run_sha256": "16d7fce01273cdba77f52c6c4bdd6f6431e761a34c2950a6901696006181fec7",
+  "total_questions": 300,
+  "groups": 300,
+  "sample_id": "scifact-beir-test",
+  "scored_queries": 300,
+  "evaluation_label_sha256": null,
+  "label_view": null,
+  "mrr": 0.7749661089050187,
+  "ndcg_at_10": 0.8083262325646596,
+  "recall_at_1": 0.6574444444444444,
+  "hit_at_1": 0.6866666666666666,
+  "recall_at_3": 0.8311111111111111,
+  "hit_at_3": 0.85,
+  "recall_at_5": 0.8910555555555555,
+  "hit_at_5": 0.9,
+  "recall_at_10": 0.927,
+  "hit_at_10": 0.93,
+  "confidence_intervals": {
+    "mrr": [
+      0.7346986930936649,
+      0.8132022561928811
+    ],
+    "ndcg_at_10": [
+      0.7720377693244644,
+      0.8415844392352206
+    ],
+    "recall_at_1": [
+      0.6036041666666666,
+      0.7083930555555555
+    ],
+    "hit_at_1": [
+      0.6333333333333333,
+      0.7366666666666667
+    ],
+    "recall_at_3": [
+      0.7890513888888888,
+      0.8703888888888889
+    ],
+    "hit_at_3": [
+      0.8066666666666666,
+      0.89
+    ],
+    "recall_at_5": [
+      0.8555555555555556,
+      0.9243916666666666
+    ],
+    "hit_at_5": [
+      0.8666666666666667,
+      0.9333333333333333
+    ],
+    "recall_at_10": [
+      0.8963333333333332,
+      0.9553333333333334
+    ],
+    "hit_at_10": [
+      0.9,
+      0.9566666666666667
+    ]
+  },
+  "confidence_method": "5000 bootstrap samples; whole conversations for LoCoMo, queries for SciFact; 95% percentile interval",
+  "avg_latency_s": 0.36338470751647645,
+  "p50_latency_s": 0.3133493854984408,
+  "p95_latency_s": 0.5129929628019455,
+  "retries": 8,
+  "failed_queries": 0,
+  "usage": {
+    "total_tokens": 11201594
+  },
+  "estimated_api_cost_usd": 0.5600797000000001,
+  "cost_basis": "API reported tokens × published list rate; excludes credits and failed-request billing",
+  "metadata": {
+    "config": {
+      "reranker_id": "voyage-rerank-3",
+      "display_name": "Voyage rerank-3",
+      "provider": "voyage",
+      "provider_name": "Voyage AI",
+      "provider_icon": "/voyageai.png",
+      "pricing_type": "pay-per-use",
+      "model": "rerank-3",
+      "endpoint": "https://ai.mongodb.com/v1/rerank",
+      "key_env": "VOYAGE_API_KEY",
+      "key_file": "voyage_api_key",
+      "usd_per_million_tokens": 0.05,
+      "pricing_source": "https://docs.voyageai.com/docs/pricing"
+    },
+    "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+    "adapter_sha256": "b27902c1a4bf93a16537c7eeacfce66778c695f2200059ea52ef636def0856fe",
+    "versions": {
+      "sentence-transformers": "5.7.0",
+      "torch": "2.14.1",
+      "transformers": "5.18.0",
+      "numpy": "2.5.3",
+      "httpx": "0.28.1",
+      "rank-bm25": "0.2.2"
+    },
+    "python": "3.12.8",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "max_length": null,
+    "batch_size": 32,
+    "concurrency": 64,
+    "requests_per_second": 10.0,
+    "jev_question": null
+  },
+  "retrieval_ceiling_recall": 0.9693333333333334,
+  "by_category": {
+    "fact-checking": {
+      "mrr": 0.7749661089050187,
+      "ndcg_at_10": 0.8083262325646596,
+      "recall_at_1": 0.6574444444444444,
+      "hit_at_1": 0.6866666666666666,
+      "recall_at_3": 0.8311111111111111,
+      "hit_at_3": 0.85,
+      "recall_at_5": 0.8910555555555555,
+      "hit_at_5": 0.9,
+      "recall_at_10": 0.927,
+      "hit_at_10": 0.93
+    }
+  },
+  "by_group": {}
+}

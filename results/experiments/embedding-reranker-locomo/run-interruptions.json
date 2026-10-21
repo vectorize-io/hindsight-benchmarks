@@ -1,0 +1,17 @@
+{
+  "interruptions": [
+    {
+      "embedding": "granite",
+      "reranker": "ettin-150m",
+      "dataset": "locomo",
+      "query_id": "conv-42/q81",
+      "error_type": "AcceleratorError",
+      "message": "CUDA error: unknown error\nSearch for `cudaErrorUnknown' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\nThe CUDA driver logged these messages, which may provide useful details:\nReturning 999 (CUDA_ERROR_UNKNOWN) from cuStreamSynchronize\n\n",
+      "completed_queries": 463,
+      "run_sha256": "ed1037873953d8381ccacbe60eb433bd303f880b2112e63251bb7404ea923bd0",
+      "status": "resolved by checkpoint resume with unchanged inputs/configuration on same GPU",
+      "successful_query_timestamp_utc": "2026-10-03T21:03:02Z"
+    }
+  ],
+  "note": "Completed quality results include every query. Interrupted-attempt time is excluded. Embedding load attempts that failed before a fixture was produced had no hosted embedding billing. All embedding compute is local and unpriced. API usage excludes warmup and unknown failed/retried request billing."
+}

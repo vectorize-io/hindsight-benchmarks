@@ -1,0 +1,463 @@
+{
+  "queries": 9600,
+  "repositories": 48,
+  "repository_macro": {
+    "ndcg_at_10": 0.9269502261852507,
+    "mrr": 0.9082888834176552,
+    "recall_at_1": 0.8563541666666666,
+    "recall_at_5": 0.9725,
+    "recall_at_10": 0.9852083333333334,
+    "recall_at_100": 0.9972916666666666
+  },
+  "query_macro": {
+    "ndcg_at_10": 0.9269502261852508,
+    "mrr": 0.9082888834176553,
+    "recall_at_1": 0.8563541666666666,
+    "recall_at_5": 0.9725,
+    "recall_at_10": 0.9852083333333334,
+    "recall_at_100": 0.9972916666666667
+  },
+  "per_repository": {
+    "Azure_azure-sdk-for-python": {
+      "ndcg_at_10": 0.9400274694130064,
+      "mrr": 0.9276724941724942,
+      "recall_at_1": 0.89,
+      "recall_at_5": 0.965,
+      "recall_at_10": 0.98,
+      "recall_at_100": 0.99
+    },
+    "ClusterHQ_flocker": {
+      "ndcg_at_10": 0.9350416005264934,
+      "mrr": 0.9151753472222223,
+      "recall_at_1": 0.86,
+      "recall_at_5": 0.98,
+      "recall_at_10": 0.995,
+      "recall_at_100": 1.0
+    },
+    "DataDog_integrations-core": {
+      "ndcg_at_10": 0.8671310974989659,
+      "mrr": 0.8396352051631463,
+      "recall_at_1": 0.765,
+      "recall_at_5": 0.935,
+      "recall_at_10": 0.955,
+      "recall_at_100": 1.0
+    },
+    "Microsoft_TypeScript": {
+      "ndcg_at_10": 0.9869639463035719,
+      "mrr": 0.9846212121212122,
+      "recall_at_1": 0.975,
+      "recall_at_5": 0.995,
+      "recall_at_10": 0.995,
+      "recall_at_100": 1.0
+    },
+    "PokemonGoF_PokemonGo-Bot": {
+      "ndcg_at_10": 0.9320526942495385,
+      "mrr": 0.9093035714285713,
+      "recall_at_1": 0.845,
+      "recall_at_5": 0.985,
+      "recall_at_10": 1.0,
+      "recall_at_100": 1.0
+    },
+    "Qiskit_qiskit-terra": {
+      "ndcg_at_10": 0.9464524660199766,
+      "mrr": 0.9308290598290597,
+      "recall_at_1": 0.89,
+      "recall_at_5": 0.985,
+      "recall_at_10": 0.995,
+      "recall_at_100": 1.0
+    },
+    "StackStorm_st2": {
+      "ndcg_at_10": 0.945699166201258,
+      "mrr": 0.927547619047619,
+      "recall_at_1": 0.88,
+      "recall_at_5": 0.99,
+      "recall_at_10": 1.0,
+      "recall_at_100": 1.0
+    },
+    "apache_airflow": {
+      "ndcg_at_10": 0.9548197315178594,
+      "mrr": 0.9395833333333334,
+      "recall_at_1": 0.895,
+      "recall_at_5": 0.99,
+      "recall_at_10": 1.0,
+      "recall_at_100": 1.0
+    },
+    "apache_incubator-airflow": {
+      "ndcg_at_10": 0.8959225216844985,
+      "mrr": 0.8707446313598897,
+      "recall_at_1": 0.79,
+      "recall_at_5": 0.965,
+      "recall_at_10": 0.975,
+      "recall_at_100": 1.0
+    },
+    "certbot_certbot": {
+      "ndcg_at_10": 0.9284919440412628,
+      "mrr": 0.9066856060606061,
+      "recall_at_1": 0.85,
+      "recall_at_5": 0.98,
+      "recall_at_10": 0.995,
+      "recall_at_100": 1.0
+    },
+    "dask_dask": {
+      "ndcg_at_10": 0.92223747545507,
+      "mrr": 0.9019783549783549,
+      "recall_at_1": 0.845,
+      "recall_at_5": 0.98,
+      "recall_at_10": 0.985,
+      "recall_at_100": 0.995
+    },
+    "datalad_datalad": {
+      "ndcg_at_10": 0.9121916805120353,
+      "mrr": 0.8874262820512819,
+      "recall_at_1": 0.825,
+      "recall_at_5": 0.975,
+      "recall_at_10": 0.99,
+      "recall_at_100": 1.0
+    },
+    "django_django": {
+      "ndcg_at_10": 0.9864278926071438,
+      "mrr": 0.9816666666666666,
+      "recall_at_1": 0.965,
+      "recall_at_5": 1.0,
+      "recall_at_10": 1.0,
+      "recall_at_100": 1.0
+    },
+    "dmwm_WMCore": {
+      "ndcg_at_10": 0.9180210878723721,
+      "mrr": 0.8921111111111111,
+      "recall_at_1": 0.815,
+      "recall_at_5": 0.98,
+      "recall_at_10": 0.995,
+      "recall_at_100": 1.0
+    },
+    "encode_django-rest-framework": {
+      "ndcg_at_10": 0.9018268622645894,
+      "mrr": 0.8733173354423355,
+      "recall_at_1": 0.795,
+      "recall_at_5": 0.97,
+      "recall_at_10": 0.99,
+      "recall_at_100": 1.0
+    },
+    "facebook_react": {
+      "ndcg_at_10": 0.955971848330736,
+      "mrr": 0.9429545454545454,
+      "recall_at_1": 0.9,
+      "recall_at_5": 0.995,
+      "recall_at_10": 0.995,
+      "recall_at_100": 1.0
+    },
+    "great-expectations_great_expectations": {
+      "ndcg_at_10": 0.9120738990228275,
+      "mrr": 0.8875615079365079,
+      "recall_at_1": 0.835,
+      "recall_at_5": 0.96,
+      "recall_at_10": 0.99,
+      "recall_at_100": 1.0
+    },
+    "home-assistant_core": {
+      "ndcg_at_10": 0.8434587300706609,
+      "mrr": 0.8198194601793005,
+      "recall_at_1": 0.745,
+      "recall_at_5": 0.9,
+      "recall_at_10": 0.925,
+      "recall_at_100": 0.99
+    },
+    "home-assistant_home-assistant": {
+      "ndcg_at_10": 0.8117402366086627,
+      "mrr": 0.7811874257248104,
+      "recall_at_1": 0.7,
+      "recall_at_5": 0.87,
+      "recall_at_10": 0.915,
+      "recall_at_100": 0.975
+    },
+    "huggingface_transformers": {
+      "ndcg_at_10": 0.9446091409041011,
+      "mrr": 0.9339089195118606,
+      "recall_at_1": 0.895,
+      "recall_at_5": 0.975,
+      "recall_at_10": 0.98,
+      "recall_at_100": 1.0
+    },
+    "kubernetes_kubernetes": {
+      "ndcg_at_10": 0.8839715174555001,
+      "mrr": 0.8572067906508696,
+      "recall_at_1": 0.79,
+      "recall_at_5": 0.94,
+      "recall_at_10": 0.97,
+      "recall_at_100": 0.995
+    },
+    "mesonbuild_meson": {
+      "ndcg_at_10": 0.9114863416950116,
+      "mrr": 0.8858888888888888,
+      "recall_at_1": 0.82,
+      "recall_at_5": 0.975,
+      "recall_at_10": 0.99,
+      "recall_at_100": 0.995
+    },
+    "microsoft_vscode": {
+      "ndcg_at_10": 0.9823905729332253,
+      "mrr": 0.97625,
+      "recall_at_1": 0.955,
+      "recall_at_5": 1.0,
+      "recall_at_10": 1.0,
+      "recall_at_100": 1.0
+    },
+    "mne-tools_mne-python": {
+      "ndcg_at_10": 0.9372168305698481,
+      "mrr": 0.9198846153846154,
+      "recall_at_1": 0.865,
+      "recall_at_5": 0.985,
+      "recall_at_10": 0.99,
+      "recall_at_100": 1.0
+    },
+    "moby_moby": {
+      "ndcg_at_10": 0.9401469889027042,
+      "mrr": 0.9293863636363636,
+      "recall_at_1": 0.895,
+      "recall_at_5": 0.97,
+      "recall_at_10": 0.975,
+      "recall_at_100": 0.995
+    },
+    "napari_napari": {
+      "ndcg_at_10": 0.9421024613009746,
+      "mrr": 0.9264087301587302,
+      "recall_at_1": 0.875,
+      "recall_at_5": 0.985,
+      "recall_at_10": 0.99,
+      "recall_at_100": 1.0
+    },
+    "numpy_numpy": {
+      "ndcg_at_10": 0.9395377165256639,
+      "mrr": 0.919125,
+      "recall_at_1": 0.86,
+      "recall_at_5": 0.99,
+      "recall_at_10": 1.0,
+      "recall_at_100": 1.0
+    },
+    "optuna_optuna": {
+      "ndcg_at_10": 0.8918972618542189,
+      "mrr": 0.8673027457675344,
+      "recall_at_1": 0.805,
+      "recall_at_5": 0.955,
+      "recall_at_10": 0.97,
+      "recall_at_100": 0.99
+    },
+    "pandas-dev_pandas": {
+      "ndcg_at_10": 0.9138019881737839,
+      "mrr": 0.8896250000000001,
+      "recall_at_1": 0.835,
+      "recall_at_5": 0.96,
+      "recall_at_10": 0.99,
+      "recall_at_100": 0.995
+    },
+    "pydata_xarray": {
+      "ndcg_at_10": 0.9438619933938764,
+      "mrr": 0.9247619047619048,
+      "recall_at_1": 0.865,
+      "recall_at_5": 0.985,
+      "recall_at_10": 1.0,
+      "recall_at_100": 1.0
+    },
+    "pypa_pip": {
+      "ndcg_at_10": 0.8798487619856445,
+      "mrr": 0.8547836804324708,
+      "recall_at_1": 0.79,
+      "recall_at_5": 0.935,
+      "recall_at_10": 0.96,
+      "recall_at_100": 0.99
+    },
+    "pytest-dev_pytest": {
+      "ndcg_at_10": 0.8922226512155587,
+      "mrr": 0.864406015037594,
+      "recall_at_1": 0.795,
+      "recall_at_5": 0.955,
+      "recall_at_10": 0.98,
+      "recall_at_100": 0.995
+    },
+    "pytorch_pytorch": {
+      "ndcg_at_10": 0.9528723577813172,
+      "mrr": 0.9415021645021645,
+      "recall_at_1": 0.91,
+      "recall_at_5": 0.98,
+      "recall_at_10": 0.99,
+      "recall_at_100": 1.0
+    },
+    "raiden-network_raiden": {
+      "ndcg_at_10": 0.9205419854784203,
+      "mrr": 0.9019226190476191,
+      "recall_at_1": 0.855,
+      "recall_at_5": 0.97,
+      "recall_at_10": 0.98,
+      "recall_at_100": 0.995
+    },
+    "rust-lang_rust": {
+      "ndcg_at_10": 0.9045472855654133,
+      "mrr": 0.8816792186571598,
+      "recall_at_1": 0.83,
+      "recall_at_5": 0.97,
+      "recall_at_10": 0.98,
+      "recall_at_100": 1.0
+    },
+    "saltstack_salt": {
+      "ndcg_at_10": 0.9496625507950214,
+      "mrr": 0.9364962121212121,
+      "recall_at_1": 0.895,
+      "recall_at_5": 0.99,
+      "recall_at_10": 0.99,
+      "recall_at_100": 1.0
+    },
+    "scikit-learn_scikit-learn": {
+      "ndcg_at_10": 0.9179401078986784,
+      "mrr": 0.89258908045977,
+      "recall_at_1": 0.825,
+      "recall_at_5": 0.975,
+      "recall_at_10": 0.995,
+      "recall_at_100": 1.0
+    },
+    "scipy_scipy": {
+      "ndcg_at_10": 0.9428437990919788,
+      "mrr": 0.9234166666666667,
+      "recall_at_1": 0.865,
+      "recall_at_5": 0.995,
+      "recall_at_10": 1.0,
+      "recall_at_100": 1.0
+    },
+    "scrapy_scrapy": {
+      "ndcg_at_10": 0.9832732438392864,
+      "mrr": 0.9775,
+      "recall_at_1": 0.96,
+      "recall_at_5": 1.0,
+      "recall_at_10": 1.0,
+      "recall_at_100": 1.0
+    },
+    "spack_spack": {
+      "ndcg_at_10": 0.8339682812328378,
+      "mrr": 0.8052803924833336,
+      "recall_at_1": 0.73,
+      "recall_at_5": 0.9,
+      "recall_at_10": 0.93,
+      "recall_at_100": 0.97
+    },
+    "sphinx-doc_sphinx": {
+      "ndcg_at_10": 0.9320544549240851,
+      "mrr": 0.9092222222222222,
+      "recall_at_1": 0.845,
+      "recall_at_5": 0.99,
+      "recall_at_10": 1.0,
+      "recall_at_100": 1.0
+    },
+    "spotify_luigi": {
+      "ndcg_at_10": 0.9469061457520327,
+      "mrr": 0.9293392857142857,
+      "recall_at_1": 0.88,
+      "recall_at_5": 0.98,
+      "recall_at_10": 1.0,
+      "recall_at_100": 1.0
+    },
+    "spring-projects_spring-framework": {
+      "ndcg_at_10": 0.9817359241653679,
+      "mrr": 0.9754166666666667,
+      "recall_at_1": 0.955,
+      "recall_at_5": 1.0,
+      "recall_at_10": 1.0,
+      "recall_at_100": 1.0
+    },
+    "spyder-ide_spyder": {
+      "ndcg_at_10": 0.9384705598946119,
+      "mrr": 0.9177916666666667,
+      "recall_at_1": 0.86,
+      "recall_at_5": 0.995,
+      "recall_at_10": 1.0,
+      "recall_at_100": 1.0
+    },
+    "sympy_sympy": {
+      "ndcg_at_10": 0.9036765494622407,
+      "mrr": 0.8758511904761904,
+      "recall_at_1": 0.805,
+      "recall_at_5": 0.97,
+      "recall_at_10": 0.99,
+      "recall_at_100": 1.0
+    },
+    "tensorflow_tensorflow": {
+      "ndcg_at_10": 0.9832732438392864,
+      "mrr": 0.9775,
+      "recall_at_1": 0.96,
+      "recall_at_5": 1.0,
+      "recall_at_10": 1.0,
+      "recall_at_100": 1.0
+    },
+    "webpack_webpack": {
+      "ndcg_at_10": 0.9417126578537791,
+      "mrr": 0.9345140970140968,
+      "recall_at_1": 0.91,
+      "recall_at_5": 0.965,
+      "recall_at_10": 0.97,
+      "recall_at_100": 1.0
+    },
+    "xonsh_xonsh": {
+      "ndcg_at_10": 0.9604851322070357,
+      "mrr": 0.9490854978354978,
+      "recall_at_1": 0.91,
+      "recall_at_5": 0.99,
+      "recall_at_10": 0.995,
+      "recall_at_100": 1.0
+    }
+  },
+  "candidate_pools_sha256": {
+    "Azure_azure-sdk-for-python": "1ec8ac78eeeaa0e49a73ec1d4818761eb06e1117a5d6f38c47a77123fffb1d75",
+    "ClusterHQ_flocker": "8e889cfbd6ae094a083d95a71003a69f92e8d76fa62d7046b9753a47a54659a8",
+    "DataDog_integrations-core": "655d562aeefbacce45b1f40a9fed56ab504c642ad70bea33ef34040b983f029b",
+    "Microsoft_TypeScript": "1d27168b38c57b5fb26bbb8e23f4c9c4b19a4c60edbd1e428cb0219ce7be49fc",
+    "PokemonGoF_PokemonGo-Bot": "9fd178d8a876ce0984fef725cc9dce1b9bfe67d4195ce8afe8429c586f966760",
+    "Qiskit_qiskit-terra": "cbb032b6b3359545a7623853d1a4074dbede226b4959c489a4f2200fffe6a23a",
+    "StackStorm_st2": "5a1c6f4ab1b711774e327f6591afc39de6474c32ba6487ac0646f9ddb8a055e7",
+    "apache_airflow": "165e2c558d55b2511e9316a33c7b335ab72b40c2b6e4b14f7680430d9288e175",
+    "apache_incubator-airflow": "1039aaaaff16a51e077eb564c45e6314d5b49fe9d2e6deb371bbc1dde242f663",
+    "certbot_certbot": "42d96d8cce7e6b313cb8c5014797ea4b879435df3a0e74af43258fe573efd9a3",
+    "dask_dask": "3aa49becc776aabfd88ab5012173149594a11bd8350d65081b2b00b469fb04c5",
+    "datalad_datalad": "0540af1fbc97c61c1b844a9c92ad68f236aa5f4d2f9422239effb8a0a0765928",
+    "django_django": "2848c58902e3ce4108d0bd12f160de768996b1042108f1463dd799657938f1ff",
+    "dmwm_WMCore": "e62faa559069b2824dd40a87d357c913ace8f7d8b9d34c2237344241b782683b",
+    "encode_django-rest-framework": "df4c9da0cf5267eaf2e7471f33d7dbbd575aaf496e92d0daa7d8947608e4d6b0",
+    "facebook_react": "37565f788b1c708854a3f8c870cfc14e9e02f10f97cfc8aaf5dab9c86b6243fa",
+    "great-expectations_great_expectations": "aaeb877869fed344a90bb4a2909485d78c2847217c8a8b38d71ca8dd24659c9c",
+    "home-assistant_core": "926084ee456a044371b774256834fbd76e6b7336875f2065bbdff3b7c754997f",
+    "home-assistant_home-assistant": "904989cc193dac2cb7e748cac0fbc47ae79be6a4a07d3eb8461118d78388f849",
+    "huggingface_transformers": "ba028b5d980027988391699cc35b899912e9a745fede19fdcb4856626053888e",
+    "kubernetes_kubernetes": "b0900e0f5aa48df577175b8131d6a0f1d8f479a96373b64502a621ae2fca2198",
+    "mesonbuild_meson": "c05f1d12e89508cd614a5676dfb8dd3610af2619b9eb3a09f45c1a1a34a2b4fc",
+    "microsoft_vscode": "47c12e67c561ea0ee37ed22f7f8dbe6686bc2a2bcd6a863cad04103d6a6a104d",
+    "mne-tools_mne-python": "9df01006e67af94ea0f5965e01cc37ca8d357c450a10890c8557569d12194338",
+    "moby_moby": "7942cef3c71c00c186fce98d615c91e50de459251ce4508c5c8cb8118aae12df",
+    "napari_napari": "cda7f4f6e27ce33509e75b98ea204f61cc47bb4c299242ccd52ff9bfa245aee9",
+    "numpy_numpy": "49fb394984a5da282bfbb3a523c7f68897c72b0e77c8ffe554e20cfda38b3027",
+    "optuna_optuna": "afefd165da3b108319a6ab2879092171f604cc584c49afb5fc28e035d35980c4",
+    "pandas-dev_pandas": "2ed0722e83fd75bc7167923cdcd10c324cadaa120966dd07adf9e13389434c6d",
+    "pydata_xarray": "f6b61f39b99b1b96e577c39194a33fc281e314c972e0047104ecae4fb4dd2525",
+    "pypa_pip": "1d7a3b77dd7f7407198b0aee04e8b7965da76b6e4e238070d100c146ffcbd06d",
+    "pytest-dev_pytest": "0795299f53f1bd04577ae90ba4314e2879b0aede5f30ec8a1b385ee9ab3d995f",
+    "pytorch_pytorch": "23ea0653840c28e0ba8f7d79e1529dbf4abf241a9b1d9a93d0c5bab6a7ee1742",
+    "raiden-network_raiden": "b52e77b93e897c07717069b4f0aadd8b47fbe3853f723bc9f156aae32fdbaf0b",
+    "rust-lang_rust": "d63a16d4eb4e22cffe8070e886f3b6802bc910e69e926555a7888d89c420edbe",
+    "saltstack_salt": "b0735a5d69435fcab201dcbf12ce9d0fbc3a2a7cfc6f5e435ef39b2103995b7a",
+    "scikit-learn_scikit-learn": "878812b4df84704e546d8a87764c91e50d05d9768c2539e26ae2203a724913cd",
+    "scipy_scipy": "cc8958375b1631df7014d0ed332c690b1eea6704b4f2f99af8a207399730268a",
+    "scrapy_scrapy": "cf689a1dfc57b5905b50e7f4725fe7c959e7d5b1687e0cfa02101c0d4adf0ba3",
+    "spack_spack": "065c78d5545b222f1700000c0bdb9ffded0c4043a1cdebc0c46abf23f4425dcc",
+    "sphinx-doc_sphinx": "9a1184798559923fd9f69fd0eb70c73abf9cf2a927f6009880ca356aad6c6c25",
+    "spotify_luigi": "14f2fcdf162f9eb0ab10ad6b80a9a4d5bebeb67e0e3254e4658a71edbc1249d0",
+    "spring-projects_spring-framework": "b849a92591bb436ae084602fa9cbf04c7ffa2e79600ecde068ce262c759991ae",
+    "spyder-ide_spyder": "0c2d15792beff3ee145a5d8fafc9becbecc4bbc0e628a9b915feadc1589b6b14",
+    "sympy_sympy": "60de1dfe53b3feeec61b3926f97156ad6c9f1c62bcd9904001f91c372fe1be18",
+    "tensorflow_tensorflow": "43a6d8e6aaed315820d4e68a69400b1a209f2bcf0e0ad4490f1c3ca5d39fde3b",
+    "webpack_webpack": "4f7df076eaf44ecaefa24694491ddbcc7c2e0c9e7b46c290cb3f1f0f59681ad6",
+    "xonsh_xonsh": "cb53b88c40c6c15889f48e578782a48dbb3972821f3d2eda1d5abd34e69012bb"
+  },
+  "source_sha256": "4d034120b9db16f2d8cb3a10e530b76bd971aa10eb5d0520bd1c2875748b99c7",
+  "successful_usage": {
+    "input_tokens": 149885322,
+    "output_tokens": 8717114,
+    "choice_calls": 9600
+  },
+  "usd_successful_requests": 6.2951835240000005
+}

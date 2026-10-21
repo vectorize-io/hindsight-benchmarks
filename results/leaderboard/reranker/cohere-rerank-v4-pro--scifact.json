@@ -1,0 +1,126 @@
+{
+  "schema_version": 2,
+  "reranker_id": "cohere-rerank-v4-pro",
+  "provider": "cohere",
+  "model": "rerank-v4.0-pro",
+  "dataset": "scifact",
+  "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+  "run_sha256": "f87d45eb45cc5375eab5c6f3d5c1006d49d5615151481593f5ff08998db0d7aa",
+  "total_questions": 300,
+  "groups": 300,
+  "sample_id": "scifact-beir-test",
+  "scored_queries": 300,
+  "evaluation_label_sha256": null,
+  "label_view": null,
+  "mrr": 0.7837956952633424,
+  "ndcg_at_10": 0.8153314544291596,
+  "recall_at_1": 0.6741111111111111,
+  "hit_at_1": 0.7033333333333334,
+  "recall_at_3": 0.8276111111111111,
+  "hit_at_3": 0.8466666666666667,
+  "recall_at_5": 0.9012222222222223,
+  "hit_at_5": 0.91,
+  "recall_at_10": 0.9292222222222222,
+  "hit_at_10": 0.9366666666666666,
+  "confidence_intervals": {
+    "mrr": [
+      0.7429870208087119,
+      0.8225893286860197
+    ],
+    "ndcg_at_10": [
+      0.7791375860122316,
+      0.849327844387266
+    ],
+    "recall_at_1": [
+      0.6215527777777777,
+      0.7261125
+    ],
+    "hit_at_1": [
+      0.65,
+      0.7533333333333333
+    ],
+    "recall_at_3": [
+      0.7856083333333332,
+      0.8685027777777777
+    ],
+    "hit_at_3": [
+      0.8066666666666666,
+      0.8866666666666667
+    ],
+    "recall_at_5": [
+      0.8668861111111111,
+      0.9329999999999999
+    ],
+    "hit_at_5": [
+      0.8766666666666667,
+      0.9433333333333334
+    ],
+    "recall_at_10": [
+      0.8993305555555555,
+      0.9566666666666667
+    ],
+    "hit_at_10": [
+      0.9066666666666666,
+      0.9633333333333334
+    ]
+  },
+  "confidence_method": "5000 bootstrap samples; whole conversations for LoCoMo, queries for SciFact; 95% percentile interval",
+  "avg_latency_s": 0.9252743799632784,
+  "p50_latency_s": 0.8644228164994274,
+  "p95_latency_s": 1.3898684892992605,
+  "retries": 0,
+  "failed_queries": 0,
+  "usage": {
+    "search_units": 599
+  },
+  "estimated_api_cost_usd": null,
+  "cost_basis": "API usage recorded; monetary rate unverified",
+  "metadata": {
+    "config": {
+      "reranker_id": "cohere-rerank-v4-pro",
+      "display_name": "Cohere v4 pro",
+      "provider": "cohere",
+      "provider_name": "Cohere",
+      "provider_icon": "/cohere.png",
+      "pricing_type": "pay-per-use",
+      "model": "rerank-v4.0-pro",
+      "endpoint": "https://api.cohere.com/v2/rerank",
+      "key_env": "COHERE_API_KEY",
+      "key_file": "cohere_api_key",
+      "pricing_source": "https://cohere.com/pricing"
+    },
+    "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+    "adapter_sha256": "b27902c1a4bf93a16537c7eeacfce66778c695f2200059ea52ef636def0856fe",
+    "versions": {
+      "sentence-transformers": "5.7.0",
+      "torch": "2.14.1",
+      "transformers": "5.18.0",
+      "numpy": "2.5.3",
+      "httpx": "0.28.1",
+      "rank-bm25": "0.2.2"
+    },
+    "python": "3.12.8",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "max_length": null,
+    "batch_size": 32,
+    "concurrency": 64,
+    "requests_per_second": 10.0,
+    "jev_question": null
+  },
+  "retrieval_ceiling_recall": 0.9693333333333334,
+  "by_category": {
+    "fact-checking": {
+      "mrr": 0.7837956952633424,
+      "ndcg_at_10": 0.8153314544291596,
+      "recall_at_1": 0.6741111111111111,
+      "hit_at_1": 0.7033333333333334,
+      "recall_at_3": 0.8276111111111111,
+      "hit_at_3": 0.8466666666666667,
+      "recall_at_5": 0.9012222222222223,
+      "hit_at_5": 0.91,
+      "recall_at_10": 0.9292222222222222,
+      "hit_at_10": 0.9366666666666666
+    }
+  },
+  "by_group": {}
+}

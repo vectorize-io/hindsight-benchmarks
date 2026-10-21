@@ -1,0 +1,135 @@
+{
+  "schema_version": 2,
+  "reranker_id": "qwen3-0.6b",
+  "provider": "local",
+  "model": "Qwen/Qwen3-Reranker-0.6B",
+  "dataset": "scifact",
+  "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+  "run_sha256": "91e514fbb546fd6998d79c6c280e54eb4dceb9a89b10e77dd691e852696deb19",
+  "total_questions": 300,
+  "groups": 300,
+  "sample_id": "scifact-beir-test",
+  "scored_queries": 300,
+  "evaluation_label_sha256": null,
+  "label_view": null,
+  "mrr": 0.7520933036708314,
+  "ndcg_at_10": 0.7819447510363097,
+  "recall_at_1": 0.6392777777777777,
+  "hit_at_1": 0.67,
+  "recall_at_3": 0.777,
+  "hit_at_3": 0.8033333333333333,
+  "recall_at_5": 0.8343333333333334,
+  "hit_at_5": 0.8533333333333334,
+  "recall_at_10": 0.907,
+  "hit_at_10": 0.9133333333333333,
+  "confidence_intervals": {
+    "mrr": [
+      0.7083611661901247,
+      0.792963294936058
+    ],
+    "ndcg_at_10": [
+      0.7429096905064693,
+      0.818650755543377
+    ],
+    "recall_at_1": [
+      0.5850541666666667,
+      0.6910569444444444
+    ],
+    "hit_at_1": [
+      0.6166666666666667,
+      0.7233333333333334
+    ],
+    "recall_at_3": [
+      0.7299430555555556,
+      0.8216111111111112
+    ],
+    "hit_at_3": [
+      0.7566666666666667,
+      0.8466666666666667
+    ],
+    "recall_at_5": [
+      0.7921597222222222,
+      0.8736138888888888
+    ],
+    "hit_at_5": [
+      0.81,
+      0.89
+    ],
+    "recall_at_10": [
+      0.8736583333333334,
+      0.9376666666666668
+    ],
+    "hit_at_10": [
+      0.88,
+      0.9433333333333334
+    ]
+  },
+  "confidence_method": "5000 bootstrap samples; whole conversations for LoCoMo, queries for SciFact; 95% percentile interval",
+  "avg_latency_s": 1.3577675401759917,
+  "p50_latency_s": 1.2797848249902017,
+  "p95_latency_s": 2.0867335192902834,
+  "retries": 0,
+  "failed_queries": 0,
+  "usage": {
+    "truncated_pairs": 0
+  },
+  "estimated_api_cost_usd": null,
+  "cost_basis": "Local compute/electricity not measured",
+  "metadata": {
+    "config": {
+      "reranker_id": "qwen3-0.6b",
+      "display_name": "Qwen3 0.6B",
+      "provider": "local",
+      "provider_name": "Local GPU",
+      "provider_icon": "/huggingface.png",
+      "pricing_type": "local",
+      "model": "Qwen/Qwen3-Reranker-0.6B",
+      "max_length": 8192
+    },
+    "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+    "adapter_sha256": "b27902c1a4bf93a16537c7eeacfce66778c695f2200059ea52ef636def0856fe",
+    "versions": {
+      "sentence-transformers": "5.7.0",
+      "torch": "2.14.1",
+      "transformers": "5.18.0",
+      "numpy": "2.5.3",
+      "httpx": "0.28.1",
+      "rank-bm25": "0.2.2"
+    },
+    "python": "3.12.8",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "max_length": 8192,
+    "batch_size": 32,
+    "concurrency": 64,
+    "requests_per_second": 10.0,
+    "jev_question": null,
+    "model_revision": "e61197ed45024b0ed8a2d74b80b4d909f1255473",
+    "precision": "bfloat16",
+    "score_activation": "identity (raw model score)",
+    "hardware": {
+      "name": "NVIDIA RTX PRO 5000 Blackwell",
+      "memory_bytes": 51311607808,
+      "cuda_version": "13.0",
+      "compute_capability": [
+        12,
+        0
+      ]
+    }
+  },
+  "retrieval_ceiling_recall": 0.9693333333333334,
+  "by_category": {
+    "fact-checking": {
+      "mrr": 0.7520933036708314,
+      "ndcg_at_10": 0.7819447510363097,
+      "recall_at_1": 0.6392777777777777,
+      "hit_at_1": 0.67,
+      "recall_at_3": 0.777,
+      "hit_at_3": 0.8033333333333333,
+      "recall_at_5": 0.8343333333333334,
+      "hit_at_5": 0.8533333333333334,
+      "recall_at_10": 0.907,
+      "hit_at_10": 0.9133333333333333
+    }
+  },
+  "by_group": {}
+}

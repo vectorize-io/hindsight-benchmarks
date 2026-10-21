@@ -31,13 +31,9 @@ export default function Home() {
     {
       href: '/leaderboard/reranker',
       title: 'Reranker',
-      description: <>Ranked rerankers for <span className="gradient-primary-text font-semibold">recall()</span> — which reranker surfaces the most relevant facts first.</>,
+      description: <>Direct reranker comparisons on frozen passages — quality, latency, and API usage reported separately.</>,
       modelCount: rerankerStats.count,
-      winner: rerankerStats.topReranker ? {
-        name: rerankerStats.topReranker.name,
-        providerIcon: rerankerStats.topReranker.providerIcon,
-        providerName: rerankerStats.topReranker.providerName,
-      } : null,
+      winner: null,
     },
     {
       href: '/leaderboard/embeddings',
@@ -125,7 +121,7 @@ export default function Home() {
               Model Leaderboard
             </h2>
             <p className="text-muted-foreground max-w-xl">
-              Find the best LLM, reranker, and embedding model for your Hindsight setup — ranked by quality, speed, and cost.
+              Compare LLMs, rerankers, and embedding models for Hindsight on quality, speed, and cost.
             </p>
           </div>
           <LeaderboardBlock entries={leaderboardEntries} />

@@ -139,16 +139,34 @@ export interface ReflectResult {
 }
 
 export interface RerankerResult {
+  schema_version: 2
   reranker_id: string
   provider: string
   model: string | null
+  dataset: string
+  fixture_sha256: string
+  evaluation_label_sha256: string | null
+  scored_queries: number
+  ndcg_at_10: number
   recall_at_1: number
   recall_at_3: number
   recall_at_5: number
+  recall_at_10: number
+  hit_at_1: number
+  hit_at_5: number
   mrr: number
   avg_latency_s: number
+  p50_latency_s: number
+  p95_latency_s: number
   total_questions: number
+  groups: number
   sample_id: string
+  confidence_intervals: Record<string, [number, number]>
+  estimated_api_cost_usd: number | null
+  cost_basis: string
+  failed_queries: number
+  retries: number
+  retrieval_ceiling_recall: number
 }
 
 export interface EmbeddingsResult {

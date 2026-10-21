@@ -1,0 +1,135 @@
+{
+  "schema_version": 2,
+  "reranker_id": "voyage-rerank-3-lite",
+  "provider": "voyage",
+  "model": "rerank-3-lite",
+  "dataset": "scifact-evidence",
+  "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+  "run_sha256": "51a7177f817b10dbd42f4c51c37731a0f273ae5b7e82e647d401cce0e61c1d06",
+  "total_questions": 188,
+  "groups": 188,
+  "sample_id": "scifact-original-dev-evidence",
+  "scored_queries": 300,
+  "evaluation_label_sha256": "beda364a4f1275a81891e95e6cead7f6d866f5af7abe765fff9f2dfd34695265",
+  "label_view": {
+    "schema_version": 1,
+    "name": "scifact-evidence",
+    "source": "https://scifact.s3-us-west-2.amazonaws.com/release/latest/data.tar.gz",
+    "source_sha256": "11c621288d41ac144d29b13b0f8503b3820b7d6e8b1f6ff24dff335c196d76be",
+    "source_split": "original SciFact claims_dev.jsonl",
+    "rule": "Only documents explicitly annotated SUPPORT or CONTRADICT count as relevant; questions without either are excluded uniformly before comparing models.",
+    "label_sha256": "beda364a4f1275a81891e95e6cead7f6d866f5af7abe765fff9f2dfd34695265"
+  },
+  "mrr": 0.9147606382978724,
+  "ndcg_at_10": 0.9333745480709535,
+  "recall_at_1": 0.8413120567375886,
+  "hit_at_1": 0.8617021276595744,
+  "recall_at_3": 0.9462765957446809,
+  "hit_at_3": 0.9627659574468085,
+  "recall_at_5": 0.9752659574468084,
+  "hit_at_5": 0.9840425531914894,
+  "recall_at_10": 0.9909574468085107,
+  "hit_at_10": 0.9946808510638298,
+  "confidence_intervals": {
+    "mrr": [
+      0.8811591312056737,
+      0.9449468085106382
+    ],
+    "ndcg_at_10": [
+      0.907141877629662,
+      0.9568634780585213
+    ],
+    "recall_at_1": [
+      0.7876773049645389,
+      0.8900709219858156
+    ],
+    "hit_at_1": [
+      0.8085106382978723,
+      0.9095744680851063
+    ],
+    "recall_at_3": [
+      0.9148936170212766,
+      0.973404255319149
+    ],
+    "hit_at_3": [
+      0.9360372340425532,
+      0.9893617021276596
+    ],
+    "recall_at_5": [
+      0.9531848404255319,
+      0.992566489361702
+    ],
+    "hit_at_5": [
+      0.9627659574468085,
+      1.0
+    ],
+    "recall_at_10": [
+      0.9765957446808511,
+      1.0
+    ],
+    "hit_at_10": [
+      0.9840425531914894,
+      1.0
+    ]
+  },
+  "confidence_method": "5000 bootstrap samples; whole conversations for LoCoMo, queries for SciFact; 95% percentile interval",
+  "avg_latency_s": 0.35703207499535256,
+  "p50_latency_s": 0.3440418780010077,
+  "p95_latency_s": 0.47793208550065175,
+  "retries": 0,
+  "failed_queries": 0,
+  "usage": {
+    "total_tokens": 7086228
+  },
+  "estimated_api_cost_usd": 0.14172456,
+  "cost_basis": "API reported tokens × published list rate; excludes credits and failed-request billing",
+  "metadata": {
+    "config": {
+      "reranker_id": "voyage-rerank-3-lite",
+      "display_name": "Voyage rerank-3-lite",
+      "provider": "voyage",
+      "provider_name": "Voyage AI",
+      "provider_icon": "/voyageai.png",
+      "pricing_type": "pay-per-use",
+      "model": "rerank-3-lite",
+      "endpoint": "https://ai.mongodb.com/v1/rerank",
+      "key_env": "VOYAGE_API_KEY",
+      "key_file": "voyage_api_key",
+      "usd_per_million_tokens": 0.02,
+      "pricing_source": "https://docs.voyageai.com/docs/pricing"
+    },
+    "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+    "adapter_sha256": "b27902c1a4bf93a16537c7eeacfce66778c695f2200059ea52ef636def0856fe",
+    "versions": {
+      "sentence-transformers": "5.7.0",
+      "torch": "2.14.1",
+      "transformers": "5.18.0",
+      "numpy": "2.5.3",
+      "httpx": "0.28.1",
+      "rank-bm25": "0.2.2"
+    },
+    "python": "3.12.8",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "max_length": null,
+    "batch_size": 32,
+    "concurrency": 64,
+    "requests_per_second": 10.0,
+    "jev_question": null
+  },
+  "retrieval_ceiling_recall": 0.9946808510638298,
+  "by_category": {
+    "fact-checking": {
+      "mrr": 0.9147606382978724,
+      "ndcg_at_10": 0.9333745480709535,
+      "recall_at_1": 0.8413120567375886,
+      "hit_at_1": 0.8617021276595744,
+      "recall_at_3": 0.9462765957446809,
+      "hit_at_3": 0.9627659574468085,
+      "recall_at_5": 0.9752659574468084,
+      "hit_at_5": 0.9840425531914894,
+      "recall_at_10": 0.9909574468085107,
+      "hit_at_10": 0.9946808510638298
+    }
+  },
+  "by_group": {}
+}

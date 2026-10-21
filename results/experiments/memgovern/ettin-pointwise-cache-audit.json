@@ -1,0 +1,23 @@
+{
+  "protocol": "Compare pre-cache target-model fresh logits with completed BGE baseline logits for identical query/card pairs. This is a numerical batch/device-sensitivity diagnostic; actual completed rankings are retained.",
+  "results": {
+    "granite": {
+      "queries": 6185,
+      "shared_pairs": 473688,
+      "maximum_absolute_logit_difference": 0.03125,
+      "mean_absolute_logit_difference": 6.597169444866663e-08,
+      "logit_difference_p99": 0.0,
+      "top1_changes": 0,
+      "ndcg_at_10_delta_if_shared_pairs_replaced": 0.0
+    },
+    "leaf": {
+      "queries": 4001,
+      "shared_pairs": 307773,
+      "maximum_absolute_logit_difference": 0.625,
+      "mean_absolute_logit_difference": 0.014113671164407544,
+      "logit_difference_p99": 0.0625,
+      "top1_changes": 16,
+      "ndcg_at_10_delta_if_shared_pairs_replaced": 0.00021388052741284628
+    }
+  }
+}

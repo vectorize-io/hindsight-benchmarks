@@ -1,0 +1,302 @@
+{
+  "evaluator": "pytrec-eval-terrier",
+  "version": "0.5.10",
+  "metrics": {
+    "ndcg_at_10": "ndcg_cut_10",
+    "mrr": "recip_rank",
+    "recall_at_5": "recall_5",
+    "recall_at_10": "recall_10"
+  },
+  "comparisons": 97152,
+  "maximum_absolute_error": 2.220446049250313e-16,
+  "runs": [
+    {
+      "model": "rrf",
+      "dataset": "locomo",
+      "queries": 1533,
+      "fixture_sha256": "3303c17bbb4e5ac762b25a2ef03e4545bc79e8f5079de83d82930c081cc932eb",
+      "run_sha256": "1afbd3d0d910c1410185dc964616f3b600e5de6d9075d1b0b0b3130a396e4d61",
+      "evaluation_label_sha256": null
+    },
+    {
+      "model": "local-minilm-l6",
+      "dataset": "locomo",
+      "queries": 1533,
+      "fixture_sha256": "3303c17bbb4e5ac762b25a2ef03e4545bc79e8f5079de83d82930c081cc932eb",
+      "run_sha256": "98e4f8a27e2590a110b9569b89284d128ebdcab3ad8587e63410b52b0fb3a494",
+      "evaluation_label_sha256": null
+    },
+    {
+      "model": "local-minilm-l12",
+      "dataset": "locomo",
+      "queries": 1533,
+      "fixture_sha256": "3303c17bbb4e5ac762b25a2ef03e4545bc79e8f5079de83d82930c081cc932eb",
+      "run_sha256": "91ee86346b1e35d45a7280bf92c1ff46494cae7a13b35fc6716eab5bff46ff1c",
+      "evaluation_label_sha256": null
+    },
+    {
+      "model": "ettin-150m",
+      "dataset": "locomo",
+      "queries": 1533,
+      "fixture_sha256": "3303c17bbb4e5ac762b25a2ef03e4545bc79e8f5079de83d82930c081cc932eb",
+      "run_sha256": "1c8638c36089b1f63c2afba7405f97bd2471ae1da057759de7879226136ae4f0",
+      "evaluation_label_sha256": null
+    },
+    {
+      "model": "ettin-400m",
+      "dataset": "locomo",
+      "queries": 1533,
+      "fixture_sha256": "3303c17bbb4e5ac762b25a2ef03e4545bc79e8f5079de83d82930c081cc932eb",
+      "run_sha256": "977da6623a4e6900f95d9f8b2c6f78d9049a9c2d7b2c32edf70ae9194e3dcf66",
+      "evaluation_label_sha256": null
+    },
+    {
+      "model": "qwen3-0.6b",
+      "dataset": "locomo",
+      "queries": 1533,
+      "fixture_sha256": "3303c17bbb4e5ac762b25a2ef03e4545bc79e8f5079de83d82930c081cc932eb",
+      "run_sha256": "3bc99b814159bd19f460316529c583e91bfd302d1937a22718b422465ee66137",
+      "evaluation_label_sha256": null
+    },
+    {
+      "model": "voyage-rerank-3",
+      "dataset": "locomo",
+      "queries": 1533,
+      "fixture_sha256": "3303c17bbb4e5ac762b25a2ef03e4545bc79e8f5079de83d82930c081cc932eb",
+      "run_sha256": "76d8d728bfd979afa7a329c83891f3d8993026a3b0f5d490b7e12998d52d47de",
+      "evaluation_label_sha256": null
+    },
+    {
+      "model": "voyage-rerank-3-lite",
+      "dataset": "locomo",
+      "queries": 1533,
+      "fixture_sha256": "3303c17bbb4e5ac762b25a2ef03e4545bc79e8f5079de83d82930c081cc932eb",
+      "run_sha256": "0bc39cc00fc140763d81aabd4f20732a5f2d89b62532ca14213e14558146a08d",
+      "evaluation_label_sha256": null
+    },
+    {
+      "model": "cohere-rerank-v4-pro",
+      "dataset": "locomo",
+      "queries": 1533,
+      "fixture_sha256": "3303c17bbb4e5ac762b25a2ef03e4545bc79e8f5079de83d82930c081cc932eb",
+      "run_sha256": "0845ecf8e9ad2fae09883194186ba0ebacfadde3e7342520bb6cb1a23d26a5ff",
+      "evaluation_label_sha256": null
+    },
+    {
+      "model": "cohere-rerank-v4-fast",
+      "dataset": "locomo",
+      "queries": 1533,
+      "fixture_sha256": "3303c17bbb4e5ac762b25a2ef03e4545bc79e8f5079de83d82930c081cc932eb",
+      "run_sha256": "47c6cfd0f5e55f83839a533a2d545fb0c58eddbe3000e8c34e373f94b572f63f",
+      "evaluation_label_sha256": null
+    },
+    {
+      "model": "jev-pointwise",
+      "dataset": "locomo",
+      "queries": 1533,
+      "fixture_sha256": "3303c17bbb4e5ac762b25a2ef03e4545bc79e8f5079de83d82930c081cc932eb",
+      "run_sha256": "06824221372d59f2a2f7fd0a9124adad947d44d254f13a979f381b129fab4120",
+      "evaluation_label_sha256": null
+    },
+    {
+      "model": "jev-listwise",
+      "dataset": "locomo",
+      "queries": 1533,
+      "fixture_sha256": "3303c17bbb4e5ac762b25a2ef03e4545bc79e8f5079de83d82930c081cc932eb",
+      "run_sha256": "182f95f0357f27c257c46e5ed7d60d483ef031fd69aa95cdb09581409612896a",
+      "evaluation_label_sha256": null
+    },
+    {
+      "model": "rrf",
+      "dataset": "scifact",
+      "queries": 300,
+      "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+      "run_sha256": "992182931786adc22b2c20d1d77c395aa8456c3aec037958eaeadc5c5c90fa73",
+      "evaluation_label_sha256": null
+    },
+    {
+      "model": "local-minilm-l6",
+      "dataset": "scifact",
+      "queries": 300,
+      "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+      "run_sha256": "ba5d1d7df63ad9ed59687bca848d6a7dd374b263690b000c31dfc4b4a9abe6b5",
+      "evaluation_label_sha256": null
+    },
+    {
+      "model": "local-minilm-l12",
+      "dataset": "scifact",
+      "queries": 300,
+      "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+      "run_sha256": "b2418561a33e57d3a9394b2997421f863a908bfac81af2c8767cc467910eb54c",
+      "evaluation_label_sha256": null
+    },
+    {
+      "model": "ettin-150m",
+      "dataset": "scifact",
+      "queries": 300,
+      "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+      "run_sha256": "489ecc688e0942cfc58929767a5a8e37682df17c8f8eefe10ed96f78ef97e0cf",
+      "evaluation_label_sha256": null
+    },
+    {
+      "model": "ettin-400m",
+      "dataset": "scifact",
+      "queries": 300,
+      "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+      "run_sha256": "9b5343e615b9f214844c0cc1cb76aecdc01fe4bcc765220cda1f9fc97d8f641e",
+      "evaluation_label_sha256": null
+    },
+    {
+      "model": "qwen3-0.6b",
+      "dataset": "scifact",
+      "queries": 300,
+      "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+      "run_sha256": "91e514fbb546fd6998d79c6c280e54eb4dceb9a89b10e77dd691e852696deb19",
+      "evaluation_label_sha256": null
+    },
+    {
+      "model": "voyage-rerank-3",
+      "dataset": "scifact",
+      "queries": 300,
+      "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+      "run_sha256": "16d7fce01273cdba77f52c6c4bdd6f6431e761a34c2950a6901696006181fec7",
+      "evaluation_label_sha256": null
+    },
+    {
+      "model": "voyage-rerank-3-lite",
+      "dataset": "scifact",
+      "queries": 300,
+      "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+      "run_sha256": "51a7177f817b10dbd42f4c51c37731a0f273ae5b7e82e647d401cce0e61c1d06",
+      "evaluation_label_sha256": null
+    },
+    {
+      "model": "cohere-rerank-v4-pro",
+      "dataset": "scifact",
+      "queries": 300,
+      "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+      "run_sha256": "f87d45eb45cc5375eab5c6f3d5c1006d49d5615151481593f5ff08998db0d7aa",
+      "evaluation_label_sha256": null
+    },
+    {
+      "model": "cohere-rerank-v4-fast",
+      "dataset": "scifact",
+      "queries": 300,
+      "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+      "run_sha256": "f3b5b12f200bc03a9c884bb9e847d9ba3f81e0babe2789cf9a5eea44b0b92731",
+      "evaluation_label_sha256": null
+    },
+    {
+      "model": "jev-pointwise",
+      "dataset": "scifact",
+      "queries": 300,
+      "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+      "run_sha256": "e9e6e861b658fd8a9545e1e66838666c6281be63bfbe7ef7edbf16b737ea4b8c",
+      "evaluation_label_sha256": null
+    },
+    {
+      "model": "jev-listwise",
+      "dataset": "scifact",
+      "queries": 300,
+      "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+      "run_sha256": "442a5c4a7138e0dd5272e3ffc3c6ddcaf728f03c0ddecb653dbd0d8270e51cba",
+      "evaluation_label_sha256": null
+    },
+    {
+      "model": "rrf",
+      "dataset": "scifact-evidence",
+      "queries": 188,
+      "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+      "run_sha256": "992182931786adc22b2c20d1d77c395aa8456c3aec037958eaeadc5c5c90fa73",
+      "evaluation_label_sha256": "beda364a4f1275a81891e95e6cead7f6d866f5af7abe765fff9f2dfd34695265"
+    },
+    {
+      "model": "local-minilm-l6",
+      "dataset": "scifact-evidence",
+      "queries": 188,
+      "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+      "run_sha256": "ba5d1d7df63ad9ed59687bca848d6a7dd374b263690b000c31dfc4b4a9abe6b5",
+      "evaluation_label_sha256": "beda364a4f1275a81891e95e6cead7f6d866f5af7abe765fff9f2dfd34695265"
+    },
+    {
+      "model": "local-minilm-l12",
+      "dataset": "scifact-evidence",
+      "queries": 188,
+      "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+      "run_sha256": "b2418561a33e57d3a9394b2997421f863a908bfac81af2c8767cc467910eb54c",
+      "evaluation_label_sha256": "beda364a4f1275a81891e95e6cead7f6d866f5af7abe765fff9f2dfd34695265"
+    },
+    {
+      "model": "ettin-150m",
+      "dataset": "scifact-evidence",
+      "queries": 188,
+      "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+      "run_sha256": "489ecc688e0942cfc58929767a5a8e37682df17c8f8eefe10ed96f78ef97e0cf",
+      "evaluation_label_sha256": "beda364a4f1275a81891e95e6cead7f6d866f5af7abe765fff9f2dfd34695265"
+    },
+    {
+      "model": "ettin-400m",
+      "dataset": "scifact-evidence",
+      "queries": 188,
+      "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+      "run_sha256": "9b5343e615b9f214844c0cc1cb76aecdc01fe4bcc765220cda1f9fc97d8f641e",
+      "evaluation_label_sha256": "beda364a4f1275a81891e95e6cead7f6d866f5af7abe765fff9f2dfd34695265"
+    },
+    {
+      "model": "qwen3-0.6b",
+      "dataset": "scifact-evidence",
+      "queries": 188,
+      "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+      "run_sha256": "91e514fbb546fd6998d79c6c280e54eb4dceb9a89b10e77dd691e852696deb19",
+      "evaluation_label_sha256": "beda364a4f1275a81891e95e6cead7f6d866f5af7abe765fff9f2dfd34695265"
+    },
+    {
+      "model": "voyage-rerank-3",
+      "dataset": "scifact-evidence",
+      "queries": 188,
+      "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+      "run_sha256": "16d7fce01273cdba77f52c6c4bdd6f6431e761a34c2950a6901696006181fec7",
+      "evaluation_label_sha256": "beda364a4f1275a81891e95e6cead7f6d866f5af7abe765fff9f2dfd34695265"
+    },
+    {
+      "model": "voyage-rerank-3-lite",
+      "dataset": "scifact-evidence",
+      "queries": 188,
+      "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+      "run_sha256": "51a7177f817b10dbd42f4c51c37731a0f273ae5b7e82e647d401cce0e61c1d06",
+      "evaluation_label_sha256": "beda364a4f1275a81891e95e6cead7f6d866f5af7abe765fff9f2dfd34695265"
+    },
+    {
+      "model": "cohere-rerank-v4-pro",
+      "dataset": "scifact-evidence",
+      "queries": 188,
+      "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+      "run_sha256": "f87d45eb45cc5375eab5c6f3d5c1006d49d5615151481593f5ff08998db0d7aa",
+      "evaluation_label_sha256": "beda364a4f1275a81891e95e6cead7f6d866f5af7abe765fff9f2dfd34695265"
+    },
+    {
+      "model": "cohere-rerank-v4-fast",
+      "dataset": "scifact-evidence",
+      "queries": 188,
+      "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+      "run_sha256": "f3b5b12f200bc03a9c884bb9e847d9ba3f81e0babe2789cf9a5eea44b0b92731",
+      "evaluation_label_sha256": "beda364a4f1275a81891e95e6cead7f6d866f5af7abe765fff9f2dfd34695265"
+    },
+    {
+      "model": "jev-pointwise",
+      "dataset": "scifact-evidence",
+      "queries": 188,
+      "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+      "run_sha256": "e9e6e861b658fd8a9545e1e66838666c6281be63bfbe7ef7edbf16b737ea4b8c",
+      "evaluation_label_sha256": "beda364a4f1275a81891e95e6cead7f6d866f5af7abe765fff9f2dfd34695265"
+    },
+    {
+      "model": "jev-listwise",
+      "dataset": "scifact-evidence",
+      "queries": 188,
+      "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+      "run_sha256": "442a5c4a7138e0dd5272e3ffc3c6ddcaf728f03c0ddecb653dbd0d8270e51cba",
+      "evaluation_label_sha256": "beda364a4f1275a81891e95e6cead7f6d866f5af7abe765fff9f2dfd34695265"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "model": "ibm-granite/granite-embedding-small-english-r2",
+  "revision": "2ab6fa8ea2d674564defd37171ae19079b864b33",
+  "fixture_sha256": "59c549e671e542d61c957fd298474a46d90207e7a9d7215a9c7eca694fe9bd92",
+  "method": "Independent HF AutoModel float32 CPU CLS pooling, L2 normalization, BM25 and independently implemented RRF; compare frozen GPU candidates for every query in first conversation",
+  "group": "conv-26",
+  "documents": 419,
+  "queries": 150,
+  "exact_order_matches": 149,
+  "mean_candidate_set_overlap": 1.0,
+  "document_l2_norm_min": 0.9999998807907104,
+  "document_l2_norm_max": 1.0000001192092896,
+  "query_l2_norm_min": 0.9999998807907104,
+  "query_l2_norm_max": 1.0000001192092896,
+  "manual_vs_sentence_transformers_max_abs_error": 5.587935447692871e-08,
+  "prompts": {
+    "query": "",
+    "document": ""
+  },
+  "pooling": "CLS from pinned model modules",
+  "script_sha256": "7eb3acfa73d22a7a5b10bdaa86f0355eacf27e77d167dfdec8261e786152944f"
+}

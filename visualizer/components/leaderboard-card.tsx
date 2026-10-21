@@ -109,7 +109,7 @@ export function LeaderboardBlock({ entries }: { entries: LeaderboardEntry[] }) {
               Model Leaderboard
             </h2>
             <p className="text-sm text-muted-foreground">
-              Ranked models across all Hindsight operations — find the best LLM, reranker, and embedding model for your setup.
+              Compare LLMs, rerankers, and embedding models across Hindsight operations.
             </p>
           </div>
 

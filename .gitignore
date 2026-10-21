@@ -13,3 +13,11 @@ benchmark-runner/datasets/embedding_banks.json
 .DS_Store
 .claude/
 docs/superpowers/
+
+# Direct reranker runs are local; only audited compressed records are published.
+benchmark-runner/reranker-runs/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+visualizer/node_modules/
+visualizer/.next/

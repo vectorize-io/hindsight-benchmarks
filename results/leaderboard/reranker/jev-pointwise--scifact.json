@@ -1,0 +1,135 @@
+{
+  "schema_version": 2,
+  "reranker_id": "jev-pointwise",
+  "provider": "typesafe",
+  "model": "jev-1.13.0",
+  "dataset": "scifact",
+  "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+  "run_sha256": "e9e6e861b658fd8a9545e1e66838666c6281be63bfbe7ef7edbf16b737ea4b8c",
+  "total_questions": 300,
+  "groups": 300,
+  "sample_id": "scifact-beir-test",
+  "scored_queries": 300,
+  "evaluation_label_sha256": null,
+  "label_view": null,
+  "mrr": 0.7676568271268182,
+  "ndcg_at_10": 0.7998868368903339,
+  "recall_at_1": 0.6582777777777777,
+  "hit_at_1": 0.6966666666666667,
+  "recall_at_3": 0.7897777777777778,
+  "hit_at_3": 0.8066666666666666,
+  "recall_at_5": 0.8537777777777777,
+  "hit_at_5": 0.8633333333333333,
+  "recall_at_10": 0.9318888888888889,
+  "hit_at_10": 0.9366666666666666,
+  "confidence_intervals": {
+    "mrr": [
+      0.7257569137467932,
+      0.8070733357164948
+    ],
+    "ndcg_at_10": [
+      0.7631468717710519,
+      0.8340023632892668
+    ],
+    "recall_at_1": [
+      0.6061652777777777,
+      0.7097236111111112
+    ],
+    "hit_at_1": [
+      0.6433333333333333,
+      0.7466666666666667
+    ],
+    "recall_at_3": [
+      0.7439388888888888,
+      0.8336125
+    ],
+    "hit_at_3": [
+      0.76,
+      0.85
+    ],
+    "recall_at_5": [
+      0.8125555555555555,
+      0.8914444444444445
+    ],
+    "hit_at_5": [
+      0.82,
+      0.9
+    ],
+    "recall_at_10": [
+      0.9029999999999999,
+      0.9588888888888889
+    ],
+    "hit_at_10": [
+      0.9066666666666666,
+      0.9633333333333334
+    ]
+  },
+  "confidence_method": "5000 bootstrap samples; whole conversations for LoCoMo, queries for SciFact; 95% percentile interval",
+  "avg_latency_s": 2.1355418149732093,
+  "p50_latency_s": 2.121473185492505,
+  "p95_latency_s": 2.6270951750098903,
+  "retries": 0,
+  "failed_queries": 0,
+  "usage": {
+    "input_tokens": 22696250,
+    "output_tokens": 660000
+  },
+  "estimated_api_cost_usd": 0.9532425000000001,
+  "cost_basis": "API reported tokens × published list rate; excludes credits and failed-request billing",
+  "metadata": {
+    "config": {
+      "reranker_id": "jev-pointwise",
+      "display_name": "Jev 1.13 pointwise",
+      "provider": "typesafe",
+      "provider_name": "TypeSafe",
+      "provider_icon": "",
+      "pricing_type": "pay-per-use",
+      "model": "jev-1.13.0",
+      "endpoint": "https://api.typesafe.ai/v1/systemone",
+      "key_env": "TYPESAFE_API_KEY",
+      "key_file": "typesafe_api_key",
+      "usd_per_million_tokens": 0.042,
+      "pricing_source": "https://docs.typesafe.ai/models"
+    },
+    "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+    "adapter_sha256": "b27902c1a4bf93a16537c7eeacfce66778c695f2200059ea52ef636def0856fe",
+    "versions": {
+      "sentence-transformers": "5.7.0",
+      "torch": "2.14.1",
+      "transformers": "5.18.0",
+      "numpy": "2.5.3",
+      "httpx": "0.28.1",
+      "rank-bm25": "0.2.2"
+    },
+    "python": "3.12.8",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "max_length": null,
+    "batch_size": 32,
+    "concurrency": 64,
+    "requests_per_second": 60.0,
+    "jev_question": {
+      "type": "noul",
+      "instructions": "Does the candidate contain information useful for answering or verifying the query?",
+      "criteria": {
+        "true": "The candidate contains specific evidence useful for answering or verifying the query, including evidence that contradicts the query. Partial evidence for a question requiring several facts also counts.",
+        "false": "The candidate is unrelated, or merely discusses the same broad topic without evidence useful for answering or verifying the query."
+      }
+    }
+  },
+  "retrieval_ceiling_recall": 0.9693333333333334,
+  "by_category": {
+    "fact-checking": {
+      "mrr": 0.7676568271268182,
+      "ndcg_at_10": 0.7998868368903339,
+      "recall_at_1": 0.6582777777777777,
+      "hit_at_1": 0.6966666666666667,
+      "recall_at_3": 0.7897777777777778,
+      "hit_at_3": 0.8066666666666666,
+      "recall_at_5": 0.8537777777777777,
+      "hit_at_5": 0.8633333333333333,
+      "recall_at_10": 0.9318888888888889,
+      "hit_at_10": 0.9366666666666666
+    }
+  },
+  "by_group": {}
+}

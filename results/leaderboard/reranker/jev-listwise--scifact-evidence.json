@@ -1,0 +1,142 @@
+{
+  "schema_version": 2,
+  "reranker_id": "jev-listwise",
+  "provider": "typesafe",
+  "model": "jev-1.13.0",
+  "dataset": "scifact-evidence",
+  "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+  "run_sha256": "442a5c4a7138e0dd5272e3ffc3c6ddcaf728f03c0ddecb653dbd0d8270e51cba",
+  "total_questions": 188,
+  "groups": 188,
+  "sample_id": "scifact-original-dev-evidence",
+  "scored_queries": 300,
+  "evaluation_label_sha256": "beda364a4f1275a81891e95e6cead7f6d866f5af7abe765fff9f2dfd34695265",
+  "label_view": {
+    "schema_version": 1,
+    "name": "scifact-evidence",
+    "source": "https://scifact.s3-us-west-2.amazonaws.com/release/latest/data.tar.gz",
+    "source_sha256": "11c621288d41ac144d29b13b0f8503b3820b7d6e8b1f6ff24dff335c196d76be",
+    "source_split": "original SciFact claims_dev.jsonl",
+    "rule": "Only documents explicitly annotated SUPPORT or CONTRADICT count as relevant; questions without either are excluded uniformly before comparing models.",
+    "label_sha256": "beda364a4f1275a81891e95e6cead7f6d866f5af7abe765fff9f2dfd34695265"
+  },
+  "mrr": 0.9201070649208948,
+  "ndcg_at_10": 0.9315342725449531,
+  "recall_at_1": 0.8463652482269504,
+  "hit_at_1": 0.8776595744680851,
+  "recall_at_3": 0.949822695035461,
+  "hit_at_3": 0.9680851063829787,
+  "recall_at_5": 0.9710992907801418,
+  "hit_at_5": 0.9840425531914894,
+  "recall_at_10": 0.9845744680851064,
+  "hit_at_10": 0.9893617021276596,
+  "confidence_intervals": {
+    "mrr": [
+      0.8864282426350245,
+      0.9498526152482268
+    ],
+    "ndcg_at_10": [
+      0.9030209212250877,
+      0.9562009277119675
+    ],
+    "recall_at_1": [
+      0.7940492021276595,
+      0.8937943262411348
+    ],
+    "hit_at_1": [
+      0.8297872340425532,
+      0.9202127659574468
+    ],
+    "recall_at_3": [
+      0.9196808510638298,
+      0.975531914893617
+    ],
+    "hit_at_3": [
+      0.9414893617021277,
+      0.9893617021276596
+    ],
+    "recall_at_5": [
+      0.9475132978723404,
+      0.9893617021276596
+    ],
+    "hit_at_5": [
+      0.9627659574468085,
+      1.0
+    ],
+    "recall_at_10": [
+      0.9659574468085106,
+      0.9978723404255319
+    ],
+    "hit_at_10": [
+      0.973404255319149,
+      1.0
+    ]
+  },
+  "confidence_method": "5000 bootstrap samples; whole conversations for LoCoMo, queries for SciFact; 95% percentile interval",
+  "avg_latency_s": 0.6430984948248729,
+  "p50_latency_s": 0.6311470705040847,
+  "p95_latency_s": 0.7572584765512147,
+  "retries": 0,
+  "failed_queries": 0,
+  "usage": {
+    "input_tokens": 9254296,
+    "output_tokens": 213846,
+    "choice_calls": 564
+  },
+  "estimated_api_cost_usd": 0.388680432,
+  "cost_basis": "API reported tokens × published list rate; excludes credits and failed-request billing",
+  "metadata": {
+    "config": {
+      "reranker_id": "jev-listwise",
+      "display_name": "Jev 1.13 Hindsight listwise",
+      "provider": "typesafe",
+      "provider_name": "TypeSafe",
+      "provider_icon": "",
+      "pricing_type": "pay-per-use",
+      "model": "jev-1.13.0",
+      "endpoint": "https://api.typesafe.ai/v1/systemone",
+      "key_env": "TYPESAFE_API_KEY",
+      "key_file": "typesafe_api_key",
+      "usd_per_million_tokens": 0.042,
+      "pricing_source": "https://docs.typesafe.ai/models",
+      "ranking_mode": "hindsight-choice",
+      "hindsight_revision": "f7dd3f4fd7420f7beec60c32c965e5e5cf7be066",
+      "prune_candidates": false
+    },
+    "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+    "adapter_sha256": "01a23ecd419d12286ad0146496fe94ff8094954a6d0526c19257eefb585319b3",
+    "versions": {
+      "sentence-transformers": "5.7.0",
+      "torch": "2.14.1",
+      "transformers": "5.18.0",
+      "numpy": "2.5.3",
+      "httpx": "0.28.1",
+      "rank-bm25": "0.2.2"
+    },
+    "python": "3.12.8",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "max_length": null,
+    "batch_size": 32,
+    "concurrency": 64,
+    "requests_per_second": 10.0,
+    "jev_question": null,
+    "listwise_adapter_sha256": "db658d8b9336521c0b89892d98cf4187723a7439223f2b71120e44f4323cfcbe",
+    "listwise_tokenizer": "toktok-rs==0.1.3/o200k_base"
+  },
+  "retrieval_ceiling_recall": 0.9946808510638298,
+  "by_category": {
+    "fact-checking": {
+      "mrr": 0.9201070649208948,
+      "ndcg_at_10": 0.9315342725449531,
+      "recall_at_1": 0.8463652482269504,
+      "hit_at_1": 0.8776595744680851,
+      "recall_at_3": 0.949822695035461,
+      "hit_at_3": 0.9680851063829787,
+      "recall_at_5": 0.9710992907801418,
+      "hit_at_5": 0.9840425531914894,
+      "recall_at_10": 0.9845744680851064,
+      "hit_at_10": 0.9893617021276596
+    }
+  },
+  "by_group": {}
+}

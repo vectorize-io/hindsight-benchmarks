@@ -1,0 +1,36 @@
+{
+  "pool_sha256": "03cfe349dc2d8459946dc36d8845f6b5762a920a599ae096a7bc03646c9933b5",
+  "config": {
+    "reranker_id": "jev-listwise",
+    "display_name": "Jev 1.13 Hindsight listwise",
+    "provider": "typesafe",
+    "provider_name": "TypeSafe",
+    "provider_icon": "",
+    "pricing_type": "pay-per-use",
+    "model": "jev-1.13.0",
+    "endpoint": "https://api.typesafe.ai/v1/systemone",
+    "key_env": "TYPESAFE_API_KEY",
+    "key_file": "typesafe_api_key",
+    "usd_per_million_tokens": 0.042,
+    "pricing_source": "https://docs.typesafe.ai/models",
+    "ranking_mode": "hindsight-choice",
+    "hindsight_revision": "f7dd3f4fd7420f7beec60c32c965e5e5cf7be066",
+    "prune_candidates": false
+  },
+  "versions": {
+    "sentence-transformers": "5.7.0",
+    "torch": "2.14.1",
+    "transformers": "5.18.0",
+    "numpy": "2.5.3",
+    "httpx": "0.28.1",
+    "rank-bm25": "0.2.2"
+  },
+  "protocol": "memgovern-frozen-hybrid-v1",
+  "workers": 8,
+  "adapter_sha256": "01a23ecd419d12286ad0146496fe94ff8094954a6d0526c19257eefb585319b3",
+  "listwise_adapter_sha256": "db658d8b9336521c0b89892d98cf4187723a7439223f2b71120e44f4323cfcbe",
+  "batch_size": null,
+  "dtype": null,
+  "requests_per_second_per_worker": 2,
+  "timing": "Concurrent jobs; latency excludes queue wait; warmup excluded"
+}

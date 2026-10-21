@@ -1,0 +1,143 @@
+{
+  "schema_version": 2,
+  "reranker_id": "local-minilm-l12",
+  "provider": "local",
+  "model": "cross-encoder/ms-marco-MiniLM-L12-v2",
+  "dataset": "scifact-evidence",
+  "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+  "run_sha256": "b2418561a33e57d3a9394b2997421f863a908bfac81af2c8767cc467910eb54c",
+  "total_questions": 188,
+  "groups": 188,
+  "sample_id": "scifact-original-dev-evidence",
+  "scored_queries": 300,
+  "evaluation_label_sha256": "beda364a4f1275a81891e95e6cead7f6d866f5af7abe765fff9f2dfd34695265",
+  "label_view": {
+    "schema_version": 1,
+    "name": "scifact-evidence",
+    "source": "https://scifact.s3-us-west-2.amazonaws.com/release/latest/data.tar.gz",
+    "source_sha256": "11c621288d41ac144d29b13b0f8503b3820b7d6e8b1f6ff24dff335c196d76be",
+    "source_split": "original SciFact claims_dev.jsonl",
+    "rule": "Only documents explicitly annotated SUPPORT or CONTRADICT count as relevant; questions without either are excluded uniformly before comparing models.",
+    "label_sha256": "beda364a4f1275a81891e95e6cead7f6d866f5af7abe765fff9f2dfd34695265"
+  },
+  "mrr": 0.8471602399825178,
+  "ndcg_at_10": 0.8725440412186012,
+  "recall_at_1": 0.7482269503546098,
+  "hit_at_1": 0.7659574468085106,
+  "recall_at_3": 0.8884751773049645,
+  "hit_at_3": 0.9095744680851063,
+  "recall_at_5": 0.9434397163120568,
+  "hit_at_5": 0.9574468085106383,
+  "recall_at_10": 0.9673758865248228,
+  "hit_at_10": 0.9787234042553191,
+  "confidence_intervals": {
+    "mrr": [
+      0.8049182932038063,
+      0.886880690396726
+    ],
+    "ndcg_at_10": [
+      0.8374106979413988,
+      0.9060227747687244
+    ],
+    "recall_at_1": [
+      0.6843971631205673,
+      0.8067375886524822
+    ],
+    "hit_at_1": [
+      0.7021276595744681,
+      0.824468085106383
+    ],
+    "recall_at_3": [
+      0.8440580673758865,
+      0.9299645390070922
+    ],
+    "hit_at_3": [
+      0.8670212765957447,
+      0.9521276595744681
+    ],
+    "recall_at_5": [
+      0.9108067375886526,
+      0.9720744680851063
+    ],
+    "hit_at_5": [
+      0.925531914893617,
+      0.9840425531914894
+    ],
+    "recall_at_10": [
+      0.9427304964539008,
+      0.9886524822695036
+    ],
+    "hit_at_10": [
+      0.9574468085106383,
+      0.9946808510638298
+    ]
+  },
+  "confidence_method": "5000 bootstrap samples; whole conversations for LoCoMo, queries for SciFact; 95% percentile interval",
+  "avg_latency_s": 0.10631506849467963,
+  "p50_latency_s": 0.10356406950450037,
+  "p95_latency_s": 0.12855299234797712,
+  "retries": 0,
+  "failed_queries": 0,
+  "usage": {
+    "truncated_pairs": 2959
+  },
+  "estimated_api_cost_usd": null,
+  "cost_basis": "Local compute/electricity not measured",
+  "metadata": {
+    "config": {
+      "reranker_id": "local-minilm-l12",
+      "display_name": "MiniLM L12",
+      "provider": "local",
+      "provider_name": "Local GPU",
+      "provider_icon": "/huggingface.png",
+      "pricing_type": "local",
+      "model": "cross-encoder/ms-marco-MiniLM-L12-v2",
+      "max_length": 512
+    },
+    "fixture_sha256": "ddbac0a4ef85d51da162ef61bc874c5a5c18358d26d52c69ed388dfdfc997179",
+    "adapter_sha256": "b27902c1a4bf93a16537c7eeacfce66778c695f2200059ea52ef636def0856fe",
+    "versions": {
+      "sentence-transformers": "5.7.0",
+      "torch": "2.14.1",
+      "transformers": "5.18.0",
+      "numpy": "2.5.3",
+      "httpx": "0.28.1",
+      "rank-bm25": "0.2.2"
+    },
+    "python": "3.12.8",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "max_length": 512,
+    "batch_size": 32,
+    "concurrency": 64,
+    "requests_per_second": 10.0,
+    "jev_question": null,
+    "model_revision": "7b0235231ca2674cb8ca8f022859a6eba2b1c968",
+    "precision": "bfloat16",
+    "score_activation": "identity (raw model score)",
+    "hardware": {
+      "name": "NVIDIA RTX PRO 5000 Blackwell",
+      "memory_bytes": 51311607808,
+      "cuda_version": "13.0",
+      "compute_capability": [
+        12,
+        0
+      ]
+    }
+  },
+  "retrieval_ceiling_recall": 0.9946808510638298,
+  "by_category": {
+    "fact-checking": {
+      "mrr": 0.8471602399825178,
+      "ndcg_at_10": 0.8725440412186012,
+      "recall_at_1": 0.7482269503546098,
+      "hit_at_1": 0.7659574468085106,
+      "recall_at_3": 0.8884751773049645,
+      "hit_at_3": 0.9095744680851063,
+      "recall_at_5": 0.9434397163120568,
+      "hit_at_5": 0.9574468085106383,
+      "recall_at_10": 0.9673758865248228,
+      "hit_at_10": 0.9787234042553191
+    }
+  },
+  "by_group": {}
+}
