@@ -1,0 +1,38 @@
+{
+  "hindsight_repo": "https://github.com/vectorize-io/hindsight.git",
+  "hindsight_commit": "84d464e7974ee5f4755636cce4a9613f75bea7d3",
+  "judge_model": "gpt-5.6-terra",
+  "providers": {
+    "openrouter": {
+      "hindsight_provider": "openrouter",
+      "base_url": "https://openrouter.ai/api/v1",
+      "api_key_env": "OPENROUTER_API_KEY",
+      "decision_base_url": "https://openrouter.ai/api"
+    },
+    "internal": {
+      "hindsight_provider": "openai",
+      "base_url": "${INTERNAL_BASE_URL}/v1",
+      "decision_base_url": "${INTERNAL_BASE_URL}",
+      "api_key_env": "INTERNAL_API_KEY"
+    }
+  },
+  "full": true,
+  "repeats": 1,
+  "operations": {
+    "retain": [
+      "evals/retain/test_retain.py"
+    ],
+    "recall": [
+      "evals/recall/test_recall.py"
+    ],
+    "consolidation": [
+      "evals/consolidation/test_consolidation.py"
+    ],
+    "reflect": [
+      "evals/reflect/test_reflect.py"
+    ],
+    "refresh_pages": [
+      "evals/refresh-pages/test_refresh_pages.py"
+    ]
+  }
+}

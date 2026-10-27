@@ -81,3 +81,95 @@
   0% { transform: translateX(-100%); }
   100% { transform: translateX(200%); }
 }
+
+/* ── v2: the docs site's palette, light and dark ─────────────────────────────
+   Same tokens as above, redefined under .v2 so the v1 pages stay dark-only.
+   Theme follows the OS unless the toggle set html[data-theme]. */
+.v2 {
+  --background: 0 0% 100%;
+  --foreground: 240 6% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 6% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 6% 10%;
+  --primary: 208 100% 43%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 240 5% 96%;
+  --secondary-foreground: 240 6% 10%;
+  --muted: 240 5% 96%;
+  --muted-foreground: 240 4% 46%;
+  --accent: 240 5% 96%;
+  --accent-foreground: 240 6% 10%;
+  --border: 240 6% 90%;
+  --input: 240 6% 90%;
+  --ring: 208 100% 43%;
+  --band: 220 20% 97%;
+  --teal: 182 86% 31%;
+  --active-surface: rgba(0, 116, 217, 0.09);
+  --good: 152 60% 36%;
+  --bad: 0 70% 50%;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme='light']) .v2 {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 6% 10%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 6% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 207 79% 56%;
+    --primary-foreground: 240 10% 3.9%;
+    --secondary: 240 4% 16%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 5% 65%;
+    --accent: 240 4% 16%;
+    --accent-foreground: 0 0% 98%;
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 207 79% 56%;
+    --band: 220 29% 6%;
+    --teal: 174 72% 48%;
+    --active-surface: rgba(51, 150, 232, 0.16);
+    --good: 152 55% 50%;
+    --bad: 0 75% 62%;
+  }
+}
+
+html[data-theme='dark'] .v2 {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --card: 240 6% 10%;
+  --card-foreground: 0 0% 98%;
+  --popover: 240 6% 10%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 207 79% 56%;
+  --primary-foreground: 240 10% 3.9%;
+  --secondary: 240 4% 16%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 240 4% 16%;
+  --muted-foreground: 240 5% 65%;
+  --accent: 240 4% 16%;
+  --accent-foreground: 0 0% 98%;
+  --border: 240 4% 16%;
+  --input: 240 4% 16%;
+  --ring: 207 79% 56%;
+  --band: 220 29% 6%;
+  --teal: 174 72% 48%;
+  --active-surface: rgba(51, 150, 232, 0.16);
+  --good: 152 55% 50%;
+  --bad: 0 75% 62%;
+}
+
+/* The docs' active nav item: gradient text on a tinted surface. */
+.v2 .nav-active {
+  background: linear-gradient(135deg, #0074d9 0%, #009296 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  box-shadow: inset 0 0 0 100px var(--active-surface);
+}
