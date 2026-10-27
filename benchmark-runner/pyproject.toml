@@ -18,6 +18,7 @@ dependencies = [
 [project.scripts]
 rag-benchmark = "hindsight_benchmark.main:main"
 hindsight-benchmark = "hindsight_benchmark.cli:main"
+hindsight-evals = "hindsight_benchmark.evals:main"
 
 [tool.uv.sources]
 hindsight-embed = { path = "/Users/nicoloboschi/dev/memory-poc/hindsight-embed", editable = true }

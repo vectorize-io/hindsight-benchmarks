@@ -1,0 +1,424 @@
+{
+  "hindsight_commit": "84d464e7974ee5f4755636cce4a9613f75bea7d3",
+  "operations": {
+    "retain": {
+      "categories": [
+        {
+          "id": "selectivity",
+          "about": "chatter stores nothing; plans survive among small talk; a fact said three times is stored once",
+          "cases": [
+            "chatter-only",
+            "said-three-times",
+            "durable-among-noise"
+          ]
+        },
+        {
+          "id": "completeness",
+          "about": "exact figures, never rounded; sensory and emotional detail kept",
+          "cases": [
+            "exact-figures",
+            "sensory-and-emotional"
+          ]
+        },
+        {
+          "id": "attribution",
+          "about": "\"my roommate\" becomes Tamsin; the user's rules are `world`, the agent's actions `experience`; a speaker named in context or metadata is credited",
+          "cases": [
+            "coreference-roles",
+            "agent-actions-vs-user-rules",
+            "context-names-the-speaker",
+            "multi-speaker-attribution"
+          ]
+        },
+        {
+          "id": "temporal",
+          "about": "relative dates resolved; a year spans the year; open-ended and undated facts; no event date, no invented date",
+          "cases": [
+            "relative-dates-resolved",
+            "coarse-dates-span-the-period",
+            "open-ended-and-undated",
+            "no-event-date"
+          ]
+        },
+        {
+          "id": "language",
+          "about": "German, Chinese, Spanish keep their language and script; English, Italian, Japanese inputs retained 6\u00d7 never switch",
+          "cases": [
+            "german-with-english-terms",
+            "chinese-script",
+            "spanish-conversation",
+            "en-coding-session",
+            "en-git-commit",
+            "it-coding-session",
+            "ja-personal-note"
+          ]
+        },
+        {
+          "id": "fidelity",
+          "about": "hedges stay hedged, past states stay past, a correction wins, the prompt's examples never leak, instructions inside content are not obeyed",
+          "cases": [
+            "hedges-stay-hedged",
+            "negation-and-past-state",
+            "in-text-correction",
+            "examples-do-not-leak",
+            "instructions-in-content"
+          ]
+        },
+        {
+          "id": "mission",
+          "about": "the retain mission filters what is kept and outranks the generic selectivity rules",
+          "cases": [
+            "mission-filters",
+            "mission-overrides-selectivity"
+          ]
+        },
+        {
+          "id": "mode",
+          "about": "custom instructions, verbose, verbatim, a strategy chosen per item",
+          "cases": [
+            "custom-instructions",
+            "verbose-keeps-detail",
+            "verbatim-preserves-text",
+            "strategy-per-item"
+          ]
+        },
+        {
+          "id": "entities",
+          "about": "named entities stored; one person across documents is one entity",
+          "cases": [
+            "entities-named",
+            "entities-across-documents"
+          ]
+        },
+        {
+          "id": "entity_labels",
+          "about": "value and multi-value labels, free-text and map labels, labels-only mode",
+          "cases": [
+            "labels-value-and-multi",
+            "labels-free-text-and-map",
+            "labels-only-mode"
+          ]
+        },
+        {
+          "id": "inputs",
+          "about": "document metadata read, JSON conversations, a fact in the last chunk of a long document",
+          "cases": [
+            "metadata-read",
+            "json-conversation",
+            "late-fact-in-long-document"
+          ]
+        },
+        {
+          "id": "no_invention",
+          "about": "a date, owner or place stated for a neighbouring subject is not borrowed",
+          "cases": [
+            "date-borrowed-from-nearby-subject",
+            "owner-borrowed-from-nearby-subject",
+            "place-borrowed-from-nearby-subject"
+          ]
+        }
+      ],
+      "benchmarks": []
+    },
+    "recall": {
+      "categories": [
+        {
+          "id": "semantic",
+          "about": "a paraphrase; a query sharing no word with its memory; intent over a shared keyword",
+          "cases": [
+            "paraphrase-dislike",
+            "no-shared-words",
+            "intent-over-keywords"
+          ]
+        },
+        {
+          "id": "keyword",
+          "about": "an error code, an order id, a rare surname among near-identical ones",
+          "cases": [
+            "error-code",
+            "order-id",
+            "rare-surname"
+          ]
+        },
+        {
+          "id": "temporal",
+          "about": "\"last month\", \"yesterday\", a year-only event, a named week \u2014 against `query_timestamp`",
+          "cases": [
+            "last-month",
+            "yesterday",
+            "year-only-event",
+            "named-week"
+          ]
+        },
+        {
+          "id": "currency",
+          "about": "the newer of two conflicting memories (a job, a decision) ranks first",
+          "cases": [
+            "current-job",
+            "latest-decision"
+          ]
+        },
+        {
+          "id": "multi_hop",
+          "about": "the answer one entity or cause away: an employer's city, the cause of a cause, my sister's dog",
+          "cases": [
+            "employer-headquarters",
+            "cause-chain",
+            "relative-and-pet"
+          ]
+        },
+        {
+          "id": "filters",
+          "about": "`types=[experience]`, `types=[world]` on a user/assistant exchange; a tag scope",
+          "cases": [
+            "experience-only",
+            "world-only",
+            "tag-scoped"
+          ]
+        },
+        {
+          "id": "language",
+          "about": "Italian and Chinese queries (with \u4e0a\u5468) over memories in that language",
+          "cases": [
+            "italian",
+            "chinese-last-week"
+          ]
+        },
+        {
+          "id": "precision",
+          "about": "the right budget among near-identical ones; a negation kept",
+          "cases": [
+            "number-among-numbers",
+            "negation-kept"
+          ]
+        },
+        {
+          "id": "budget",
+          "about": "a small `max_tokens` returns fewer facts but never none; `max_tokens=0` returns chunks only",
+          "cases": [
+            "small-token-budget",
+            "chunks-only"
+          ]
+        },
+        {
+          "id": "observations",
+          "about": "`types=[observation]`; `prefer_observations` drops the facts an observation was built from",
+          "cases": [
+            "observation-type",
+            "prefer-observations"
+          ]
+        },
+        {
+          "id": "duplicates",
+          "about": "one sentence in four documents comes back four times (once, with pruning); reworded repeats collapse under pruning",
+          "cases": [
+            "same-sentence-four-documents",
+            "reworded-repeats"
+          ]
+        },
+        {
+          "id": "distinct",
+          "about": "facts that only look alike (four customers, three details of one offsite) all come back",
+          "cases": [
+            "alike-but-distinct",
+            "same-subject"
+          ]
+        }
+      ],
+      "benchmarks": [
+        "test_recall_benchmark_beir_scifact"
+      ]
+    },
+    "consolidation": {
+      "categories": [
+        {
+          "id": "merge",
+          "about": "restatements update one observation; the same facts under two tags merge in a shared scope",
+          "cases": [
+            "restatements-merge",
+            "shared-scope-merges-across-tags"
+          ]
+        },
+        {
+          "id": "update",
+          "about": "a new employer, retired tools, a correction, a member leaving a list: the old belief stops reading as current",
+          "cases": [
+            "employer-supersedes",
+            "retired-conventions",
+            "correction-retires-false-belief",
+            "cascade-to-group"
+          ]
+        },
+        {
+          "id": "recency",
+          "about": "recency is when a fact was stated, not when it was retained",
+          "cases": [
+            "recency-is-when-stated",
+            "recency-same-day-amendment-arrives-first"
+          ]
+        },
+        {
+          "id": "counts",
+          "about": "the horse farm; no arithmetic on counts",
+          "cases": [
+            "horse-farm",
+            "no-arithmetic"
+          ]
+        },
+        {
+          "id": "entities",
+          "about": "a vague reference resolved by a later fact; lookalike people and numbers stay apart",
+          "cases": [
+            "resolve-reference",
+            "distinct-entities-stay-apart"
+          ]
+        },
+        {
+          "id": "language",
+          "about": "Chinese facts give Chinese observations; a mixed update is rewritten, not patched",
+          "cases": [
+            "language-chinese",
+            "language-mixed-update"
+          ]
+        },
+        {
+          "id": "mission",
+          "about": "without a mission chatter is dropped; a mission can keep ephemera or forbid names",
+          "cases": [
+            "default-drops-chatter",
+            "mission-keeps-ephemeral",
+            "mission-forbids-names"
+          ]
+        },
+        {
+          "id": "scale",
+          "about": "30 near-identical services, 20 lookalike-named people, the services under a mission",
+          "cases": [
+            "noisy-service-catalogue",
+            "noisy-personal-contacts",
+            "noisy-service-catalogue-mission"
+          ]
+        }
+      ],
+      "benchmarks": []
+    },
+    "reflect": {
+      "categories": [
+        {
+          "id": "precision",
+          "about": "the answer differs from its near-misses by one attribute: a version, a service name, a number",
+          "cases": [
+            "hq-release-prod",
+            "hq-entity-port",
+            "hq-numeric-outage"
+          ]
+        },
+        {
+          "id": "update",
+          "about": "what is true now, when the bank also holds what was true before",
+          "cases": [
+            "hq-owner-latest",
+            "sp-rotation"
+          ]
+        },
+        {
+          "id": "aggregation",
+          "about": "a count across many facts; a rule together with its approved exception",
+          "cases": [
+            "hq-count-billing",
+            "sp-friday-deploy"
+          ]
+        },
+        {
+          "id": "no_overreach",
+          "about": "a year the bank does not cover; a rule true in one region only",
+          "cases": [
+            "hq-scoped-2fa",
+            "hq-absent-2024"
+          ]
+        },
+        {
+          "id": "source_authority",
+          "about": "the handbook against confident chatter; questions only one source answers",
+          "cases": [
+            "sp-datastore",
+            "sp-approvals",
+            "sp-postmortem",
+            "sp-upgrade-owner"
+          ]
+        },
+        {
+          "id": "pages",
+          "about": "the bank holds a page about the question, and the answer comes from it",
+          "cases": [
+            "hq-release-prod",
+            "hq-count-billing"
+          ]
+        }
+      ],
+      "benchmarks": [
+        "test_reflect_benchmark_coding_agent_decision_model"
+      ]
+    },
+    "refresh_pages": {
+      "categories": [
+        {
+          "id": "precision",
+          "about": "a page built across waves keeps the asked attribute apart from its near-misses",
+          "cases": [
+            "hq-release-prod",
+            "hq-entity-port",
+            "hq-numeric-outage"
+          ]
+        },
+        {
+          "id": "update",
+          "about": "a later wave changes the answer: a newer owner, a departed on-call, a renamed service, a corrected figure",
+          "cases": [
+            "hq-owner-latest",
+            "du-oncall-departed",
+            "du-renamed-service",
+            "du-backup-correction"
+          ]
+        },
+        {
+          "id": "aggregation",
+          "about": "a count grows across waves; a list gains and loses members; a new risk joins the list",
+          "cases": [
+            "hq-count-billing",
+            "du-enterprise-plan",
+            "du-launch-risk"
+          ]
+        },
+        {
+          "id": "no_overreach",
+          "about": "a year the bank does not cover; a rule true in one region only",
+          "cases": [
+            "hq-scoped-2fa",
+            "hq-absent-2024"
+          ]
+        },
+        {
+          "id": "stability",
+          "about": "a wave with nothing for the page leaves it intact; no page collapses across waves",
+          "cases": [
+            "page-never-collapses",
+            "du-quiet-wave"
+          ]
+        },
+        {
+          "id": "consistency",
+          "about": "a changed value changes everywhere the page restates it (English, Chinese)",
+          "cases": [
+            "pump-maintenance-en-0",
+            "pump-maintenance-zh-0"
+          ]
+        }
+      ],
+      "benchmarks": [
+        "test_refresh_pages_benchmark_cost",
+        "test_refresh_pages_benchmark_cost_all_pages"
+      ]
+    }
+  }
+}
