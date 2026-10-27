@@ -61,29 +61,15 @@
 }
 
 @layer utilities {
-  .gradient-primary {
-    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
-  }
-
   .gradient-primary-text {
     background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-
-  .gradient-border {
-    border-image: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%) 1;
-  }
 }
 
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(200%); }
-}
-
-/* ── v2: the docs site's palette, light and dark ─────────────────────────────
-   Same tokens as above, redefined under .v2 so the v1 pages stay dark-only.
+/* ── The docs site's palette, light and dark, on <body class="v2"> ─────────────
    Theme follows the OS unless the toggle set html[data-theme]. */
 .v2 {
   --background: 0 0% 100%;

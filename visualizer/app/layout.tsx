@@ -1,6 +1,7 @@
 import Script from 'next/script'
 import type { Metadata } from 'next'
 import { Space_Grotesk, Inter, JetBrains_Mono } from 'next/font/google'
+import { Navbar, themeScript } from '@/components/Navbar'
 import './globals.css'
 
 const spaceGrotesk = Space_Grotesk({
@@ -77,8 +78,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           strategy="afterInteractive"
         />
       </head>
-      <body className="antialiased font-body min-h-screen bg-background text-foreground">
+      <body className="v2 antialiased font-body min-h-screen bg-background text-foreground">
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <Navbar />
         {children}
+        <footer className="border-t border-border mt-24">
+          <div className="max-w-6xl mx-auto px-4 py-10 flex flex-col sm:flex-row gap-4 sm:items-center justify-between text-sm text-muted-foreground">
+            <span>© 2026 Vectorize. Hindsight is open source under the MIT license.</span>
+            <div className="flex gap-5">
+              <a className="hover:text-foreground" href="https://hindsight.vectorize.io/">Docs</a>
+              <a className="hover:text-foreground" href="https://github.com/vectorize-io/hindsight-benchmarks">Benchmark code</a>
+              <a className="hover:text-foreground" href="https://agentmemorybenchmark.ai">Agent Memory Benchmark</a>
+            </div>
+          </div>
+        </footer>
       </body>
     </html>
   )
