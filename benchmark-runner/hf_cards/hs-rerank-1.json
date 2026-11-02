@@ -1,0 +1,1054 @@
+{
+ "model-index": [
+  {
+   "name": "hindsight-ai/hs-rerank-1",
+   "results": [
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "English reranking"
+     },
+     "dataset": {
+      "name": "NanoBEIR",
+      "type": "nanobeir"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, BM25 top 100, 13 tasks",
+       "value": 0.713
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "reranking",
+      "name": "English reranking"
+     },
+     "dataset": {
+      "name": "BRIGHT",
+      "type": "bright"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, BM25 top 100, 12 reasoning-heavy tasks",
+       "value": 0.151
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual reranking"
+     },
+     "dataset": {
+      "name": "MIRACL",
+      "type": "miracl"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 6 languages",
+       "value": 0.577
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual reranking"
+     },
+     "dataset": {
+      "name": "Multilingual bank",
+      "type": "multilingual-bank"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, MIRACL, MLDR, WebFAQ, mMARCO in 8 languages, 26 tasks",
+       "value": 0.515
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "reranking",
+      "name": "Memory reranking"
+     },
+     "dataset": {
+      "name": "KnowMeBench",
+      "type": "knowmebench"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, KaLM-Embedding top 100, 2,162 questions",
+       "value": 0.523
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "reranking",
+      "name": "Memory reranking"
+     },
+     "dataset": {
+      "name": "MemBench",
+      "type": "membench"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, KaLM-Embedding top 100, 8,940 scenes",
+       "value": 0.771
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "reranking",
+      "name": "Memory reranking"
+     },
+     "dataset": {
+      "name": "ConvoMem",
+      "type": "convomem"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, KaLM-Embedding top 100, 4,967 scenes",
+       "value": 0.667
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs"
+     },
+     "dataset": {
+      "name": "Maximum input",
+      "type": "maximum-input"
+     },
+     "metrics": [
+      {
+       "type": "max_tokens",
+       "name": "Tokens per query and document pair, from each model's configuration",
+       "value": 8192
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Rerank 50 memories",
+      "type": "rerank50-memories"
+     },
+     "metrics": [
+      {
+       "type": "latency_ms",
+       "name": "Median ms per query, 2 CPU threads",
+       "value": 1459.8
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Rerank 50 chunks",
+      "type": "rerank50-chunks"
+     },
+     "metrics": [
+      {
+       "type": "latency_ms",
+       "name": "Median ms per query, 2 CPU threads",
+       "value": 21252.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Alibaba-NLP/gte-reranker-modernbert-base",
+   "results": [
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "English reranking"
+     },
+     "dataset": {
+      "name": "NanoBEIR",
+      "type": "nanobeir"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, BM25 top 100, 13 tasks",
+       "value": 0.71
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "reranking",
+      "name": "English reranking"
+     },
+     "dataset": {
+      "name": "BRIGHT",
+      "type": "bright"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, BM25 top 100, 12 reasoning-heavy tasks",
+       "value": 0.112
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual reranking"
+     },
+     "dataset": {
+      "name": "MIRACL",
+      "type": "miracl"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 6 languages",
+       "value": 0.391
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual reranking"
+     },
+     "dataset": {
+      "name": "Multilingual bank",
+      "type": "multilingual-bank"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, MIRACL, MLDR, WebFAQ, mMARCO in 8 languages, 26 tasks",
+       "value": 0.416
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "reranking",
+      "name": "Memory reranking"
+     },
+     "dataset": {
+      "name": "KnowMeBench",
+      "type": "knowmebench"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, KaLM-Embedding top 100, 2,162 questions",
+       "value": 0.573
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "reranking",
+      "name": "Memory reranking"
+     },
+     "dataset": {
+      "name": "MemBench",
+      "type": "membench"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, KaLM-Embedding top 100, 8,940 scenes",
+       "value": 0.728
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "reranking",
+      "name": "Memory reranking"
+     },
+     "dataset": {
+      "name": "ConvoMem",
+      "type": "convomem"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, KaLM-Embedding top 100, 4,967 scenes",
+       "value": 0.663
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs"
+     },
+     "dataset": {
+      "name": "Maximum input",
+      "type": "maximum-input"
+     },
+     "metrics": [
+      {
+       "type": "max_tokens",
+       "name": "Tokens per query and document pair, from each model's configuration",
+       "value": 8192
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Rerank 50 memories",
+      "type": "rerank50-memories"
+     },
+     "metrics": [
+      {
+       "type": "latency_ms",
+       "name": "Median ms per query, 2 CPU threads",
+       "value": 9344.2
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Rerank 50 chunks",
+      "type": "rerank50-chunks"
+     },
+     "metrics": [
+      {
+       "type": "latency_ms",
+       "name": "Median ms per query, 2 CPU threads",
+       "value": 133384.4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "BAAI/bge-reranker-base",
+   "results": [
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "English reranking"
+     },
+     "dataset": {
+      "name": "NanoBEIR",
+      "type": "nanobeir"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, BM25 top 100, 13 tasks",
+       "value": 0.614
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "reranking",
+      "name": "English reranking"
+     },
+     "dataset": {
+      "name": "BRIGHT",
+      "type": "bright"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, BM25 top 100, 12 reasoning-heavy tasks",
+       "value": 0.095
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual reranking"
+     },
+     "dataset": {
+      "name": "MIRACL",
+      "type": "miracl"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 6 languages",
+       "value": 0.511
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual reranking"
+     },
+     "dataset": {
+      "name": "Multilingual bank",
+      "type": "multilingual-bank"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, MIRACL, MLDR, WebFAQ, mMARCO in 8 languages, 26 tasks",
+       "value": 0.468
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "reranking",
+      "name": "Memory reranking"
+     },
+     "dataset": {
+      "name": "KnowMeBench",
+      "type": "knowmebench"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, KaLM-Embedding top 100, 2,162 questions",
+       "value": 0.5
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "reranking",
+      "name": "Memory reranking"
+     },
+     "dataset": {
+      "name": "MemBench",
+      "type": "membench"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, KaLM-Embedding top 100, 8,940 scenes",
+       "value": 0.705
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "reranking",
+      "name": "Memory reranking"
+     },
+     "dataset": {
+      "name": "ConvoMem",
+      "type": "convomem"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, KaLM-Embedding top 100, 4,967 scenes",
+       "value": 0.636
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs"
+     },
+     "dataset": {
+      "name": "Maximum input",
+      "type": "maximum-input"
+     },
+     "metrics": [
+      {
+       "type": "max_tokens",
+       "name": "Tokens per query and document pair, from each model's configuration",
+       "value": 512
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Rerank 50 memories",
+      "type": "rerank50-memories"
+     },
+     "metrics": [
+      {
+       "type": "latency_ms",
+       "name": "Median ms per query, 2 CPU threads",
+       "value": 7870.9
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Rerank 50 chunks",
+      "type": "rerank50-chunks"
+     },
+     "metrics": [
+      {
+       "type": "latency_ms",
+       "name": "Median ms per query, 2 CPU threads",
+       "value": 58415.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mixedbread-ai/mxbai-rerank-xsmall-v1",
+   "results": [
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "English reranking"
+     },
+     "dataset": {
+      "name": "NanoBEIR",
+      "type": "nanobeir"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, BM25 top 100, 13 tasks",
+       "value": 0.629
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "reranking",
+      "name": "English reranking"
+     },
+     "dataset": {
+      "name": "BRIGHT",
+      "type": "bright"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, BM25 top 100, 12 reasoning-heavy tasks",
+       "value": 0.115
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual reranking"
+     },
+     "dataset": {
+      "name": "MIRACL",
+      "type": "miracl"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 6 languages",
+       "value": 0.479
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual reranking"
+     },
+     "dataset": {
+      "name": "Multilingual bank",
+      "type": "multilingual-bank"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, MIRACL, MLDR, WebFAQ, mMARCO in 8 languages, 26 tasks",
+       "value": 0.427
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "reranking",
+      "name": "Memory reranking"
+     },
+     "dataset": {
+      "name": "KnowMeBench",
+      "type": "knowmebench"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, KaLM-Embedding top 100, 2,162 questions",
+       "value": 0.466
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "reranking",
+      "name": "Memory reranking"
+     },
+     "dataset": {
+      "name": "MemBench",
+      "type": "membench"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, KaLM-Embedding top 100, 8,940 scenes",
+       "value": 0.64
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "reranking",
+      "name": "Memory reranking"
+     },
+     "dataset": {
+      "name": "ConvoMem",
+      "type": "convomem"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, KaLM-Embedding top 100, 4,967 scenes",
+       "value": 0.614
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs"
+     },
+     "dataset": {
+      "name": "Maximum input",
+      "type": "maximum-input"
+     },
+     "metrics": [
+      {
+       "type": "max_tokens",
+       "name": "Tokens per query and document pair, from each model's configuration",
+       "value": 512
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Rerank 50 memories",
+      "type": "rerank50-memories"
+     },
+     "metrics": [
+      {
+       "type": "latency_ms",
+       "name": "Median ms per query, 2 CPU threads",
+       "value": 2685.0
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Rerank 50 chunks",
+      "type": "rerank50-chunks"
+     },
+     "metrics": [
+      {
+       "type": "latency_ms",
+       "name": "Median ms per query, 2 CPU threads",
+       "value": 40870.1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cross-encoder/ms-marco-MiniLM-L12-v2",
+   "results": [
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "English reranking"
+     },
+     "dataset": {
+      "name": "NanoBEIR",
+      "type": "nanobeir"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, BM25 top 100, 13 tasks",
+       "value": 0.658
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "reranking",
+      "name": "English reranking"
+     },
+     "dataset": {
+      "name": "BRIGHT",
+      "type": "bright"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, BM25 top 100, 12 reasoning-heavy tasks",
+       "value": 0.085
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual reranking"
+     },
+     "dataset": {
+      "name": "MIRACL",
+      "type": "miracl"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 6 languages",
+       "value": 0.215
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual reranking"
+     },
+     "dataset": {
+      "name": "Multilingual bank",
+      "type": "multilingual-bank"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, MIRACL, MLDR, WebFAQ, mMARCO in 8 languages, 26 tasks",
+       "value": 0.267
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "reranking",
+      "name": "Memory reranking"
+     },
+     "dataset": {
+      "name": "KnowMeBench",
+      "type": "knowmebench"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, KaLM-Embedding top 100, 2,162 questions",
+       "value": 0.46
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "reranking",
+      "name": "Memory reranking"
+     },
+     "dataset": {
+      "name": "MemBench",
+      "type": "membench"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, KaLM-Embedding top 100, 8,940 scenes",
+       "value": 0.723
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "reranking",
+      "name": "Memory reranking"
+     },
+     "dataset": {
+      "name": "ConvoMem",
+      "type": "convomem"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, KaLM-Embedding top 100, 4,967 scenes",
+       "value": 0.621
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs"
+     },
+     "dataset": {
+      "name": "Maximum input",
+      "type": "maximum-input"
+     },
+     "metrics": [
+      {
+       "type": "max_tokens",
+       "name": "Tokens per query and document pair, from each model's configuration",
+       "value": 512
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Rerank 50 memories",
+      "type": "rerank50-memories"
+     },
+     "metrics": [
+      {
+       "type": "latency_ms",
+       "name": "Median ms per query, 2 CPU threads",
+       "value": 1820.1
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Rerank 50 chunks",
+      "type": "rerank50-chunks"
+     },
+     "metrics": [
+      {
+       "type": "latency_ms",
+       "name": "Median ms per query, 2 CPU threads",
+       "value": 17951.9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cross-encoder/ms-marco-MiniLM-L6-v2",
+   "results": [
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "English reranking"
+     },
+     "dataset": {
+      "name": "NanoBEIR",
+      "type": "nanobeir"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, BM25 top 100, 13 tasks",
+       "value": 0.654
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "reranking",
+      "name": "English reranking"
+     },
+     "dataset": {
+      "name": "BRIGHT",
+      "type": "bright"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, BM25 top 100, 12 reasoning-heavy tasks",
+       "value": 0.121
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual reranking"
+     },
+     "dataset": {
+      "name": "MIRACL",
+      "type": "miracl"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 6 languages",
+       "value": 0.209
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual reranking"
+     },
+     "dataset": {
+      "name": "Multilingual bank",
+      "type": "multilingual-bank"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, MIRACL, MLDR, WebFAQ, mMARCO in 8 languages, 26 tasks",
+       "value": 0.261
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "reranking",
+      "name": "Memory reranking"
+     },
+     "dataset": {
+      "name": "KnowMeBench",
+      "type": "knowmebench"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, KaLM-Embedding top 100, 2,162 questions",
+       "value": 0.474
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "reranking",
+      "name": "Memory reranking"
+     },
+     "dataset": {
+      "name": "MemBench",
+      "type": "membench"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, KaLM-Embedding top 100, 8,940 scenes",
+       "value": 0.746
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "reranking",
+      "name": "Memory reranking"
+     },
+     "dataset": {
+      "name": "ConvoMem",
+      "type": "convomem"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, KaLM-Embedding top 100, 4,967 scenes",
+       "value": 0.619
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs"
+     },
+     "dataset": {
+      "name": "Maximum input",
+      "type": "maximum-input"
+     },
+     "metrics": [
+      {
+       "type": "max_tokens",
+       "name": "Tokens per query and document pair, from each model's configuration",
+       "value": 512
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Rerank 50 memories",
+      "type": "rerank50-memories"
+     },
+     "metrics": [
+      {
+       "type": "latency_ms",
+       "name": "Median ms per query, 2 CPU threads",
+       "value": 915.7
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Rerank 50 chunks",
+      "type": "rerank50-chunks"
+     },
+     "metrics": [
+      {
+       "type": "latency_ms",
+       "name": "Median ms per query, 2 CPU threads",
+       "value": 9036.6
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

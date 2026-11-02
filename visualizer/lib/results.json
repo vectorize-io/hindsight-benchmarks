@@ -1,0 +1,4676 @@
+{
+ "rows": [
+  {
+   "model": "gemini-3.1-flash-lite",
+   "provider": "Google",
+   "icon": "/gemini.png",
+   "decision": {
+    "model": "hs-decide-1-flash",
+    "provider": "Hindsight",
+    "onLlmBoards": true
+   },
+   "source": {
+    "openrouter_id": "google/gemini-3.1-flash-lite",
+    "price_per_1m": {
+     "input": 0.25,
+     "output": 1.5,
+     "cached_input": 0.025
+    },
+    "decision_price_per_1m_input": 0.02,
+    "ran": "2026-11-01",
+    "judge": "gemini/gemini-3.1-flash-lite",
+    "repeats": 2
+   },
+   "operations": {
+    "consolidation": {
+     "passed": 41,
+     "total": 50,
+     "cost_usd": 0.5973,
+     "calls": 264,
+     "input_tokens": 1894013,
+     "output_tokens": 169767,
+     "decision_calls": 1246,
+     "decision_input_tokens": 3892648,
+     "decision_cost_usd": 0.0779,
+     "categories": {
+      "merge": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "cascade-to-group"
+       ]
+      },
+      "recency": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "recency-same-day-amendment-arrives-first"
+       ]
+      },
+      "counts": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entities": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "language": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mission": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "scale": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "repetition": {
+       "passed": 1,
+       "total": 3,
+       "failed": [
+        "assistant-daily-chats",
+        "repetitive-service-catalogue"
+       ]
+      }
+     }
+    },
+    "reflect": {
+     "passed": 29,
+     "total": 34,
+     "cost_usd": 0.107,
+     "calls": 83,
+     "input_tokens": 260128,
+     "output_tokens": 6380,
+     "decision_calls": 511,
+     "decision_input_tokens": 1731301,
+     "decision_cost_usd": 0.0346,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "hq-count-billing"
+       ]
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "source_authority": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "sp-approvals"
+       ]
+      },
+      "pages": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "hq-count-billing"
+       ]
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    },
+    "refresh_pages": {
+     "passed": 36,
+     "total": 40,
+     "cost_usd": 0.231,
+     "calls": 160,
+     "input_tokens": 669723,
+     "output_tokens": 34851,
+     "decision_calls": 3301,
+     "decision_input_tokens": 2833654,
+     "decision_cost_usd": 0.0567,
+     "categories": {
+      "precision": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "hq-entity-port"
+       ]
+      },
+      "update": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "hq-count-billing"
+       ]
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "stability": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "consistency": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "pump-maintenance-zh-0"
+       ]
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    }
+   }
+  },
+  {
+   "model": "gemini-3.1-flash-lite",
+   "provider": "Google",
+   "icon": "/gemini.png",
+   "decision": null,
+   "source": {
+    "openrouter_id": "google/gemini-3.1-flash-lite",
+    "price_per_1m": {
+     "input": 0.25,
+     "output": 1.5,
+     "cached_input": 0.025
+    },
+    "decision_price_per_1m_input": null,
+    "ran": "2026-10-31",
+    "judge": "gemini/gemini-3.1-flash-lite",
+    "repeats": 2
+   },
+   "operations": {
+    "retain": {
+     "passed": 75,
+     "total": 84,
+     "cost_usd": 0.0957,
+     "calls": 128,
+     "input_tokens": 261476,
+     "output_tokens": 56916,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "selectivity": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "completeness": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "sensory-and-emotional"
+       ]
+      },
+      "attribution": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "multi-speaker-attribution"
+       ]
+      },
+      "temporal": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "no-event-date"
+       ]
+      },
+      "language": {
+       "passed": 7,
+       "total": 7,
+       "failed": []
+      },
+      "fidelity": {
+       "passed": 4,
+       "total": 5,
+       "failed": [
+        "instructions-in-content"
+       ]
+      },
+      "mission": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mode": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "entities": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entity_labels": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "inputs": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "no_invention": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      }
+     }
+    },
+    "consolidation": {
+     "passed": 40,
+     "total": 50,
+     "cost_usd": 0.7494,
+     "calls": 328,
+     "input_tokens": 2449480,
+     "output_tokens": 264731,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "merge": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "cascade-to-group"
+       ]
+      },
+      "recency": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "recency-same-day-amendment-arrives-first"
+       ]
+      },
+      "counts": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entities": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "language": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mission": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "scale": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "repetition": {
+       "passed": 1,
+       "total": 3,
+       "failed": [
+        "assistant-daily-chats",
+        "repetitive-service-catalogue"
+       ]
+      }
+     }
+    },
+    "reflect": {
+     "passed": 32,
+     "total": 34,
+     "cost_usd": 0.3063,
+     "calls": 144,
+     "input_tokens": 1399624,
+     "output_tokens": 11829,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "source_authority": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "sp-approvals"
+       ]
+      },
+      "pages": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    },
+    "refresh_pages": {
+     "passed": 34,
+     "total": 40,
+     "cost_usd": 0.6929,
+     "calls": 308,
+     "input_tokens": 2547809,
+     "output_tokens": 61955,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "du-oncall-departed-0"
+       ]
+      },
+      "aggregation": {
+       "passed": 2,
+       "total": 4,
+       "failed": [
+        "hq-count-billing",
+        "du-enterprise-plan-0"
+       ]
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "stability": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "consistency": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    }
+   }
+  },
+  {
+   "model": "gemini-3.8-flash",
+   "provider": "Google",
+   "icon": "/gemini.png",
+   "decision": {
+    "model": "hs-decide-1-flash",
+    "provider": "Hindsight",
+    "onLlmBoards": true
+   },
+   "source": {
+    "openrouter_id": "google/gemini-3.8-flash",
+    "price_per_1m": {
+     "input": 0.825,
+     "output": 4.125,
+     "cached_input": 0.0825
+    },
+    "decision_price_per_1m_input": 0.02,
+    "ran": "2026-11-01",
+    "judge": "gemini/gemini-3.1-flash-lite",
+    "repeats": 2
+   },
+   "operations": {
+    "consolidation": {
+     "passed": 43,
+     "total": 50,
+     "cost_usd": 1.6119,
+     "calls": 265,
+     "input_tokens": 1895635,
+     "output_tokens": 160371,
+     "decision_calls": 1246,
+     "decision_input_tokens": 3893020,
+     "decision_cost_usd": 0.0779,
+     "categories": {
+      "merge": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "cascade-to-group"
+       ]
+      },
+      "recency": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "recency-same-day-amendment-arrives-first"
+       ]
+      },
+      "counts": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entities": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "language": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mission": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "scale": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "repetition": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "assistant-daily-chats"
+       ]
+      }
+     }
+    },
+    "reflect": {
+     "passed": 31,
+     "total": 34,
+     "cost_usd": 0.2688,
+     "calls": 82,
+     "input_tokens": 255401,
+     "output_tokens": 5979,
+     "decision_calls": 504,
+     "decision_input_tokens": 1671886,
+     "decision_cost_usd": 0.0334,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "source_authority": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "sp-approvals"
+       ]
+      },
+      "pages": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    },
+    "refresh_pages": {
+     "passed": 36,
+     "total": 40,
+     "cost_usd": 0.7194,
+     "calls": 154,
+     "input_tokens": 636580,
+     "output_tokens": 35464,
+     "decision_calls": 3304,
+     "decision_input_tokens": 2775468,
+     "decision_cost_usd": 0.0555,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "stability": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "consistency": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "pump-maintenance-en-0"
+       ]
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    }
+   }
+  },
+  {
+   "model": "gemini-3.8-flash",
+   "provider": "Google",
+   "icon": "/gemini.png",
+   "decision": null,
+   "source": {
+    "openrouter_id": "google/gemini-3.8-flash",
+    "price_per_1m": {
+     "input": 0.825,
+     "output": 4.125,
+     "cached_input": 0.0825
+    },
+    "decision_price_per_1m_input": null,
+    "ran": "2026-10-31",
+    "judge": "gemini/gemini-3.1-flash-lite",
+    "repeats": 2
+   },
+   "operations": {
+    "retain": {
+     "passed": 80,
+     "total": 84,
+     "cost_usd": 0.2501,
+     "calls": 128,
+     "input_tokens": 261476,
+     "output_tokens": 52342,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "selectivity": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "completeness": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "attribution": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "temporal": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "language": {
+       "passed": 7,
+       "total": 7,
+       "failed": []
+      },
+      "fidelity": {
+       "passed": 5,
+       "total": 5,
+       "failed": []
+      },
+      "mission": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mode": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "strategy-per-item"
+       ]
+      },
+      "entities": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entity_labels": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "inputs": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "no_invention": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "date-borrowed-from-nearby-subject"
+       ]
+      }
+     }
+    },
+    "consolidation": {
+     "passed": 42,
+     "total": 50,
+     "cost_usd": 2.1769,
+     "calls": 332,
+     "input_tokens": 2437667,
+     "output_tokens": 247650,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "merge": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "cascade-to-group"
+       ]
+      },
+      "recency": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "counts": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entities": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "language": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mission": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "scale": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "noisy-service-catalogue-mission"
+       ]
+      },
+      "repetition": {
+       "passed": 1,
+       "total": 3,
+       "failed": [
+        "assistant-daily-chats",
+        "repetitive-service-catalogue"
+       ]
+      }
+     }
+    },
+    "reflect": {
+     "passed": 32,
+     "total": 34,
+     "cost_usd": 1.2231,
+     "calls": 148,
+     "input_tokens": 1543680,
+     "output_tokens": 14908,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "source_authority": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "sp-approvals"
+       ]
+      },
+      "pages": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    },
+    "refresh_pages": {
+     "passed": 33,
+     "total": 40,
+     "cost_usd": 2.5985,
+     "calls": 327,
+     "input_tokens": 2951194,
+     "output_tokens": 74968,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "du-oncall-departed-0"
+       ]
+      },
+      "aggregation": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "du-launch-risk-0"
+       ]
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "stability": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "consistency": {
+       "passed": 0,
+       "total": 2,
+       "failed": [
+        "pump-maintenance-en-0",
+        "pump-maintenance-zh-0"
+       ]
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    }
+   }
+  },
+  {
+   "model": "gemma-4-26b-a4b",
+   "provider": "Google",
+   "icon": "/gemini.png",
+   "openWeights": true,
+   "decision": {
+    "model": "hs-decide-1-flash",
+    "provider": "Hindsight",
+    "onLlmBoards": true
+   },
+   "source": {
+    "openrouter_id": "google/gemma-4-26b-a4b-it",
+    "price_per_1m": {
+     "input": 0.0675,
+     "output": 0.225,
+     "cached_input": 0.0375
+    },
+    "decision_price_per_1m_input": 0.02,
+    "ran": "2026-11-01",
+    "judge": "gemini/gemini-3.1-flash-lite",
+    "repeats": 2
+   },
+   "operations": {
+    "consolidation": {
+     "passed": 41,
+     "total": 50,
+     "cost_usd": 0.2639,
+     "calls": 268,
+     "input_tokens": 2253212,
+     "output_tokens": 149155,
+     "decision_calls": 1251,
+     "decision_input_tokens": 3911922,
+     "decision_cost_usd": 0.0782,
+     "categories": {
+      "merge": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "recency": {
+       "passed": 0,
+       "total": 2,
+       "failed": [
+        "recency-is-when-stated",
+        "recency-same-day-amendment-arrives-first"
+       ]
+      },
+      "counts": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entities": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "language": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mission": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "noise-beside-a-routine"
+       ]
+      },
+      "scale": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "noisy-service-catalogue-mission"
+       ]
+      },
+      "repetition": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "assistant-daily-chats"
+       ]
+      }
+     }
+    },
+    "reflect": {
+     "passed": 29,
+     "total": 34,
+     "cost_usd": 0.0594,
+     "calls": 88,
+     "input_tokens": 305715,
+     "output_tokens": 7371,
+     "decision_calls": 528,
+     "decision_input_tokens": 1853818,
+     "decision_cost_usd": 0.0371,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "source_authority": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "sp-approvals"
+       ]
+      },
+      "pages": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    },
+    "refresh_pages": {
+     "passed": 31,
+     "total": 40,
+     "cost_usd": 0.1272,
+     "calls": 167,
+     "input_tokens": 876242,
+     "output_tokens": 32944,
+     "decision_calls": 3308,
+     "decision_input_tokens": 3032296,
+     "decision_cost_usd": 0.0606,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 2,
+       "total": 4,
+       "failed": [
+        "du-enterprise-plan-0",
+        "du-incident-table-0"
+       ]
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "stability": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "consistency": {
+       "passed": 0,
+       "total": 2,
+       "failed": [
+        "pump-maintenance-en-0",
+        "pump-maintenance-zh-0"
+       ]
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    }
+   }
+  },
+  {
+   "model": "gemma-4-26b-a4b",
+   "provider": "Google",
+   "icon": "/gemini.png",
+   "openWeights": true,
+   "decision": null,
+   "source": {
+    "openrouter_id": "google/gemma-4-26b-a4b-it",
+    "price_per_1m": {
+     "input": 0.0675,
+     "output": 0.225,
+     "cached_input": 0.0375
+    },
+    "decision_price_per_1m_input": null,
+    "ran": "2026-10-31",
+    "judge": "gemini/gemini-3.1-flash-lite",
+    "repeats": 2
+   },
+   "operations": {
+    "retain": {
+     "passed": 67,
+     "total": 84,
+     "cost_usd": 0.0449,
+     "calls": 133,
+     "input_tokens": 455227,
+     "output_tokens": 62873,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "selectivity": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "completeness": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "attribution": {
+       "passed": 2,
+       "total": 4,
+       "failed": [
+        "coreference-roles",
+        "multi-speaker-attribution"
+       ]
+      },
+      "temporal": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "no-event-date"
+       ]
+      },
+      "language": {
+       "passed": 5,
+       "total": 7,
+       "failed": [
+        "en-coding-session",
+        "ja-personal-note"
+       ]
+      },
+      "fidelity": {
+       "passed": 3,
+       "total": 5,
+       "failed": [
+        "hedges-stay-hedged",
+        "negation-and-past-state"
+       ]
+      },
+      "mission": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mode": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "custom-instructions"
+       ]
+      },
+      "entities": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entity_labels": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "inputs": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "no_invention": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "owner-borrowed-from-nearby-subject"
+       ]
+      }
+     }
+    },
+    "consolidation": {
+     "passed": 33,
+     "total": 50,
+     "cost_usd": 0.2442,
+     "calls": 338,
+     "input_tokens": 2880111,
+     "output_tokens": 221108,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "merge": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 2,
+       "total": 4,
+       "failed": [
+        "employer-supersedes",
+        "cascade-to-group"
+       ]
+      },
+      "recency": {
+       "passed": 0,
+       "total": 2,
+       "failed": [
+        "recency-is-when-stated",
+        "recency-same-day-amendment-arrives-first"
+       ]
+      },
+      "counts": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entities": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "language": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mission": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "noise-beside-a-routine"
+       ]
+      },
+      "scale": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "repetition": {
+       "passed": 1,
+       "total": 3,
+       "failed": [
+        "coding-agent-sessions",
+        "repetitive-service-catalogue"
+       ]
+      }
+     }
+    },
+    "reflect": {
+     "passed": 30,
+     "total": 34,
+     "cost_usd": 0.0958,
+     "calls": 144,
+     "input_tokens": 1382406,
+     "output_tokens": 10971,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "hq-count-billing"
+       ]
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "source_authority": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "sp-approvals"
+       ]
+      },
+      "pages": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    },
+    "refresh_pages": {
+     "passed": 29,
+     "total": 40,
+     "cost_usd": 0.2155,
+     "calls": 322,
+     "input_tokens": 2990422,
+     "output_tokens": 60492,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "du-oncall-departed-0"
+       ]
+      },
+      "aggregation": {
+       "passed": 1,
+       "total": 4,
+       "failed": [
+        "hq-count-billing",
+        "du-enterprise-plan-0",
+        "du-incident-table-0"
+       ]
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "stability": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "consistency": {
+       "passed": 0,
+       "total": 2,
+       "failed": [
+        "pump-maintenance-en-0",
+        "pump-maintenance-zh-0"
+       ]
+      },
+      "orchestration": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "fu-escalation"
+       ]
+      }
+     }
+    }
+   }
+  },
+  {
+   "model": "claude-haiku-5.5",
+   "provider": "Anthropic",
+   "icon": "/logos/anthropic.webp",
+   "decision": {
+    "model": "hs-decide-1-flash",
+    "provider": "Hindsight",
+    "onLlmBoards": true
+   },
+   "source": {
+    "openrouter_id": "anthropic/claude-haiku-5.5",
+    "price_per_1m": {
+     "input": 0.1,
+     "output": 0.5,
+     "cached_input": 0.01
+    },
+    "decision_price_per_1m_input": 0.02,
+    "ran": "2026-11-02",
+    "judge": "gemini/gemini-3.1-flash-lite",
+    "repeats": 2
+   },
+   "operations": {
+    "consolidation": {
+     "passed": 42,
+     "total": 50,
+     "cost_usd": 0.4344,
+     "calls": 263,
+     "input_tokens": 2708182,
+     "output_tokens": 171171,
+     "decision_calls": 1246,
+     "decision_input_tokens": 3900265,
+     "decision_cost_usd": 0.078,
+     "categories": {
+      "merge": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "repeats-in-one-batch"
+       ]
+      },
+      "update": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "cascade-to-group"
+       ]
+      },
+      "recency": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "counts": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entities": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "language": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mission": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "noise-beside-a-routine"
+       ]
+      },
+      "scale": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "repetition": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "assistant-daily-chats"
+       ]
+      }
+     }
+    },
+    "reflect": {
+     "passed": 31,
+     "total": 34,
+     "cost_usd": 0.0914,
+     "calls": 86,
+     "input_tokens": 442445,
+     "output_tokens": 16618,
+     "decision_calls": 527,
+     "decision_input_tokens": 1942215,
+     "decision_cost_usd": 0.0388,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "source_authority": {
+       "passed": 2,
+       "total": 4,
+       "failed": [
+        "sp-datastore",
+        "sp-approvals"
+       ]
+      },
+      "pages": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    },
+    "refresh_pages": {
+     "passed": 33,
+     "total": 40,
+     "cost_usd": 0.2358,
+     "calls": 174,
+     "input_tokens": 1274310,
+     "output_tokens": 63548,
+     "decision_calls": 3348,
+     "decision_input_tokens": 3829850,
+     "decision_cost_usd": 0.0766,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "du-incident-table-0"
+       ]
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "stability": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "du-rerecorded-history-0"
+       ]
+      },
+      "consistency": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "pump-maintenance-zh-0"
+       ]
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    }
+   }
+  },
+  {
+   "model": "claude-haiku-5.5",
+   "provider": "Anthropic",
+   "icon": "/logos/anthropic.webp",
+   "decision": null,
+   "source": {
+    "openrouter_id": "anthropic/claude-haiku-5.5",
+    "price_per_1m": {
+     "input": 0.1,
+     "output": 0.5,
+     "cached_input": 0.01
+    },
+    "decision_price_per_1m_input": null,
+    "ran": "2026-10-31",
+    "judge": "gemini/gemini-3.1-flash-lite",
+    "repeats": 2
+   },
+   "operations": {
+    "retain": {
+     "passed": 81,
+     "total": 84,
+     "cost_usd": 0.0946,
+     "calls": 128,
+     "input_tokens": 578130,
+     "output_tokens": 73491,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "selectivity": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "completeness": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "attribution": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "temporal": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "language": {
+       "passed": 7,
+       "total": 7,
+       "failed": []
+      },
+      "fidelity": {
+       "passed": 4,
+       "total": 5,
+       "failed": [
+        "in-text-correction"
+       ]
+      },
+      "mission": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mode": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "entities": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entity_labels": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "inputs": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "no_invention": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      }
+     }
+    },
+    "consolidation": {
+     "passed": 38,
+     "total": 50,
+     "cost_usd": 0.4861,
+     "calls": 328,
+     "input_tokens": 3501079,
+     "output_tokens": 271929,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "merge": {
+       "passed": 1,
+       "total": 3,
+       "failed": [
+        "restatements-merge",
+        "shared-scope-merges-across-tags"
+       ]
+      },
+      "update": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "cascade-to-group"
+       ]
+      },
+      "recency": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "counts": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entities": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "language": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mission": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "noise-beside-a-routine"
+       ]
+      },
+      "scale": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "repetition": {
+       "passed": 1,
+       "total": 3,
+       "failed": [
+        "coding-agent-sessions",
+        "assistant-daily-chats"
+       ]
+      }
+     }
+    },
+    "reflect": {
+     "passed": 32,
+     "total": 34,
+     "cost_usd": 0.2034,
+     "calls": 147,
+     "input_tokens": 1920924,
+     "output_tokens": 22539,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "source_authority": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "sp-approvals"
+       ]
+      },
+      "pages": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    },
+    "refresh_pages": {
+     "passed": 34,
+     "total": 40,
+     "cost_usd": 0.5654,
+     "calls": 373,
+     "input_tokens": 5011424,
+     "output_tokens": 128441,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "du-incident-table-0"
+       ]
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "stability": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "du-rerecorded-history-0"
+       ]
+      },
+      "consistency": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "pump-maintenance-zh-0"
+       ]
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    }
+   }
+  },
+  {
+   "model": "deepseek-v4.1-flash",
+   "provider": "DeepSeek",
+   "icon": "/logos/deepseek.webp",
+   "openWeights": true,
+   "decision": {
+    "model": "hs-decide-1-flash",
+    "provider": "Hindsight",
+    "onLlmBoards": true
+   },
+   "source": {
+    "openrouter_id": "deepseek/deepseek-v4.1-flash",
+    "price_per_1m": {
+     "input": 0.045,
+     "output": 0.5,
+     "cached_input": 0.006
+    },
+    "decision_price_per_1m_input": 0.02,
+    "ran": "2026-11-01",
+    "judge": "gemini/gemini-3.1-flash-lite",
+    "repeats": 2
+   },
+   "operations": {
+    "consolidation": {
+     "passed": 43,
+     "total": 50,
+     "cost_usd": 0.1907,
+     "calls": 265,
+     "input_tokens": 1997085,
+     "output_tokens": 123674,
+     "decision_calls": 1247,
+     "decision_input_tokens": 3899254,
+     "decision_cost_usd": 0.078,
+     "categories": {
+      "merge": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "cascade-to-group"
+       ]
+      },
+      "recency": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "recency-same-day-amendment-arrives-first"
+       ]
+      },
+      "counts": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entities": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "language": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mission": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "noise-beside-a-routine"
+       ]
+      },
+      "scale": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "repetition": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "assistant-daily-chats"
+       ]
+      }
+     }
+    },
+    "reflect": {
+     "passed": 29,
+     "total": 34,
+     "cost_usd": 0.0649,
+     "calls": 90,
+     "input_tokens": 324242,
+     "output_tokens": 26234,
+     "decision_calls": 540,
+     "decision_input_tokens": 2106356,
+     "decision_cost_usd": 0.0421,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "hq-count-billing"
+       ]
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "source_authority": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "sp-approvals"
+       ]
+      },
+      "pages": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "hq-count-billing"
+       ]
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    },
+    "refresh_pages": {
+     "passed": 30,
+     "total": 40,
+     "cost_usd": 0.2419,
+     "calls": 213,
+     "input_tokens": 1223089,
+     "output_tokens": 122569,
+     "decision_calls": 3527,
+     "decision_input_tokens": 7620700,
+     "decision_cost_usd": 0.1524,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 2,
+       "total": 4,
+       "failed": [
+        "hq-count-billing",
+        "du-incident-table-0"
+       ]
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "stability": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "du-rerecorded-history-0"
+       ]
+      },
+      "consistency": {
+       "passed": 0,
+       "total": 2,
+       "failed": [
+        "pump-maintenance-en-0",
+        "pump-maintenance-zh-0"
+       ]
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    }
+   }
+  },
+  {
+   "model": "deepseek-v4.1-flash",
+   "provider": "DeepSeek",
+   "icon": "/logos/deepseek.webp",
+   "openWeights": true,
+   "decision": null,
+   "source": {
+    "openrouter_id": "deepseek/deepseek-v4.1-flash",
+    "price_per_1m": {
+     "input": 0.045,
+     "output": 0.5,
+     "cached_input": 0.006
+    },
+    "decision_price_per_1m_input": null,
+    "ran": "2026-10-31",
+    "judge": "gemini/gemini-3.1-flash-lite",
+    "repeats": 2
+   },
+   "operations": {
+    "retain": {
+     "passed": 79,
+     "total": 84,
+     "cost_usd": 0.0366,
+     "calls": 142,
+     "input_tokens": 450756,
+     "output_tokens": 55568,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "selectivity": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "completeness": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "sensory-and-emotional"
+       ]
+      },
+      "attribution": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "temporal": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "language": {
+       "passed": 6,
+       "total": 7,
+       "failed": [
+        "chinese-script"
+       ]
+      },
+      "fidelity": {
+       "passed": 4,
+       "total": 5,
+       "failed": [
+        "in-text-correction"
+       ]
+      },
+      "mission": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mode": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "strategy-per-item"
+       ]
+      },
+      "entities": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entity_labels": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "inputs": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "no_invention": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      }
+     }
+    },
+    "consolidation": {
+     "passed": 34,
+     "total": 50,
+     "cost_usd": 0.1853,
+     "calls": 379,
+     "input_tokens": 2949665,
+     "output_tokens": 199229,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "merge": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "restatements-merge"
+       ]
+      },
+      "update": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "cascade-to-group"
+       ]
+      },
+      "recency": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "counts": {
+       "passed": 0,
+       "total": 2,
+       "failed": [
+        "horse-farm",
+        "no-arithmetic"
+       ]
+      },
+      "entities": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "language": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mission": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "noise-beside-a-routine"
+       ]
+      },
+      "scale": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "noisy-personal-contacts"
+       ]
+      },
+      "repetition": {
+       "passed": 0,
+       "total": 3,
+       "failed": [
+        "coding-agent-sessions",
+        "assistant-daily-chats",
+        "repetitive-service-catalogue"
+       ]
+      }
+     }
+    },
+    "reflect": {
+     "passed": 30,
+     "total": 34,
+     "cost_usd": 0.0619,
+     "calls": 150,
+     "input_tokens": 1451705,
+     "output_tokens": 37328,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "source_authority": {
+       "passed": 2,
+       "total": 4,
+       "failed": [
+        "sp-datastore",
+        "sp-approvals"
+       ]
+      },
+      "pages": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    },
+    "refresh_pages": {
+     "passed": 31,
+     "total": 40,
+     "cost_usd": 0.1843,
+     "calls": 412,
+     "input_tokens": 4596683,
+     "output_tokens": 163193,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 2,
+       "total": 4,
+       "failed": [
+        "du-launch-risk-0",
+        "du-incident-table-0"
+       ]
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "stability": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "du-rerecorded-history-0"
+       ]
+      },
+      "consistency": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "pump-maintenance-zh-0"
+       ]
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    }
+   }
+  },
+  {
+   "model": "minimax-m3.1-flash",
+   "provider": "MiniMax",
+   "icon": "/logos/minimax.webp",
+   "openWeights": true,
+   "decision": null,
+   "source": {
+    "openrouter_id": "minimax/minimax-m3.1-flash",
+    "price_per_1m": {
+     "input": 0.15,
+     "output": 0.6,
+     "cached_input": 0.015
+    },
+    "decision_price_per_1m_input": null,
+    "ran": "2026-11-01",
+    "judge": "gemini/gemini-3.1-flash-lite",
+    "repeats": 2
+   },
+   "operations": {
+    "retain": {
+     "passed": 83,
+     "total": 84,
+     "cost_usd": 0.0507,
+     "calls": 129,
+     "input_tokens": 400701,
+     "output_tokens": 53877,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "selectivity": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "completeness": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "attribution": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "temporal": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "language": {
+       "passed": 7,
+       "total": 7,
+       "failed": []
+      },
+      "fidelity": {
+       "passed": 5,
+       "total": 5,
+       "failed": []
+      },
+      "mission": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mode": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "entities": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entity_labels": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "inputs": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "no_invention": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "place-borrowed-from-nearby-subject"
+       ]
+      }
+     }
+    },
+    "consolidation": {
+     "passed": 38,
+     "total": 50,
+     "cost_usd": 0.3176,
+     "calls": 336,
+     "input_tokens": 2596276,
+     "output_tokens": 201976,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "merge": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "repeats-in-one-batch"
+       ]
+      },
+      "update": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "cascade-to-group"
+       ]
+      },
+      "recency": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "counts": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "horse-farm"
+       ]
+      },
+      "entities": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "language": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "language-mixed-update"
+       ]
+      },
+      "mission": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "noise-beside-a-routine"
+       ]
+      },
+      "scale": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "repetition": {
+       "passed": 1,
+       "total": 3,
+       "failed": [
+        "assistant-daily-chats",
+        "repetitive-service-catalogue"
+       ]
+      }
+     }
+    },
+    "reflect": {
+     "passed": 31,
+     "total": 34,
+     "cost_usd": 0.1657,
+     "calls": 171,
+     "input_tokens": 2163427,
+     "output_tokens": 45724,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "source_authority": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "sp-approvals"
+       ]
+      },
+      "pages": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    },
+    "refresh_pages": {
+     "passed": 30,
+     "total": 40,
+     "cost_usd": 0.4974,
+     "calls": 501,
+     "input_tokens": 6433017,
+     "output_tokens": 237909,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 2,
+       "total": 4,
+       "failed": [
+        "hq-count-billing",
+        "du-incident-table-0"
+       ]
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "stability": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "du-rerecorded-history-0"
+       ]
+      },
+      "consistency": {
+       "passed": 0,
+       "total": 2,
+       "failed": [
+        "pump-maintenance-en-0",
+        "pump-maintenance-zh-0"
+       ]
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    }
+   }
+  },
+  {
+   "model": "gpt-5.6-luna",
+   "provider": "OpenAI",
+   "icon": "/openai.png",
+   "decision": null,
+   "source": {
+    "openrouter_id": "openai/gpt-5.6-luna",
+    "price_per_1m": {
+     "input": 0.2,
+     "output": 1.2,
+     "cached_input": 0.02
+    },
+    "decision_price_per_1m_input": null,
+    "ran": "2026-11-01",
+    "judge": "codex/gemini-3.1-flash-lite",
+    "repeats": 2
+   },
+   "operations": {
+    "retain": {
+     "passed": 78,
+     "total": 84,
+     "cost_usd": 0.0617,
+     "calls": 128,
+     "input_tokens": 375570,
+     "output_tokens": 37177,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "selectivity": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "completeness": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "attribution": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "coreference-roles"
+       ]
+      },
+      "temporal": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "language": {
+       "passed": 6,
+       "total": 7,
+       "failed": [
+        "chinese-script"
+       ]
+      },
+      "fidelity": {
+       "passed": 5,
+       "total": 5,
+       "failed": []
+      },
+      "mission": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mode": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "entities": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entity_labels": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "inputs": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "no_invention": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "date-borrowed-from-nearby-subject"
+       ]
+      }
+     }
+    },
+    "consolidation": {
+     "passed": 34,
+     "total": 50,
+     "cost_usd": 0.4408,
+     "calls": 331,
+     "input_tokens": 2487883,
+     "output_tokens": 157585,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "merge": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "cascade-to-group"
+       ]
+      },
+      "recency": {
+       "passed": 0,
+       "total": 2,
+       "failed": [
+        "recency-is-when-stated",
+        "recency-same-day-amendment-arrives-first"
+       ]
+      },
+      "counts": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entities": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "resolve-reference"
+       ]
+      },
+      "language": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mission": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "noise-beside-a-routine"
+       ]
+      },
+      "scale": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "repetition": {
+       "passed": 0,
+       "total": 3,
+       "failed": [
+        "coding-agent-sessions",
+        "assistant-daily-chats",
+        "repetitive-service-catalogue"
+       ]
+      }
+     }
+    },
+    "reflect": {
+     "passed": 32,
+     "total": 34,
+     "cost_usd": 0.2459,
+     "calls": 146,
+     "input_tokens": 1268494,
+     "output_tokens": 9115,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "source_authority": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "sp-approvals"
+       ]
+      },
+      "pages": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    },
+    "refresh_pages": {
+     "passed": 34,
+     "total": 40,
+     "cost_usd": 0.5608,
+     "calls": 338,
+     "input_tokens": 2923368,
+     "output_tokens": 63463,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "du-oncall-departed-0"
+       ]
+      },
+      "aggregation": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "stability": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "du-rerecorded-history-0"
+       ]
+      },
+      "consistency": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "pump-maintenance-en-0"
+       ]
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    }
+   }
+  },
+  {
+   "model": "gpt-5.6-terra",
+   "provider": "OpenAI",
+   "icon": "/openai.png",
+   "decision": null,
+   "source": {
+    "openrouter_id": "openai/gpt-5.6-terra",
+    "price_per_1m": {
+     "input": 2.0,
+     "output": 12.0,
+     "cached_input": 0.2
+    },
+    "decision_price_per_1m_input": null,
+    "ran": "2026-11-01",
+    "judge": "gemini/gemini-3.1-flash-lite",
+    "repeats": 2
+   },
+   "operations": {
+    "retain": {
+     "passed": 77,
+     "total": 84,
+     "cost_usd": 0.6033,
+     "calls": 128,
+     "input_tokens": 375570,
+     "output_tokens": 36073,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "selectivity": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "completeness": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "attribution": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "coreference-roles"
+       ]
+      },
+      "temporal": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "language": {
+       "passed": 6,
+       "total": 7,
+       "failed": [
+        "en-git-commit"
+       ]
+      },
+      "fidelity": {
+       "passed": 5,
+       "total": 5,
+       "failed": []
+      },
+      "mission": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mode": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "entities": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entity_labels": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "inputs": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "no_invention": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "date-borrowed-from-nearby-subject"
+       ]
+      }
+     }
+    },
+    "consolidation": {
+     "passed": 37,
+     "total": 50,
+     "cost_usd": 4.2677,
+     "calls": 328,
+     "input_tokens": 2478291,
+     "output_tokens": 148132,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "merge": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "repeats-in-one-batch"
+       ]
+      },
+      "update": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "cascade-to-group"
+       ]
+      },
+      "recency": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "counts": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entities": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "language": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mission": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "noise-beside-a-routine"
+       ]
+      },
+      "scale": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "noisy-service-catalogue-mission"
+       ]
+      },
+      "repetition": {
+       "passed": 1,
+       "total": 3,
+       "failed": [
+        "coding-agent-sessions",
+        "repetitive-service-catalogue"
+       ]
+      }
+     }
+    },
+    "reflect": {
+     "passed": 32,
+     "total": 34,
+     "cost_usd": 2.5699,
+     "calls": 148,
+     "input_tokens": 1310853,
+     "output_tokens": 9288,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "source_authority": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "sp-approvals"
+       ]
+      },
+      "pages": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    },
+    "refresh_pages": {
+     "passed": 31,
+     "total": 40,
+     "cost_usd": 5.5528,
+     "calls": 316,
+     "input_tokens": 2896392,
+     "output_tokens": 51006,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "stability": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "du-rerecorded-history-0"
+       ]
+      },
+      "consistency": {
+       "passed": 0,
+       "total": 2,
+       "failed": [
+        "pump-maintenance-en-0",
+        "pump-maintenance-zh-0"
+       ]
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    }
+   }
+  },
+  {
+   "model": "gpt-6-luna",
+   "provider": "OpenAI",
+   "icon": "/openai.png",
+   "decision": {
+    "model": "hs-decide-1-flash",
+    "provider": "Hindsight",
+    "onLlmBoards": true
+   },
+   "source": {
+    "openrouter_id": "openai/gpt-6-luna",
+    "price_per_1m": {
+     "input": 0.1,
+     "output": 0.5,
+     "cached_input": 0.01
+    },
+    "decision_price_per_1m_input": 0.02,
+    "ran": "2026-11-02",
+    "judge": "gemini/gemini-3.1-flash-lite",
+    "repeats": 2
+   },
+   "operations": {
+    "consolidation": {
+     "passed": 35,
+     "total": 50,
+     "cost_usd": 0.2249,
+     "calls": 269,
+     "input_tokens": 1956281,
+     "output_tokens": 104132,
+     "decision_calls": 1246,
+     "decision_input_tokens": 3927975,
+     "decision_cost_usd": 0.0786,
+     "categories": {
+      "merge": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "repeats-in-one-batch"
+       ]
+      },
+      "update": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "cascade-to-group"
+       ]
+      },
+      "recency": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "recency-is-when-stated"
+       ]
+      },
+      "counts": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entities": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "resolve-reference"
+       ]
+      },
+      "language": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "language-mixed-update"
+       ]
+      },
+      "mission": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "noise-beside-a-routine"
+       ]
+      },
+      "scale": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "repetition": {
+       "passed": 0,
+       "total": 3,
+       "failed": [
+        "coding-agent-sessions",
+        "assistant-daily-chats",
+        "repetitive-service-catalogue"
+       ]
+      }
+     }
+    },
+    "reflect": {
+     "passed": 32,
+     "total": 34,
+     "cost_usd": 0.0661,
+     "calls": 88,
+     "input_tokens": 298812,
+     "output_tokens": 4396,
+     "decision_calls": 529,
+     "decision_input_tokens": 1853659,
+     "decision_cost_usd": 0.0371,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "source_authority": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "sp-approvals"
+       ]
+      },
+      "pages": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    },
+    "refresh_pages": {
+     "passed": 36,
+     "total": 40,
+     "cost_usd": 0.1265,
+     "calls": 170,
+     "input_tokens": 815805,
+     "output_tokens": 26979,
+     "decision_calls": 3348,
+     "decision_input_tokens": 2991613,
+     "decision_cost_usd": 0.0598,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "stability": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "du-rerecorded-history-0"
+       ]
+      },
+      "consistency": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "pump-maintenance-zh-0"
+       ]
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    }
+   }
+  },
+  {
+   "model": "gpt-6-luna",
+   "provider": "OpenAI",
+   "icon": "/openai.png",
+   "decision": null,
+   "source": {
+    "openrouter_id": "openai/gpt-6-luna",
+    "price_per_1m": {
+     "input": 0.1,
+     "output": 0.5,
+     "cached_input": 0.01
+    },
+    "decision_price_per_1m_input": null,
+    "ran": "2026-11-01",
+    "judge": "gemini/gemini-3.1-flash-lite",
+    "repeats": 2
+   },
+   "operations": {
+    "retain": {
+     "passed": 79,
+     "total": 84,
+     "cost_usd": 0.0233,
+     "calls": 128,
+     "input_tokens": 375570,
+     "output_tokens": 29499,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "selectivity": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "completeness": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "attribution": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "temporal": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "language": {
+       "passed": 5,
+       "total": 7,
+       "failed": [
+        "chinese-script",
+        "en-coding-session"
+       ]
+      },
+      "fidelity": {
+       "passed": 5,
+       "total": 5,
+       "failed": []
+      },
+      "mission": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mode": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "entities": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entity_labels": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "inputs": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "no_invention": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      }
+     }
+    },
+    "consolidation": {
+     "passed": 34,
+     "total": 50,
+     "cost_usd": 0.2059,
+     "calls": 328,
+     "input_tokens": 2484156,
+     "output_tokens": 160903,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "merge": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "employer-supersedes"
+       ]
+      },
+      "recency": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "recency-same-day-amendment-arrives-first"
+       ]
+      },
+      "counts": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entities": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "resolve-reference"
+       ]
+      },
+      "language": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mission": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "noise-beside-a-routine"
+       ]
+      },
+      "scale": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "repetition": {
+       "passed": 0,
+       "total": 3,
+       "failed": [
+        "coding-agent-sessions",
+        "assistant-daily-chats",
+        "repetitive-service-catalogue"
+       ]
+      }
+     }
+    },
+    "reflect": {
+     "passed": 32,
+     "total": 34,
+     "cost_usd": 0.1353,
+     "calls": 150,
+     "input_tokens": 1343684,
+     "output_tokens": 7979,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "source_authority": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "sp-approvals"
+       ]
+      },
+      "pages": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    },
+    "refresh_pages": {
+     "passed": 33,
+     "total": 40,
+     "cost_usd": 0.2932,
+     "calls": 354,
+     "input_tokens": 3087749,
+     "output_tokens": 58464,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "du-oncall-departed-0"
+       ]
+      },
+      "aggregation": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "stability": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "du-rerecorded-history-0"
+       ]
+      },
+      "consistency": {
+       "passed": 0,
+       "total": 2,
+       "failed": [
+        "pump-maintenance-en-0",
+        "pump-maintenance-zh-0"
+       ]
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    }
+   }
+  },
+  {
+   "model": "gpt-6.1-terra",
+   "provider": "OpenAI",
+   "icon": "/openai.png",
+   "decision": null,
+   "source": {
+    "openrouter_id": "openai/gpt-6.1-terra",
+    "price_per_1m": {
+     "input": 1.0,
+     "output": 5.0,
+     "cached_input": 0.05
+    },
+    "decision_price_per_1m_input": null,
+    "ran": "2026-11-01",
+    "judge": "gemini/gemini-3.1-flash-lite",
+    "repeats": 2
+   },
+   "operations": {
+    "retain": {
+     "passed": 82,
+     "total": 84,
+     "cost_usd": 0.2225,
+     "calls": 128,
+     "input_tokens": 375570,
+     "output_tokens": 30676,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "selectivity": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "completeness": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "attribution": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "temporal": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "language": {
+       "passed": 7,
+       "total": 7,
+       "failed": []
+      },
+      "fidelity": {
+       "passed": 5,
+       "total": 5,
+       "failed": []
+      },
+      "mission": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mode": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "entities": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entity_labels": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "inputs": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "no_invention": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "date-borrowed-from-nearby-subject"
+       ]
+      }
+     }
+    },
+    "consolidation": {
+     "passed": 34,
+     "total": 50,
+     "cost_usd": 2.2317,
+     "calls": 328,
+     "input_tokens": 2478445,
+     "output_tokens": 210170,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "merge": {
+       "passed": 1,
+       "total": 3,
+       "failed": [
+        "restatements-merge",
+        "repeats-in-one-batch"
+       ]
+      },
+      "update": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "recency": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "counts": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entities": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "resolve-reference"
+       ]
+      },
+      "language": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mission": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "noise-beside-a-routine"
+       ]
+      },
+      "scale": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "repetition": {
+       "passed": 0,
+       "total": 3,
+       "failed": [
+        "coding-agent-sessions",
+        "assistant-daily-chats",
+        "repetitive-service-catalogue"
+       ]
+      }
+     }
+    },
+    "reflect": {
+     "passed": 32,
+     "total": 34,
+     "cost_usd": 1.5989,
+     "calls": 146,
+     "input_tokens": 1577138,
+     "output_tokens": 7804,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "source_authority": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "sp-approvals"
+       ]
+      },
+      "pages": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    },
+    "refresh_pages": {
+     "passed": 34,
+     "total": 40,
+     "cost_usd": 3.1645,
+     "calls": 375,
+     "input_tokens": 3467839,
+     "output_tokens": 48674,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "du-oncall-departed-0"
+       ]
+      },
+      "aggregation": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "stability": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "consistency": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "pump-maintenance-zh-0"
+       ]
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    }
+   }
+  },
+  {
+   "model": "qwen3.8-flash",
+   "provider": "Qwen",
+   "icon": "/logos/qwen.webp",
+   "openWeights": true,
+   "decision": null,
+   "source": {
+    "openrouter_id": "qwen/qwen3.8-flash",
+    "price_per_1m": {
+     "input": 0.15,
+     "output": 0.47,
+     "cached_input": 0.016
+    },
+    "decision_price_per_1m_input": null,
+    "ran": "2026-10-31",
+    "judge": "gemini/gemini-3.1-flash-lite",
+    "repeats": 2
+   },
+   "operations": {
+    "retain": {
+     "passed": 82,
+     "total": 84,
+     "cost_usd": 0.0462,
+     "calls": 127,
+     "input_tokens": 433157,
+     "output_tokens": 69928,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "selectivity": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "completeness": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "attribution": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "temporal": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "language": {
+       "passed": 7,
+       "total": 7,
+       "failed": []
+      },
+      "fidelity": {
+       "passed": 5,
+       "total": 5,
+       "failed": []
+      },
+      "mission": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mode": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "entities": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entity_labels": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "inputs": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "no_invention": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      }
+     }
+    },
+    "consolidation": {
+     "passed": 28,
+     "total": 50,
+     "cost_usd": 0.2207,
+     "calls": 259,
+     "input_tokens": 1849093,
+     "output_tokens": 208185,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "merge": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 2,
+       "total": 4,
+       "failed": [
+        "correction-retires-false-belief",
+        "cascade-to-group"
+       ]
+      },
+      "recency": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "counts": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "horse-farm"
+       ]
+      },
+      "entities": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "distinct-entities-stay-apart"
+       ]
+      },
+      "language": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "language-mixed-update"
+       ]
+      },
+      "mission": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "noise-beside-a-routine"
+       ]
+      },
+      "scale": {
+       "passed": 0,
+       "total": 3,
+       "failed": [
+        "noisy-service-catalogue",
+        "noisy-personal-contacts",
+        "noisy-service-catalogue-mission"
+       ]
+      },
+      "repetition": {
+       "passed": 0,
+       "total": 3,
+       "failed": [
+        "coding-agent-sessions",
+        "assistant-daily-chats",
+        "repetitive-service-catalogue"
+       ]
+      }
+     }
+    },
+    "reflect": {
+     "passed": 27,
+     "total": 34,
+     "cost_usd": 0.1465,
+     "calls": 168,
+     "input_tokens": 2182011,
+     "output_tokens": 27084,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "source_authority": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "sp-approvals"
+       ]
+      },
+      "pages": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "hq-release-prod"
+       ]
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    },
+    "refresh_pages": {
+     "passed": 23,
+     "total": 40,
+     "cost_usd": 0.3017,
+     "calls": 353,
+     "input_tokens": 4954492,
+     "output_tokens": 112742,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "hq-numeric-outage"
+       ]
+      },
+      "update": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "du-oncall-departed-0"
+       ]
+      },
+      "aggregation": {
+       "passed": 1,
+       "total": 4,
+       "failed": [
+        "hq-count-billing",
+        "du-launch-risk-0",
+        "du-incident-table-0"
+       ]
+      },
+      "no_overreach": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "hq-absent-2024"
+       ]
+      },
+      "stability": {
+       "passed": 1,
+       "total": 3,
+       "failed": [
+        "page-never-collapses",
+        "du-rerecorded-history-0"
+       ]
+      },
+      "consistency": {
+       "passed": 0,
+       "total": 2,
+       "failed": [
+        "pump-maintenance-en-0",
+        "pump-maintenance-zh-0"
+       ]
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    }
+   }
+  },
+  {
+   "model": "glm-5.3-flash",
+   "provider": "Z.ai",
+   "icon": "/logos/zai.webp",
+   "openWeights": true,
+   "decision": {
+    "model": "hs-decide-1-flash",
+    "provider": "Hindsight",
+    "onLlmBoards": true
+   },
+   "source": {
+    "openrouter_id": "z-ai/glm-5.3-flash",
+    "price_per_1m": {
+     "input": 0.0285,
+     "output": 0.0923,
+     "cached_input": 0.0285
+    },
+    "decision_price_per_1m_input": 0.02,
+    "ran": "2026-11-01",
+    "judge": "gemini/gemini-3.1-flash-lite",
+    "repeats": 2
+   },
+   "operations": {
+    "consolidation": {
+     "passed": 42,
+     "total": 50,
+     "cost_usd": 0.1449,
+     "calls": 267,
+     "input_tokens": 1945246,
+     "output_tokens": 124831,
+     "decision_calls": 1246,
+     "decision_input_tokens": 3894396,
+     "decision_cost_usd": 0.0779,
+     "categories": {
+      "merge": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "recency": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "recency-same-day-amendment-arrives-first"
+       ]
+      },
+      "counts": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entities": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "distinct-entities-stay-apart"
+       ]
+      },
+      "language": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mission": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "scale": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "repetition": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "assistant-daily-chats"
+       ]
+      }
+     }
+    },
+    "reflect": {
+     "passed": 32,
+     "total": 34,
+     "cost_usd": 0.0503,
+     "calls": 90,
+     "input_tokens": 297750,
+     "output_tokens": 16789,
+     "decision_calls": 536,
+     "decision_input_tokens": 2013132,
+     "decision_cost_usd": 0.0403,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "source_authority": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "sp-approvals"
+       ]
+      },
+      "pages": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    },
+    "refresh_pages": {
+     "passed": 31,
+     "total": 40,
+     "cost_usd": 0.1253,
+     "calls": 172,
+     "input_tokens": 871462,
+     "output_tokens": 71253,
+     "decision_calls": 3349,
+     "decision_input_tokens": 4692581,
+     "decision_cost_usd": 0.0939,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "du-incident-table-0"
+       ]
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "stability": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "du-rerecorded-history-0"
+       ]
+      },
+      "consistency": {
+       "passed": 0,
+       "total": 2,
+       "failed": [
+        "pump-maintenance-en-0",
+        "pump-maintenance-zh-0"
+       ]
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    }
+   }
+  },
+  {
+   "model": "glm-5.3-flash",
+   "provider": "Z.ai",
+   "icon": "/logos/zai.webp",
+   "openWeights": true,
+   "decision": null,
+   "source": {
+    "openrouter_id": "z-ai/glm-5.3-flash",
+    "price_per_1m": {
+     "input": 0.0133,
+     "output": 0.1584,
+     "cached_input": 0.0133
+    },
+    "decision_price_per_1m_input": null,
+    "ran": "2026-11-01",
+    "judge": "gemini/gemini-3.1-flash-lite",
+    "repeats": 2
+   },
+   "operations": {
+    "retain": {
+     "passed": 78,
+     "total": 84,
+     "cost_usd": 0.0174,
+     "calls": 192,
+     "input_tokens": 661030,
+     "output_tokens": 54325,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "selectivity": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "completeness": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "attribution": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "temporal": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "language": {
+       "passed": 6,
+       "total": 7,
+       "failed": [
+        "it-coding-session"
+       ]
+      },
+      "fidelity": {
+       "passed": 4,
+       "total": 5,
+       "failed": [
+        "in-text-correction"
+       ]
+      },
+      "mission": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mode": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "entities": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entity_labels": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "inputs": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "no_invention": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      }
+     }
+    },
+    "consolidation": {
+     "passed": 18,
+     "total": 50,
+     "cost_usd": 0.1045,
+     "calls": 688,
+     "input_tokens": 5132332,
+     "output_tokens": 228995,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "merge": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 2,
+       "total": 4,
+       "failed": [
+        "employer-supersedes",
+        "cascade-to-group"
+       ]
+      },
+      "recency": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "recency-same-day-amendment-arrives-first"
+       ]
+      },
+      "counts": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "horse-farm"
+       ]
+      },
+      "entities": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "distinct-entities-stay-apart"
+       ]
+      },
+      "language": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mission": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "noise-beside-a-routine"
+       ]
+      },
+      "scale": {
+       "passed": 0,
+       "total": 3,
+       "failed": [
+        "noisy-service-catalogue",
+        "noisy-personal-contacts",
+        "noisy-service-catalogue-mission"
+       ]
+      },
+      "repetition": {
+       "passed": 0,
+       "total": 3,
+       "failed": [
+        "coding-agent-sessions",
+        "assistant-daily-chats",
+        "repetitive-service-catalogue"
+       ]
+      }
+     }
+    },
+    "reflect": {
+     "passed": 31,
+     "total": 34,
+     "cost_usd": 0.0236,
+     "calls": 153,
+     "input_tokens": 1509347,
+     "output_tokens": 22151,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "hq-count-billing"
+       ]
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "source_authority": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "sp-approvals"
+       ]
+      },
+      "pages": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    },
+    "refresh_pages": {
+     "passed": 30,
+     "total": 40,
+     "cost_usd": 0.0634,
+     "calls": 369,
+     "input_tokens": 3383613,
+     "output_tokens": 116059,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "hq-entity-port"
+       ]
+      },
+      "update": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "du-oncall-departed-0"
+       ]
+      },
+      "aggregation": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "du-incident-table-0"
+       ]
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "stability": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "du-rerecorded-history-0"
+       ]
+      },
+      "consistency": {
+       "passed": 0,
+       "total": 2,
+       "failed": [
+        "pump-maintenance-en-0",
+        "pump-maintenance-zh-0"
+       ]
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    }
+   }
+  }
+ ]
+}

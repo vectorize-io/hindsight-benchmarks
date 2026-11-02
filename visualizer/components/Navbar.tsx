@@ -10,10 +10,11 @@ import { ArrowUpRight, Moon, Sun } from 'lucide-react'
 // tinted surface, then GitHub, the theme toggle and the one call to action.
 const DOCS = 'https://hindsight.vectorize.io'
 
-// This site's two sections, then Docs (leaves the site) after a separator.
+// This site's three sections, then Docs (leaves the site) after a separator.
 const LINKS = [
   { label: 'Benchmarks', href: '/benchmarks', section: (p: string) => p.startsWith('/benchmarks') },
   { label: 'Model leaderboards', href: '/leaderboards', section: (p: string) => p.startsWith('/leaderboards') },
+  { label: 'Hindsight Models', href: '/models', section: (p: string) => p.startsWith('/models') },
   { label: 'Docs', href: `${DOCS}/`, external: true },
 ]
 

@@ -1,0 +1,41 @@
+{
+  "amb_commit": "37a8f4638dbc6058c611d98dc16038c457d1379d",
+  "dataset": "locomo-fixed/locomo10",
+  "rows": [
+    {
+      "run": "hindsight-gemma4",
+      "memory_models": [
+        "Hindsight",
+        "gemma-4-26b-a4b"
+      ],
+      "questions": 1502,
+      "accuracy": 85.5,
+      "by_type": {
+        "multi-hop": 67.7,
+        "open-domain": 89.2,
+        "single-hop": 81.5,
+        "temporal": 84.5
+      },
+      "answer_s": 10.6,
+      "judge": "gemini-3.1-flash-lite"
+    },
+    {
+      "run": "hindsight-gemma4-hs-decide",
+      "memory_models": [
+        "Hindsight",
+        "gemma-4-26b-a4b",
+        "hs-decide-1-flash"
+      ],
+      "questions": 1502,
+      "accuracy": 86.5,
+      "by_type": {
+        "multi-hop": 67.7,
+        "open-domain": 91.4,
+        "single-hop": 78.9,
+        "temporal": 85.8
+      },
+      "answer_s": 10.8,
+      "judge": "gemini-3.1-flash-lite"
+    }
+  ]
+}

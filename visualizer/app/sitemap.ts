@@ -1,3 +1,4 @@
+import { FAMILIES } from '@/lib/models'
 import type { MetadataRoute } from 'next'
 import { BOARDS } from '@/lib/data'
 
@@ -6,7 +7,7 @@ export const dynamic = 'force-static'
 const siteUrl = 'https://benchmarks.hindsight.vectorize.io'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = ['', '/benchmarks', '/leaderboards', ...BOARDS.map((b) => `/leaderboards/${b.id}`)]
+  const pages = ['', '/benchmarks', '/leaderboards', '/models', ...FAMILIES.map((f) => `/models/${f.id}`), ...BOARDS.map((b) => `/leaderboards/${b.id}`)]
   return pages.map((path) => ({
     url: `${siteUrl}${path}`,
     lastModified: new Date(),

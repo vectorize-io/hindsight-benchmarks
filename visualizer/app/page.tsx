@@ -1,113 +1,173 @@
-import type { Metadata } from 'next'
-import Link from 'next/link'
-import { ArrowRight, ArrowUpRight } from 'lucide-react'
-import { AMB_RESULTS } from '@/lib/amb'
-import { BOARDS } from '@/lib/data'
-import { MockNotice, PageHero } from '@/components/Page'
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { AMB_RESULTS, AMB_SITE } from "@/lib/amb";
+import { BOARDS } from "@/lib/data";
+import { FAMILIES } from "@/lib/models";
+import { PageHero } from "@/components/Page";
+import { ModelScatter } from "@/components/BoardView";
 
 export const metadata: Metadata = {
-  title: { absolute: 'Hindsight Benchmarks' },
-  description: 'How Hindsight scores as a whole on the Agent Memory Benchmark, and which models to run inside it.',
+  title: { absolute: "Hindsight Benchmarks" },
+  description:
+    "How Hindsight scores as a whole on the Agent Memory Benchmark, and which models to run inside it.",
+};
+
+// One column per place to go next, side by side so all three show without scrolling.
+function Column({
+  label,
+  title,
+  text,
+  href,
+  cta,
+  children,
+}: {
+  label: string;
+  title: React.ReactNode;
+  text: string;
+  href: string;
+  cta: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="flex flex-col min-w-0">
+      <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2">
+        {label}
+      </div>
+      <h2 className="font-heading font-extrabold text-xl tracking-[-0.02em] leading-tight mb-2">
+        {title}
+      </h2>
+      <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+        {text}
+      </p>
+      <div className="mb-4">{children}</div>
+      <Link
+        href={href}
+        className="mt-auto inline-flex items-center justify-center gap-1.5 h-9 px-4 rounded-lg font-heading font-bold text-sm text-white hover:brightness-110 transition"
+        style={{
+          background: "linear-gradient(90deg, #0074d9 0%, #009296 100%)",
+        }}
+      >
+        {cta} <ArrowRight className="w-4 h-4" />
+      </Link>
+    </section>
+  );
+}
+
+function Row({
+  href,
+  name,
+  detail,
+  value,
+}: {
+  href: string;
+  name: string;
+  detail?: string;
+  value?: string;
+}) {
+  const cls =
+    "group flex items-center gap-3 py-1.5 text-sm hover:text-[hsl(var(--primary))] transition-colors";
+  const body = (
+    <>
+      <span className="font-medium truncate">{name}</span>
+      {detail && (
+        <span className="font-mono text-xs text-muted-foreground truncate">
+          {detail}
+        </span>
+      )}
+      <span className="ml-auto font-mono font-semibold tabular-nums">
+        {value}
+      </span>
+    </>
+  );
+  return href.startsWith("http") ? (
+    <a href={href} className={cls}>
+      {body}
+    </a>
+  ) : (
+    <Link href={href} className={cls}>
+      {body}
+    </Link>
+  );
 }
 
 export default function Home() {
+  const allOps = BOARDS.find((b) => b.id === "all-operations")!;
   return (
     <>
       <PageHero
         title="Hindsight Benchmarks"
         subtitle="How Hindsight scores as a whole on public memory benchmarks, and which models to run inside it."
       />
-      <main className="max-w-6xl mx-auto px-4 pt-12 space-y-16">
-        {/* Benchmarks first: the whole system. */}
-        <section className="grid lg:grid-cols-[1fr_1.4fr] gap-8 lg:gap-12 items-start">
-          <div>
-            <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">Benchmarks</div>
-            <h2 className="font-heading font-extrabold text-3xl tracking-[-0.02em] leading-tight mb-3">
-              #1 on every <span className="gradient-primary-text">Agent Memory Benchmark</span> dataset
-            </h2>
-            <p className="text-muted-foreground leading-relaxed mb-6">
-              Hindsight end to end, with its recommended setup, on LongMemEval, LoComo, PersonaMem, BEAM and LifeBench. The same datasets
-              other memory systems run, with every run public.
-            </p>
-            <Link
-              href="/benchmarks"
-              className="inline-flex items-center gap-1.5 h-9 px-4 rounded-lg font-heading font-bold text-sm text-white hover:brightness-110 transition"
-              style={{ background: 'linear-gradient(90deg, #0074d9 0%, #009296 100%)' }}
-            >
-              See all results <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <main className="max-w-6xl mx-auto px-4 pt-8 grid md:grid-cols-[1fr_1.4fr_1fr] gap-10 items-stretch">
+        <Column
+          label="Benchmarks"
+          title={
+            <>
+              How Hindsight compares to{" "}
+              <span className="gradient-primary-text">
+                other memory systems
+              </span>
+            </>
+          }
+          text="#1 on every Agent Memory Benchmark dataset, the same datasets other memory systems run."
+          href="/benchmarks"
+          cta="See all results"
+        >
+          <div className="divide-y divide-border border-y border-border">
             {AMB_RESULTS.map((r) => (
-              <a
+              <Row
                 key={`${r.benchmark}-${r.split}`}
                 href={r.href}
-                title={`${r.benchmark} ${r.split}: open the run on agentmemorybenchmark.ai`}
-                className="group rounded-xl border border-border p-3.5 hover:border-[hsl(var(--primary))]/50 transition"
-              >
-                <div className="flex items-baseline justify-between text-xs mb-2">
-                  <span className="font-medium truncate">{r.benchmark}</span>
-                  <span className="font-mono text-muted-foreground">{r.split}</span>
-                </div>
-                <div className="font-heading font-extrabold text-2xl tabular-nums tracking-tight">
-                  {r.score}
-                  <span className="text-sm text-muted-foreground font-bold">%</span>
-                </div>
-                <div className="mt-2 h-1 rounded-full bg-secondary overflow-hidden">
-                  <div className="h-full rounded-full" style={{ width: `${r.score}%`, background: 'linear-gradient(90deg, #0074d9, #009296)' }} />
-                </div>
-                <ArrowUpRight className="w-3 h-3 mt-2 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
-              </a>
+                name={r.benchmark}
+                detail={r.split}
+                value={`${r.score}%`}
+              />
             ))}
           </div>
-        </section>
+          <a
+            href={AMB_SITE}
+            className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-[hsl(var(--primary))]"
+          >
+            Compare all systems{" "}
+            <ArrowRight className="w-3 h-3" />
+          </a>
+        </Column>
 
-        <div className="border-t border-border" />
+        <Column
+          label="Model leaderboards"
+          title="Which model to run, operation by operation"
+          text="One leaderboard per Hindsight operation. Each swaps one model and keeps the rest fixed."
+          href="/leaderboards"
+          cta="All leaderboards"
+        >
+          <ModelScatter rows={allOps.tabs[0].rows} task={allOps.title} bare />
+        </Column>
 
-        {/* Then the parts: which model behind each operation. */}
-        <section>
-          <div className="flex flex-wrap items-end justify-between gap-4 mb-6">
-            <div className="max-w-2xl">
-              <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">Model leaderboards</div>
-              <h2 className="font-heading font-extrabold text-3xl tracking-[-0.02em] leading-tight mb-3">Which model to run, operation by operation</h2>
-              <p className="text-muted-foreground leading-relaxed">
-                One leaderboard per Hindsight operation. Each swaps one model and keeps the rest fixed, with quality, cost and calls side by
-                side.
-              </p>
-              <MockNotice />
-            </div>
-            <Link href="/leaderboards" className="text-sm font-medium text-[hsl(var(--primary))] inline-flex items-center gap-1">
-              All leaderboards <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {BOARDS.map((b) => {
-              // A baseline row ("no decision model") is a yardstick, not a candidate.
-              const leader = b.tabs[0].rows.filter((r) => r.tag !== 'baseline').sort((x, y) => y.quality - x.quality)[0]
+        <Column
+          label="Hindsight Models"
+          title="Our own models, on public benchmarks"
+          text="The models behind Hindsight, next to the ones people use today, on benchmarks we did not make."
+          href="/models"
+          cta="All models"
+        >
+          <div className="divide-y divide-border border-y border-border">
+            {FAMILIES.map((f) => {
+              const b = f.benchmarks[0];
+              const score = b && f.rows[0]?.scores[b.id];
               return (
-                <Link
-                  key={b.id}
-                  href={`/leaderboards/${b.id}`}
-                  className="group rounded-xl border border-border p-5 hover:border-[hsl(var(--primary))]/50 transition"
-                >
-                  <div className="flex items-baseline justify-between mb-1">
-                    <h3 className="font-heading font-bold">{b.title}</h3>
-                    <ArrowRight className="w-3.5 h-3.5 text-muted-foreground group-hover:translate-x-0.5 transition-transform" />
-                  </div>
-                  <p className="text-sm text-muted-foreground mb-4">{b.short}</p>
-                  {leader && (
-                    <div className="flex items-center justify-between text-sm rounded-lg bg-secondary px-3 py-2">
-                      <span className="text-muted-foreground">Leader</span>
-                      <span className="font-mono text-[13px] truncate ml-3">{leader.model}</span>
-                      <span className="font-mono font-semibold tabular-nums ml-3">{leader.quality.toFixed(1)}</span>
-                    </div>
-                  )}
-                </Link>
-              )
+                <Row
+                  key={f.id}
+                  href={`/models/${f.id}`}
+                  name={f.title}
+                  detail={f.model}
+                  value={score != null ? score.toFixed(1) : undefined}
+                />
+              );
             })}
           </div>
-        </section>
+        </Column>
       </main>
     </>
-  )
+  );
 }

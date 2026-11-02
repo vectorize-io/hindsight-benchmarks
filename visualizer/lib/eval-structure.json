@@ -1,5 +1,5 @@
 {
-  "hindsight_commit": "84d464e7974ee5f4755636cce4a9613f75bea7d3",
+  "hindsight_commit": "7b46a07c82f997903230f0fb33deafe9dfd2e22b",
   "operations": {
     "retain": {
       "categories": [
@@ -120,122 +120,14 @@
       ],
       "benchmarks": []
     },
-    "recall": {
-      "categories": [
-        {
-          "id": "semantic",
-          "about": "a paraphrase; a query sharing no word with its memory; intent over a shared keyword",
-          "cases": [
-            "paraphrase-dislike",
-            "no-shared-words",
-            "intent-over-keywords"
-          ]
-        },
-        {
-          "id": "keyword",
-          "about": "an error code, an order id, a rare surname among near-identical ones",
-          "cases": [
-            "error-code",
-            "order-id",
-            "rare-surname"
-          ]
-        },
-        {
-          "id": "temporal",
-          "about": "\"last month\", \"yesterday\", a year-only event, a named week \u2014 against `query_timestamp`",
-          "cases": [
-            "last-month",
-            "yesterday",
-            "year-only-event",
-            "named-week"
-          ]
-        },
-        {
-          "id": "currency",
-          "about": "the newer of two conflicting memories (a job, a decision) ranks first",
-          "cases": [
-            "current-job",
-            "latest-decision"
-          ]
-        },
-        {
-          "id": "multi_hop",
-          "about": "the answer one entity or cause away: an employer's city, the cause of a cause, my sister's dog",
-          "cases": [
-            "employer-headquarters",
-            "cause-chain",
-            "relative-and-pet"
-          ]
-        },
-        {
-          "id": "filters",
-          "about": "`types=[experience]`, `types=[world]` on a user/assistant exchange; a tag scope",
-          "cases": [
-            "experience-only",
-            "world-only",
-            "tag-scoped"
-          ]
-        },
-        {
-          "id": "language",
-          "about": "Italian and Chinese queries (with \u4e0a\u5468) over memories in that language",
-          "cases": [
-            "italian",
-            "chinese-last-week"
-          ]
-        },
-        {
-          "id": "precision",
-          "about": "the right budget among near-identical ones; a negation kept",
-          "cases": [
-            "number-among-numbers",
-            "negation-kept"
-          ]
-        },
-        {
-          "id": "budget",
-          "about": "a small `max_tokens` returns fewer facts but never none; `max_tokens=0` returns chunks only",
-          "cases": [
-            "small-token-budget",
-            "chunks-only"
-          ]
-        },
-        {
-          "id": "observations",
-          "about": "`types=[observation]`; `prefer_observations` drops the facts an observation was built from",
-          "cases": [
-            "observation-type",
-            "prefer-observations"
-          ]
-        },
-        {
-          "id": "duplicates",
-          "about": "one sentence in four documents comes back four times (once, with pruning); reworded repeats collapse under pruning",
-          "cases": [
-            "same-sentence-four-documents",
-            "reworded-repeats"
-          ]
-        },
-        {
-          "id": "distinct",
-          "about": "facts that only look alike (four customers, three details of one offsite) all come back",
-          "cases": [
-            "alike-but-distinct",
-            "same-subject"
-          ]
-        }
-      ],
-      "benchmarks": [
-        "test_recall_benchmark_beir_scifact"
-      ]
-    },
     "consolidation": {
       "categories": [
         {
           "id": "merge",
-          "about": "restatements update one observation; the same facts under two tags merge in a shared scope",
+          "about": "restatements update one observation; one fact told three ways in one batch is one observation; the same facts under two tags merge in a shared scope",
           "cases": [
             "restatements-merge",
+            "repeats-in-one-batch",
             "shared-scope-merges-across-tags"
           ]
         },
@@ -283,9 +175,10 @@
         },
         {
           "id": "mission",
-          "about": "without a mission chatter is dropped; a mission can keep ephemera or forbid names",
+          "about": "without a mission chatter is dropped, even in a topic's first batch; a mission can keep ephemera or forbid names",
           "cases": [
             "default-drops-chatter",
+            "noise-beside-a-routine",
             "mission-keeps-ephemeral",
             "mission-forbids-names"
           ]
@@ -297,6 +190,15 @@
             "noisy-service-catalogue",
             "noisy-personal-contacts",
             "noisy-service-catalogue-mission"
+          ]
+        },
+        {
+          "id": "repetition",
+          "about": "steady-state traffic: a coding agent's sessions, an assistant's daily chats, a 12-service bank \u2014 mostly restatements and chatter, one rare change; no repeat or small talk becomes an observation",
+          "cases": [
+            "coding-agent-sessions",
+            "assistant-daily-chats",
+            "repetitive-service-catalogue"
           ]
         }
       ],
@@ -354,6 +256,14 @@
             "hq-release-prod",
             "hq-count-billing"
           ]
+        },
+        {
+          "id": "orchestration",
+          "about": "",
+          "cases": [
+            "fu-escalation",
+            "fu-release"
+          ]
         }
       ],
       "benchmarks": [
@@ -376,18 +286,19 @@
           "about": "a later wave changes the answer: a newer owner, a departed on-call, a renamed service, a corrected figure",
           "cases": [
             "hq-owner-latest",
-            "du-oncall-departed",
-            "du-renamed-service",
-            "du-backup-correction"
+            "du-oncall-departed-0",
+            "du-renamed-service-0",
+            "du-backup-correction-0"
           ]
         },
         {
           "id": "aggregation",
-          "about": "a count grows across waves; a list gains and loses members; a new risk joins the list",
+          "about": "a count grows across waves; a list gains and loses members; a new risk joins the list; a table grows over four deltas",
           "cases": [
             "hq-count-billing",
-            "du-enterprise-plan",
-            "du-launch-risk"
+            "du-enterprise-plan-0",
+            "du-launch-risk-0",
+            "du-incident-table-0"
           ]
         },
         {
@@ -400,10 +311,11 @@
         },
         {
           "id": "stability",
-          "about": "a wave with nothing for the page leaves it intact; no page collapses across waves",
+          "about": "a wave with nothing for the page leaves it intact; no page collapses across waves; a history re-recorded every wave is not re-added",
           "cases": [
             "page-never-collapses",
-            "du-quiet-wave"
+            "du-quiet-wave-0",
+            "du-rerecorded-history-0"
           ]
         },
         {
@@ -412,6 +324,14 @@
           "cases": [
             "pump-maintenance-en-0",
             "pump-maintenance-zh-0"
+          ]
+        },
+        {
+          "id": "orchestration",
+          "about": "",
+          "cases": [
+            "fu-escalation",
+            "fu-release"
           ]
         }
       ],

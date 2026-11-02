@@ -1,0 +1,1705 @@
+{
+ "model-index": [
+  {
+   "name": "hindsight-ai/hs-embed-1",
+   "results": [
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "English retrieval"
+     },
+     "dataset": {
+      "name": "NanoBEIR",
+      "type": "nanobeir"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 13 tasks",
+       "value": 0.613
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "English retrieval"
+     },
+     "dataset": {
+      "name": "MTEB English v2 retrieval",
+      "type": "mteb-english-v2-retrieval"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 10 tasks",
+       "value": 0.508
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual retrieval"
+     },
+     "dataset": {
+      "name": "MIRACL",
+      "type": "miracl"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 7 languages",
+       "value": 0.52
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual retrieval"
+     },
+     "dataset": {
+      "name": "Belebele, Portuguese",
+      "type": "belebele-portuguese"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10",
+       "value": 0.916
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual retrieval"
+     },
+     "dataset": {
+      "name": "Belebele, Traditional Chinese",
+      "type": "belebele-traditional-chinese"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10",
+       "value": 0.915
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long conversations"
+     },
+     "dataset": {
+      "name": "BEAM 1M",
+      "type": "beam-1m"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence turns in the top 10 (%), 625 questions",
+       "value": 37.5
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long conversations"
+     },
+     "dataset": {
+      "name": "BEAM 10M",
+      "type": "beam-10m"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence turns in the top 10 (%), 176 questions",
+       "value": 31.4
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs, each model at its own limit"
+     },
+     "dataset": {
+      "name": "LongEmbed, long documents",
+      "type": "longembed-long-documents"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, NarrativeQA, QMSum, SummScreenFD, 2WikiMultihopQA",
+       "value": 0.586
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs, each model at its own limit"
+     },
+     "dataset": {
+      "name": "LongEmbed, needle and passkey",
+      "type": "longembed-needle-and-passkey"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_1",
+       "name": "nDCG@1, 256 to 32,768 tokens",
+       "value": 0.751
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs, each model at its own limit"
+     },
+     "dataset": {
+      "name": "BEAM 100K, Hindsight-sized chunks",
+      "type": "beam-100k-hindsight-sized-chunks"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence chunks in the top 10 (%), 3,000-character chunks",
+       "value": 46.5
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs, each model at its own limit"
+     },
+     "dataset": {
+      "name": "BEAM 1M, Hindsight-sized chunks",
+      "type": "beam-1m-hindsight-sized-chunks"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence chunks in the top 10 (%), 3,000-character chunks",
+       "value": 32.7
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Memory retrieval"
+     },
+     "dataset": {
+      "name": "LMEB",
+      "type": "lmeb"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 17 datasets",
+       "value": 0.523
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Query latency",
+      "type": "query-latency"
+     },
+     "metrics": [
+      {
+       "type": "latency_ms",
+       "name": "Median ms per query, 2 CPU threads",
+       "value": 16.5
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Throughput",
+      "type": "throughput"
+     },
+     "metrics": [
+      {
+       "type": "throughput",
+       "name": "Memories embedded per second, 2 CPU threads",
+       "value": 60.1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "intfloat/multilingual-e5-small",
+   "results": [
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "English retrieval"
+     },
+     "dataset": {
+      "name": "NanoBEIR",
+      "type": "nanobeir"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 13 tasks",
+       "value": 0.582
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "English retrieval"
+     },
+     "dataset": {
+      "name": "MTEB English v2 retrieval",
+      "type": "mteb-english-v2-retrieval"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 10 tasks",
+       "value": 0.465
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual retrieval"
+     },
+     "dataset": {
+      "name": "MIRACL",
+      "type": "miracl"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 7 languages",
+       "value": 0.538
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual retrieval"
+     },
+     "dataset": {
+      "name": "Belebele, Portuguese",
+      "type": "belebele-portuguese"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10",
+       "value": 0.906
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual retrieval"
+     },
+     "dataset": {
+      "name": "Belebele, Traditional Chinese",
+      "type": "belebele-traditional-chinese"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10",
+       "value": 0.909
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long conversations"
+     },
+     "dataset": {
+      "name": "BEAM 1M",
+      "type": "beam-1m"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence turns in the top 10 (%), 625 questions",
+       "value": 37.2
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long conversations"
+     },
+     "dataset": {
+      "name": "BEAM 10M",
+      "type": "beam-10m"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence turns in the top 10 (%), 176 questions",
+       "value": 30.1
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs, each model at its own limit"
+     },
+     "dataset": {
+      "name": "LongEmbed, long documents",
+      "type": "longembed-long-documents"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, NarrativeQA, QMSum, SummScreenFD, 2WikiMultihopQA",
+       "value": 0.41
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs, each model at its own limit"
+     },
+     "dataset": {
+      "name": "LongEmbed, needle and passkey",
+      "type": "longembed-needle-and-passkey"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_1",
+       "name": "nDCG@1, 256 to 32,768 tokens",
+       "value": 0.345
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs, each model at its own limit"
+     },
+     "dataset": {
+      "name": "BEAM 100K, Hindsight-sized chunks",
+      "type": "beam-100k-hindsight-sized-chunks"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence chunks in the top 10 (%), 3,000-character chunks",
+       "value": 40.7
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs, each model at its own limit"
+     },
+     "dataset": {
+      "name": "BEAM 1M, Hindsight-sized chunks",
+      "type": "beam-1m-hindsight-sized-chunks"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence chunks in the top 10 (%), 3,000-character chunks",
+       "value": 30.4
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Memory retrieval"
+     },
+     "dataset": {
+      "name": "LMEB",
+      "type": "lmeb"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 17 datasets",
+       "value": 0.498
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Query latency",
+      "type": "query-latency"
+     },
+     "metrics": [
+      {
+       "type": "latency_ms",
+       "name": "Median ms per query, 2 CPU threads",
+       "value": 26.3
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Throughput",
+      "type": "throughput"
+     },
+     "metrics": [
+      {
+       "type": "throughput",
+       "name": "Memories embedded per second, 2 CPU threads",
+       "value": 38.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ibm-granite/granite-embedding-97m-multilingual-r2",
+   "results": [
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "English retrieval"
+     },
+     "dataset": {
+      "name": "NanoBEIR",
+      "type": "nanobeir"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 13 tasks",
+       "value": 0.587
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "English retrieval"
+     },
+     "dataset": {
+      "name": "MTEB English v2 retrieval",
+      "type": "mteb-english-v2-retrieval"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 10 tasks",
+       "value": 0.501
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual retrieval"
+     },
+     "dataset": {
+      "name": "MIRACL",
+      "type": "miracl"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 7 languages",
+       "value": 0.516
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual retrieval"
+     },
+     "dataset": {
+      "name": "Belebele, Portuguese",
+      "type": "belebele-portuguese"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10",
+       "value": 0.908
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual retrieval"
+     },
+     "dataset": {
+      "name": "Belebele, Traditional Chinese",
+      "type": "belebele-traditional-chinese"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10",
+       "value": 0.878
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long conversations"
+     },
+     "dataset": {
+      "name": "BEAM 1M",
+      "type": "beam-1m"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence turns in the top 10 (%), 625 questions",
+       "value": 37.5
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long conversations"
+     },
+     "dataset": {
+      "name": "BEAM 10M",
+      "type": "beam-10m"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence turns in the top 10 (%), 176 questions",
+       "value": 25.6
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs, each model at its own limit"
+     },
+     "dataset": {
+      "name": "LongEmbed, long documents",
+      "type": "longembed-long-documents"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, NarrativeQA, QMSum, SummScreenFD, 2WikiMultihopQA",
+       "value": 0.642
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs, each model at its own limit"
+     },
+     "dataset": {
+      "name": "LongEmbed, needle and passkey",
+      "type": "longembed-needle-and-passkey"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_1",
+       "name": "nDCG@1, 256 to 32,768 tokens",
+       "value": 0.681
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs, each model at its own limit"
+     },
+     "dataset": {
+      "name": "BEAM 100K, Hindsight-sized chunks",
+      "type": "beam-100k-hindsight-sized-chunks"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence chunks in the top 10 (%), 3,000-character chunks",
+       "value": 42.6
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs, each model at its own limit"
+     },
+     "dataset": {
+      "name": "BEAM 1M, Hindsight-sized chunks",
+      "type": "beam-1m-hindsight-sized-chunks"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence chunks in the top 10 (%), 3,000-character chunks",
+       "value": 31.3
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Memory retrieval"
+     },
+     "dataset": {
+      "name": "LMEB",
+      "type": "lmeb"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 17 datasets",
+       "value": 0.469
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Query latency",
+      "type": "query-latency"
+     },
+     "metrics": [
+      {
+       "type": "latency_ms",
+       "name": "Median ms per query, 2 CPU threads",
+       "value": 75.4
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Throughput",
+      "type": "throughput"
+     },
+     "metrics": [
+      {
+       "type": "throughput",
+       "name": "Memories embedded per second, 2 CPU threads",
+       "value": 4.2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "BAAI/bge-small-en-v1.5",
+   "results": [
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "English retrieval"
+     },
+     "dataset": {
+      "name": "NanoBEIR",
+      "type": "nanobeir"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 13 tasks",
+       "value": 0.626
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "English retrieval"
+     },
+     "dataset": {
+      "name": "MTEB English v2 retrieval",
+      "type": "mteb-english-v2-retrieval"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 10 tasks",
+       "value": 0.539
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual retrieval"
+     },
+     "dataset": {
+      "name": "MIRACL",
+      "type": "miracl"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 7 languages",
+       "value": 0.196
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual retrieval"
+     },
+     "dataset": {
+      "name": "Belebele, Portuguese",
+      "type": "belebele-portuguese"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10",
+       "value": 0.7
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual retrieval"
+     },
+     "dataset": {
+      "name": "Belebele, Traditional Chinese",
+      "type": "belebele-traditional-chinese"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10",
+       "value": 0.329
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long conversations"
+     },
+     "dataset": {
+      "name": "BEAM 1M",
+      "type": "beam-1m"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence turns in the top 10 (%), 625 questions",
+       "value": 35.9
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long conversations"
+     },
+     "dataset": {
+      "name": "BEAM 10M",
+      "type": "beam-10m"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence turns in the top 10 (%), 176 questions",
+       "value": 31.1
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs, each model at its own limit"
+     },
+     "dataset": {
+      "name": "LongEmbed, long documents",
+      "type": "longembed-long-documents"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, NarrativeQA, QMSum, SummScreenFD, 2WikiMultihopQA",
+       "value": 0.362
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs, each model at its own limit"
+     },
+     "dataset": {
+      "name": "LongEmbed, needle and passkey",
+      "type": "longembed-needle-and-passkey"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_1",
+       "name": "nDCG@1, 256 to 32,768 tokens",
+       "value": 0.239
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs, each model at its own limit"
+     },
+     "dataset": {
+      "name": "BEAM 100K, Hindsight-sized chunks",
+      "type": "beam-100k-hindsight-sized-chunks"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence chunks in the top 10 (%), 3,000-character chunks",
+       "value": 44.1
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs, each model at its own limit"
+     },
+     "dataset": {
+      "name": "BEAM 1M, Hindsight-sized chunks",
+      "type": "beam-1m-hindsight-sized-chunks"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence chunks in the top 10 (%), 3,000-character chunks",
+       "value": 30.6
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Memory retrieval"
+     },
+     "dataset": {
+      "name": "LMEB",
+      "type": "lmeb"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 17 datasets",
+       "value": 0.495
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Query latency",
+      "type": "query-latency"
+     },
+     "metrics": [
+      {
+       "type": "latency_ms",
+       "name": "Median ms per query, 2 CPU threads",
+       "value": 26.0
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Throughput",
+      "type": "throughput"
+     },
+     "metrics": [
+      {
+       "type": "throughput",
+       "name": "Memories embedded per second, 2 CPU threads",
+       "value": 43.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Snowflake/snowflake-arctic-embed-s",
+   "results": [
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "English retrieval"
+     },
+     "dataset": {
+      "name": "NanoBEIR",
+      "type": "nanobeir"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 13 tasks",
+       "value": 0.624
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "English retrieval"
+     },
+     "dataset": {
+      "name": "MTEB English v2 retrieval",
+      "type": "mteb-english-v2-retrieval"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 10 tasks",
+       "value": 0.548
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual retrieval"
+     },
+     "dataset": {
+      "name": "MIRACL",
+      "type": "miracl"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 7 languages",
+       "value": 0.22
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual retrieval"
+     },
+     "dataset": {
+      "name": "Belebele, Portuguese",
+      "type": "belebele-portuguese"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10",
+       "value": 0.78
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual retrieval"
+     },
+     "dataset": {
+      "name": "Belebele, Traditional Chinese",
+      "type": "belebele-traditional-chinese"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10",
+       "value": 0.097
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long conversations"
+     },
+     "dataset": {
+      "name": "BEAM 1M",
+      "type": "beam-1m"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence turns in the top 10 (%), 625 questions",
+       "value": 32.8
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long conversations"
+     },
+     "dataset": {
+      "name": "BEAM 10M",
+      "type": "beam-10m"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence turns in the top 10 (%), 176 questions",
+       "value": 25.2
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs, each model at its own limit"
+     },
+     "dataset": {
+      "name": "LongEmbed, long documents",
+      "type": "longembed-long-documents"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, NarrativeQA, QMSum, SummScreenFD, 2WikiMultihopQA",
+       "value": 0.43
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs, each model at its own limit"
+     },
+     "dataset": {
+      "name": "LongEmbed, needle and passkey",
+      "type": "longembed-needle-and-passkey"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_1",
+       "name": "nDCG@1, 256 to 32,768 tokens",
+       "value": 0.325
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs, each model at its own limit"
+     },
+     "dataset": {
+      "name": "BEAM 100K, Hindsight-sized chunks",
+      "type": "beam-100k-hindsight-sized-chunks"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence chunks in the top 10 (%), 3,000-character chunks",
+       "value": 42.8
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs, each model at its own limit"
+     },
+     "dataset": {
+      "name": "BEAM 1M, Hindsight-sized chunks",
+      "type": "beam-1m-hindsight-sized-chunks"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence chunks in the top 10 (%), 3,000-character chunks",
+       "value": 27.6
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Memory retrieval"
+     },
+     "dataset": {
+      "name": "LMEB",
+      "type": "lmeb"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 17 datasets",
+       "value": 0.5
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Query latency",
+      "type": "query-latency"
+     },
+     "metrics": [
+      {
+       "type": "latency_ms",
+       "name": "Median ms per query, 2 CPU threads",
+       "value": 26.7
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Throughput",
+      "type": "throughput"
+     },
+     "metrics": [
+      {
+       "type": "throughput",
+       "name": "Memories embedded per second, 2 CPU threads",
+       "value": 43.3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "intfloat/e5-small-v2",
+   "results": [
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "English retrieval"
+     },
+     "dataset": {
+      "name": "NanoBEIR",
+      "type": "nanobeir"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 13 tasks",
+       "value": 0.61
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "English retrieval"
+     },
+     "dataset": {
+      "name": "MTEB English v2 retrieval",
+      "type": "mteb-english-v2-retrieval"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 10 tasks",
+       "value": 0.485
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual retrieval"
+     },
+     "dataset": {
+      "name": "MIRACL",
+      "type": "miracl"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 7 languages",
+       "value": 0.193
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual retrieval"
+     },
+     "dataset": {
+      "name": "Belebele, Portuguese",
+      "type": "belebele-portuguese"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10",
+       "value": 0.784
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual retrieval"
+     },
+     "dataset": {
+      "name": "Belebele, Traditional Chinese",
+      "type": "belebele-traditional-chinese"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10",
+       "value": 0.342
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long conversations"
+     },
+     "dataset": {
+      "name": "BEAM 1M",
+      "type": "beam-1m"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence turns in the top 10 (%), 625 questions",
+       "value": 35.0
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long conversations"
+     },
+     "dataset": {
+      "name": "BEAM 10M",
+      "type": "beam-10m"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence turns in the top 10 (%), 176 questions",
+       "value": 29.9
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs, each model at its own limit"
+     },
+     "dataset": {
+      "name": "LongEmbed, long documents",
+      "type": "longembed-long-documents"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, NarrativeQA, QMSum, SummScreenFD, 2WikiMultihopQA",
+       "value": 0.442
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs, each model at its own limit"
+     },
+     "dataset": {
+      "name": "LongEmbed, needle and passkey",
+      "type": "longembed-needle-and-passkey"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_1",
+       "name": "nDCG@1, 256 to 32,768 tokens",
+       "value": 0.338
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs, each model at its own limit"
+     },
+     "dataset": {
+      "name": "BEAM 100K, Hindsight-sized chunks",
+      "type": "beam-100k-hindsight-sized-chunks"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence chunks in the top 10 (%), 3,000-character chunks",
+       "value": 43.4
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs, each model at its own limit"
+     },
+     "dataset": {
+      "name": "BEAM 1M, Hindsight-sized chunks",
+      "type": "beam-1m-hindsight-sized-chunks"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence chunks in the top 10 (%), 3,000-character chunks",
+       "value": 28.6
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Memory retrieval"
+     },
+     "dataset": {
+      "name": "LMEB",
+      "type": "lmeb"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 17 datasets",
+       "value": 0.509
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Query latency",
+      "type": "query-latency"
+     },
+     "metrics": [
+      {
+       "type": "latency_ms",
+       "name": "Median ms per query, 2 CPU threads",
+       "value": 26.3
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Throughput",
+      "type": "throughput"
+     },
+     "metrics": [
+      {
+       "type": "throughput",
+       "name": "Memories embedded per second, 2 CPU threads",
+       "value": 44.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "sentence-transformers/all-MiniLM-L6-v2",
+   "results": [
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "English retrieval"
+     },
+     "dataset": {
+      "name": "NanoBEIR",
+      "type": "nanobeir"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 13 tasks",
+       "value": 0.562
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "English retrieval"
+     },
+     "dataset": {
+      "name": "MTEB English v2 retrieval",
+      "type": "mteb-english-v2-retrieval"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 10 tasks",
+       "value": 0.429
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual retrieval"
+     },
+     "dataset": {
+      "name": "MIRACL",
+      "type": "miracl"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 7 languages",
+       "value": 0.107
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual retrieval"
+     },
+     "dataset": {
+      "name": "Belebele, Portuguese",
+      "type": "belebele-portuguese"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10",
+       "value": 0.546
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Multilingual retrieval"
+     },
+     "dataset": {
+      "name": "Belebele, Traditional Chinese",
+      "type": "belebele-traditional-chinese"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10",
+       "value": 0.214
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long conversations"
+     },
+     "dataset": {
+      "name": "BEAM 1M",
+      "type": "beam-1m"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence turns in the top 10 (%), 625 questions",
+       "value": 37.6
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long conversations"
+     },
+     "dataset": {
+      "name": "BEAM 10M",
+      "type": "beam-10m"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence turns in the top 10 (%), 176 questions",
+       "value": 25.9
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs, each model at its own limit"
+     },
+     "dataset": {
+      "name": "LongEmbed, long documents",
+      "type": "longembed-long-documents"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, NarrativeQA, QMSum, SummScreenFD, 2WikiMultihopQA",
+       "value": 0.339
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs, each model at its own limit"
+     },
+     "dataset": {
+      "name": "LongEmbed, needle and passkey",
+      "type": "longembed-needle-and-passkey"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_1",
+       "name": "nDCG@1, 256 to 32,768 tokens",
+       "value": 0.216
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs, each model at its own limit"
+     },
+     "dataset": {
+      "name": "BEAM 100K, Hindsight-sized chunks",
+      "type": "beam-100k-hindsight-sized-chunks"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence chunks in the top 10 (%), 3,000-character chunks",
+       "value": 42.2
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Long inputs, each model at its own limit"
+     },
+     "dataset": {
+      "name": "BEAM 1M, Hindsight-sized chunks",
+      "type": "beam-1m-hindsight-sized-chunks"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence chunks in the top 10 (%), 3,000-character chunks",
+       "value": 27.7
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Memory retrieval"
+     },
+     "dataset": {
+      "name": "LMEB",
+      "type": "lmeb"
+     },
+     "metrics": [
+      {
+       "type": "ndcg_at_10",
+       "name": "nDCG@10, 17 datasets",
+       "value": 0.415
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Query latency",
+      "type": "query-latency"
+     },
+     "metrics": [
+      {
+       "type": "latency_ms",
+       "name": "Median ms per query, 2 CPU threads",
+       "value": 14.1
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "retrieval",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Throughput",
+      "type": "throughput"
+     },
+     "metrics": [
+      {
+       "type": "throughput",
+       "name": "Memories embedded per second, 2 CPU threads",
+       "value": 88.0
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

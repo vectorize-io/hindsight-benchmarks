@@ -3,9 +3,11 @@
 It runs inside the evals' own venv, so it may only use the stdlib and what that
 venv has. Two jobs:
 
-* judge with `codex exec` (a ChatGPT subscription) instead of the Gemini judge;
+* when the judge is a GPT model, judge with `codex exec` (a ChatGPT subscription) instead of the
+  evals' own Gemini judge;
 * after each test, read the bank's LLM calls back from the server trace and
-  append their token counts to $HS_BENCH_TOKENS_OUT, so cost is real usage.
+  append their token counts to $HS_BENCH_TOKENS_OUT, so cost is real usage, and
+  save the calls themselves to $HS_BENCH_TRACES_DIR.
 """
 
 from __future__ import annotations
@@ -13,6 +15,7 @@ from __future__ import annotations
 import asyncio
 import json
 import os
+import re
 import subprocess
 import tempfile
 import threading
@@ -44,7 +47,9 @@ def _codex(prompt: str) -> str:
         ]
         done = subprocess.run(cmd, input=prompt, text=True, capture_output=True, timeout=300)
         if done.returncode != 0:
-            raise RuntimeError(f"codex judge failed ({done.returncode}): {done.stderr[-500:]}")
+            # codex echoes the prompt to stderr; its own error lines start with "ERROR:".
+            errors = [line for line in (done.stdout + done.stderr).splitlines() if line.startswith("ERROR:")]
+            raise RuntimeError(f"codex judge failed ({done.returncode}): {' | '.join(errors) or done.stderr[-500:]}")
         return out.read_text()
 
 
@@ -64,7 +69,8 @@ async def _judge_once(response: str, criteria: str, context: str | None, tempera
     return judge.Verdict(bool(parsed.get("meets_criteria")), str(parsed.get("reasoning", "")))
 
 
-judge._judge_once = _judge_once
+if judge.judge_model().startswith("gpt-"):
+    judge._judge_once = _judge_once
 
 
 @pytest.fixture(autouse=True)
@@ -74,15 +80,22 @@ async def _record_tokens(request: pytest.FixtureRequest, client, bank_id: str):
     if not out:
         return
     from hindsight_client_api.api.llm_traces_api import LLMTracesApi
+    from hindsight_client_api.exceptions import NotFoundException
 
     # ponytail: counts the test's own bank only; a test that makes extra banks is undercounted.
     api = LLMTracesApi(client._api_client)
     totals = {"calls": 0, "input_tokens": 0, "cached_tokens": 0, "output_tokens": 0,
               "decision_calls": 0, "decision_input_tokens": 0}
+    calls = []
     for call_type, prefix in (("llm", ""), ("decision", "decision_")):
         offset = 0
         while True:
-            page = await api.list_llm_requests(bank_id, call_type=call_type, limit=500, offset=offset)
+            try:
+                page = await api.list_llm_requests(bank_id, call_type=call_type, limit=500, offset=offset)
+            except NotFoundException:
+                return  # the test deleted its bank (decision-model cases); nothing to count
+
+            calls += [c.to_dict() for c in page.items]
             for c in page.items:
                 totals[prefix + "calls"] += 1
                 totals[prefix + "input_tokens"] += c.input_tokens or 0
@@ -92,5 +105,10 @@ async def _record_tokens(request: pytest.FixtureRequest, client, bank_id: str):
             offset += len(page.items)
             if not page.items or offset >= page.total:
                 break
+    if traces := os.getenv("HS_BENCH_TRACES_DIR"):
+        # Every call's prompt and answer, so a failed case can be read after the server is gone.
+        Path(traces).mkdir(parents=True, exist_ok=True)
+        name = re.sub(r"[^\w.-]+", "_", request.node.nodeid.split("::")[-1])
+        Path(traces, f"{name}.json").write_text(json.dumps(calls, indent=1, ensure_ascii=False, default=str))
     with open(out, "a", encoding="utf-8") as f:
         f.write(json.dumps({"nodeid": request.node.nodeid, **totals}) + "\n")
