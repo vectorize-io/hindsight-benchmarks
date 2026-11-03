@@ -1,0 +1,755 @@
+{
+ "model-index": [
+  {
+   "name": "hindsight-ai/hs-decide-1-flash",
+   "results": [
+    {
+     "task": {
+      "type": "classification",
+      "name": "Recall"
+     },
+     "dataset": {
+      "name": "LoCoMo",
+      "type": "locomo-evidence"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence memory in the top 10 of up to 300 (%), 200 questions; 48.0 with no decision model",
+       "value": 93.0
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Recall"
+     },
+     "dataset": {
+      "name": "LongMemEval",
+      "type": "longmemeval-evidence"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence memory in the top 10 of up to 300 (%), 40 questions; 87.5 with no decision model",
+       "value": 97.5
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Page refresh"
+     },
+     "dataset": {
+      "name": "Wikipedia revisions",
+      "type": "wikipedia-revisions"
+     },
+     "metrics": [
+      {
+       "type": "accuracy",
+       "name": "Right call on whether a new memory changes the page (%), 400 cases",
+       "value": 79.5
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Page refresh"
+     },
+     "dataset": {
+      "name": "Refreshes skipped",
+      "type": "refreshes-skipped"
+     },
+     "metrics": [
+      {
+       "type": "accuracy",
+       "name": "Covered or off-topic memories skipped, no LLM call (%), 180 cases",
+       "value": 89.4
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Page refresh"
+     },
+     "dataset": {
+      "name": "New facts caught",
+      "type": "new-facts-caught"
+     },
+     "metrics": [
+      {
+       "type": "recall",
+       "name": "Real additions sent to the LLM refresh (%), 220 cases",
+       "value": 71.4
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Consolidation"
+     },
+     "dataset": {
+      "name": "Dialogue NLI",
+      "type": "dialogue-nli"
+     },
+     "metrics": [
+      {
+       "type": "accuracy",
+       "name": "Right call on whether a new fact changes a stored one (%), 400 pairs",
+       "value": 75.8
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Reflect"
+     },
+     "dataset": {
+      "name": "SQuAD 2.0 and HotpotQA",
+      "type": "squad-hotpotqa-sufficiency"
+     },
+     "metrics": [
+      {
+       "type": "accuracy",
+       "name": "Right answer to whether the evidence answers the question: not, partly, fully (%), 400 questions",
+       "value": 61.8
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "General decisions"
+     },
+     "dataset": {
+      "name": "Decision Index",
+      "type": "decision-index"
+     },
+     "metrics": [
+      {
+       "type": "skill",
+       "name": "Public suite, edition 0.3, 37 benchmarks; chance-corrected skill (x100)",
+       "value": 36.1
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Judge 50 memories",
+      "type": "judge50-memories"
+     },
+     "metrics": [
+      {
+       "type": "latency_s",
+       "name": "Median seconds for one yes/no question on each of 50 memories, 2 CPU threads",
+       "value": 67.3
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "One decision",
+      "type": "one-decision"
+     },
+     "metrics": [
+      {
+       "type": "latency_ms",
+       "name": "Median ms for one yes/no question, 2 CPU threads",
+       "value": 1900.6
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Throughput",
+      "type": "throughput"
+     },
+     "metrics": [
+      {
+       "type": "throughput",
+       "name": "Memories judged per second, 2 CPU threads",
+       "value": 0.75
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "StartLux/StartLux-Decision 0.8B Instant",
+   "results": [
+    {
+     "task": {
+      "type": "classification",
+      "name": "Recall"
+     },
+     "dataset": {
+      "name": "LoCoMo",
+      "type": "locomo-evidence"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence memory in the top 10 of up to 300 (%), 200 questions; 48.0 with no decision model",
+       "value": 91.5
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Recall"
+     },
+     "dataset": {
+      "name": "LongMemEval",
+      "type": "longmemeval-evidence"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence memory in the top 10 of up to 300 (%), 40 questions; 87.5 with no decision model",
+       "value": 100.0
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Page refresh"
+     },
+     "dataset": {
+      "name": "Wikipedia revisions",
+      "type": "wikipedia-revisions"
+     },
+     "metrics": [
+      {
+       "type": "accuracy",
+       "name": "Right call on whether a new memory changes the page (%), 400 cases",
+       "value": 68.5
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Page refresh"
+     },
+     "dataset": {
+      "name": "Refreshes skipped",
+      "type": "refreshes-skipped"
+     },
+     "metrics": [
+      {
+       "type": "accuracy",
+       "name": "Covered or off-topic memories skipped, no LLM call (%), 180 cases",
+       "value": 45.0
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Page refresh"
+     },
+     "dataset": {
+      "name": "New facts caught",
+      "type": "new-facts-caught"
+     },
+     "metrics": [
+      {
+       "type": "recall",
+       "name": "Real additions sent to the LLM refresh (%), 220 cases",
+       "value": 87.7
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Consolidation"
+     },
+     "dataset": {
+      "name": "Dialogue NLI",
+      "type": "dialogue-nli"
+     },
+     "metrics": [
+      {
+       "type": "accuracy",
+       "name": "Right call on whether a new fact changes a stored one (%), 400 pairs",
+       "value": 83.0
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Reflect"
+     },
+     "dataset": {
+      "name": "SQuAD 2.0 and HotpotQA",
+      "type": "squad-hotpotqa-sufficiency"
+     },
+     "metrics": [
+      {
+       "type": "accuracy",
+       "name": "Right answer to whether the evidence answers the question: not, partly, fully (%), 400 questions",
+       "value": 66.8
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "General decisions"
+     },
+     "dataset": {
+      "name": "Decision Index",
+      "type": "decision-index"
+     },
+     "metrics": [
+      {
+       "type": "skill",
+       "name": "Public suite, edition 0.3, 37 benchmarks; chance-corrected skill (x100)",
+       "value": 53.8
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Judge 50 memories",
+      "type": "judge50-memories"
+     },
+     "metrics": [
+      {
+       "type": "latency_s",
+       "name": "Median seconds for one yes/no question on each of 50 memories, 2 CPU threads",
+       "value": 1781.4
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "One decision",
+      "type": "one-decision"
+     },
+     "metrics": [
+      {
+       "type": "latency_ms",
+       "name": "Median ms for one yes/no question, 2 CPU threads",
+       "value": 2014.6
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Throughput",
+      "type": "throughput"
+     },
+     "metrics": [
+      {
+       "type": "throughput",
+       "name": "Memories judged per second, 2 CPU threads",
+       "value": 0.029
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "vLLM Semantic Router/d3-lite",
+   "results": [
+    {
+     "task": {
+      "type": "classification",
+      "name": "Recall"
+     },
+     "dataset": {
+      "name": "LoCoMo",
+      "type": "locomo-evidence"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence memory in the top 10 of up to 300 (%), 200 questions; 48.0 with no decision model",
+       "value": 83.0
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Recall"
+     },
+     "dataset": {
+      "name": "LongMemEval",
+      "type": "longmemeval-evidence"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence memory in the top 10 of up to 300 (%), 40 questions; 87.5 with no decision model",
+       "value": 100.0
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Page refresh"
+     },
+     "dataset": {
+      "name": "Wikipedia revisions",
+      "type": "wikipedia-revisions"
+     },
+     "metrics": [
+      {
+       "type": "accuracy",
+       "name": "Right call on whether a new memory changes the page (%), 400 cases",
+       "value": 72.0
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Page refresh"
+     },
+     "dataset": {
+      "name": "Refreshes skipped",
+      "type": "refreshes-skipped"
+     },
+     "metrics": [
+      {
+       "type": "accuracy",
+       "name": "Covered or off-topic memories skipped, no LLM call (%), 180 cases",
+       "value": 47.2
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Page refresh"
+     },
+     "dataset": {
+      "name": "New facts caught",
+      "type": "new-facts-caught"
+     },
+     "metrics": [
+      {
+       "type": "recall",
+       "name": "Real additions sent to the LLM refresh (%), 220 cases",
+       "value": 92.3
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Consolidation"
+     },
+     "dataset": {
+      "name": "Dialogue NLI",
+      "type": "dialogue-nli"
+     },
+     "metrics": [
+      {
+       "type": "accuracy",
+       "name": "Right call on whether a new fact changes a stored one (%), 400 pairs",
+       "value": 88.0
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Reflect"
+     },
+     "dataset": {
+      "name": "SQuAD 2.0 and HotpotQA",
+      "type": "squad-hotpotqa-sufficiency"
+     },
+     "metrics": [
+      {
+       "type": "accuracy",
+       "name": "Right answer to whether the evidence answers the question: not, partly, fully (%), 400 questions",
+       "value": 67.8
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "General decisions"
+     },
+     "dataset": {
+      "name": "Decision Index",
+      "type": "decision-index"
+     },
+     "metrics": [
+      {
+       "type": "skill",
+       "name": "Public suite, edition 0.3, 37 benchmarks; chance-corrected skill (x100)",
+       "value": 36.9
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Judge 50 memories",
+      "type": "judge50-memories"
+     },
+     "metrics": [
+      {
+       "type": "latency_s",
+       "name": "Median seconds for one yes/no question on each of 50 memories, 2 CPU threads",
+       "value": 1106.0
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "One decision",
+      "type": "one-decision"
+     },
+     "metrics": [
+      {
+       "type": "latency_ms",
+       "name": "Median ms for one yes/no question, 2 CPU threads",
+       "value": 1096.6
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Throughput",
+      "type": "throughput"
+     },
+     "metrics": [
+      {
+       "type": "throughput",
+       "name": "Memories judged per second, 2 CPU threads",
+       "value": 0.046
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Mapika/decider-0.8b",
+   "results": [
+    {
+     "task": {
+      "type": "classification",
+      "name": "Recall"
+     },
+     "dataset": {
+      "name": "LoCoMo",
+      "type": "locomo-evidence"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence memory in the top 10 of up to 300 (%), 200 questions; 48.0 with no decision model",
+       "value": 94.0
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Recall"
+     },
+     "dataset": {
+      "name": "LongMemEval",
+      "type": "longmemeval-evidence"
+     },
+     "metrics": [
+      {
+       "type": "recall_at_10",
+       "name": "Evidence memory in the top 10 of up to 300 (%), 40 questions; 87.5 with no decision model",
+       "value": 97.5
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Page refresh"
+     },
+     "dataset": {
+      "name": "Wikipedia revisions",
+      "type": "wikipedia-revisions"
+     },
+     "metrics": [
+      {
+       "type": "accuracy",
+       "name": "Right call on whether a new memory changes the page (%), 400 cases",
+       "value": 56.0
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Page refresh"
+     },
+     "dataset": {
+      "name": "Refreshes skipped",
+      "type": "refreshes-skipped"
+     },
+     "metrics": [
+      {
+       "type": "accuracy",
+       "name": "Covered or off-topic memories skipped, no LLM call (%), 180 cases",
+       "value": 78.3
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Page refresh"
+     },
+     "dataset": {
+      "name": "New facts caught",
+      "type": "new-facts-caught"
+     },
+     "metrics": [
+      {
+       "type": "recall",
+       "name": "Real additions sent to the LLM refresh (%), 220 cases",
+       "value": 37.7
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Consolidation"
+     },
+     "dataset": {
+      "name": "Dialogue NLI",
+      "type": "dialogue-nli"
+     },
+     "metrics": [
+      {
+       "type": "accuracy",
+       "name": "Right call on whether a new fact changes a stored one (%), 400 pairs",
+       "value": 51.7
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Reflect"
+     },
+     "dataset": {
+      "name": "SQuAD 2.0 and HotpotQA",
+      "type": "squad-hotpotqa-sufficiency"
+     },
+     "metrics": [
+      {
+       "type": "accuracy",
+       "name": "Right answer to whether the evidence answers the question: not, partly, fully (%), 400 questions",
+       "value": 50.7
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Judge 50 memories",
+      "type": "judge50-memories"
+     },
+     "metrics": [
+      {
+       "type": "latency_s",
+       "name": "Median seconds for one yes/no question on each of 50 memories, 2 CPU threads",
+       "value": 1583.9
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "One decision",
+      "type": "one-decision"
+     },
+     "metrics": [
+      {
+       "type": "latency_ms",
+       "name": "Median ms for one yes/no question, 2 CPU threads",
+       "value": 1955.9
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Throughput",
+      "type": "throughput"
+     },
+     "metrics": [
+      {
+       "type": "throughput",
+       "name": "Memories judged per second, 2 CPU threads",
+       "value": 0.031
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

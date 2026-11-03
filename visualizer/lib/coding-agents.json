@@ -1,0 +1,168 @@
+{
+  "amb_commit": "28b644bd4dd653c0207c7507280439390c829155",
+  "dataset": "sdebench/boltons",
+  "rows": [
+    {
+      "agent": "claude-code",
+      "model": "claude-sonnet-5",
+      "memory": "hindsight",
+      "setup": "Hindsight coding-agent plugin",
+      "memory_models": [
+        "Hindsight",
+        "gemini-2.5-flash-lite"
+      ],
+      "repeats": 3,
+      "tasks": 61,
+      "solved": 100,
+      "first_try": 69.4,
+      "corrections": 0.36,
+      "agent_cost_usd": 0.338,
+      "memory_cost_usd": null,
+      "wall_s": 75.1,
+      "cost_usd": 0.338
+    },
+    {
+      "agent": "claude-code",
+      "model": "claude-sonnet-5",
+      "memory": "hindsight-gemma",
+      "setup": "Hindsight coding-agent plugin",
+      "memory_models": [
+        "Hindsight",
+        "gemma-4-26b-a4b"
+      ],
+      "repeats": 3,
+      "tasks": 61,
+      "solved": 100,
+      "first_try": 80.3,
+      "corrections": 0.2,
+      "agent_cost_usd": 0.228,
+      "memory_cost_usd": 0.138,
+      "wall_s": 82.5,
+      "cost_usd": 0.366
+    },
+    {
+      "agent": "claude-code",
+      "model": "claude-sonnet-5",
+      "memory": "vanilla",
+      "setup": "No memory",
+      "memory_models": [],
+      "repeats": 3,
+      "tasks": 61,
+      "solved": 98.9,
+      "first_try": 38.8,
+      "corrections": 0.85,
+      "agent_cost_usd": 0.445,
+      "memory_cost_usd": null,
+      "wall_s": 84.7,
+      "cost_usd": 0.445
+    },
+    {
+      "agent": "codex",
+      "model": "gpt-5.4-mini",
+      "memory": "hindsight",
+      "setup": "Hindsight coding-agent plugin",
+      "memory_models": [
+        "Hindsight",
+        "gemini-2.5-flash-lite"
+      ],
+      "repeats": 3,
+      "tasks": 61,
+      "solved": 100,
+      "first_try": 62.8,
+      "corrections": 0.47,
+      "agent_cost_usd": 0.276,
+      "memory_cost_usd": null,
+      "wall_s": 48.6,
+      "cost_usd": 0.276
+    },
+    {
+      "agent": "codex",
+      "model": "gpt-5.4-mini",
+      "memory": "hindsight-gemma",
+      "setup": "Hindsight coding-agent plugin",
+      "memory_models": [
+        "Hindsight",
+        "gemma-4-26b-a4b"
+      ],
+      "repeats": 3,
+      "tasks": 61,
+      "solved": 100,
+      "first_try": 45.4,
+      "corrections": 0.67,
+      "agent_cost_usd": 0.189,
+      "memory_cost_usd": 0.15,
+      "wall_s": 38.7,
+      "cost_usd": 0.339
+    },
+    {
+      "agent": "codex",
+      "model": "gpt-5.4-mini",
+      "memory": "vanilla",
+      "setup": "No memory",
+      "memory_models": [],
+      "repeats": 3,
+      "tasks": 61,
+      "solved": 99.5,
+      "first_try": 6.6,
+      "corrections": 1.34,
+      "agent_cost_usd": 0.577,
+      "memory_cost_usd": null,
+      "wall_s": 53.6,
+      "cost_usd": 0.577
+    },
+    {
+      "agent": "opencode",
+      "model": "google/gemini-3.5-flash",
+      "memory": "hindsight",
+      "setup": "Hindsight coding-agent plugin",
+      "memory_models": [
+        "Hindsight",
+        "gemini-2.5-flash-lite"
+      ],
+      "repeats": 3,
+      "tasks": 61,
+      "solved": 99.5,
+      "first_try": 31.7,
+      "corrections": 0.8,
+      "agent_cost_usd": 0.553,
+      "memory_cost_usd": null,
+      "wall_s": 163.3,
+      "cost_usd": 0.553
+    },
+    {
+      "agent": "opencode",
+      "model": "google/gemini-3.5-flash",
+      "memory": "hindsight-gemma",
+      "setup": "Hindsight coding-agent plugin",
+      "memory_models": [
+        "Hindsight",
+        "gemma-4-26b-a4b"
+      ],
+      "repeats": 3,
+      "tasks": 61,
+      "solved": 100,
+      "first_try": 93.4,
+      "corrections": 0.07,
+      "agent_cost_usd": 0.298,
+      "memory_cost_usd": 0.153,
+      "wall_s": 116.4,
+      "cost_usd": 0.451
+    },
+    {
+      "agent": "opencode",
+      "model": "google/gemini-3.5-flash",
+      "memory": "vanilla",
+      "setup": "No memory",
+      "memory_models": [],
+      "repeats": 3,
+      "tasks": 61,
+      "solved": 100,
+      "first_try": 7.1,
+      "corrections": 1.2,
+      "agent_cost_usd": 0.634,
+      "memory_cost_usd": null,
+      "wall_s": 174.2,
+      "cost_usd": 0.634
+    }
+  ]
+}

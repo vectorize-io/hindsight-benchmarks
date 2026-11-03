@@ -1,0 +1,711 @@
+{
+  "families": [
+    {
+      "id": "decision",
+      "title": "Decision model",
+      "model": "hs-decide-1-flash",
+      "short": "Fast yes/no, pick-one and score answers with a probability for every option.",
+      "card": "https://huggingface.co/hindsight-ai/hs-decide-1-flash",
+      "facts": [
+        [
+          "Parameters",
+          "0.8B"
+        ],
+        [
+          "Context",
+          "65,536 tokens"
+        ],
+        [
+          "Languages",
+          "8"
+        ],
+        [
+          "Serves on",
+          "vLLM"
+        ]
+      ],
+      "benchmarks": [
+        {
+          "id": "locomo-evidence::recall_at_10",
+          "name": "LoCoMo",
+          "metric": "",
+          "href": null,
+          "about": "Evidence memory in the top 10 of up to 300 (%), 200 questions; 48.0 with no decision model",
+          "section": "Recall"
+        },
+        {
+          "id": "longmemeval-evidence::recall_at_10",
+          "name": "LongMemEval",
+          "metric": "",
+          "href": null,
+          "about": "Evidence memory in the top 10 of up to 300 (%), 40 questions; 87.5 with no decision model",
+          "section": "Recall"
+        },
+        {
+          "id": "wikipedia-revisions::accuracy",
+          "name": "Wikipedia revisions",
+          "metric": "",
+          "href": null,
+          "about": "Right call on whether a new memory changes the page (%), 400 cases",
+          "section": "Page refresh"
+        },
+        {
+          "id": "refreshes-skipped::accuracy",
+          "name": "Refreshes skipped",
+          "metric": "",
+          "href": null,
+          "about": "Covered or off-topic memories skipped, no LLM call (%), 180 cases",
+          "section": "Page refresh"
+        },
+        {
+          "id": "new-facts-caught::recall",
+          "name": "New facts caught",
+          "metric": "",
+          "href": null,
+          "about": "Real additions sent to the LLM refresh (%), 220 cases",
+          "section": "Page refresh"
+        },
+        {
+          "id": "dialogue-nli::accuracy",
+          "name": "Dialogue NLI",
+          "metric": "",
+          "href": null,
+          "about": "Right call on whether a new fact changes a stored one (%), 400 pairs",
+          "section": "Consolidation"
+        },
+        {
+          "id": "squad-hotpotqa-sufficiency::accuracy",
+          "name": "SQuAD 2.0 and HotpotQA",
+          "metric": "",
+          "href": null,
+          "about": "Right answer to whether the evidence answers the question: not, partly, fully (%), 400 questions",
+          "section": "Reflect"
+        },
+        {
+          "id": "decision-index::skill",
+          "name": "Decision Index",
+          "metric": "",
+          "href": null,
+          "about": "Public suite, edition 0.3, 37 benchmarks; chance-corrected skill (x100)",
+          "section": "General decisions"
+        },
+        {
+          "id": "judge50-memories::latency_s",
+          "name": "Judge 50 memories",
+          "metric": "s",
+          "href": null,
+          "about": "Median seconds for one yes/no question on each of 50 memories, 2 CPU threads",
+          "section": "Serving on CPU",
+          "plain": true,
+          "lower": true
+        },
+        {
+          "id": "one-decision::latency_ms",
+          "name": "One decision",
+          "metric": "ms",
+          "href": null,
+          "about": "Median ms for one yes/no question, 2 CPU threads",
+          "section": "Serving on CPU",
+          "plain": true,
+          "lower": true
+        },
+        {
+          "id": "throughput::throughput",
+          "name": "Throughput",
+          "metric": "/s",
+          "href": null,
+          "about": "Memories judged per second, 2 CPU threads",
+          "section": "Serving on CPU",
+          "plain": true
+        }
+      ],
+      "rows": [
+        {
+          "model": "hs-decide-1-flash",
+          "provider": "Hindsight",
+          "tag": "hindsight",
+          "size": "0.8B",
+          "scores": {
+            "locomo-evidence::recall_at_10": 93.0,
+            "longmemeval-evidence::recall_at_10": 97.5,
+            "wikipedia-revisions::accuracy": 79.5,
+            "refreshes-skipped::accuracy": 89.4,
+            "new-facts-caught::recall": 71.4,
+            "dialogue-nli::accuracy": 75.8,
+            "squad-hotpotqa-sufficiency::accuracy": 61.8,
+            "decision-index::skill": 36.1,
+            "judge50-memories::latency_s": 67.3,
+            "one-decision::latency_ms": 1900.6,
+            "throughput::throughput": 0.75
+          }
+        },
+        {
+          "model": "StartLux-Decision 0.8B Instant",
+          "provider": "StartLux",
+          "size": "0.8B",
+          "scores": {
+            "locomo-evidence::recall_at_10": 91.5,
+            "longmemeval-evidence::recall_at_10": 100.0,
+            "wikipedia-revisions::accuracy": 68.5,
+            "refreshes-skipped::accuracy": 45.0,
+            "new-facts-caught::recall": 87.7,
+            "dialogue-nli::accuracy": 83.0,
+            "squad-hotpotqa-sufficiency::accuracy": 66.8,
+            "decision-index::skill": 53.8,
+            "judge50-memories::latency_s": 1781.4,
+            "one-decision::latency_ms": 2014.6,
+            "throughput::throughput": 0.029
+          }
+        },
+        {
+          "model": "d3-lite",
+          "provider": "vLLM Semantic Router",
+          "size": "0.8B",
+          "scores": {
+            "locomo-evidence::recall_at_10": 83.0,
+            "longmemeval-evidence::recall_at_10": 100.0,
+            "wikipedia-revisions::accuracy": 72.0,
+            "refreshes-skipped::accuracy": 47.2,
+            "new-facts-caught::recall": 92.3,
+            "dialogue-nli::accuracy": 88.0,
+            "squad-hotpotqa-sufficiency::accuracy": 67.8,
+            "decision-index::skill": 36.9,
+            "judge50-memories::latency_s": 1106.0,
+            "one-decision::latency_ms": 1096.6,
+            "throughput::throughput": 0.046
+          }
+        },
+        {
+          "model": "decider-0.8b",
+          "provider": "Mapika",
+          "size": "0.8B",
+          "scores": {
+            "locomo-evidence::recall_at_10": 94.0,
+            "longmemeval-evidence::recall_at_10": 97.5,
+            "wikipedia-revisions::accuracy": 56.0,
+            "refreshes-skipped::accuracy": 78.3,
+            "new-facts-caught::recall": 37.7,
+            "dialogue-nli::accuracy": 51.7,
+            "squad-hotpotqa-sufficiency::accuracy": 50.7,
+            "judge50-memories::latency_s": 1583.9,
+            "one-decision::latency_ms": 1955.9,
+            "throughput::throughput": 0.031
+          }
+        }
+      ]
+    },
+    {
+      "id": "embeddings",
+      "title": "Embedding model",
+      "model": "hs-embed-1",
+      "short": "Turns memories and queries into vectors for recall.",
+      "card": "https://huggingface.co/hindsight-ai/hs-embed-1",
+      "facts": [
+        [
+          "Parameters",
+          "112M"
+        ],
+        [
+          "Dimensions",
+          "384 (also 256, 128, 64)"
+        ],
+        [
+          "Context",
+          "8,192 tokens"
+        ],
+        [
+          "Languages",
+          "8"
+        ],
+        [
+          "Runs on",
+          "CPU or GPU, stock TEI"
+        ]
+      ],
+      "benchmarks": [
+        {
+          "id": "nanobeir::ndcg_at_10",
+          "name": "NanoBEIR",
+          "metric": "",
+          "href": null,
+          "about": "nDCG@10, 13 tasks",
+          "section": "English retrieval"
+        },
+        {
+          "id": "mteb-english-v2-retrieval::ndcg_at_10",
+          "name": "MTEB English v2 retrieval",
+          "metric": "",
+          "href": null,
+          "about": "nDCG@10, 10 tasks",
+          "section": "English retrieval"
+        },
+        {
+          "id": "miracl::ndcg_at_10",
+          "name": "MIRACL",
+          "metric": "",
+          "href": null,
+          "about": "nDCG@10, 7 languages",
+          "section": "Multilingual retrieval"
+        },
+        {
+          "id": "belebele-portuguese::ndcg_at_10",
+          "name": "Belebele, Portuguese",
+          "metric": "",
+          "href": null,
+          "about": "nDCG@10",
+          "section": "Multilingual retrieval"
+        },
+        {
+          "id": "belebele-traditional-chinese::ndcg_at_10",
+          "name": "Belebele, Traditional Chinese",
+          "metric": "",
+          "href": null,
+          "about": "nDCG@10",
+          "section": "Multilingual retrieval"
+        },
+        {
+          "id": "beam-1m::recall_at_10",
+          "name": "BEAM 1M",
+          "metric": "",
+          "href": null,
+          "about": "Evidence turns in the top 10 (%), 625 questions",
+          "section": "Long conversations"
+        },
+        {
+          "id": "beam-10m::recall_at_10",
+          "name": "BEAM 10M",
+          "metric": "",
+          "href": null,
+          "about": "Evidence turns in the top 10 (%), 176 questions",
+          "section": "Long conversations"
+        },
+        {
+          "id": "longembed-long-documents::ndcg_at_10",
+          "name": "LongEmbed, long documents",
+          "metric": "",
+          "href": null,
+          "about": "nDCG@10, NarrativeQA, QMSum, SummScreenFD, 2WikiMultihopQA",
+          "section": "Long inputs, each model at its own limit"
+        },
+        {
+          "id": "longembed-needle-and-passkey::ndcg_at_1",
+          "name": "LongEmbed, needle and passkey",
+          "metric": "",
+          "href": null,
+          "about": "nDCG@1, 256 to 32,768 tokens",
+          "section": "Long inputs, each model at its own limit"
+        },
+        {
+          "id": "beam-100k-hindsight-sized-chunks::recall_at_10",
+          "name": "BEAM 100K, Hindsight-sized chunks",
+          "metric": "",
+          "href": null,
+          "about": "Evidence chunks in the top 10 (%), 3,000-character chunks",
+          "section": "Long inputs, each model at its own limit"
+        },
+        {
+          "id": "beam-1m-hindsight-sized-chunks::recall_at_10",
+          "name": "BEAM 1M, Hindsight-sized chunks",
+          "metric": "",
+          "href": null,
+          "about": "Evidence chunks in the top 10 (%), 3,000-character chunks",
+          "section": "Long inputs, each model at its own limit"
+        },
+        {
+          "id": "lmeb::ndcg_at_10",
+          "name": "LMEB",
+          "metric": "",
+          "href": null,
+          "about": "nDCG@10, 17 datasets",
+          "section": "Memory retrieval"
+        },
+        {
+          "id": "query-latency::latency_ms",
+          "name": "Query latency",
+          "metric": "ms",
+          "href": null,
+          "about": "Median ms per query, 2 CPU threads",
+          "section": "Serving on CPU",
+          "plain": true,
+          "lower": true
+        },
+        {
+          "id": "throughput::throughput",
+          "name": "Throughput",
+          "metric": "/s",
+          "href": null,
+          "about": "Memories embedded per second, 2 CPU threads",
+          "section": "Serving on CPU",
+          "plain": true
+        }
+      ],
+      "rows": [
+        {
+          "model": "hs-embed-1",
+          "provider": "Hindsight",
+          "tag": "hindsight",
+          "size": "112M",
+          "scores": {
+            "nanobeir::ndcg_at_10": 61.3,
+            "mteb-english-v2-retrieval::ndcg_at_10": 50.8,
+            "miracl::ndcg_at_10": 52.0,
+            "belebele-portuguese::ndcg_at_10": 91.6,
+            "belebele-traditional-chinese::ndcg_at_10": 91.5,
+            "beam-1m::recall_at_10": 37.5,
+            "beam-10m::recall_at_10": 31.4,
+            "longembed-long-documents::ndcg_at_10": 58.6,
+            "longembed-needle-and-passkey::ndcg_at_1": 75.1,
+            "beam-100k-hindsight-sized-chunks::recall_at_10": 46.5,
+            "beam-1m-hindsight-sized-chunks::recall_at_10": 32.7,
+            "lmeb::ndcg_at_10": 52.3,
+            "query-latency::latency_ms": 16.5,
+            "throughput::throughput": 60.1
+          }
+        },
+        {
+          "model": "multilingual-e5-small",
+          "provider": "Microsoft",
+          "size": "118M",
+          "scores": {
+            "nanobeir::ndcg_at_10": 58.2,
+            "mteb-english-v2-retrieval::ndcg_at_10": 46.5,
+            "miracl::ndcg_at_10": 53.8,
+            "belebele-portuguese::ndcg_at_10": 90.6,
+            "belebele-traditional-chinese::ndcg_at_10": 90.9,
+            "beam-1m::recall_at_10": 37.2,
+            "beam-10m::recall_at_10": 30.1,
+            "longembed-long-documents::ndcg_at_10": 41.0,
+            "longembed-needle-and-passkey::ndcg_at_1": 34.5,
+            "beam-100k-hindsight-sized-chunks::recall_at_10": 40.7,
+            "beam-1m-hindsight-sized-chunks::recall_at_10": 30.4,
+            "lmeb::ndcg_at_10": 49.8,
+            "query-latency::latency_ms": 26.3,
+            "throughput::throughput": 38.6
+          }
+        },
+        {
+          "model": "granite-embedding-97m-multilingual-r2",
+          "provider": "IBM",
+          "size": "97M",
+          "scores": {
+            "nanobeir::ndcg_at_10": 58.7,
+            "mteb-english-v2-retrieval::ndcg_at_10": 50.1,
+            "miracl::ndcg_at_10": 51.6,
+            "belebele-portuguese::ndcg_at_10": 90.8,
+            "belebele-traditional-chinese::ndcg_at_10": 87.8,
+            "beam-1m::recall_at_10": 37.5,
+            "beam-10m::recall_at_10": 25.6,
+            "longembed-long-documents::ndcg_at_10": 64.2,
+            "longembed-needle-and-passkey::ndcg_at_1": 68.1,
+            "beam-100k-hindsight-sized-chunks::recall_at_10": 42.6,
+            "beam-1m-hindsight-sized-chunks::recall_at_10": 31.3,
+            "lmeb::ndcg_at_10": 46.9,
+            "query-latency::latency_ms": 75.4,
+            "throughput::throughput": 4.2
+          }
+        },
+        {
+          "model": "bge-small-en-v1.5",
+          "provider": "BAAI",
+          "size": "33M",
+          "scores": {
+            "nanobeir::ndcg_at_10": 62.6,
+            "mteb-english-v2-retrieval::ndcg_at_10": 53.9,
+            "miracl::ndcg_at_10": 19.6,
+            "belebele-portuguese::ndcg_at_10": 70.0,
+            "belebele-traditional-chinese::ndcg_at_10": 32.9,
+            "beam-1m::recall_at_10": 35.9,
+            "beam-10m::recall_at_10": 31.1,
+            "longembed-long-documents::ndcg_at_10": 36.2,
+            "longembed-needle-and-passkey::ndcg_at_1": 23.9,
+            "beam-100k-hindsight-sized-chunks::recall_at_10": 44.1,
+            "beam-1m-hindsight-sized-chunks::recall_at_10": 30.6,
+            "lmeb::ndcg_at_10": 49.5,
+            "query-latency::latency_ms": 26.0,
+            "throughput::throughput": 43.8
+          }
+        },
+        {
+          "model": "snowflake-arctic-embed-s",
+          "provider": "Snowflake",
+          "size": "33M",
+          "scores": {
+            "nanobeir::ndcg_at_10": 62.4,
+            "mteb-english-v2-retrieval::ndcg_at_10": 54.8,
+            "miracl::ndcg_at_10": 22.0,
+            "belebele-portuguese::ndcg_at_10": 78.0,
+            "belebele-traditional-chinese::ndcg_at_10": 9.7,
+            "beam-1m::recall_at_10": 32.8,
+            "beam-10m::recall_at_10": 25.2,
+            "longembed-long-documents::ndcg_at_10": 43.0,
+            "longembed-needle-and-passkey::ndcg_at_1": 32.5,
+            "beam-100k-hindsight-sized-chunks::recall_at_10": 42.8,
+            "beam-1m-hindsight-sized-chunks::recall_at_10": 27.6,
+            "lmeb::ndcg_at_10": 50.0,
+            "query-latency::latency_ms": 26.7,
+            "throughput::throughput": 43.3
+          }
+        },
+        {
+          "model": "e5-small-v2",
+          "provider": "Microsoft",
+          "size": "33M",
+          "scores": {
+            "nanobeir::ndcg_at_10": 61.0,
+            "mteb-english-v2-retrieval::ndcg_at_10": 48.5,
+            "miracl::ndcg_at_10": 19.3,
+            "belebele-portuguese::ndcg_at_10": 78.4,
+            "belebele-traditional-chinese::ndcg_at_10": 34.2,
+            "beam-1m::recall_at_10": 35.0,
+            "beam-10m::recall_at_10": 29.9,
+            "longembed-long-documents::ndcg_at_10": 44.2,
+            "longembed-needle-and-passkey::ndcg_at_1": 33.8,
+            "beam-100k-hindsight-sized-chunks::recall_at_10": 43.4,
+            "beam-1m-hindsight-sized-chunks::recall_at_10": 28.6,
+            "lmeb::ndcg_at_10": 50.9,
+            "query-latency::latency_ms": 26.3,
+            "throughput::throughput": 44.6
+          }
+        },
+        {
+          "model": "all-MiniLM-L6-v2",
+          "provider": "SBERT",
+          "size": "23M",
+          "scores": {
+            "nanobeir::ndcg_at_10": 56.2,
+            "mteb-english-v2-retrieval::ndcg_at_10": 42.9,
+            "miracl::ndcg_at_10": 10.7,
+            "belebele-portuguese::ndcg_at_10": 54.6,
+            "belebele-traditional-chinese::ndcg_at_10": 21.4,
+            "beam-1m::recall_at_10": 37.6,
+            "beam-10m::recall_at_10": 25.9,
+            "longembed-long-documents::ndcg_at_10": 33.9,
+            "longembed-needle-and-passkey::ndcg_at_1": 21.6,
+            "beam-100k-hindsight-sized-chunks::recall_at_10": 42.2,
+            "beam-1m-hindsight-sized-chunks::recall_at_10": 27.7,
+            "lmeb::ndcg_at_10": 41.5,
+            "query-latency::latency_ms": 14.1,
+            "throughput::throughput": 88.0
+          }
+        }
+      ]
+    },
+    {
+      "id": "reranker",
+      "title": "Reranker",
+      "model": "hs-rerank-1",
+      "short": "Orders what recall finds so the right memory comes first.",
+      "card": "https://huggingface.co/hindsight-ai/hs-rerank-1",
+      "facts": [
+        [
+          "Parameters",
+          "114M"
+        ],
+        [
+          "Context",
+          "8,192 tokens"
+        ],
+        [
+          "Languages",
+          "8"
+        ],
+        [
+          "Runs on",
+          "CPU or GPU, stock TEI"
+        ]
+      ],
+      "benchmarks": [
+        {
+          "id": "nanobeir::ndcg_at_10",
+          "name": "NanoBEIR",
+          "metric": "",
+          "href": null,
+          "about": "nDCG@10, BM25 top 100, 13 tasks",
+          "section": "English reranking"
+        },
+        {
+          "id": "bright::ndcg_at_10",
+          "name": "BRIGHT",
+          "metric": "",
+          "href": null,
+          "about": "nDCG@10, BM25 top 100, 12 reasoning-heavy tasks",
+          "section": "English reranking"
+        },
+        {
+          "id": "miracl::ndcg_at_10",
+          "name": "MIRACL",
+          "metric": "",
+          "href": null,
+          "about": "nDCG@10, 6 languages",
+          "section": "Multilingual reranking"
+        },
+        {
+          "id": "multilingual-bank::ndcg_at_10",
+          "name": "Multilingual bank",
+          "metric": "",
+          "href": null,
+          "about": "nDCG@10, MIRACL, MLDR, WebFAQ, mMARCO in 8 languages, 26 tasks",
+          "section": "Multilingual reranking"
+        },
+        {
+          "id": "knowmebench::ndcg_at_10",
+          "name": "KnowMeBench",
+          "metric": "",
+          "href": null,
+          "about": "nDCG@10, KaLM-Embedding top 100, 2,162 questions",
+          "section": "Memory reranking"
+        },
+        {
+          "id": "membench::ndcg_at_10",
+          "name": "MemBench",
+          "metric": "",
+          "href": null,
+          "about": "nDCG@10, KaLM-Embedding top 100, 8,940 scenes",
+          "section": "Memory reranking"
+        },
+        {
+          "id": "convomem::ndcg_at_10",
+          "name": "ConvoMem",
+          "metric": "",
+          "href": null,
+          "about": "nDCG@10, KaLM-Embedding top 100, 4,967 scenes",
+          "section": "Memory reranking"
+        },
+        {
+          "id": "maximum-input::max_tokens",
+          "name": "Maximum input",
+          "metric": "tokens",
+          "href": null,
+          "about": "Tokens per query and document pair, from each model's configuration",
+          "section": "Long inputs",
+          "plain": true
+        },
+        {
+          "id": "rerank50-memories::latency_ms",
+          "name": "Rerank 50 memories",
+          "metric": "ms",
+          "href": null,
+          "about": "Median ms per query, 2 CPU threads",
+          "section": "Serving on CPU",
+          "plain": true,
+          "lower": true
+        },
+        {
+          "id": "rerank50-chunks::latency_ms",
+          "name": "Rerank 50 chunks",
+          "metric": "ms",
+          "href": null,
+          "about": "Median ms per query, 2 CPU threads",
+          "section": "Serving on CPU",
+          "plain": true,
+          "lower": true
+        }
+      ],
+      "rows": [
+        {
+          "model": "hs-rerank-1",
+          "provider": "Hindsight",
+          "tag": "hindsight",
+          "size": "114M",
+          "scores": {
+            "nanobeir::ndcg_at_10": 71.3,
+            "bright::ndcg_at_10": 15.1,
+            "miracl::ndcg_at_10": 57.7,
+            "multilingual-bank::ndcg_at_10": 51.5,
+            "knowmebench::ndcg_at_10": 52.3,
+            "membench::ndcg_at_10": 77.1,
+            "convomem::ndcg_at_10": 66.7,
+            "maximum-input::max_tokens": 8192.0,
+            "rerank50-memories::latency_ms": 1459.8,
+            "rerank50-chunks::latency_ms": 21252.8
+          }
+        },
+        {
+          "model": "gte-reranker-modernbert-base",
+          "provider": "Alibaba",
+          "size": "149M",
+          "scores": {
+            "nanobeir::ndcg_at_10": 71.0,
+            "bright::ndcg_at_10": 11.2,
+            "miracl::ndcg_at_10": 39.1,
+            "multilingual-bank::ndcg_at_10": 41.6,
+            "knowmebench::ndcg_at_10": 57.3,
+            "membench::ndcg_at_10": 72.8,
+            "convomem::ndcg_at_10": 66.3,
+            "maximum-input::max_tokens": 8192.0,
+            "rerank50-memories::latency_ms": 9344.2,
+            "rerank50-chunks::latency_ms": 133384.4
+          }
+        },
+        {
+          "model": "bge-reranker-base",
+          "provider": "BAAI",
+          "size": "278M",
+          "scores": {
+            "nanobeir::ndcg_at_10": 61.4,
+            "bright::ndcg_at_10": 9.5,
+            "miracl::ndcg_at_10": 51.1,
+            "multilingual-bank::ndcg_at_10": 46.8,
+            "knowmebench::ndcg_at_10": 50.0,
+            "membench::ndcg_at_10": 70.5,
+            "convomem::ndcg_at_10": 63.6,
+            "maximum-input::max_tokens": 512.0,
+            "rerank50-memories::latency_ms": 7870.9,
+            "rerank50-chunks::latency_ms": 58415.6
+          }
+        },
+        {
+          "model": "mxbai-rerank-xsmall-v1",
+          "provider": "Mixedbread",
+          "size": "71M",
+          "scores": {
+            "nanobeir::ndcg_at_10": 62.9,
+            "bright::ndcg_at_10": 11.5,
+            "miracl::ndcg_at_10": 47.9,
+            "multilingual-bank::ndcg_at_10": 42.7,
+            "knowmebench::ndcg_at_10": 46.6,
+            "membench::ndcg_at_10": 64.0,
+            "convomem::ndcg_at_10": 61.4,
+            "maximum-input::max_tokens": 512.0,
+            "rerank50-memories::latency_ms": 2685.0,
+            "rerank50-chunks::latency_ms": 40870.1
+          }
+        },
+        {
+          "model": "ms-marco-MiniLM-L12-v2",
+          "provider": "SBERT",
+          "size": "33M",
+          "scores": {
+            "nanobeir::ndcg_at_10": 65.8,
+            "bright::ndcg_at_10": 8.5,
+            "miracl::ndcg_at_10": 21.5,
+            "multilingual-bank::ndcg_at_10": 26.7,
+            "knowmebench::ndcg_at_10": 46.0,
+            "membench::ndcg_at_10": 72.3,
+            "convomem::ndcg_at_10": 62.1,
+            "maximum-input::max_tokens": 512.0,
+            "rerank50-memories::latency_ms": 1820.1,
+            "rerank50-chunks::latency_ms": 17951.9
+          }
+        },
+        {
+          "model": "ms-marco-MiniLM-L6-v2",
+          "provider": "SBERT",
+          "size": "23M",
+          "scores": {
+            "nanobeir::ndcg_at_10": 65.4,
+            "bright::ndcg_at_10": 12.1,
+            "miracl::ndcg_at_10": 20.9,
+            "multilingual-bank::ndcg_at_10": 26.1,
+            "knowmebench::ndcg_at_10": 47.4,
+            "membench::ndcg_at_10": 74.6,
+            "convomem::ndcg_at_10": 61.9,
+            "maximum-input::max_tokens": 512.0,
+            "rerank50-memories::latency_ms": 915.7,
+            "rerank50-chunks::latency_ms": 9036.6
+          }
+        }
+      ]
+    }
+  ]
+}

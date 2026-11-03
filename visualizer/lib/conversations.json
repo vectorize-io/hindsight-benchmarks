@@ -1,0 +1,23 @@
+{
+  "amb_commit": "28b644bd4dd653c0207c7507280439390c829155",
+  "dataset": "locomo-fixed/locomo10",
+  "rows": [
+    {
+      "run": "hindsight-gemma4",
+      "memory_models": [
+        "Hindsight",
+        "gemma-4-26b-a4b"
+      ],
+      "questions": 1502,
+      "accuracy": 85.5,
+      "by_type": {
+        "multi-hop": 67.7,
+        "open-domain": 89.2,
+        "single-hop": 81.5,
+        "temporal": 84.5
+      },
+      "answer_s": 10.6,
+      "judge": "gemini-3.1-flash-lite"
+    }
+  ]
+}
