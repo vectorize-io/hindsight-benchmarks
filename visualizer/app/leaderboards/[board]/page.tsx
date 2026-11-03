@@ -130,6 +130,9 @@ function ConversationResults({ ambCommit, rows }: { ambCommit: string; rows: Con
   const types = Object.keys(rows[0].by_type) as (keyof ConversationRow['by_type'])[]
   return (
     <>
+      <p className="rounded-xl border border-border bg-[hsl(var(--band))] px-4 py-3 text-sm text-muted-foreground">
+        More setups are coming soon. This page will be updated as their results land.
+      </p>
       <InfoBox
         about="Hindsight retains every session of a long conversation, then answers each question with reflect. A judge compares each answer with the expected one. Questions LoCoMo gets wrong (an answer the conversation never states, or the wrong person named) are removed."
         ambCommit={ambCommit}
@@ -177,9 +180,8 @@ function CodingResults({ ambCommit, rows }: { ambCommit: string; rows: CodingRow
   const score = (r: CodingRow) =>
     SCORE.quality * r.first_try + (SCORE.cost / 2) * (logScore(cheapest, r.cost_usd) + logScore(fastest, r.wall_s))
   const priciest = Math.max(...rows.map((r) => r.cost_usd))
-  // The chart: per agent, no memory, then Hindsight (solid arrow), then Hindsight with the decision model
-  // (dashed, from Hindsight). The older gemini-2.5-flash-lite runs stay in the table only.
-  const CHAIN = ['vanilla', 'hindsight-gemma', 'hindsight-gemma-decide']
+  // The chart: per agent, no memory, then Hindsight (arrow). The older gemini-2.5-flash-lite runs stay in the table only.
+  const CHAIN = ['vanilla', 'hindsight-gemma']
   const points: Row[] = rows.filter((r) => CHAIN.includes(r.memory)).map((r) => ({
     id: r.agent + r.memory,
     model: r.agent,
@@ -195,7 +197,6 @@ function CodingResults({ ambCommit, rows }: { ambCommit: string; rows: CodingRow
       r.memory === 'vanilla'
         ? undefined
         : { decisionModel: r.memory_models.join(' + '), llm: { calls: 0, input: 0, output: 0, cost: 0 }, decision: { calls: 0, input: 0, output: 0, cost: 0 } },
-    from: r.memory === 'hindsight-gemma-decide' ? `${r.agent}hindsight-gemma` : undefined,
     extra: { Corrections: `${r.corrections.toFixed(2)} per bug`, Time: `${Math.round(r.wall_s)} s per bug` },
   }))
   return (
@@ -271,7 +272,7 @@ function CodingResults({ ambCommit, rows }: { ambCommit: string; rows: CodingRow
           x: 'Cost per bug',
           unit: 'bug',
           quality: 'Fixed first try',
-          pair: 'The same agent with Hindsight (solid arrow), then adding hs-decide-1-flash (dashed)',
+          pair: 'The same agent with Hindsight',
           costNote: 'Hindsight runs on gemma-4-26b-a4b here. Cost per bug is the agent’s tokens plus Hindsight’s own memory bill, averaged over the repeats.',
         }}
       />

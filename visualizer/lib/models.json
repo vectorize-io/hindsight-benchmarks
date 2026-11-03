@@ -88,6 +88,35 @@
           "href": null,
           "about": "Public suite, edition 0.3, 37 benchmarks; chance-corrected skill (x100)",
           "section": "General decisions"
+        },
+        {
+          "id": "judge50-memories::latency_s",
+          "name": "Judge 50 memories",
+          "metric": "s",
+          "href": null,
+          "about": "Median seconds for one yes/no question on each of 50 memories, 2 CPU threads",
+          "section": "Serving on CPU",
+          "plain": true,
+          "lower": true
+        },
+        {
+          "id": "one-decision::latency_ms",
+          "name": "One decision",
+          "metric": "ms",
+          "href": null,
+          "about": "Median ms for one yes/no question, 2 CPU threads",
+          "section": "Serving on CPU",
+          "plain": true,
+          "lower": true
+        },
+        {
+          "id": "throughput::throughput",
+          "name": "Throughput",
+          "metric": "/s",
+          "href": null,
+          "about": "Memories judged per second, 2 CPU threads",
+          "section": "Serving on CPU",
+          "plain": true
         }
       ],
       "rows": [
@@ -104,7 +133,10 @@
             "new-facts-caught::recall": 71.4,
             "dialogue-nli::accuracy": 75.8,
             "squad-hotpotqa-sufficiency::accuracy": 61.8,
-            "decision-index::skill": 36.1
+            "decision-index::skill": 36.1,
+            "judge50-memories::latency_s": 67.3,
+            "one-decision::latency_ms": 1900.6,
+            "throughput::throughput": 0.75
           }
         },
         {
@@ -118,7 +150,10 @@
             "new-facts-caught::recall": 87.7,
             "dialogue-nli::accuracy": 83.0,
             "squad-hotpotqa-sufficiency::accuracy": 66.8,
-            "decision-index::skill": 53.8
+            "decision-index::skill": 53.8,
+            "judge50-memories::latency_s": 1781.4,
+            "one-decision::latency_ms": 2014.6,
+            "throughput::throughput": 0.029
           }
         },
         {
@@ -132,7 +167,10 @@
             "new-facts-caught::recall": 92.3,
             "dialogue-nli::accuracy": 88.0,
             "squad-hotpotqa-sufficiency::accuracy": 67.8,
-            "decision-index::skill": 36.9
+            "decision-index::skill": 36.9,
+            "judge50-memories::latency_s": 1106.0,
+            "one-decision::latency_ms": 1096.6,
+            "throughput::throughput": 0.046
           }
         },
         {
@@ -146,7 +184,10 @@
             "refreshes-skipped::accuracy": 78.3,
             "new-facts-caught::recall": 37.7,
             "dialogue-nli::accuracy": 51.7,
-            "squad-hotpotqa-sufficiency::accuracy": 50.7
+            "squad-hotpotqa-sufficiency::accuracy": 50.7,
+            "judge50-memories::latency_s": 1583.9,
+            "one-decision::latency_ms": 1955.9,
+            "throughput::throughput": 0.031
           }
         }
       ]

@@ -137,8 +137,9 @@ def parse_readme_table(readme: str) -> dict[tuple[str, str], str]:
 
 
 # Only these reach the public site, under these names. A result for any other model stays local.
+# "params" is the size from the model card: total and, for mixture-of-experts models, active per token.
 SITE_MODELS = {
-    "gemma-4-26b-a4b": {"model": "gemma-4-26b-a4b", "provider": "Google", "icon": "/gemini.png", "openWeights": True},
+    "gemma-4-26b-a4b": {"model": "gemma-4-26b-a4b", "provider": "Google", "icon": "/gemini.png", "openWeights": True, "params": "25.2B total, 3.8B active"},
     "gemini-3.1-flash-lite": {"model": "gemini-3.1-flash-lite", "provider": "Google", "icon": "/gemini.png"},
     "gpt-6.1-terra": {"model": "gpt-6.1-terra", "provider": "OpenAI", "icon": "/openai.png"},
     "gpt-6-luna": {"model": "gpt-6-luna", "provider": "OpenAI", "icon": "/openai.png"},
@@ -151,14 +152,14 @@ SITE_MODELS = {
     "openai/gpt-5.6-luna": {"model": "gpt-5.6-luna", "provider": "OpenAI", "icon": "/openai.png"},
     "gemini-3.8-flash": {"model": "gemini-3.8-flash", "provider": "Google", "icon": "/gemini.png"},
     "anthropic/claude-haiku-5.5": {"model": "claude-haiku-5.5", "provider": "Anthropic", "icon": "/logos/anthropic.webp"},
-    "deepseek/deepseek-v4.1-flash": {"model": "deepseek-v4.1-flash", "provider": "DeepSeek", "icon": "/logos/deepseek.webp", "openWeights": True},
-    "qwen/qwen3.8-flash": {"model": "qwen3.8-flash", "provider": "Qwen", "icon": "/logos/qwen.webp", "openWeights": True},
-    "z-ai/glm-5.3-flash": {"model": "glm-5.3-flash", "provider": "Z.ai", "icon": "/logos/zai.webp", "openWeights": True},
-    "minimax/minimax-m3.1-flash": {"model": "minimax-m3.1-flash", "provider": "MiniMax", "icon": "/logos/minimax.webp", "openWeights": True},
+    "deepseek/deepseek-v4.1-flash": {"model": "deepseek-v4.1-flash", "provider": "DeepSeek", "icon": "/logos/deepseek.webp", "openWeights": True, "params": "552B total, 8B active on input, 16B on output"},
+    "qwen/qwen3.8-flash": {"model": "qwen3.8-flash", "provider": "Qwen", "icon": "/logos/qwen.webp", "openWeights": True, "params": "125B total, 6B active"},
+    "z-ai/glm-5.3-flash": {"model": "glm-5.3-flash", "provider": "Z.ai", "icon": "/logos/zai.webp", "openWeights": True, "params": "320B total, 18B active"},
+    "minimax/minimax-m3.1-flash": {"model": "minimax-m3.1-flash", "provider": "MiniMax", "icon": "/logos/minimax.webp", "openWeights": True, "params": "428B total, 23B active"},
 }
 # Decision models the site shows. "onLlmBoards" shows the run as a row on the LLM boards.
 SITE_DECISION_MODELS: dict[str, dict] = {
-    "hs-decide-1-flash": {"model": "hs-decide-1-flash", "provider": "Hindsight", "onLlmBoards": True},
+    "hs-decide-1-flash": {"model": "hs-decide-1-flash", "provider": "Hindsight", "onLlmBoards": True, "params": "0.8B"},
 }
 # More, as the same JSON, for a local preview of ones not public yet.
 SITE_DECISION_MODELS_ENV = "HS_BENCH_SITE_DECISION_MODELS"
@@ -227,6 +228,8 @@ def export_site(out: Path, operations: dict[str, list[str]], commit: str) -> Non
             "openrouter_id": or_id,
             "price_per_1m": {k: per_m(v) for k, v in r["pricing_per_token"].items()},
             "decision_price_per_1m_input": prices.get(decision) if decision else None,
+            "params": SITE_MODELS[r["model"]].get("params"),
+            "decision_params": deciders[decision].get("params") if decision else None,
             "ran": f"{r['timestamp'][:4]}-{r['timestamp'][4:6]}-{r['timestamp'][6:8]}",
             "judge": r["judge"],
             "repeats": r["repeats"],
@@ -267,8 +270,12 @@ def list_pricing(provider: dict, model: str) -> dict:
     """$ per token from the provider's own /models list, or OpenRouter's for a provider without one."""
     # Direct and subscription routes show OpenRouter's list price, so models compare fairly.
     if or_id := provider.get("openrouter_models", {}).get(model):
-        provider, model = {"base_url": "https://openrouter.ai/api/v1"}, or_id
-    elif prefix := provider.get("openrouter_prefix"):
+        # A model served on our own server: the cheapest provider OpenRouter lists for it.
+        with urllib.request.urlopen(f"https://openrouter.ai/api/v1/models/{or_id}/endpoints", timeout=30) as r:
+            ends = json.load(r)["data"]["endpoints"]
+        return parse_pricing(min((e["pricing"] for e in ends),
+                                 key=lambda p: float(p["prompt"]) + float(p["completion"])))
+    if prefix := provider.get("openrouter_prefix"):
         provider, model = {"base_url": "https://openrouter.ai/api/v1"}, prefix + model
     if not provider["base_url"]:
         return {}

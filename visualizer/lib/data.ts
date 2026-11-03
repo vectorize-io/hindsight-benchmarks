@@ -49,13 +49,14 @@ export type Row = {
   tokensPerTask: { input: number; output: number }
   extra?: Record<string, string> // more measures, shown in the chart's hover card
   source?: Source // where its price and run came from, shown in the expanded row
-  from?: string // the chart's arrow to this row starts at this row id, instead of the same model alone
 }
 
 export type Source = {
   openrouter_id: string
   price_per_1m: { input: number; output: number; cached_input: number }
   decision_price_per_1m_input: number | null
+  params?: string | null // size from the model card; none for closed models
+  decision_params?: string | null
   ran: string
   judge: string
   repeats: number

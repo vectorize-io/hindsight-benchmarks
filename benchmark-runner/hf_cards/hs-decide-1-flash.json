@@ -138,6 +138,57 @@
        "value": 36.1
       }
      ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Judge 50 memories",
+      "type": "judge50-memories"
+     },
+     "metrics": [
+      {
+       "type": "latency_s",
+       "name": "Median seconds for one yes/no question on each of 50 memories, 2 CPU threads",
+       "value": 67.3
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "One decision",
+      "type": "one-decision"
+     },
+     "metrics": [
+      {
+       "type": "latency_ms",
+       "name": "Median ms for one yes/no question, 2 CPU threads",
+       "value": 1900.6
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Throughput",
+      "type": "throughput"
+     },
+     "metrics": [
+      {
+       "type": "throughput",
+       "name": "Memories judged per second, 2 CPU threads",
+       "value": 0.75
+      }
+     ]
     }
    ]
   },
@@ -277,6 +328,57 @@
        "type": "skill",
        "name": "Public suite, edition 0.3, 37 benchmarks; chance-corrected skill (x100)",
        "value": 53.8
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Judge 50 memories",
+      "type": "judge50-memories"
+     },
+     "metrics": [
+      {
+       "type": "latency_s",
+       "name": "Median seconds for one yes/no question on each of 50 memories, 2 CPU threads",
+       "value": 1781.4
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "One decision",
+      "type": "one-decision"
+     },
+     "metrics": [
+      {
+       "type": "latency_ms",
+       "name": "Median ms for one yes/no question, 2 CPU threads",
+       "value": 2014.6
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Throughput",
+      "type": "throughput"
+     },
+     "metrics": [
+      {
+       "type": "throughput",
+       "name": "Memories judged per second, 2 CPU threads",
+       "value": 0.029
       }
      ]
     }
@@ -420,6 +522,57 @@
        "value": 36.9
       }
      ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Judge 50 memories",
+      "type": "judge50-memories"
+     },
+     "metrics": [
+      {
+       "type": "latency_s",
+       "name": "Median seconds for one yes/no question on each of 50 memories, 2 CPU threads",
+       "value": 1106.0
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "One decision",
+      "type": "one-decision"
+     },
+     "metrics": [
+      {
+       "type": "latency_ms",
+       "name": "Median ms for one yes/no question, 2 CPU threads",
+       "value": 1096.6
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Throughput",
+      "type": "throughput"
+     },
+     "metrics": [
+      {
+       "type": "throughput",
+       "name": "Memories judged per second, 2 CPU threads",
+       "value": 0.046
+      }
+     ]
     }
    ]
   },
@@ -542,6 +695,57 @@
        "type": "accuracy",
        "name": "Right answer to whether the evidence answers the question: not, partly, fully (%), 400 questions",
        "value": 50.7
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Judge 50 memories",
+      "type": "judge50-memories"
+     },
+     "metrics": [
+      {
+       "type": "latency_s",
+       "name": "Median seconds for one yes/no question on each of 50 memories, 2 CPU threads",
+       "value": 1583.9
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "One decision",
+      "type": "one-decision"
+     },
+     "metrics": [
+      {
+       "type": "latency_ms",
+       "name": "Median ms for one yes/no question, 2 CPU threads",
+       "value": 1955.9
+      }
+     ]
+    },
+    {
+     "task": {
+      "type": "classification",
+      "name": "Serving on CPU"
+     },
+     "dataset": {
+      "name": "Throughput",
+      "type": "throughput"
+     },
+     "metrics": [
+      {
+       "type": "throughput",
+       "name": "Memories judged per second, 2 CPU threads",
+       "value": 0.031
       }
      ]
     }

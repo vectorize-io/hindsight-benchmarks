@@ -396,7 +396,7 @@ function Heatmap({ board, rows }: { board: Board; rows: Row[] }) {
 // bare: the chart alone, without title and legend, for the home page card.
 // The coding board reuses it with agents for models and Hindsight setups for decision-model runs, and the
 // Hindsight Models pages with latency for cost: `text` renames the parts, `ms` reads the cost as milliseconds.
-export type ScatterText = { title?: string; noun: string; x: string; unit: string; quality: string; ms?: boolean; pair?: string; costNote?: string }
+export type ScatterText = { title?: string; noun: string; x: string; unit: string; quality: string; speed?: string; pair?: string; costNote?: string }
 export function ModelScatter({ rows, task, bare, text }: { rows: Row[]; task: string; bare?: boolean; text?: ScatterText }) {
   const box = useRef<HTMLDivElement>(null)
   const [W, setW] = useState(760)
@@ -413,8 +413,7 @@ export function ModelScatter({ rows, task, bare, text }: { rows: Row[]; task: st
   const pairs = rows
     .filter((d) => d.cost > 0 && d.split)
     .flatMap((d) => {
-      // A row with `from` chains on another run (Hindsight, then Hindsight + decision model): drawn dashed.
-      const base = d.from ? rows.find((b) => b.id === d.from) : plain.find((b) => b.model === d.model)
+      const base = plain.find((b) => b.model === d.model)
       return base ? [{ base, d }] : []
     })
   if (plain.length < 2) return null
@@ -524,7 +523,7 @@ export function ModelScatter({ rows, task, bare, text }: { rows: Row[]; task: st
             <g key={t}>
               <line x1={sx(t)} x2={sx(t)} y1={pad.t} y2={H - pad.b} stroke="hsl(var(--border))" strokeDasharray="2 4" />
               <text x={sx(t)} y={H - pad.b + 18} textAnchor="middle" fontSize="11" fill={muted} className="font-mono">
-                {tx.ms ? `${t} ms` : `$${t}`}
+                {tx.speed ? `${t} ${tx.speed}` : `$${t}`}
               </text>
             </g>
           ))}
@@ -549,7 +548,6 @@ export function ModelScatter({ rows, task, bare, text }: { rows: Row[]; task: st
                     y2={r1(ay + (by - ay) * k)}
                     stroke={accent}
                     strokeWidth="1.25"
-                    strokeDasharray={d.from ? '4 3' : undefined}
                     opacity="0.5"
                     markerEnd="url(#ghost-arrow)"
                   />
@@ -620,9 +618,9 @@ export function ModelScatter({ rows, task, bare, text }: { rows: Row[]; task: st
                     <span>{hp.score.toFixed(1)}</span>
                   </>
                 )}
-                <span className="text-muted-foreground font-sans">{tx.ms ? 'Latency' : 'Cost'}</span>
+                <span className="text-muted-foreground font-sans">{tx.speed ? 'Latency' : 'Cost'}</span>
                 <span>
-                  {tx.ms ? `${Math.round(hp.cost).toLocaleString('en-US')} ms, median` : `${fmtCost(hp.cost)} per ${tx.unit}`}
+                  {tx.speed ? `${hp.cost.toLocaleString('en-US', { maximumFractionDigits: 1 })} ${tx.speed}, median` : `${fmtCost(hp.cost)} per ${tx.unit}`}
                 </span>
                 {hp.callsPerTask > 0 && (
                   <>
@@ -646,7 +644,7 @@ export function ModelScatter({ rows, task, bare, text }: { rows: Row[]; task: st
                 const dc = (w.cost / wo.cost - 1) * 100
                 return (
                   <div className="mt-2 pt-2 border-t border-border font-mono tabular-nums">
-                    <span className="text-muted-foreground font-sans">{hp.from ? 'Against the run it builds on: ' : hp.split ? (tx.noun === 'models' ? 'Against the model alone: ' : 'Against no memory: ') : `With ${w.split?.decisionModel}: `}</span>
+                    <span className="text-muted-foreground font-sans">{hp.split ? (tx.noun === 'models' ? 'Against the model alone: ' : 'Against no memory: ') : `With ${w.split?.decisionModel}: `}</span>
                     <span className={dq >= 0 ? 'text-emerald-500' : 'text-red-500'}>{sign(dq)} quality</span>,{' '}
                     <span className={dc <= 0 ? 'text-emerald-500' : 'text-red-500'}>{sign(dc, 0)}% cost</span>
                   </div>
@@ -680,7 +678,7 @@ export function ModelScatter({ rows, task, bare, text }: { rows: Row[]; task: st
         )}
         <span className="inline-flex items-center gap-1.5">
           <svg width="12" height="10"><rect width="12" height="10" fill={accent} opacity="0.12" /></svg>
-          Best value: no other {tx.noun === 'agents' ? 'agent' : 'model'} is both {tx.ms ? 'faster' : 'cheaper'} and better
+          Best value: no other {tx.noun === 'agents' ? 'agent' : 'model'} is both {tx.speed ? 'faster' : 'cheaper'} and better
         </span>
       </div>
       {tx.costNote && <p className="text-xs text-muted-foreground mt-1">{tx.costNote}</p>}
@@ -708,6 +706,16 @@ function SourceDetails({ row, source }: { row: Row; source: Source }) {
             {usd(p.input)} in{p.cached_input !== p.input && ` (${usd(p.cached_input)} cached)`}, {usd(p.output)} out
           </span>
         </div>
+        <div>
+          <span className="text-muted-foreground">{row.model} size:</span>{' '}
+          <span className="font-mono text-[13px]">{source.params ?? `not published by ${row.provider}`}</span>
+        </div>
+        {row.split && source.decision_params && (
+          <div>
+            <span className="text-muted-foreground">{row.split.decisionModel} size:</span>{' '}
+            <span className="font-mono text-[13px]">{source.decision_params}</span>
+          </div>
+        )}
         {row.split && source.decision_price_per_1m_input != null && (
           <div>
             <span className="text-muted-foreground">{row.split.decisionModel} per 1M tokens:</span>{' '}

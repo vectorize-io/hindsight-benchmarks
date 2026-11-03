@@ -37,8 +37,8 @@ ORGS = {"hindsight-ai": "Hindsight", "BAAI": "BAAI", "cross-encoder": "SBERT", "
         "ibm-granite": "IBM", "Snowflake": "Snowflake", "Alibaba-NLP": "Alibaba", "mixedbread-ai": "Mixedbread",
         "StartLux": "StartLux", "vLLM Semantic Router": "vLLM Semantic Router", "Mapika": "Mapika"}
 DRAFTS = Path(__file__).parent / "hf_cards"
-PLAIN = {"latency_ms": "ms", "throughput": "/s", "max_tokens": "tokens"}
-LOWER = {"latency_ms"}
+PLAIN = {"latency_ms": "ms", "latency_s": "s", "throughput": "/s", "max_tokens": "tokens"}
+LOWER = {"latency_ms", "latency_s"}
 
 
 def token() -> str:

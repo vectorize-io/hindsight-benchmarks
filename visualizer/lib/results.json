@@ -7,7 +7,8 @@
    "decision": {
     "model": "hs-decide-1-flash",
     "provider": "Hindsight",
-    "onLlmBoards": true
+    "onLlmBoards": true,
+    "params": "0.8B"
    },
    "source": {
     "openrouter_id": "google/gemini-3.1-flash-lite",
@@ -17,6 +18,8 @@
      "cached_input": 0.025
     },
     "decision_price_per_1m_input": 0.02,
+    "params": null,
+    "decision_params": "0.8B",
     "ran": "2026-11-01",
     "judge": "gemini/gemini-3.1-flash-lite",
     "repeats": 2
@@ -210,6 +213,8 @@
      "cached_input": 0.025
     },
     "decision_price_per_1m_input": null,
+    "params": null,
+    "decision_params": null,
     "ran": "2026-10-31",
     "judge": "gemini/gemini-3.1-flash-lite",
     "repeats": 2
@@ -473,7 +478,8 @@
    "decision": {
     "model": "hs-decide-1-flash",
     "provider": "Hindsight",
-    "onLlmBoards": true
+    "onLlmBoards": true,
+    "params": "0.8B"
    },
    "source": {
     "openrouter_id": "google/gemini-3.8-flash",
@@ -483,6 +489,8 @@
      "cached_input": 0.0825
     },
     "decision_price_per_1m_input": 0.02,
+    "params": null,
+    "decision_params": "0.8B",
     "ran": "2026-11-01",
     "judge": "gemini/gemini-3.1-flash-lite",
     "repeats": 2
@@ -667,6 +675,8 @@
      "cached_input": 0.0825
     },
     "decision_price_per_1m_input": null,
+    "params": null,
+    "decision_params": null,
     "ran": "2026-10-31",
     "judge": "gemini/gemini-3.1-flash-lite",
     "repeats": 2
@@ -926,19 +936,23 @@
    "provider": "Google",
    "icon": "/gemini.png",
    "openWeights": true,
+   "params": "25.2B total, 3.8B active",
    "decision": {
     "model": "hs-decide-1-flash",
     "provider": "Hindsight",
-    "onLlmBoards": true
+    "onLlmBoards": true,
+    "params": "0.8B"
    },
    "source": {
     "openrouter_id": "google/gemma-4-26b-a4b-it",
     "price_per_1m": {
-     "input": 0.0675,
-     "output": 0.225,
-     "cached_input": 0.0375
+     "input": 0.024,
+     "output": 0.1,
+     "cached_input": 0.01
     },
     "decision_price_per_1m_input": 0.02,
+    "params": "25.2B total, 3.8B active",
+    "decision_params": "0.8B",
     "ran": "2026-11-01",
     "judge": "gemini/gemini-3.1-flash-lite",
     "repeats": 2
@@ -947,7 +961,7 @@
     "consolidation": {
      "passed": 41,
      "total": 50,
-     "cost_usd": 0.2639,
+     "cost_usd": 0.1472,
      "calls": 268,
      "input_tokens": 2253212,
      "output_tokens": 149155,
@@ -1014,7 +1028,7 @@
     "reflect": {
      "passed": 29,
      "total": 34,
-     "cost_usd": 0.0594,
+     "cost_usd": 0.0452,
      "calls": 88,
      "input_tokens": 305715,
      "output_tokens": 7371,
@@ -1064,7 +1078,7 @@
     "refresh_pages": {
      "passed": 31,
      "total": 40,
-     "cost_usd": 0.1272,
+     "cost_usd": 0.0849,
      "calls": 167,
      "input_tokens": 876242,
      "output_tokens": 32944,
@@ -1122,15 +1136,18 @@
    "provider": "Google",
    "icon": "/gemini.png",
    "openWeights": true,
+   "params": "25.2B total, 3.8B active",
    "decision": null,
    "source": {
     "openrouter_id": "google/gemma-4-26b-a4b-it",
     "price_per_1m": {
-     "input": 0.0675,
-     "output": 0.225,
-     "cached_input": 0.0375
+     "input": 0.024,
+     "output": 0.1,
+     "cached_input": 0.01
     },
     "decision_price_per_1m_input": null,
+    "params": "25.2B total, 3.8B active",
+    "decision_params": null,
     "ran": "2026-10-31",
     "judge": "gemini/gemini-3.1-flash-lite",
     "repeats": 2
@@ -1139,7 +1156,7 @@
     "retain": {
      "passed": 67,
      "total": 84,
-     "cost_usd": 0.0449,
+     "cost_usd": 0.0172,
      "calls": 133,
      "input_tokens": 455227,
      "output_tokens": 62873,
@@ -1227,7 +1244,7 @@
     "consolidation": {
      "passed": 33,
      "total": 50,
-     "cost_usd": 0.2442,
+     "cost_usd": 0.0912,
      "calls": 338,
      "input_tokens": 2880111,
      "output_tokens": 221108,
@@ -1296,7 +1313,7 @@
     "reflect": {
      "passed": 30,
      "total": 34,
-     "cost_usd": 0.0958,
+     "cost_usd": 0.0343,
      "calls": 144,
      "input_tokens": 1382406,
      "output_tokens": 10971,
@@ -1348,7 +1365,7 @@
     "refresh_pages": {
      "passed": 29,
      "total": 40,
-     "cost_usd": 0.2155,
+     "cost_usd": 0.0778,
      "calls": 322,
      "input_tokens": 2990422,
      "output_tokens": 60492,
@@ -1413,7 +1430,8 @@
    "decision": {
     "model": "hs-decide-1-flash",
     "provider": "Hindsight",
-    "onLlmBoards": true
+    "onLlmBoards": true,
+    "params": "0.8B"
    },
    "source": {
     "openrouter_id": "anthropic/claude-haiku-5.5",
@@ -1423,6 +1441,8 @@
      "cached_input": 0.01
     },
     "decision_price_per_1m_input": 0.02,
+    "params": null,
+    "decision_params": "0.8B",
     "ran": "2026-11-02",
     "judge": "gemini/gemini-3.1-flash-lite",
     "repeats": 2
@@ -1614,6 +1634,8 @@
      "cached_input": 0.01
     },
     "decision_price_per_1m_input": null,
+    "params": null,
+    "decision_params": null,
     "ran": "2026-10-31",
     "judge": "gemini/gemini-3.1-flash-lite",
     "repeats": 2
@@ -1873,10 +1895,12 @@
    "provider": "DeepSeek",
    "icon": "/logos/deepseek.webp",
    "openWeights": true,
+   "params": "552B total, 8B active on input, 16B on output",
    "decision": {
     "model": "hs-decide-1-flash",
     "provider": "Hindsight",
-    "onLlmBoards": true
+    "onLlmBoards": true,
+    "params": "0.8B"
    },
    "source": {
     "openrouter_id": "deepseek/deepseek-v4.1-flash",
@@ -1886,6 +1910,8 @@
      "cached_input": 0.006
     },
     "decision_price_per_1m_input": 0.02,
+    "params": "552B total, 8B active on input, 16B on output",
+    "decision_params": "0.8B",
     "ran": "2026-11-01",
     "judge": "gemini/gemini-3.1-flash-lite",
     "repeats": 2
@@ -2074,6 +2100,7 @@
    "provider": "DeepSeek",
    "icon": "/logos/deepseek.webp",
    "openWeights": true,
+   "params": "552B total, 8B active on input, 16B on output",
    "decision": null,
    "source": {
     "openrouter_id": "deepseek/deepseek-v4.1-flash",
@@ -2083,6 +2110,8 @@
      "cached_input": 0.006
     },
     "decision_price_per_1m_input": null,
+    "params": "552B total, 8B active on input, 16B on output",
+    "decision_params": null,
     "ran": "2026-10-31",
     "judge": "gemini/gemini-3.1-flash-lite",
     "repeats": 2
@@ -2355,6 +2384,7 @@
    "provider": "MiniMax",
    "icon": "/logos/minimax.webp",
    "openWeights": true,
+   "params": "428B total, 23B active",
    "decision": null,
    "source": {
     "openrouter_id": "minimax/minimax-m3.1-flash",
@@ -2364,6 +2394,8 @@
      "cached_input": 0.015
     },
     "decision_price_per_1m_input": null,
+    "params": "428B total, 23B active",
+    "decision_params": null,
     "ran": "2026-11-01",
     "judge": "gemini/gemini-3.1-flash-lite",
     "repeats": 2
@@ -2636,6 +2668,8 @@
      "cached_input": 0.02
     },
     "decision_price_per_1m_input": null,
+    "params": null,
+    "decision_params": null,
     "ran": "2026-11-01",
     "judge": "codex/gemini-3.1-flash-lite",
     "repeats": 2
@@ -2910,6 +2944,8 @@
      "cached_input": 0.2
     },
     "decision_price_per_1m_input": null,
+    "params": null,
+    "decision_params": null,
     "ran": "2026-11-01",
     "judge": "gemini/gemini-3.1-flash-lite",
     "repeats": 2
@@ -3175,7 +3211,8 @@
    "decision": {
     "model": "hs-decide-1-flash",
     "provider": "Hindsight",
-    "onLlmBoards": true
+    "onLlmBoards": true,
+    "params": "0.8B"
    },
    "source": {
     "openrouter_id": "openai/gpt-6-luna",
@@ -3185,6 +3222,8 @@
      "cached_input": 0.01
     },
     "decision_price_per_1m_input": 0.02,
+    "params": null,
+    "decision_params": "0.8B",
     "ran": "2026-11-02",
     "judge": "gemini/gemini-3.1-flash-lite",
     "repeats": 2
@@ -3381,6 +3420,8 @@
      "cached_input": 0.01
     },
     "decision_price_per_1m_input": null,
+    "params": null,
+    "decision_params": null,
     "ran": "2026-11-01",
     "judge": "gemini/gemini-3.1-flash-lite",
     "repeats": 2
@@ -3652,6 +3693,8 @@
      "cached_input": 0.05
     },
     "decision_price_per_1m_input": null,
+    "params": null,
+    "decision_params": null,
     "ran": "2026-11-01",
     "judge": "gemini/gemini-3.1-flash-lite",
     "repeats": 2
@@ -3910,6 +3953,7 @@
    "provider": "Qwen",
    "icon": "/logos/qwen.webp",
    "openWeights": true,
+   "params": "125B total, 6B active",
    "decision": null,
    "source": {
     "openrouter_id": "qwen/qwen3.8-flash",
@@ -3919,6 +3963,8 @@
      "cached_input": 0.016
     },
     "decision_price_per_1m_input": null,
+    "params": "125B total, 6B active",
+    "decision_params": null,
     "ran": "2026-10-31",
     "judge": "gemini/gemini-3.1-flash-lite",
     "repeats": 2
@@ -4197,10 +4243,12 @@
    "provider": "Z.ai",
    "icon": "/logos/zai.webp",
    "openWeights": true,
+   "params": "320B total, 18B active",
    "decision": {
     "model": "hs-decide-1-flash",
     "provider": "Hindsight",
-    "onLlmBoards": true
+    "onLlmBoards": true,
+    "params": "0.8B"
    },
    "source": {
     "openrouter_id": "z-ai/glm-5.3-flash",
@@ -4210,6 +4258,8 @@
      "cached_input": 0.0285
     },
     "decision_price_per_1m_input": 0.02,
+    "params": "320B total, 18B active",
+    "decision_params": "0.8B",
     "ran": "2026-11-01",
     "judge": "gemini/gemini-3.1-flash-lite",
     "repeats": 2
@@ -4391,6 +4441,7 @@
    "provider": "Z.ai",
    "icon": "/logos/zai.webp",
    "openWeights": true,
+   "params": "320B total, 18B active",
    "decision": null,
    "source": {
     "openrouter_id": "z-ai/glm-5.3-flash",
@@ -4400,6 +4451,8 @@
      "cached_input": 0.0133
     },
     "decision_price_per_1m_input": null,
+    "params": "320B total, 18B active",
+    "decision_params": null,
     "ran": "2026-11-01",
     "judge": "gemini/gemini-3.1-flash-lite",
     "repeats": 2

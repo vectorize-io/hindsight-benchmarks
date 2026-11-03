@@ -136,7 +136,7 @@ export function ModelsView({ family: f }: { family: Family }) {
                             <span className="font-mono text-xs text-muted-foreground">—</span>
                           ) : b.plain ? (
                             <span className="font-mono text-[13px] tabular-nums whitespace-nowrap">
-                              {v.toLocaleString('en-US', { maximumFractionDigits: 1 })}
+                              {v.toLocaleString('en-US', v < 1 ? { maximumSignificantDigits: 2 } : { maximumFractionDigits: 1 })}
                             </span>
                           ) : (
                             <QualityBar value={v} />
@@ -172,7 +172,7 @@ export function ModelsView({ family: f }: { family: Family }) {
                   x: `${lat.name} ${lat.metric}`,
                   unit: lat.name.toLowerCase(),
                   quality: 'Overall mean',
-                  ms: true,
+                  speed: lat.metric,
                   costNote: `Speed from the ${lat.name} column, on CPU.${left ? ` ${left} model${left > 1 ? 's' : ''} not measured on every column ${left > 1 ? 'are' : 'is'} left out.` : ''}`,
                 }}
               />

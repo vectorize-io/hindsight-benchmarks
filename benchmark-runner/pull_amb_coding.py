@@ -20,17 +20,15 @@ from pathlib import Path
 OUT = Path(__file__).parent.parent / "visualizer" / "lib" / "coding-agents.json"
 CONV_OUT = OUT.with_name("conversations.json")
 # LoCoMo runs by name, and the models each run's Hindsight server used (AMB records them only in prose).
-CONV_RUNS = {"hindsight-gemma4": ["Hindsight", "gemma-4-26b-a4b"],
-             "hindsight-gemma4-hs-decide": ["Hindsight", "gemma-4-26b-a4b", "hs-decide-1-flash"]}
+CONV_RUNS = {"hindsight-gemma4": ["Hindsight", "gemma-4-26b-a4b"]}
 # Arms by run name with the agent and repeat cut off (hindsight-gemma-decide-codex-2 -> hindsight-gemma-decide).
-# Other run names (full61-*) are experiments and are skipped.
+# Other run names (full61-*, and hindsight-gemma-decide until its results are redone) are skipped.
 SETUPS = {"vanilla": "No memory", "hindsight": "Hindsight coding-agent plugin",
-          "hindsight-gemma": "Hindsight coding-agent plugin", "hindsight-gemma-decide": "Hindsight coding-agent plugin"}
+          "hindsight-gemma": "Hindsight coding-agent plugin"}
 # What the memory arm runs on: Hindsight, then the models its server used (LLM, then the decision model
 # when one is on). Read from the run description where AMB records it, set here otherwise.
 MEMORY_MODELS = {"vanilla": [], "hindsight": ["Hindsight", "gemini-2.5-flash-lite"],
-                 "hindsight-gemma": ["Hindsight", "gemma-4-26b-a4b"],
-                 "hindsight-gemma-decide": ["Hindsight", "gemma-4-26b-a4b", "hs-decide-1-flash"]}
+                 "hindsight-gemma": ["Hindsight", "gemma-4-26b-a4b"]}
 
 
 def git(repo: str, *args: str) -> bytes:

@@ -1,5 +1,5 @@
 {
-  "amb_commit": "37a8f4638dbc6058c611d98dc16038c457d1379d",
+  "amb_commit": "597f26c088beaee70a27c3e4e30d5a19cad5fc3a",
   "dataset": "sdebench/boltons",
   "rows": [
     {
@@ -36,29 +36,9 @@
       "first_try": 80.3,
       "corrections": 0.2,
       "agent_cost_usd": 0.228,
-      "memory_cost_usd": 0.49,
+      "memory_cost_usd": 0.138,
       "wall_s": 82.5,
-      "cost_usd": 0.718
-    },
-    {
-      "agent": "claude-code",
-      "model": "claude-sonnet-5",
-      "memory": "hindsight-gemma-decide",
-      "setup": "Hindsight coding-agent plugin",
-      "memory_models": [
-        "Hindsight",
-        "gemma-4-26b-a4b",
-        "hs-decide-1-flash"
-      ],
-      "repeats": 3,
-      "tasks": 61,
-      "solved": 99.5,
-      "first_try": 77.0,
-      "corrections": 0.25,
-      "agent_cost_usd": 0.247,
-      "memory_cost_usd": 0.513,
-      "wall_s": 83.3,
-      "cost_usd": 0.76
+      "cost_usd": 0.366
     },
     {
       "agent": "claude-code",
@@ -110,29 +90,9 @@
       "first_try": 45.4,
       "corrections": 0.67,
       "agent_cost_usd": 0.189,
-      "memory_cost_usd": 0.532,
+      "memory_cost_usd": 0.15,
       "wall_s": 38.7,
-      "cost_usd": 0.721
-    },
-    {
-      "agent": "codex",
-      "model": "gpt-5.4-mini",
-      "memory": "hindsight-gemma-decide",
-      "setup": "Hindsight coding-agent plugin",
-      "memory_models": [
-        "Hindsight",
-        "gemma-4-26b-a4b",
-        "hs-decide-1-flash"
-      ],
-      "repeats": 3,
-      "tasks": 61,
-      "solved": 100,
-      "first_try": 45.9,
-      "corrections": 0.69,
-      "agent_cost_usd": 0.188,
-      "memory_cost_usd": 0.582,
-      "wall_s": 38.1,
-      "cost_usd": 0.77
+      "cost_usd": 0.339
     },
     {
       "agent": "codex",
@@ -184,29 +144,9 @@
       "first_try": 93.4,
       "corrections": 0.07,
       "agent_cost_usd": 0.298,
-      "memory_cost_usd": 0.543,
+      "memory_cost_usd": 0.153,
       "wall_s": 116.4,
-      "cost_usd": 0.841
-    },
-    {
-      "agent": "opencode",
-      "model": "google/gemini-3.5-flash",
-      "memory": "hindsight-gemma-decide",
-      "setup": "Hindsight coding-agent plugin",
-      "memory_models": [
-        "Hindsight",
-        "gemma-4-26b-a4b",
-        "hs-decide-1-flash"
-      ],
-      "repeats": 3,
-      "tasks": 61,
-      "solved": 100,
-      "first_try": 82.5,
-      "corrections": 0.17,
-      "agent_cost_usd": 0.307,
-      "memory_cost_usd": 0.6,
-      "wall_s": 116.0,
-      "cost_usd": 0.907
+      "cost_usd": 0.451
     },
     {
       "agent": "opencode",
