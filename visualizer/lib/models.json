@@ -124,7 +124,7 @@
           "model": "hs-decide-1-flash",
           "provider": "Hindsight",
           "tag": "hindsight",
-          "size": "752M",
+          "size": "0.8B",
           "scores": {
             "locomo-evidence::recall_at_10": 93.0,
             "longmemeval-evidence::recall_at_10": 97.5,
@@ -142,6 +142,7 @@
         {
           "model": "StartLux-Decision 0.8B Instant",
           "provider": "StartLux",
+          "size": "0.8B",
           "scores": {
             "locomo-evidence::recall_at_10": 91.5,
             "longmemeval-evidence::recall_at_10": 100.0,
@@ -159,6 +160,7 @@
         {
           "model": "d3-lite",
           "provider": "vLLM Semantic Router",
+          "size": "0.8B",
           "scores": {
             "locomo-evidence::recall_at_10": 83.0,
             "longmemeval-evidence::recall_at_10": 100.0,
@@ -176,7 +178,7 @@
         {
           "model": "decider-0.8b",
           "provider": "Mapika",
-          "size": "752M",
+          "size": "0.8B",
           "scores": {
             "locomo-evidence::recall_at_10": 94.0,
             "longmemeval-evidence::recall_at_10": 97.5,
@@ -621,7 +623,7 @@
         {
           "model": "gte-reranker-modernbert-base",
           "provider": "Alibaba",
-          "size": "150M",
+          "size": "149M",
           "scores": {
             "nanobeir::ndcg_at_10": 71.0,
             "bright::ndcg_at_10": 11.2,

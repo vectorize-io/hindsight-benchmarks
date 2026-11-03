@@ -39,6 +39,10 @@ ORGS = {"hindsight-ai": "Hindsight", "BAAI": "BAAI", "cross-encoder": "SBERT", "
 DRAFTS = Path(__file__).parent / "hf_cards"
 PLAIN = {"latency_ms": "ms", "latency_s": "s", "throughput": "/s", "max_tokens": "tokens"}
 LOWER = {"latency_ms", "latency_s"}
+# Sizes as the published card images show them, where Hugging Face's count rounds differently or is missing.
+SIZES = {"Alibaba-NLP/gte-reranker-modernbert-base": "149M", "hindsight-ai/hs-decide-1-flash": "0.8B",
+         "StartLux/StartLux-Decision 0.8B Instant": "0.8B", "vLLM Semantic Router/d3-lite": "0.8B",
+         "Mapika/decider-0.8b": "0.8B"}
 
 
 def token() -> str:
@@ -109,6 +113,8 @@ def check() -> None:
 def main() -> None:
     check()
     def sizes(repo: str) -> str | None:
+        if repo in SIZES:
+            return SIZES[repo]
         try:
             return size((api(repo).get("safetensors") or {}).get("total"))
         except Exception:
