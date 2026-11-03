@@ -270,12 +270,9 @@ def list_pricing(provider: dict, model: str) -> dict:
     """$ per token from the provider's own /models list, or OpenRouter's for a provider without one."""
     # Direct and subscription routes show OpenRouter's list price, so models compare fairly.
     if or_id := provider.get("openrouter_models", {}).get(model):
-        # A model served on our own server: the cheapest provider OpenRouter lists for it.
-        with urllib.request.urlopen(f"https://openrouter.ai/api/v1/models/{or_id}/endpoints", timeout=30) as r:
-            ends = json.load(r)["data"]["endpoints"]
-        return parse_pricing(min((e["pricing"] for e in ends),
-                                 key=lambda p: float(p["prompt"]) + float(p["completion"])))
-    if prefix := provider.get("openrouter_prefix"):
+        # A model served on our own server: OpenRouter's list price for it, like every other model.
+        provider, model = {"base_url": "https://openrouter.ai/api/v1"}, or_id
+    elif prefix := provider.get("openrouter_prefix"):
         provider, model = {"base_url": "https://openrouter.ai/api/v1"}, prefix + model
     if not provider["base_url"]:
         return {}

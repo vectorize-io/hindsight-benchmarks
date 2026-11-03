@@ -946,9 +946,9 @@
    "source": {
     "openrouter_id": "google/gemma-4-26b-a4b-it",
     "price_per_1m": {
-     "input": 0.024,
-     "output": 0.1,
-     "cached_input": 0.01
+     "input": 0.078,
+     "output": 0.233,
+     "cached_input": 0.039
     },
     "decision_price_per_1m_input": 0.02,
     "params": "25.2B total, 3.8B active",
@@ -961,7 +961,7 @@
     "consolidation": {
      "passed": 41,
      "total": 50,
-     "cost_usd": 0.1472,
+     "cost_usd": 0.2887,
      "calls": 268,
      "input_tokens": 2253212,
      "output_tokens": 149155,
@@ -1028,7 +1028,7 @@
     "reflect": {
      "passed": 29,
      "total": 34,
-     "cost_usd": 0.0452,
+     "cost_usd": 0.0627,
      "calls": 88,
      "input_tokens": 305715,
      "output_tokens": 7371,
@@ -1078,7 +1078,7 @@
     "refresh_pages": {
      "passed": 31,
      "total": 40,
-     "cost_usd": 0.0849,
+     "cost_usd": 0.1366,
      "calls": 167,
      "input_tokens": 876242,
      "output_tokens": 32944,
@@ -1141,9 +1141,9 @@
    "source": {
     "openrouter_id": "google/gemma-4-26b-a4b-it",
     "price_per_1m": {
-     "input": 0.024,
-     "output": 0.1,
-     "cached_input": 0.01
+     "input": 0.078,
+     "output": 0.233,
+     "cached_input": 0.039
     },
     "decision_price_per_1m_input": null,
     "params": "25.2B total, 3.8B active",
@@ -1156,7 +1156,7 @@
     "retain": {
      "passed": 67,
      "total": 84,
-     "cost_usd": 0.0172,
+     "cost_usd": 0.0502,
      "calls": 133,
      "input_tokens": 455227,
      "output_tokens": 62873,
@@ -1244,7 +1244,7 @@
     "consolidation": {
      "passed": 33,
      "total": 50,
-     "cost_usd": 0.0912,
+     "cost_usd": 0.2762,
      "calls": 338,
      "input_tokens": 2880111,
      "output_tokens": 221108,
@@ -1313,7 +1313,7 @@
     "reflect": {
      "passed": 30,
      "total": 34,
-     "cost_usd": 0.0343,
+     "cost_usd": 0.1104,
      "calls": 144,
      "input_tokens": 1382406,
      "output_tokens": 10971,
@@ -1365,7 +1365,7 @@
     "refresh_pages": {
      "passed": 29,
      "total": 40,
-     "cost_usd": 0.0778,
+     "cost_usd": 0.2473,
      "calls": 322,
      "input_tokens": 2990422,
      "output_tokens": 60492,
