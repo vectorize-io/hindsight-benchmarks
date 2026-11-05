@@ -2656,6 +2656,283 @@
    }
   },
   {
+   "model": "nemotron-3.5-super-vl",
+   "provider": "NVIDIA",
+   "icon": "/logos/nvidia.webp",
+   "openWeights": true,
+   "params": "120B total, 12B active",
+   "decision": null,
+   "source": {
+    "openrouter_id": "nvidia/nemotron-3.5-super-vl",
+    "price_per_1m": {
+     "input": 0.15,
+     "output": 0.5,
+     "cached_input": 0.02
+    },
+    "decision_price_per_1m_input": null,
+    "params": "120B total, 12B active",
+    "decision_params": null,
+    "ran": "2026-11-04",
+    "judge": "gemini/gemini-3.1-flash-lite",
+    "repeats": 2
+   },
+   "operations": {
+    "retain": {
+     "passed": 81,
+     "total": 84,
+     "cost_usd": 0.1133,
+     "calls": 128,
+     "input_tokens": 712094,
+     "output_tokens": 57674,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "selectivity": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "completeness": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "attribution": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "temporal": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "language": {
+       "passed": 7,
+       "total": 7,
+       "failed": []
+      },
+      "fidelity": {
+       "passed": 4,
+       "total": 5,
+       "failed": [
+        "in-text-correction"
+       ]
+      },
+      "mission": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mode": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "entities": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entity_labels": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "inputs": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "no_invention": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      }
+     }
+    },
+    "consolidation": {
+     "passed": 35,
+     "total": 50,
+     "cost_usd": 0.3946,
+     "calls": 280,
+     "input_tokens": 2181904,
+     "output_tokens": 181515,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "merge": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "cascade-to-group"
+       ]
+      },
+      "recency": {
+       "passed": 0,
+       "total": 2,
+       "failed": [
+        "recency-is-when-stated",
+        "recency-same-day-amendment-arrives-first"
+       ]
+      },
+      "counts": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entities": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "language": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mission": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "scale": {
+       "passed": 0,
+       "total": 3,
+       "failed": [
+        "noisy-service-catalogue",
+        "noisy-personal-contacts",
+        "noisy-service-catalogue-mission"
+       ]
+      },
+      "repetition": {
+       "passed": 1,
+       "total": 3,
+       "failed": [
+        "coding-agent-sessions",
+        "repetitive-service-catalogue"
+       ]
+      }
+     }
+    },
+    "reflect": {
+     "passed": 30,
+     "total": 34,
+     "cost_usd": 0.2161,
+     "calls": 152,
+     "input_tokens": 1737744,
+     "output_tokens": 14452,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "source_authority": {
+       "passed": 2,
+       "total": 4,
+       "failed": [
+        "sp-approvals",
+        "sp-upgrade-owner"
+       ]
+      },
+      "pages": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    },
+    "refresh_pages": {
+     "passed": 29,
+     "total": 40,
+     "cost_usd": 0.4249,
+     "calls": 326,
+     "input_tokens": 3447620,
+     "output_tokens": 64275,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "hq-owner-latest"
+       ]
+      },
+      "aggregation": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "du-incident-table-0"
+       ]
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "stability": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "du-rerecorded-history-0"
+       ]
+      },
+      "consistency": {
+       "passed": 0,
+       "total": 2,
+       "failed": [
+        "pump-maintenance-en-0",
+        "pump-maintenance-zh-0"
+       ]
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    }
+   }
+  },
+  {
    "model": "gpt-5.6-luna",
    "provider": "OpenAI",
    "icon": "/openai.png",
