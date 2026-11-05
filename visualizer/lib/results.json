@@ -4226,6 +4226,276 @@
    }
   },
   {
+   "model": "qwen3.8-27b",
+   "provider": "Qwen",
+   "icon": "/logos/qwen.webp",
+   "openWeights": true,
+   "params": "27B",
+   "decision": null,
+   "source": {
+    "openrouter_id": "qwen/qwen3.8-27b",
+    "price_per_1m": {
+     "input": 0.15,
+     "output": 1.875,
+     "cached_input": 0.0375
+    },
+    "decision_price_per_1m_input": null,
+    "params": "27B",
+    "decision_params": null,
+    "ran": "2026-11-05",
+    "judge": "gemini/gemini-3.1-flash-lite",
+    "repeats": 2
+   },
+   "operations": {
+    "retain": {
+     "passed": 83,
+     "total": 84,
+     "cost_usd": 0.1643,
+     "calls": 128,
+     "input_tokens": 437320,
+     "output_tokens": 60341,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "selectivity": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "completeness": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "attribution": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "temporal": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "language": {
+       "passed": 7,
+       "total": 7,
+       "failed": []
+      },
+      "fidelity": {
+       "passed": 5,
+       "total": 5,
+       "failed": []
+      },
+      "mission": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mode": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "entities": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entity_labels": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "inputs": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "no_invention": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      }
+     }
+    },
+    "consolidation": {
+     "passed": 41,
+     "total": 50,
+     "cost_usd": 0.8255,
+     "calls": 326,
+     "input_tokens": 2750954,
+     "output_tokens": 246825,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "merge": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "cascade-to-group"
+       ]
+      },
+      "recency": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "counts": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "entities": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "language": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "mission": {
+       "passed": 4,
+       "total": 4,
+       "failed": []
+      },
+      "scale": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "noisy-service-catalogue-mission"
+       ]
+      },
+      "repetition": {
+       "passed": 1,
+       "total": 3,
+       "failed": [
+        "coding-agent-sessions",
+        "assistant-daily-chats"
+       ]
+      }
+     }
+    },
+    "reflect": {
+     "passed": 32,
+     "total": 34,
+     "cost_usd": 0.2397,
+     "calls": 151,
+     "input_tokens": 1686209,
+     "output_tokens": 26533,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "aggregation": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "source_authority": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "sp-approvals"
+       ]
+      },
+      "pages": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      }
+     }
+    },
+    "refresh_pages": {
+     "passed": 30,
+     "total": 40,
+     "cost_usd": 0.6773,
+     "calls": 385,
+     "input_tokens": 4264530,
+     "output_tokens": 119194,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 3,
+       "total": 3,
+       "failed": []
+      },
+      "update": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "du-oncall-departed-0"
+       ]
+      },
+      "aggregation": {
+       "passed": 3,
+       "total": 4,
+       "failed": [
+        "du-incident-table-0"
+       ]
+      },
+      "no_overreach": {
+       "passed": 2,
+       "total": 2,
+       "failed": []
+      },
+      "stability": {
+       "passed": 2,
+       "total": 3,
+       "failed": [
+        "du-rerecorded-history-0"
+       ]
+      },
+      "consistency": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "pump-maintenance-en-0"
+       ]
+      },
+      "orchestration": {
+       "passed": 1,
+       "total": 2,
+       "failed": [
+        "fu-release"
+       ]
+      }
+     }
+    }
+   }
+  },
+  {
    "model": "qwen3.8-flash",
    "provider": "Qwen",
    "icon": "/logos/qwen.webp",
