@@ -175,10 +175,14 @@ def decision_prices() -> dict[str, float]:
     return {**DECISION_PRICES, **json.loads(os.environ.get(DECISION_PRICES_ENV, "{}"))}
 
 
-def case_results(junit: Path, op: str, by_stem: dict[str, str]) -> dict[str, dict]:
-    """Category -> passed, total and failed case ids for one operation, from a junit file."""
+def case_results(run_dir: Path, op: str, by_stem: dict[str, str]) -> dict[str, dict]:
+    """Category -> passed, total and failed case ids for one operation, over every pass in a run.
+
+    Every pass counts, as in the operation's own passed/total, so the categories add up to the same score.
+    """
     out: dict[str, dict] = {}
-    for case in ET.parse(junit).iter("testcase"):
+    cases = [c for j in sorted(run_dir.glob("junit-*.xml")) for c in ET.parse(j).iter("testcase")]
+    for case in cases:
         m = re.search(r"\[([^/\]]+)/(.+)\]$", case.get("name", ""))
         if not m or case.find("skipped") is not None or _operation(case.get("classname", ""), by_stem) != op:
             continue
@@ -186,7 +190,7 @@ def case_results(junit: Path, op: str, by_stem: dict[str, str]) -> dict[str, dic
         c["total"] += 1
         if case.find("failure") is None and case.find("error") is None:
             c["passed"] += 1
-        else:
+        elif m[2] not in c["failed"]:
             c["failed"].append(m[2])
     return out
 
@@ -221,7 +225,7 @@ def export_site(out: Path, operations: dict[str, list[str]], commit: str) -> Non
                 # What the decision model cost: the total less the LLM's share.
                 "decision_cost_usd": round(o["cost_usd"] - (cost_usd(t, r["pricing_per_token"]) or 0), 4)
                 if o["cost_usd"] is not None else None,
-                "categories": case_results(RUNNER_DIR / o["run_dir"] / "junit-0.xml", op, by_stem),
+                "categories": case_results(RUNNER_DIR / o["run_dir"], op, by_stem),
             }
         # Where the price came from, for the site to show: the OpenRouter list entry every route is priced at.
         prov = providers.get(r["provider"], {})
