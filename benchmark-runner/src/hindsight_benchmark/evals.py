@@ -156,6 +156,7 @@ SITE_MODELS = {
     "qwen/qwen3.8-flash": {"model": "qwen3.8-flash", "provider": "Qwen", "icon": "/logos/qwen.webp", "openWeights": True, "params": "125B total, 6B active"},
     "z-ai/glm-5.3-flash": {"model": "glm-5.3-flash", "provider": "Z.ai", "icon": "/logos/zai.webp", "openWeights": True, "params": "320B total, 18B active"},
     "minimax/minimax-m3.1-flash": {"model": "minimax-m3.1-flash", "provider": "MiniMax", "icon": "/logos/minimax.webp", "openWeights": True, "params": "428B total, 23B active"},
+    "nvidia/nemotron-3.5-super-vl": {"model": "nemotron-3.5-super-vl", "provider": "NVIDIA", "icon": "/logos/nvidia.webp", "openWeights": True, "params": "120B total, 12B active"},
 }
 # Decision models the site shows. "onLlmBoards" shows the run as a row on the LLM boards.
 SITE_DECISION_MODELS: dict[str, dict] = {
@@ -326,6 +327,8 @@ def main() -> None:
     p.add_argument("--cases", metavar="EXPR",
                    help="pytest -k expression to rerun some cases, e.g. 'hq-owner-latest or du-launch-risk'; "
                         "prints the outcome and writes no result file")
+    p.add_argument("--resume", metavar="RUN_DIR",
+                   help="finish a run that was cut short: reuse its run dir and skip the passes that wrote their junit file")
     p.add_argument("--embedder", metavar="PROVIDER:MODEL",
                    help="swap the embedder, e.g. internal:hs-embed-1 (default: Hindsight's own, bge-small-en-v1.5)")
     p.add_argument("--reranker", metavar="PROVIDER:MODEL",
@@ -391,9 +394,13 @@ def main() -> None:
     slug = (f"{args.provider}-{args.model}" + (f"+{args.decision}" if args.decision else "")
             + (f"+embed-{args.embedder}" if args.embedder else "") + (f"+rerank-{args.reranker}" if args.reranker else ""))
     slug = slug.replace("/", "-").replace(":", "-")
-    stamp = datetime.datetime.now(datetime.UTC).strftime("%Y%m%dT%H%M%SZ")
-    run_dir = WORK_DIR / "runs" / f"{slug}-{stamp}"
-    run_dir.mkdir(parents=True)
+    if args.resume:
+        run_dir = Path(args.resume).resolve()
+        stamp = run_dir.name.rsplit("-", 1)[1]
+    else:
+        stamp = datetime.datetime.now(datetime.UTC).strftime("%Y%m%dT%H%M%SZ")
+        run_dir = WORK_DIR / "runs" / f"{slug}-{stamp}"
+        run_dir.mkdir(parents=True)
     # Same install as Hindsight's perf-test workflow: the eval server embeds and reranks locally.
     # --inexact keeps packages added by hand (torchvision, which the recall boards' Nemotron embedder needs).
     subprocess.run(["uv", "sync", "--frozen", "--inexact", "--all-extras", "--index-strategy", "unsafe-best-match"],
@@ -403,6 +410,10 @@ def main() -> None:
     for i in range(repeats):
         junits.append(run_dir / f"junit-{i}.xml")
         token_files.append(run_dir / f"tokens-{i}.jsonl")
+        if args.resume and junits[-1].exists():
+            continue
+        # The plugin appends token counts, so a cut-short pass's partial file would count twice.
+        token_files[-1].unlink(missing_ok=True)
         run_pytest(hindsight, files, args.model, provider, cfg, junits[-1], token_files[-1], extra_env, args.cases)
 
     ops = tally(junits, token_files, operations)
