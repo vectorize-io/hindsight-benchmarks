@@ -219,7 +219,9 @@ def export_site(out: Path, operations: dict[str, list[str]], commit: str) -> Non
             t = o["tokens"]
             ops[op] = {
                 "passed": o["passed"], "total": o["total"], "cost_usd": o["cost_usd"],
-                "calls": t["calls"], "input_tokens": t["input_tokens"], "output_tokens": t["output_tokens"],
+                # Output as billed: the visible answer plus the reasoning.
+                "calls": t["calls"], "input_tokens": t["input_tokens"],
+                "output_tokens": t["output_tokens"] + t.get("thoughts_tokens", 0),
                 "decision_calls": t.get("decision_calls", 0),
                 "decision_input_tokens": t.get("decision_input_tokens", 0),
                 # What the decision model cost: the total less the LLM's share.
@@ -307,7 +309,7 @@ def cost_usd(tokens: dict, pricing: dict) -> float | None:
         return None
     uncached = tokens["input_tokens"] - tokens["cached_tokens"]
     return round(uncached * pricing["input"] + tokens["cached_tokens"] * pricing["cached_input"]
-                 + tokens["output_tokens"] * pricing["output"], 4)
+                 + (tokens["output_tokens"] + tokens.get("thoughts_tokens", 0)) * pricing["output"], 4)
 
 
 def summarize(ops: dict) -> dict:
