@@ -158,6 +158,7 @@ SITE_MODELS = {
     "minimax/minimax-m3.1-flash": {"model": "minimax-m3.1-flash", "provider": "MiniMax", "icon": "/logos/minimax.webp", "openWeights": True, "params": "428B total, 23B active"},
     "nvidia/nemotron-3.5-super-vl": {"model": "nemotron-3.5-super-vl", "provider": "NVIDIA", "icon": "/logos/nvidia.webp", "openWeights": True, "params": "120B total, 12B active"},
     "qwen/qwen3.8-27b": {"model": "qwen3.8-27b", "provider": "Qwen", "icon": "/logos/qwen.webp", "openWeights": True, "params": "27B"},
+    "qwen/qwen3.6-35b-a3b": {"model": "qwen3.6-35b-a3b", "provider": "Qwen", "icon": "/logos/qwen.webp", "openWeights": True, "params": "35B total, 3B active"},
 }
 # Decision models the site shows. "onLlmBoards" shows the run as a row on the LLM boards.
 SITE_DECISION_MODELS: dict[str, dict] = {
