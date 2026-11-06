@@ -144,7 +144,7 @@ function llmRows(op: string): Row[] {
       source: r.source,
       quality: round((100 * o.passed) / o.total, 1),
       // Every category is present, so the row's breakdown lists all of them.
-      categories: Object.fromEntries(CATS[op].map((c) => [c.id, o.categories[c.id] ?? { passed: 0, total: c.cases }])),
+      categories: Object.fromEntries(CATS[op].map((c) => [c.id, o.categories[c.id] ?? { passed: 0, total: c.cases * (r.source?.repeats ?? 1) }])),
       cost: round((1000 * (o.cost_usd ?? 0)) / o.total),
       callsPerTask: round(o.calls / o.total, 1),
       decisionCallsPerTask: r.decision ? round(o.decision_calls / o.total, 1) : undefined,

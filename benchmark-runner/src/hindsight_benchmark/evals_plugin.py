@@ -84,7 +84,7 @@ async def _record_tokens(request: pytest.FixtureRequest, client, bank_id: str):
 
     # ponytail: counts the test's own bank only; a test that makes extra banks is undercounted.
     api = LLMTracesApi(client._api_client)
-    totals = {"calls": 0, "input_tokens": 0, "cached_tokens": 0, "output_tokens": 0,
+    totals = {"calls": 0, "input_tokens": 0, "cached_tokens": 0, "output_tokens": 0, "thoughts_tokens": 0,
               "decision_calls": 0, "decision_input_tokens": 0}
     calls = []
     for call_type, prefix in (("llm", ""), ("decision", "decision_")):
@@ -102,6 +102,8 @@ async def _record_tokens(request: pytest.FixtureRequest, client, bank_id: str):
                 if not prefix:
                     totals["cached_tokens"] += c.cached_tokens or 0
                     totals["output_tokens"] += c.output_tokens or 0
+                    # Reasoning: billed as output, but Hindsight records it apart from the visible answer.
+                    totals["thoughts_tokens"] += c.thoughts_tokens or 0
             offset += len(page.items)
             if not page.items or offset >= page.total:
                 break
