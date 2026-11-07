@@ -75,7 +75,8 @@ def run_pytest(hindsight: Path, files: list[str], model: str, provider: dict, cf
     subprocess.run(cmd, cwd=evals, env=env)
 
 
-QUOTA_ERROR = "ProviderRateLimitResetError"
+# Codex says ProviderRateLimitResetError; Copilot raises a plain RuntimeError with its own wording.
+QUOTA_ERRORS = ("ProviderRateLimitResetError", "GitHub Copilot usage limit reached")
 
 
 def quota_hits(junit: Path) -> tuple[datetime.datetime | None, list[str]] | None:
@@ -94,7 +95,7 @@ def quota_hits(junit: Path) -> tuple[datetime.datetime | None, list[str]] | None
         trace = junit.parent / "traces" / f"{re.sub(r'[^\w.-]+', '_', case.get('name'))}.json"
         if start and trace.exists() and start <= trace.stat().st_mtime <= end:
             text += trace.read_text()
-        if QUOTA_ERROR in text:
+        if any(e in text for e in QUOTA_ERRORS):
             names.append(case.get("name"))
             if m := re.search(r"retry at (\d{4}-\d\d-\d\dT[\d:]+(?:[+-]\d\d:\d\d)?)", text):
                 reset = max(reset, datetime.datetime.fromisoformat(m[1])) if reset else datetime.datetime.fromisoformat(m[1])
@@ -197,7 +198,7 @@ SITE_MODELS = {
     "openai/gpt-5.6-luna": {"model": "gpt-5.6-luna", "provider": "OpenAI", "icon": "/openai.png"},
     "gemini-3.8-flash": {"model": "gemini-3.8-flash", "provider": "Google", "icon": "/gemini.png"},
     "anthropic/claude-haiku-5.5": {"model": "claude-haiku-5.5", "provider": "Anthropic", "icon": "/logos/anthropic.webp"},
-    "claude-haiku-4.5": {"model": "claude-haiku-4.5", "provider": "Anthropic", "icon": "/logos/anthropic.webp"},
+    # claude-haiku-4.5 (Copilot) is off until its refresh-pages cases that hit the Copilot quota are rerun.
     "deepseek/deepseek-v4.1-flash": {"model": "deepseek-v4.1-flash", "provider": "DeepSeek", "icon": "/logos/deepseek.webp", "openWeights": True, "params": "552B total, 8B active on input, 16B on output"},
     "qwen/qwen3.8-flash": {"model": "qwen3.8-flash", "provider": "Qwen", "icon": "/logos/qwen.webp", "openWeights": True, "params": "125B total, 6B active"},
     "z-ai/glm-5.3-flash": {"model": "glm-5.3-flash", "provider": "Z.ai", "icon": "/logos/zai.webp", "openWeights": True, "params": "320B total, 18B active"},
