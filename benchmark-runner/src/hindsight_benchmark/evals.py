@@ -20,6 +20,7 @@ import os
 import re
 import subprocess
 import sys
+import time
 import urllib.request
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -72,6 +73,50 @@ def run_pytest(hindsight: Path, files: list[str], model: str, provider: dict, cf
         cmd.append("--full")
     # A non-zero exit means some evals failed. That is the score, not an error.
     subprocess.run(cmd, cwd=evals, env=env)
+
+
+QUOTA_ERROR = "ProviderRateLimitResetError"
+
+
+def quota_hits(junit: Path) -> tuple[datetime.datetime | None, list[str]] | None:
+    """The cases in a junit file that hit a subscription quota, and when the provider said it resets."""
+    if not junit.exists():
+        return None
+    names, reset = [], None
+    tree = ET.parse(junit)
+    # A quota hit inside the server's background work fails the case as a wrong answer, so look in its
+    # trace too: the calls the plugin saved during this pass (a later pass overwrites them).
+    suite = next(tree.iter("testsuite"))
+    start = datetime.datetime.fromisoformat(suite.get("timestamp")).timestamp() if suite.get("timestamp") else None
+    end = start + float(suite.get("time") or 0) + 600 if start else None
+    for case in tree.iter("testcase"):
+        text = "".join((c.get("message") or "") + (c.text or "") for c in case)
+        trace = junit.parent / "traces" / f"{re.sub(r'[^\w.-]+', '_', case.get('name'))}.json"
+        if start and trace.exists() and start <= trace.stat().st_mtime <= end:
+            text += trace.read_text()
+        if QUOTA_ERROR in text:
+            names.append(case.get("name"))
+            if m := re.search(r"retry at (\d{4}-\d\d-\d\dT[\d:]+(?:[+-]\d\d:\d\d)?)", text):
+                reset = max(reset, datetime.datetime.fromisoformat(m[1])) if reset else datetime.datetime.fromisoformat(m[1])
+    return (reset, names) if names else None
+
+
+def splice(junit: Path, tokens: Path, retry_junit: Path, retry_tokens: Path, names: set[str]) -> None:
+    """Put the rerun cases' outcomes and token counts in place of the ones that hit the quota."""
+    tree = ET.parse(junit)
+    retried = {c.get("name"): c for c in ET.parse(retry_junit).iter("testcase") if c.get("name") in names}
+    for suite in tree.iter("testsuite"):
+        for i, case in enumerate(list(suite)):
+            if case.tag == "testcase" and case.get("name") in retried:
+                suite.remove(case)
+                suite.insert(i, retried[case.get("name")])
+    tree.write(junit, encoding="utf-8", xml_declaration=True)
+    rows = [r for r in tokens.read_text().splitlines() if json.loads(r)["nodeid"].rsplit("::", 1)[-1] not in retried]
+    rows += [r for r in (retry_tokens.read_text().splitlines() if retry_tokens.exists() else [])
+             if json.loads(r)["nodeid"].rsplit("::", 1)[-1] in retried]
+    tokens.write_text("".join(r + "\n" for r in rows))
+    retry_junit.unlink()
+    retry_tokens.unlink(missing_ok=True)
 
 
 def _operation(name: str, by_stem: dict[str, str]) -> str | None:
@@ -152,6 +197,7 @@ SITE_MODELS = {
     "openai/gpt-5.6-luna": {"model": "gpt-5.6-luna", "provider": "OpenAI", "icon": "/openai.png"},
     "gemini-3.8-flash": {"model": "gemini-3.8-flash", "provider": "Google", "icon": "/gemini.png"},
     "anthropic/claude-haiku-5.5": {"model": "claude-haiku-5.5", "provider": "Anthropic", "icon": "/logos/anthropic.webp"},
+    "claude-haiku-4.5": {"model": "claude-haiku-4.5", "provider": "Anthropic", "icon": "/logos/anthropic.webp"},
     "deepseek/deepseek-v4.1-flash": {"model": "deepseek-v4.1-flash", "provider": "DeepSeek", "icon": "/logos/deepseek.webp", "openWeights": True, "params": "552B total, 8B active on input, 16B on output"},
     "qwen/qwen3.8-flash": {"model": "qwen3.8-flash", "provider": "Qwen", "icon": "/logos/qwen.webp", "openWeights": True, "params": "125B total, 6B active"},
     "z-ai/glm-5.3-flash": {"model": "glm-5.3-flash", "provider": "Z.ai", "icon": "/logos/zai.webp", "openWeights": True, "params": "320B total, 18B active"},
@@ -418,11 +464,25 @@ def main() -> None:
     for i in range(repeats):
         junits.append(run_dir / f"junit-{i}.xml")
         token_files.append(run_dir / f"tokens-{i}.jsonl")
-        if args.resume and junits[-1].exists():
-            continue
-        # The plugin appends token counts, so a cut-short pass's partial file would count twice.
-        token_files[-1].unlink(missing_ok=True)
-        run_pytest(hindsight, files, args.model, provider, cfg, junits[-1], token_files[-1], extra_env, args.cases)
+        if not (args.resume and junits[-1].exists()):
+            # The plugin appends token counts, so a cut-short pass's partial file would count twice.
+            token_files[-1].unlink(missing_ok=True)
+            run_pytest(hindsight, files, args.model, provider, cfg, junits[-1], token_files[-1], extra_env, args.cases)
+        # A subscription quota hit mid-pass scored the limit, not the model. A pass can use up a whole quota
+        # window, so rerunning it would hit the limit again: after the reset, rerun only the cases that hit it.
+        while hits := quota_hits(junits[-1]):
+            wait = max(60.0, (hits[0] - datetime.datetime.now(datetime.UTC)).total_seconds() + 60) if hits[0] else 1800.0
+            names = hits[1]
+            print(f"pass {i + 1}: {len(names)} cases hit a quota limit; rerunning them in {wait / 60:.0f} min",
+                  file=sys.stderr, flush=True)
+            time.sleep(wait)
+            retry_junit, retry_tokens = junits[-1].with_suffix(".retry.xml"), token_files[-1].with_suffix(".retry.jsonl")
+            retry_tokens.unlink(missing_ok=True)
+            ids = " or ".join(re.sub(r"^.*\[(?:.*/)?|\]$", "", n) for n in names)
+            run_pytest(hindsight, files, args.model, provider, cfg, retry_junit, retry_tokens, extra_env, ids)
+            if not retry_junit.exists():
+                continue  # the rerun died before writing its results: wait and try again
+            splice(junits[-1], token_files[-1], retry_junit, retry_tokens, set(names))
 
     ops = tally(junits, token_files, operations)
     if args.cases:
