@@ -485,6 +485,10 @@ def main() -> None:
             splice(junits[-1], token_files[-1], retry_junit, retry_tokens, set(names))
 
     ops = tally(junits, token_files, operations)
+    if provider.get("output_includes_thoughts"):
+        # Hindsight's Copilot provider reports output with the reasoning in it; elsewhere it is apart.
+        for o in ops.values():
+            o["tokens"]["output_tokens"] -= o["tokens"].get("thoughts_tokens", 0)
     if args.cases:
         # A few cases are a look at those cases, not a score: keep them out of the results.
         for op, o in ops.items():

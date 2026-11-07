@@ -23,6 +23,7 @@
     "copilot": {
       "hindsight_provider": "github-copilot",
       "base_url": "",
+      "output_includes_thoughts": true,
       "openrouter_models": {
         "claude-haiku-4.5": "anthropic/claude-haiku-4.5",
         "kimi-k3": "moonshotai/kimi-k3",
