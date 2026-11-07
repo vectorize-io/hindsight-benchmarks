@@ -20,6 +20,20 @@
       "base_url": "",
       "openrouter_prefix": "openai/"
     },
+    "copilot": {
+      "hindsight_provider": "github-copilot",
+      "base_url": "",
+      "output_includes_thoughts": true,
+      "openrouter_models": {
+        "claude-haiku-4.5": "anthropic/claude-haiku-4.5",
+        "kimi-k3": "moonshotai/kimi-k3",
+        "claude-sonnet-5": "anthropic/claude-sonnet-5",
+        "claude-sonnet-5.5": "anthropic/claude-sonnet-5.5",
+        "gpt-5.3-codex": "openai/gpt-5.3-codex",
+        "grok-4.6": "x-ai/grok-4.6",
+        "grok-4.7": "x-ai/grok-4.7"
+      }
+    },
     "internal": {
       "hindsight_provider": "openai",
       "base_url": "${INTERNAL_BASE_URL}/v1",

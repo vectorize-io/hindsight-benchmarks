@@ -1,6 +1,7 @@
 import json
+import xml.etree.ElementTree as ET
 
-from hindsight_benchmark.evals import cost_usd, parse_pricing, tally
+from hindsight_benchmark.evals import cost_usd, parse_pricing, quota_hits, splice, tally
 
 OPERATIONS = {
     "retain": ["evals/test_04_retain_fidelity.py"],
@@ -72,3 +73,29 @@ def test_summarize():
     from hindsight_benchmark.evals import summarize
     ops = {"a": {"score": 80.0, "cost_usd": 0.2}, "b": {"score": 60.0, "cost_usd": 0.1}, "c": {"score": None, "cost_usd": None}}
     assert summarize(ops) == {"score": 70.0, "cost_usd": 0.3}
+
+
+def test_quota_hits_and_splice(tmp_path):
+    quota = "ProviderRateLimitResetError: Codex quota exhausted; retry at 2026-11-07T09:35:10+00:00."
+    junit, tokens = tmp_path / "junit-0.xml", tmp_path / "tokens-0.jsonl"
+    junit.write_text(f"""<?xml version="1.0"?><testsuites><testsuite>
+<testcase classname="evals.t" name="test_x[a/one]"/>
+<testcase classname="evals.t" name="test_x[a/two]"><failure message="{quota}"/></testcase>
+</testsuite></testsuites>""")
+    tokens.write_text('{"nodeid": "evals/t.py::test_x[a/one]", "calls": 1}\n{"nodeid": "evals/t.py::test_x[a/two]", "calls": 9}\n')
+
+    reset, names = quota_hits(junit)
+    assert names == ["test_x[a/two]"] and reset.isoformat() == "2026-11-07T09:35:10+00:00"
+
+    retry_junit, retry_tokens = tmp_path / "junit-0.retry.xml", tmp_path / "tokens-0.retry.jsonl"
+    retry_junit.write_text("""<?xml version="1.0"?><testsuites><testsuite>
+<testcase classname="evals.t" name="test_x[a/two]"/><testcase classname="evals.t" name="test_y[a/two]"/>
+</testsuite></testsuites>""")
+    retry_tokens.write_text('{"nodeid": "evals/t.py::test_x[a/two]", "calls": 2}\n{"nodeid": "evals/t.py::test_y[a/two]", "calls": 5}\n')
+    splice(junit, tokens, retry_junit, retry_tokens, set(names))
+
+    # the rerun case replaces the quota hit in place; an extra case the rerun matched is left out
+    assert quota_hits(junit) is None
+    assert [c.get("name") for c in ET.parse(junit).iter("testcase")] == ["test_x[a/one]", "test_x[a/two]"]
+    assert [json.loads(r)["calls"] for r in tokens.read_text().splitlines()] == [1, 2]
+    assert not retry_junit.exists()
