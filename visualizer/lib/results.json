@@ -1,6 +1,333 @@
 {
  "rows": [
   {
+   "model": "gpt-5.6-sol",
+   "provider": "OpenAI",
+   "icon": "/openai.png",
+   "decision": null,
+   "source": {
+    "openrouter_id": "openai/gpt-5.6-sol",
+    "price_per_1m": {
+     "input": 4.0,
+     "output": 20.0,
+     "cached_input": 0.4
+    },
+    "decision_price_per_1m_input": null,
+    "params": null,
+    "decision_params": null,
+    "ran": "2026-11-06",
+    "judge": "gemini/gemini-3.1-flash-lite",
+    "repeats": 1
+   },
+   "operations": {
+    "retain": {
+     "passed": 41,
+     "total": 42,
+     "cost_usd": 0.9622,
+     "calls": 64,
+     "input_tokens": 187465,
+     "output_tokens": 38197,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "selectivity": {
+       "passed": 9,
+       "total": 9,
+       "failed": []
+      },
+      "completeness": {
+       "passed": 6,
+       "total": 6,
+       "failed": []
+      },
+      "attribution": {
+       "passed": 12,
+       "total": 12,
+       "failed": []
+      },
+      "temporal": {
+       "passed": 12,
+       "total": 12,
+       "failed": []
+      },
+      "language": {
+       "passed": 19,
+       "total": 22,
+       "failed": [
+        "it-coding-session",
+        "ja-personal-note"
+       ]
+      },
+      "fidelity": {
+       "passed": 15,
+       "total": 15,
+       "failed": []
+      },
+      "mission": {
+       "passed": 6,
+       "total": 6,
+       "failed": []
+      },
+      "mode": {
+       "passed": 10,
+       "total": 12,
+       "failed": [
+        "strategy-per-item"
+       ]
+      },
+      "entities": {
+       "passed": 6,
+       "total": 6,
+       "failed": []
+      },
+      "entity_labels": {
+       "passed": 9,
+       "total": 9,
+       "failed": []
+      },
+      "inputs": {
+       "passed": 9,
+       "total": 9,
+       "failed": []
+      },
+      "no_invention": {
+       "passed": 5,
+       "total": 9,
+       "failed": [
+        "date-borrowed-from-nearby-subject",
+        "owner-borrowed-from-nearby-subject",
+        "place-borrowed-from-nearby-subject"
+       ]
+      }
+     }
+    },
+    "consolidation": {
+     "passed": 18,
+     "total": 25,
+     "cost_usd": 5.2405,
+     "calls": 164,
+     "input_tokens": 1240511,
+     "output_tokens": 124931,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "merge": {
+       "passed": 7,
+       "total": 10,
+       "failed": [
+        "restatements-merge",
+        "repeats-in-one-batch"
+       ]
+      },
+      "update": {
+       "passed": 6,
+       "total": 12,
+       "failed": [
+        "employer-supersedes",
+        "retired-conventions",
+        "cascade-to-group"
+       ]
+      },
+      "recency": {
+       "passed": 0,
+       "total": 6,
+       "failed": [
+        "recency-is-when-stated",
+        "recency-same-day-amendment-arrives-first"
+       ]
+      },
+      "counts": {
+       "passed": 6,
+       "total": 6,
+       "failed": []
+      },
+      "entities": {
+       "passed": 3,
+       "total": 6,
+       "failed": [
+        "resolve-reference",
+        "distinct-entities-stay-apart"
+       ]
+      },
+      "language": {
+       "passed": 6,
+       "total": 6,
+       "failed": []
+      },
+      "mission": {
+       "passed": 9,
+       "total": 12,
+       "failed": [
+        "noise-beside-a-routine"
+       ]
+      },
+      "scale": {
+       "passed": 9,
+       "total": 9,
+       "failed": []
+      },
+      "repetition": {
+       "passed": 1,
+       "total": 9,
+       "failed": [
+        "coding-agent-sessions",
+        "assistant-daily-chats",
+        "repetitive-service-catalogue"
+       ]
+      }
+     }
+    },
+    "reflect": {
+     "passed": 16,
+     "total": 17,
+     "cost_usd": 3.1093,
+     "calls": 75,
+     "input_tokens": 756173,
+     "output_tokens": 6119,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 6,
+       "total": 9,
+       "failed": [
+        "hq-release-prod",
+        "hq-entity-port",
+        "hq-numeric-outage"
+       ]
+      },
+      "update": {
+       "passed": 4,
+       "total": 6,
+       "failed": [
+        "hq-owner-latest",
+        "sp-rotation"
+       ]
+      },
+      "aggregation": {
+       "passed": 4,
+       "total": 6,
+       "failed": [
+        "hq-count-billing",
+        "sp-friday-deploy"
+       ]
+      },
+      "no_overreach": {
+       "passed": 4,
+       "total": 6,
+       "failed": [
+        "hq-scoped-2fa",
+        "hq-absent-2024"
+       ]
+      },
+      "source_authority": {
+       "passed": 6,
+       "total": 12,
+       "failed": [
+        "sp-approvals",
+        "sp-datastore",
+        "sp-postmortem",
+        "sp-upgrade-owner"
+       ]
+      },
+      "pages": {
+       "passed": 4,
+       "total": 6,
+       "failed": [
+        "hq-release-prod",
+        "hq-count-billing"
+       ]
+      },
+      "orchestration": {
+       "passed": 3,
+       "total": 6,
+       "failed": [
+        "fu-release",
+        "fu-escalation"
+       ]
+      }
+     }
+    },
+    "refresh_pages": {
+     "passed": 14,
+     "total": 20,
+     "cost_usd": 4.8052,
+     "calls": 126,
+     "input_tokens": 1196188,
+     "output_tokens": 19478,
+     "decision_calls": 0,
+     "decision_input_tokens": 0,
+     "decision_cost_usd": 0.0,
+     "categories": {
+      "precision": {
+       "passed": 5,
+       "total": 9,
+       "failed": [
+        "hq-numeric-outage",
+        "hq-release-prod",
+        "hq-entity-port"
+       ]
+      },
+      "update": {
+       "passed": 7,
+       "total": 12,
+       "failed": [
+        "du-oncall-departed-0",
+        "hq-owner-latest",
+        "du-renamed-service-0",
+        "du-backup-correction-0"
+       ]
+      },
+      "aggregation": {
+       "passed": 7,
+       "total": 12,
+       "failed": [
+        "du-incident-table-0",
+        "hq-count-billing",
+        "du-enterprise-plan-0"
+       ]
+      },
+      "no_overreach": {
+       "passed": 4,
+       "total": 6,
+       "failed": [
+        "hq-scoped-2fa",
+        "hq-absent-2024"
+       ]
+      },
+      "stability": {
+       "passed": 2,
+       "total": 9,
+       "failed": [
+        "du-quiet-wave-0",
+        "du-rerecorded-history-0",
+        "page-never-collapses"
+       ]
+      },
+      "consistency": {
+       "passed": 0,
+       "total": 6,
+       "failed": [
+        "pump-maintenance-en-0",
+        "pump-maintenance-zh-0"
+       ]
+      },
+      "orchestration": {
+       "passed": 2,
+       "total": 6,
+       "failed": [
+        "fu-escalation",
+        "fu-release"
+       ]
+      }
+     }
+    }
+   }
+  },
+  {
    "model": "gemini-3.1-flash-lite",
    "provider": "Google",
    "icon": "/gemini.png",
