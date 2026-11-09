@@ -191,6 +191,7 @@ SITE_MODELS = {
     "gpt-6-luna": {"model": "gpt-6-luna", "provider": "OpenAI", "icon": "/openai.png"},
     "gpt-5.6-terra": {"model": "gpt-5.6-terra", "provider": "OpenAI", "icon": "/openai.png"},
     "gpt-5.6-luna": {"model": "gpt-5.6-luna", "provider": "OpenAI", "icon": "/openai.png"},
+    "gpt-5.6-sol": {"model": "gpt-5.6-sol", "provider": "OpenAI", "icon": "/openai.png"},
     # The same models through OpenRouter, while the Codex subscription is out of usage.
     "openai/gpt-6.1-terra": {"model": "gpt-6.1-terra", "provider": "OpenAI", "icon": "/openai.png"},
     "openai/gpt-6-luna": {"model": "gpt-6-luna", "provider": "OpenAI", "icon": "/openai.png"},
