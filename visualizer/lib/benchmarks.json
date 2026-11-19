@@ -1,5 +1,5 @@
 {
-  "amb_commit": "5d422bea3ae4d971c84121cad2b38e6f64779401",
+  "amb_commit": "bcc9dcd6cac30becee8ea06b2a722a9d6bacbe2b",
   "datasets": {
     "beam": {
       "description": "Long-context memory benchmark: 100 conversations (100K\u201310M tokens), 2 000 questions across 10 memory ability categories.",
@@ -2320,33 +2320,33 @@
       "score_type": "recall@5",
       "note": "Character recall@5, as legalbenchrag/run_benchmark.py computes it: the share of the marked characters that the top 5 results' text covers. The 4 sets weigh the same (194 questions each). The search runs at the API's default budget of 4,096 tokens, so the 5 results carry about as much text as 5 chunks of a typical RAG setup. Precision (the share of returned text that is marked) is in each query's metrics. Documents go in with neutral names. Search only: no LLM.",
       "runs": {
-        "hindsight-pr6704": {
-          "splits": {
-            "mini": {
-              "score": 0.8572549707140767,
-              "queries": 776,
-              "path": "outputs/legalbench-rag/hindsight-pr6704/retrieval/mini.json.gz"
-            }
-          },
-          "memory_provider": "hindsight-knowledge",
-          "mode": "retrieval",
-          "answer_llm": null,
-          "judge_llm": null,
-          "description": "Hindsight knowledge bank (PR #6704): embeddinggemma-2 search, 512-token passages, one rerank by hs-decide-1-flash-mm judging each passage alone, fused with the search order of documents. Contracts under neutral ids, no file names (as Conare ran it)."
-        },
-        "hindsight-pr6704-filenames": {
+        "hindsight-filenames": {
           "splits": {
             "mini": {
               "score": 0.9431154589790489,
               "queries": 776,
-              "path": "outputs/legalbench-rag/hindsight-pr6704-filenames/retrieval/mini.json.gz"
+              "path": "outputs/legalbench-rag/hindsight-filenames/retrieval/mini.json.gz"
             }
           },
           "memory_provider": "hindsight-knowledge",
           "mode": "retrieval",
           "answer_llm": null,
           "judge_llm": null,
-          "description": "Hindsight knowledge bank (PR #6704): embeddinggemma-2 search, 512-token passages, one rerank by hs-decide-1-flash-mm judging each passage alone, fused with the search order of documents. Contracts uploaded under their corpus file names."
+          "description": "Hindsight knowledge bank: embeddinggemma-2 search, 512-token passages, one rerank by hs-decide-1-flash-mm judging each passage alone, fused with the search order of documents. Contracts uploaded under their corpus file names."
+        },
+        "hindsight-no-filenames": {
+          "splits": {
+            "mini": {
+              "score": 0.8572549707140767,
+              "queries": 776,
+              "path": "outputs/legalbench-rag/hindsight-no-filenames/retrieval/mini.json.gz"
+            }
+          },
+          "memory_provider": "hindsight-knowledge",
+          "mode": "retrieval",
+          "answer_llm": null,
+          "judge_llm": null,
+          "description": "Hindsight knowledge bank: embeddinggemma-2 search, 512-token passages, one rerank by hs-decide-1-flash-mm judging each passage alone, fused with the search order of documents. Contracts under neutral ids, no file names (as Conare ran it)."
         }
       },
       "published": {

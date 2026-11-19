@@ -55,8 +55,8 @@ const KNOWLEDGE: CardSpec[] = [
     about: '776 questions over 714 contracts, scored on the exact text lawyers marked. The other systems ran with no file names.',
     splits: [['mini']],
     runLabels: {
-      'hindsight-pr6704': 'Hindsight, no file names',
-      'hindsight-pr6704-filenames': 'Hindsight, with file names',
+      'hindsight-no-filenames': 'Hindsight, no file names',
+      'hindsight-filenames': 'Hindsight, with file names',
     },
   },
   { key: 'atm-bench-retrieval', bench: 'ATM-Bench', title: 'Photos, videos and emails', about: '1,013 questions over four years of one person’s photos, videos and emails.', splits: [['atm-bench']] },
