@@ -2,7 +2,7 @@
 
 The code and results behind [benchmarks.hindsight.vectorize.io](https://benchmarks.hindsight.vectorize.io).
 
-- **Benchmarks:** Hindsight as a whole on the [Agent Memory Benchmark](https://agentmemorybenchmark.ai).
+- **Benchmarks:** Hindsight as a whole on the [Agent Memory Benchmark](https://agentmemorybenchmark.ai): memory, and knowledge-bank search next to published numbers.
 - **Model leaderboards:** which LLM to run behind each Hindsight operation (retain, consolidation, reflect and refresh pages), with and without a decision model.
 - **Use cases:** Hindsight in a real task end to end: coding agents and long conversations, from the Agent Memory Benchmark.
 - **Hindsight Models:** our decision, embedding and reranking models next to the ones people use today, from their Hugging Face cards.
@@ -39,6 +39,7 @@ cd benchmark-runner
 uv run hindsight-evals --export-site ../visualizer/lib/results.json            # model leaderboards
 uv run hindsight-evals --export-structure ../visualizer/lib/eval-structure.json  # categories and cases
 python pull_amb_coding.py <agent-memory-benchmark clone>                        # coding agents, conversations
+python pull_amb_benchmarks.py <agent-memory-benchmark clone> [ref]              # every card on the Benchmarks page
 python pull_hf_cards.py                                                         # Hindsight Models, from the model cards
 ```
 

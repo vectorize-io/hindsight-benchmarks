@@ -4,6 +4,7 @@ import { BOARDS, SCORE, USE_CASES, boardById, logScore, type CodingRow, type Con
 import { BoardView, CostBar, ModelScatter, QualityBar } from '@/components/BoardView'
 import { BoardNav, PageHero, SetupStrip } from '@/components/Page'
 import { SortTable } from '@/components/SortTable'
+import { AGENT_ICON, CODING_SCATTER_TEXT, codingPoints, codingScore } from '@/lib/coding'
 
 export function generateStaticParams() {
   return [...BOARDS, ...USE_CASES].map((b) => ({ board: b.id }))
@@ -59,11 +60,6 @@ function UseCasePage({ u }: { u: UseCase }) {
 
 const AMB_REPO = 'https://github.com/vectorize-io/agent-memory-benchmark'
 
-const AGENT_ICON: Record<string, string> = {
-  'claude-code': '/logos/harness/claude-code.png',
-  codex: '/logos/harness/codex.svg',
-  opencode: '/logos/harness/opencode.png',
-}
 
 // A model's logo by its name, for the coding and conversation tables.
 const modelIcon = (m: string) =>
@@ -174,31 +170,9 @@ function ConversationResults({ ambCommit, rows }: { ambCommit: string; rows: Con
 // One row per agent and setup, averaged over its repeats, best score first. The score is the
 // operation boards' formula with fixed first try as the quality.
 function CodingResults({ ambCommit, rows }: { ambCommit: string; rows: CodingRow[] }) {
-  // Cost and wall time share the 30% the operation boards give to cost, each on the same log scale.
-  const cheapest = Math.min(...rows.map((r) => r.cost_usd))
-  const fastest = Math.min(...rows.map((r) => r.wall_s))
-  const score = (r: CodingRow) =>
-    SCORE.quality * r.first_try + (SCORE.cost / 2) * (logScore(cheapest, r.cost_usd) + logScore(fastest, r.wall_s))
+  const score = codingScore(rows)
+  const points = codingPoints(rows)
   const priciest = Math.max(...rows.map((r) => r.cost_usd))
-  // The chart: per agent, no memory, then Hindsight (arrow). The older gemini-2.5-flash-lite runs stay in the table only.
-  const CHAIN = ['vanilla', 'hindsight-gemma']
-  const points: Row[] = rows.filter((r) => CHAIN.includes(r.memory)).map((r) => ({
-    id: r.agent + r.memory,
-    model: r.agent,
-    provider: r.model,
-    icon: AGENT_ICON[r.agent],
-    quality: r.first_try,
-    score: score(r),
-    cost: r.cost_usd,
-    callsPerTask: 0,
-    tokensPerTask: { input: 0, output: 0 },
-    categories: {},
-    split:
-      r.memory === 'vanilla'
-        ? undefined
-        : { decisionModel: r.memory_models.join(' + '), llm: { calls: 0, input: 0, output: 0, cost: 0 }, decision: { calls: 0, input: 0, output: 0, cost: 0 } },
-    extra: { Corrections: `${r.corrections.toFixed(2)} per bug`, Time: `${Math.round(r.wall_s)} s per bug` },
-  }))
   return (
     <>
       <div className="rounded-xl border border-border p-4 sm:p-5 grid sm:grid-cols-2 gap-x-8 gap-y-1 text-sm">
@@ -264,18 +238,7 @@ function CodingResults({ ambCommit, rows }: { ambCommit: string; rows: CodingRow
           ],
         }))}
       />
-      <ModelScatter
-        rows={points}
-        task="SDE-Bench"
-        text={{
-          noun: 'agents',
-          x: 'Cost per bug',
-          unit: 'bug',
-          quality: 'Fixed first try',
-          pair: 'The same agent with Hindsight',
-          costNote: 'Hindsight runs on gemma-4-26b-a4b here. Cost per bug is the agent’s tokens plus Hindsight’s own memory bill, averaged over the repeats.',
-        }}
-      />
+      <ModelScatter rows={points} task="SDE-Bench" text={CODING_SCATTER_TEXT} />
     </>
   )
 }

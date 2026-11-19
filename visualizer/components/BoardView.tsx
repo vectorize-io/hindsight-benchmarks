@@ -397,7 +397,8 @@ function Heatmap({ board, rows }: { board: Board; rows: Row[] }) {
 // The coding board reuses it with agents for models and Hindsight setups for decision-model runs, and the
 // Hindsight Models pages with latency for cost: `text` renames the parts, `ms` reads the cost as milliseconds.
 export type ScatterText = { title?: string; noun: string; x: string; unit: string; quality: string; speed?: string; pair?: string; costNote?: string }
-export function ModelScatter({ rows, task, bare, text }: { rows: Row[]; task: string; bare?: boolean; text?: ScatterText }) {
+// maxH: the tallest the plot may get (a card on /benchmarks keeps it short).
+export function ModelScatter({ rows, task, bare, text, maxH = 520 }: { rows: Row[]; task: string; bare?: boolean; text?: ScatterText; maxH?: number }) {
   const box = useRef<HTMLDivElement>(null)
   const [W, setW] = useState(760)
   const [hover, setHover] = useState<string | null>(null)
@@ -428,7 +429,7 @@ export function ModelScatter({ rows, task, bare, text }: { rows: Row[]; task: st
   }
 
   const shown = [...plain, ...pairs.map(({ d }) => d)]
-  const H = Math.round(Math.min(520, Math.max(320, W * 0.5)))
+  const H = Math.round(Math.min(maxH, Math.max(Math.min(320, maxH), W * 0.5)))
   const pad = { l: 56, r: 20, t: 16, b: 52 }
   const all = shown
   const xs = all.map((r) => Math.log10(r.cost))
