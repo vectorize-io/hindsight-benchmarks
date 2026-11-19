@@ -51,7 +51,10 @@ const config: Config = {
         body: ['var(--font-inter)', 'sans-serif'],
         mono: ['var(--font-jetbrains-mono)', 'monospace'],
       },
+      // Squared-off cards across the site: xl (the cards) and lg share one small radius.
       borderRadius: {
+        '2xl': 'var(--radius)',
+        xl: 'var(--radius)',
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',

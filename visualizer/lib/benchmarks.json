@@ -1,0 +1,2414 @@
+{
+  "amb_commit": "bcc9dcd6cac30becee8ea06b2a722a9d6bacbe2b",
+  "datasets": {
+    "beam": {
+      "description": "Long-context memory benchmark: 100 conversations (100K\u201310M tokens), 2 000 questions across 10 memory ability categories.",
+      "score_type": "accuracy",
+      "note": null,
+      "runs": {
+        "hindsight": {
+          "splits": {
+            "100k": {
+              "score": 0.7336577408538804,
+              "queries": 400,
+              "path": "outputs/beam/hindsight/single-query/100k.json.gz"
+            },
+            "10m": {
+              "score": 0.6407977206043332,
+              "queries": 200,
+              "path": "outputs/beam/hindsight/single-query/10m.json.gz"
+            },
+            "1m": {
+              "score": 0.7386039171368353,
+              "queries": 700,
+              "path": "outputs/beam/hindsight/single-query/1m.json.gz"
+            },
+            "500k": {
+              "score": 0.7111989151837411,
+              "queries": 700,
+              "path": "outputs/beam/hindsight/single-query/500k.json.gz"
+            }
+          },
+          "memory_provider": "hindsight",
+          "mode": "single-query",
+          "answer_llm": "gemini:gemini-3.1-pro-preview",
+          "judge_llm": "gemini:gemini-2.5-flash-lite",
+          "description": null
+        }
+      },
+      "published": {
+        "100k": [
+          {
+            "memory": "Honcho",
+            "accuracy": 0.63,
+            "comment": null,
+            "source_url": "https://evals.honcho.dev/",
+            "source_label": "Honcho (evals.honcho.dev)"
+          },
+          {
+            "memory": "LIGHT (Llama-4-Maverick)",
+            "accuracy": 0.358,
+            "comment": null,
+            "source_url": "https://arxiv.org/abs/2510.27246",
+            "source_label": "BEAM Paper (arXiv:2510.27246)"
+          },
+          {
+            "memory": "RAG (Llama-4-Maverick)",
+            "accuracy": 0.323,
+            "comment": null,
+            "source_url": "https://arxiv.org/abs/2510.27246",
+            "source_label": "BEAM Paper (arXiv:2510.27246)"
+          }
+        ],
+        "500k": [
+          {
+            "memory": "Honcho",
+            "accuracy": 0.649,
+            "comment": null,
+            "source_url": "https://evals.honcho.dev/",
+            "source_label": "Honcho (evals.honcho.dev)"
+          },
+          {
+            "memory": "LIGHT (Llama-4-Maverick)",
+            "accuracy": 0.359,
+            "comment": null,
+            "source_url": "https://arxiv.org/abs/2510.27246",
+            "source_label": "BEAM Paper (arXiv:2510.27246)"
+          },
+          {
+            "memory": "RAG (Llama-4-Maverick)",
+            "accuracy": 0.33,
+            "comment": null,
+            "source_url": "https://arxiv.org/abs/2510.27246",
+            "source_label": "BEAM Paper (arXiv:2510.27246)"
+          }
+        ],
+        "1m": [
+          {
+            "memory": "Honcho",
+            "accuracy": 0.631,
+            "comment": null,
+            "source_url": "https://evals.honcho.dev/",
+            "source_label": "Honcho (evals.honcho.dev)"
+          },
+          {
+            "memory": "LIGHT (Llama-4-Maverick)",
+            "accuracy": 0.336,
+            "comment": null,
+            "source_url": "https://arxiv.org/abs/2510.27246",
+            "source_label": "BEAM Paper (arXiv:2510.27246)"
+          },
+          {
+            "memory": "RAG (Llama-4-Maverick)",
+            "accuracy": 0.307,
+            "comment": null,
+            "source_url": "https://arxiv.org/abs/2510.27246",
+            "source_label": "BEAM Paper (arXiv:2510.27246)"
+          }
+        ],
+        "10m": [
+          {
+            "memory": "Honcho",
+            "accuracy": 0.406,
+            "comment": null,
+            "source_url": "https://evals.honcho.dev/",
+            "source_label": "Honcho (evals.honcho.dev)"
+          },
+          {
+            "memory": "LIGHT (Llama-4-Maverick)",
+            "accuracy": 0.266,
+            "comment": null,
+            "source_url": "https://arxiv.org/abs/2510.27246",
+            "source_label": "BEAM Paper (arXiv:2510.27246)"
+          },
+          {
+            "memory": "RAG (Llama-4-Maverick)",
+            "accuracy": 0.249,
+            "comment": null,
+            "source_url": "https://arxiv.org/abs/2510.27246",
+            "source_label": "BEAM Paper (arXiv:2510.27246)"
+          }
+        ]
+      }
+    },
+    "lifebench": {
+      "description": "Long-horizon multi-source personalized memory benchmark across 10 users.",
+      "score_type": "accuracy",
+      "note": null,
+      "runs": {
+        "hindsight": {
+          "splits": {
+            "en": {
+              "score": 0.7154268597104343,
+              "queries": 2003,
+              "path": "outputs/lifebench/hindsight/rag/en.json.gz"
+            }
+          },
+          "memory_provider": "hindsight",
+          "mode": "rag",
+          "answer_llm": "gemini:gemini-3.1-pro-preview",
+          "judge_llm": "gemini:gemini-2.5-flash-lite",
+          "description": null
+        },
+        "hybrid-search": {
+          "splits": {
+            "en": {
+              "score": 0.6095856215676485,
+              "queries": 2003,
+              "path": "outputs/lifebench/hybrid-search/rag/en.json.gz"
+            }
+          },
+          "memory_provider": "hybrid-search",
+          "mode": "rag",
+          "answer_llm": "gemini:gemini-3.1-pro-preview",
+          "judge_llm": "gemini:gemini-2.5-flash-lite",
+          "description": null
+        }
+      },
+      "published": {
+        "en": [
+          {
+            "memory": "MemOS",
+            "accuracy": 0.5522,
+            "comment": null,
+            "source_url": "https://arxiv.org/abs/2603.03781",
+            "source_label": "LifeBench Paper (arXiv:2603.03781)"
+          }
+        ]
+      }
+    },
+    "locomo": {
+      "description": "Multi-session long-term conversations with 1,986 QA pairs.",
+      "score_type": "accuracy",
+      "note": null,
+      "runs": {
+        "cognee": {
+          "splits": {
+            "locomo10": {
+              "score": 0.8026315789473685,
+              "queries": 152,
+              "path": "outputs/locomo/cognee/rag/locomo10.json.gz"
+            }
+          },
+          "memory_provider": "cognee",
+          "mode": "rag",
+          "answer_llm": "gemini:gemini-3.1-pro-preview",
+          "judge_llm": "gemini:gemini-2.5-flash-lite",
+          "description": null
+        },
+        "hybrid-search": {
+          "splits": {
+            "locomo10": {
+              "score": 0.7909090909090909,
+              "queries": 1540,
+              "path": "outputs/locomo/hybrid-search/rag/locomo10.json.gz"
+            }
+          },
+          "memory_provider": "hybrid-search",
+          "mode": "rag",
+          "answer_llm": "gemini:gemini-3.1-pro-preview",
+          "judge_llm": "gemini:gemini-2.5-flash-lite",
+          "description": null
+        },
+        "locomo-hindsight": {
+          "splits": {
+            "locomo10": {
+              "score": 0.9201298701298701,
+              "queries": 1540,
+              "path": "outputs/locomo/locomo-hindsight/rag/locomo10.json.gz"
+            }
+          },
+          "memory_provider": "hindsight",
+          "mode": "rag",
+          "answer_llm": "gemini:gemini-3.1-pro-preview",
+          "judge_llm": "gemini:gemini-2.5-flash-lite",
+          "description": null
+        }
+      },
+      "published": {
+        "locomo10": [
+          {
+            "memory": "Honcho",
+            "accuracy": 0.899,
+            "comment": "Self-reported by Plastic Labs. LLM-as-a-judge, deviating from the original paper's F1 methodology; judge model not disclosed. Uses Claude Haiku 4.5 as backbone. Adversarial questions excluded (not mentioned). Scores by category: Single-Hop 84.0%, Multi-Hop 88.2%, Temporal 77.1%, Open-Domain (Commonsense) 93.2%.",
+            "source_url": "https://blog.plasticlabs.ai/research/Benchmarking-Honcho",
+            "source_label": "Honcho Benchmarking Blog (Plastic Labs)"
+          },
+          {
+            "memory": "MemMachine v0.2 (gpt-4.1-mini)",
+            "accuracy": 0.9169,
+            "comment": "Self-reported by MemMachine. LLM-as-a-judge with GPT-4o-mini. Adversarial questions (cat. 5) excluded. Uses gpt-4.1-mini as backbone \u2014 stronger LLM directly inflates scores vs. gpt-4o-mini entries.",
+            "source_url": "https://memmachine.ai/blog/2025/12/memmachine-v0.2-delivers-top-scores-and-efficiency-on-locomo-benchmark/",
+            "source_label": "MemMachine v0.2 Blog (Dec 2025)"
+          },
+          {
+            "memory": "MemMachine v0.2 (gpt-4.1-mini)",
+            "accuracy": 0.9123,
+            "comment": "Self-reported by MemMachine. LLM-as-a-judge with GPT-4o-mini. Adversarial questions (cat. 5) excluded. Uses gpt-4.1-mini as backbone \u2014 stronger LLM directly inflates scores vs. gpt-4o-mini entries.",
+            "source_url": "https://memmachine.ai/blog/2025/12/memmachine-v0.2-delivers-top-scores-and-efficiency-on-locomo-benchmark/",
+            "source_label": "MemMachine v0.2 Blog (Dec 2025)"
+          },
+          {
+            "memory": "MemMachine v0.2 (gpt-4o-mini)",
+            "accuracy": 0.8812,
+            "comment": "Self-reported by MemMachine. LLM-as-a-judge with GPT-4o-mini. Adversarial questions (cat. 5) excluded.",
+            "source_url": "https://memmachine.ai/blog/2025/12/memmachine-v0.2-delivers-top-scores-and-efficiency-on-locomo-benchmark/",
+            "source_label": "MemMachine v0.2 Blog (Dec 2025)"
+          },
+          {
+            "memory": "MemMachine v0.2 (gpt-4o-mini)",
+            "accuracy": 0.8747,
+            "comment": "Self-reported by MemMachine. LLM-as-a-judge with GPT-4o-mini. Adversarial questions (cat. 5) excluded.",
+            "source_url": "https://memmachine.ai/blog/2025/12/memmachine-v0.2-delivers-top-scores-and-efficiency-on-locomo-benchmark/",
+            "source_label": "MemMachine v0.2 Blog (Dec 2025)"
+          },
+          {
+            "memory": "MemMachine",
+            "accuracy": 0.8487,
+            "comment": "Self-reported by MemMachine. LLM-as-a-judge with GPT-4o-mini. Adversarial questions (cat. 5) excluded.",
+            "source_url": "https://memmachine.ai/blog/2025/09/memmachine-reaches-new-heights-on-locomo/",
+            "source_label": "MemMachine Blog (Sep 2025)"
+          },
+          {
+            "memory": "Mem0 (gpt-4.1-mini)",
+            "accuracy": 0.8,
+            "comment": "Evaluated by a competitor (MemMachine). LLM-as-a-judge with GPT-4o-mini. Adversarial questions excluded. Uses gpt-4.1-mini backbone \u2014 not comparable to the gpt-4o-mini Mem0 entry below.",
+            "source_url": "https://memmachine.ai/blog/2025/12/memmachine-v0.2-delivers-top-scores-and-efficiency-on-locomo-benchmark/",
+            "source_label": "MemMachine v0.2 Blog (Dec 2025)"
+          },
+          {
+            "memory": "Letta",
+            "accuracy": 0.74,
+            "comment": "Self-reported by Letta. LLM-as-a-judge with GPT-4.1 \u2014 a stronger judge than the GPT-4o-mini used in MemMachine comparisons, making scores not directly comparable. Adversarial questions excluded.",
+            "source_url": "https://www.letta.com/blog/benchmarking-ai-agent-memory",
+            "source_label": "Letta Blog: Benchmarking AI Agent Memory"
+          },
+          {
+            "memory": "Memobase",
+            "accuracy": 0.7578,
+            "comment": "Evaluated by a competitor (MemMachine). LLM-as-a-judge with GPT-4o-mini. Adversarial questions excluded. Results reported by a competing system \u2014 potential for biased setup or prompt choices.",
+            "source_url": "https://memmachine.ai/blog/2025/09/memmachine-reaches-new-heights-on-locomo/",
+            "source_label": "MemMachine Blog (Sep 2025)"
+          },
+          {
+            "memory": "Zep",
+            "accuracy": 0.7514,
+            "comment": "Evaluated by a competitor (MemMachine). LLM-as-a-judge with GPT-4o-mini. Adversarial questions excluded. Results reported by a competing system \u2014 potential for biased setup or prompt choices.",
+            "source_url": "https://memmachine.ai/blog/2025/09/memmachine-reaches-new-heights-on-locomo/",
+            "source_label": "MemMachine Blog (Sep 2025)"
+          },
+          {
+            "memory": "Mem0",
+            "accuracy": 0.6688,
+            "comment": "Evaluated by a competitor (MemMachine). LLM-as-a-judge with GPT-4o-mini. Adversarial questions excluded. Results reported by a competing system \u2014 potential for biased setup or prompt choices.",
+            "source_url": "https://memmachine.ai/blog/2025/09/memmachine-reaches-new-heights-on-locomo/",
+            "source_label": "MemMachine Blog (Sep 2025)"
+          },
+          {
+            "memory": "LangMem",
+            "accuracy": 0.581,
+            "comment": "Evaluated by a competitor (MemMachine). LLM-as-a-judge with GPT-4o-mini. Adversarial questions excluded. Results reported by a competing system \u2014 potential for biased setup or prompt choices.",
+            "source_url": "https://memmachine.ai/blog/2025/09/memmachine-reaches-new-heights-on-locomo/",
+            "source_label": "MemMachine Blog (Sep 2025)"
+          },
+          {
+            "memory": "OpenAI memory",
+            "accuracy": 0.529,
+            "comment": "Evaluated by a competitor (MemMachine). LLM-as-a-judge with GPT-4o-mini. Adversarial questions excluded. Results reported by a competing system \u2014 potential for biased setup or prompt choices.",
+            "source_url": "https://memmachine.ai/blog/2025/09/memmachine-reaches-new-heights-on-locomo/",
+            "source_label": "MemMachine Blog (Sep 2025)"
+          }
+        ]
+      }
+    },
+    "locomo-fixed": {
+      "description": "LoComo without the questions its conversations cannot answer (gold answer absent from the conversation, gold contradicting it, or the question naming the wrong person).",
+      "score_type": "accuracy",
+      "note": null,
+      "runs": {
+        "hindsight-gemma4": {
+          "splits": {
+            "locomo10": {
+              "score": 0.8548601864181092,
+              "queries": 1502,
+              "path": "outputs/locomo-fixed/hindsight-gemma4/agent/locomo10.json.gz"
+            }
+          },
+          "memory_provider": "hindsight-http",
+          "mode": "agent",
+          "answer_llm": null,
+          "judge_llm": "gemini:gemini-3.1-flash-lite",
+          "description": "Hindsight main bc5ea195a; reflect answers (AMB agent mode); gemma-4-26b-a4b on Hindsight Inference; local embeddings and cross-encoder reranker; recall chunk budget 8k; no consolidation"
+        }
+      },
+      "published": {}
+    },
+    "longmemeval": {
+      "description": "Long-term memory evaluation in LLM-based chat assistants.",
+      "score_type": "accuracy",
+      "note": null,
+      "runs": {
+        "hindsight": {
+          "splits": {
+            "s": {
+              "score": 0.946,
+              "queries": 500,
+              "path": "outputs/longmemeval/hindsight/rag/s.json.gz"
+            }
+          },
+          "memory_provider": "hindsight",
+          "mode": "rag",
+          "answer_llm": "gemini:gemini-3.1-pro-preview",
+          "judge_llm": "gemini:gemini-2.5-flash-lite",
+          "description": null
+        },
+        "hybrid-search": {
+          "splits": {
+            "s": {
+              "score": 0.74,
+              "queries": 500,
+              "path": "outputs/longmemeval/hybrid-search/rag/s.json.gz"
+            }
+          },
+          "memory_provider": "hybrid-search",
+          "mode": "rag",
+          "answer_llm": "gemini:gemini-3.1-pro-preview",
+          "judge_llm": "gemini:gemini-2.5-flash-lite",
+          "description": null
+        }
+      },
+      "published": {
+        "s": [
+          {
+            "memory": "Full-context (GPT-4o)",
+            "accuracy": 0.602,
+            "comment": "Reported by the original LongMemEval authors. GPT-4o is used as both the answering and judging model, which may inflate scores compared to evaluations using a separate judge.",
+            "source_url": "https://arxiv.org/abs/2410.10813",
+            "source_label": "LongMemEval Paper (arXiv:2410.10813)"
+          },
+          {
+            "memory": "Full-context (GPT-4o-mini)",
+            "accuracy": 0.554,
+            "comment": "Baseline reported in the Zep paper as a reference point, not by the original benchmark authors. Judge model not specified separately.",
+            "source_url": "https://arxiv.org/abs/2501.13956",
+            "source_label": "Zep Paper (arXiv:2501.13956)"
+          },
+          {
+            "memory": "MemoryBank",
+            "accuracy": 0.2288,
+            "comment": "Older-generation memory system evaluated by a competitor (TiMem). Scores reported by others for MemoryBank are consistently low, suggesting it is not well-suited for this benchmark.",
+            "source_url": "https://arxiv.org/abs/2601.02845",
+            "source_label": "TiMem Paper (arXiv:2601.02845)"
+          },
+          {
+            "memory": "A-MEM",
+            "accuracy": 0.634,
+            "comment": "Scores for A-MEM vary widely across papers (55\u201363%), likely due to sensitivity to LLM backbone and judge configuration. Uses GPT-4o backbone here.",
+            "source_url": "https://arxiv.org/abs/2601.02845",
+            "source_label": "TiMem Paper (arXiv:2601.02845)"
+          },
+          {
+            "memory": "MemoryOS",
+            "accuracy": 0.612,
+            "comment": "Evaluated by a competitor (TiMem) using GPT-4o as backbone. Only this one paper reports MemoryOS results on LongMemEval.",
+            "source_url": "https://arxiv.org/abs/2601.02845",
+            "source_label": "TiMem Paper (arXiv:2601.02845)"
+          },
+          {
+            "memory": "Mem0",
+            "accuracy": 0.6756,
+            "comment": "Scores for Mem0 vary widely across papers (49\u201368%), likely reflecting different LLM backbones, k-retrieval settings, and judge configurations. Uses GPT-4o backbone here.",
+            "source_url": "https://arxiv.org/abs/2601.02845",
+            "source_label": "TiMem Paper (arXiv:2601.02845)"
+          },
+          {
+            "memory": "Zep",
+            "accuracy": 0.712,
+            "comment": "Self-reported by Zep authors. Uses GPT-4o as backbone. Zep's graph-based memory gives it an advantage on multi-session and knowledge-update questions.",
+            "source_url": "https://arxiv.org/abs/2501.13956",
+            "source_label": "Zep Paper (arXiv:2501.13956)"
+          },
+          {
+            "memory": "ENGRAM",
+            "accuracy": 0.714,
+            "comment": "Self-reported by ENGRAM authors. Uses episodic graph-based memory. LLM backbone not clearly specified in the paper.",
+            "source_url": "https://arxiv.org/abs/2511.12960",
+            "source_label": "ENGRAM Paper (arXiv:2511.12960)"
+          },
+          {
+            "memory": "MemOS",
+            "accuracy": 0.7307,
+            "comment": "Evaluated by a competitor (TiMem) using GPT-4o as backbone. MemOS uses an OS-inspired layered memory architecture.",
+            "source_url": "https://arxiv.org/abs/2601.02845",
+            "source_label": "TiMem Paper (arXiv:2601.02845)"
+          },
+          {
+            "memory": "LiCoMemory",
+            "accuracy": 0.738,
+            "comment": "Self-reported by LiCoMemory authors. Uses GPT-4o-mini as backbone, making this one of the few mid-range-backbone results in this score tier.",
+            "source_url": "https://arxiv.org/abs/2511.01448",
+            "source_label": "LiCoMemory Paper (arXiv:2511.01448)"
+          },
+          {
+            "memory": "Nemori",
+            "accuracy": 0.746,
+            "comment": "Self-reported. Uses GPT-4.1-mini (a newer, more capable model than GPT-4o-mini) as backbone \u2014 scores may be higher than GPT-4o-mini baselines suggest.",
+            "source_url": "https://arxiv.org/abs/2508.03341",
+            "source_label": "Nemori Paper (arXiv:2508.03341)"
+          },
+          {
+            "memory": "HyMem",
+            "accuracy": 0.75,
+            "comment": "Self-reported by HyMem authors. Combines multiple memory strategies (hybrid). LLM backbone not clearly specified.",
+            "source_url": "https://arxiv.org/abs/2602.13933",
+            "source_label": "HyMem Paper (arXiv:2602.13933)"
+          },
+          {
+            "memory": "CoM (Chain-of-Memory)",
+            "accuracy": 0.764,
+            "comment": "Self-reported. Uses Qwen3-32B (open-source) as backbone, which behaves differently from GPT-4o-family models and makes direct comparison harder.",
+            "source_url": "https://arxiv.org/abs/2601.14287",
+            "source_label": "CoM Paper (arXiv:2601.14287)"
+          },
+          {
+            "memory": "TiMem",
+            "accuracy": 0.7896,
+            "comment": "Self-reported by TiMem authors. Uses GPT-4o as backbone and focuses on temporal-aware memory management.",
+            "source_url": "https://arxiv.org/abs/2601.02845",
+            "source_label": "TiMem Paper (arXiv:2601.02845)"
+          },
+          {
+            "memory": "EverMemOS",
+            "accuracy": 0.83,
+            "comment": "Only reported in the SmartSearch paper. No self-reported or independent evaluation is available for this score.",
+            "source_url": "https://arxiv.org/abs/2603.15599",
+            "source_label": "SmartSearch Paper (arXiv:2603.15599)"
+          },
+          {
+            "memory": "EMem-G",
+            "accuracy": 0.849,
+            "comment": "Self-reported. Uses GPT-4.1-mini backbone (newer than GPT-4o-mini). 'G' denotes the graph-enhanced variant of EMem.",
+            "source_url": "https://arxiv.org/abs/2511.17208",
+            "source_label": "EMem Paper (arXiv:2511.17208)"
+          },
+          {
+            "memory": "Memora",
+            "accuracy": 0.874,
+            "comment": "Self-reported by Memora authors. Uses GPT-4.1-mini backbone. Best of two reported configurations.",
+            "source_url": "https://arxiv.org/abs/2602.03315",
+            "source_label": "Memora Paper (arXiv:2602.03315)"
+          },
+          {
+            "memory": "SmartSearch",
+            "accuracy": 0.884,
+            "comment": "Self-reported. Index-free variant (slightly stronger than the indexed variant at 87.6%). Uses GPT-4.1-mini backbone.",
+            "source_url": "https://arxiv.org/abs/2603.15599",
+            "source_label": "SmartSearch Paper (arXiv:2603.15599)"
+          },
+          {
+            "memory": "Supermemory",
+            "accuracy": 0.816,
+            "comment": "Evaluated by a competitor (Hindsight/Vectorize). Uses GPT-4o as backbone. Judge: GPT-OSS-120B \u2014 differs from GPT-4o used in the original LongMemEval paper and most other entries here, making direct comparison harder.",
+            "source_url": "https://arxiv.org/abs/2512.12818",
+            "source_label": "Hindsight Paper (arXiv:2512.12818)"
+          },
+          {
+            "memory": "Supermemory (Gemini-3)",
+            "accuracy": 0.852,
+            "comment": "Evaluated by a competitor (Hindsight/Vectorize). Uses Gemini-3 Pro Preview as backbone \u2014 stronger than GPT-4o, inflating score. Judge: GPT-OSS-120B.",
+            "source_url": "https://arxiv.org/abs/2512.12818",
+            "source_label": "Hindsight Paper (arXiv:2512.12818)"
+          },
+          {
+            "memory": "Honcho",
+            "accuracy": 0.904,
+            "comment": "Self-reported by Plastic Labs. LongMemEval S split. LLM-as-a-judge with GPT-4o as judge (following the LongMemEval paper's methodology). Uses Claude Haiku 4.5 as backbone. Score on LongMem M (500 questions): 88.8%. Also reported in the Chronos paper (arXiv:2603.16862).",
+            "source_url": "https://blog.plasticlabs.ai/research/Benchmarking-Honcho",
+            "source_label": "Honcho Benchmarking Blog (Plastic Labs)"
+          },
+          {
+            "memory": "Mastra",
+            "accuracy": 0.928,
+            "comment": "Reported by the Chronos paper, not self-reported. Best of two configurations tested; the GPT-4o configuration achieved 84.8%. The backbone for this configuration is not specified.",
+            "source_url": "https://arxiv.org/abs/2603.16862",
+            "source_label": "Chronos Paper (arXiv:2603.16862)"
+          },
+          {
+            "memory": "Chronos",
+            "accuracy": 0.956,
+            "comment": "Self-reported by Chronos authors. Best of two configurations tested; the GPT-4o configuration achieved 92.6%. This configuration uses Claude Opus 4.6 as backbone, which is considerably more capable than the models used by most other entries here.",
+            "source_url": "https://arxiv.org/abs/2603.16862",
+            "source_label": "Chronos Paper (arXiv:2603.16862)"
+          }
+        ]
+      }
+    },
+    "personamem": {
+      "description": "Long-horizon personal preference tracking across conversation sessions.",
+      "score_type": "accuracy",
+      "note": null,
+      "runs": {
+        "cognee": {
+          "splits": {
+            "32k": {
+              "score": 0.8183361629881154,
+              "queries": 589,
+              "path": "outputs/personamem/cognee/rag/32k.json.gz"
+            }
+          },
+          "memory_provider": "cognee",
+          "mode": "rag",
+          "answer_llm": "gemini:gemini-3.1-pro-preview",
+          "judge_llm": "gemini:gemini-2.5-flash-lite",
+          "description": null
+        },
+        "hindsight": {
+          "splits": {
+            "32k": {
+              "score": 0.865874363327674,
+              "queries": 589,
+              "path": "outputs/personamem/hindsight/rag/32k.json.gz"
+            }
+          },
+          "memory_provider": "hindsight",
+          "mode": "rag",
+          "answer_llm": "gemini:gemini-3.1-pro-preview",
+          "judge_llm": "gemini:gemini-2.5-flash-lite",
+          "description": null
+        },
+        "hybrid-search": {
+          "splits": {
+            "32k": {
+              "score": 0.8438030560271647,
+              "queries": 589,
+              "path": "outputs/personamem/hybrid-search/rag/32k.json.gz"
+            }
+          },
+          "memory_provider": "hybrid-search",
+          "mode": "rag",
+          "answer_llm": "gemini:gemini-3.1-pro-preview",
+          "judge_llm": "gemini:gemini-2.5-flash-lite",
+          "description": null
+        }
+      },
+      "published": {
+        "128k": [
+          {
+            "memory": "Gemini-1.5-Flash",
+            "accuracy": 0.52,
+            "comment": null,
+            "source_url": "https://arxiv.org/abs/2504.14225",
+            "source_label": "PersonaMem Paper (arXiv:2504.14225)"
+          },
+          {
+            "memory": "GPT-4.5",
+            "accuracy": 0.52,
+            "comment": null,
+            "source_url": "https://arxiv.org/abs/2504.14225",
+            "source_label": "PersonaMem Paper (arXiv:2504.14225)"
+          },
+          {
+            "memory": "GPT-4.1",
+            "accuracy": 0.52,
+            "comment": null,
+            "source_url": "https://arxiv.org/abs/2504.14225",
+            "source_label": "PersonaMem Paper (arXiv:2504.14225)"
+          },
+          {
+            "memory": "o1",
+            "accuracy": 0.5,
+            "comment": null,
+            "source_url": "https://arxiv.org/abs/2504.14225",
+            "source_label": "PersonaMem Paper (arXiv:2504.14225)"
+          },
+          {
+            "memory": "Gemini-2.0-Flash",
+            "accuracy": 0.49,
+            "comment": null,
+            "source_url": "https://arxiv.org/abs/2504.14225",
+            "source_label": "PersonaMem Paper (arXiv:2504.14225)"
+          },
+          {
+            "memory": "o4-mini",
+            "accuracy": 0.48,
+            "comment": null,
+            "source_url": "https://arxiv.org/abs/2504.14225",
+            "source_label": "PersonaMem Paper (arXiv:2504.14225)"
+          },
+          {
+            "memory": "Gemini-2.0-Flash-Lite",
+            "accuracy": 0.48,
+            "comment": null,
+            "source_url": "https://arxiv.org/abs/2504.14225",
+            "source_label": "PersonaMem Paper (arXiv:2504.14225)"
+          },
+          {
+            "memory": "GPT-4o",
+            "accuracy": 0.45,
+            "comment": null,
+            "source_url": "https://arxiv.org/abs/2504.14225",
+            "source_label": "PersonaMem Paper (arXiv:2504.14225)"
+          },
+          {
+            "memory": "DeepSeek-R1-671B",
+            "accuracy": 0.45,
+            "comment": null,
+            "source_url": "https://arxiv.org/abs/2504.14225",
+            "source_label": "PersonaMem Paper (arXiv:2504.14225)"
+          },
+          {
+            "memory": "Llama-4-Maverick",
+            "accuracy": 0.43,
+            "comment": null,
+            "source_url": "https://arxiv.org/abs/2504.14225",
+            "source_label": "PersonaMem Paper (arXiv:2504.14225)"
+          },
+          {
+            "memory": "o3-mini",
+            "accuracy": 0.39,
+            "comment": null,
+            "source_url": "https://arxiv.org/abs/2504.14225",
+            "source_label": "PersonaMem Paper (arXiv:2504.14225)"
+          },
+          {
+            "memory": "GPT-4o-mini",
+            "accuracy": 0.39,
+            "comment": null,
+            "source_url": "https://arxiv.org/abs/2504.14225",
+            "source_label": "PersonaMem Paper (arXiv:2504.14225)"
+          },
+          {
+            "memory": "Llama-3.1-405B",
+            "accuracy": 0.31,
+            "comment": null,
+            "source_url": "https://arxiv.org/abs/2504.14225",
+            "source_label": "PersonaMem Paper (arXiv:2504.14225)"
+          },
+          {
+            "memory": "Claude-3.5-Haiku",
+            "accuracy": 0.3,
+            "comment": null,
+            "source_url": "https://arxiv.org/abs/2504.14225",
+            "source_label": "PersonaMem Paper (arXiv:2504.14225)"
+          },
+          {
+            "memory": "Claude-3.7-Sonnet",
+            "accuracy": 0.26,
+            "comment": null,
+            "source_url": "https://arxiv.org/abs/2504.14225",
+            "source_label": "PersonaMem Paper (arXiv:2504.14225)"
+          }
+        ],
+        "1M": [
+          {
+            "memory": "Gemini-1.5-Flash",
+            "accuracy": 0.45,
+            "comment": null,
+            "source_url": "https://arxiv.org/abs/2504.14225",
+            "source_label": "PersonaMem Paper (arXiv:2504.14225)"
+          },
+          {
+            "memory": "Gemini-2.0-Flash-Lite",
+            "accuracy": 0.38,
+            "comment": null,
+            "source_url": "https://arxiv.org/abs/2504.14225",
+            "source_label": "PersonaMem Paper (arXiv:2504.14225)"
+          },
+          {
+            "memory": "Gemini-2.0-Flash",
+            "accuracy": 0.37,
+            "comment": null,
+            "source_url": "https://arxiv.org/abs/2504.14225",
+            "source_label": "PersonaMem Paper (arXiv:2504.14225)"
+          },
+          {
+            "memory": "Llama-4-Maverick",
+            "accuracy": 0.28,
+            "comment": null,
+            "source_url": "https://arxiv.org/abs/2504.14225",
+            "source_label": "PersonaMem Paper (arXiv:2504.14225)"
+          }
+        ]
+      }
+    },
+    "precisionmembench": {
+      "description": "Belief-level retrieval precision: 77 cases asserting exactly which memories must and must not surface.",
+      "score_type": "accuracy",
+      "note": null,
+      "runs": {
+        "hindsight": {
+          "splits": {
+            "single-turn": {
+              "score": 0.8571428571428571,
+              "queries": 77,
+              "path": "outputs/precisionmembench/hindsight/retrieval/single-turn.json.gz"
+            }
+          },
+          "memory_provider": "hindsight-cloud",
+          "mode": "retrieval",
+          "answer_llm": null,
+          "judge_llm": null,
+          "description": "Hindsight 0.10.0 (00caa8eab). Identity and currency labels derived by the extraction LLM (multi-text entity labels); recall filtered server-side via tag_groups with fuzzy tag resolution."
+        }
+      },
+      "published": {
+        "single-turn": [
+          {
+            "memory": "open-knowledge-format",
+            "accuracy": 0.4675,
+            "comment": null,
+            "source_url": "https://github.com/tenurehq/precisionmembench",
+            "source_label": "PrecisionMemBench baselines (tenurehq) \u2014 unverified"
+          },
+          {
+            "memory": "supermemory",
+            "accuracy": 0.2727,
+            "comment": null,
+            "source_url": "https://github.com/tenurehq/precisionmembench",
+            "source_label": "PrecisionMemBench baselines (tenurehq) \u2014 unverified"
+          },
+          {
+            "memory": "agentmemory",
+            "accuracy": 0.0909,
+            "comment": null,
+            "source_url": "https://github.com/tenurehq/precisionmembench",
+            "source_label": "PrecisionMemBench baselines (tenurehq) \u2014 unverified"
+          },
+          {
+            "memory": "yourmemory",
+            "accuracy": 0.2727,
+            "comment": null,
+            "source_url": "https://github.com/tenurehq/precisionmembench",
+            "source_label": "PrecisionMemBench baselines (tenurehq) \u2014 unverified"
+          },
+          {
+            "memory": "atomicmemory",
+            "accuracy": 0.1169,
+            "comment": null,
+            "source_url": "https://github.com/tenurehq/precisionmembench",
+            "source_label": "PrecisionMemBench baselines (tenurehq) \u2014 unverified"
+          },
+          {
+            "memory": "gbrain",
+            "accuracy": 0.4416,
+            "comment": null,
+            "source_url": "https://github.com/tenurehq/precisionmembench",
+            "source_label": "PrecisionMemBench baselines (tenurehq) \u2014 unverified"
+          },
+          {
+            "memory": "zep",
+            "accuracy": 0.1169,
+            "comment": null,
+            "source_url": "https://github.com/tenurehq/precisionmembench",
+            "source_label": "PrecisionMemBench baselines (tenurehq) \u2014 unverified"
+          },
+          {
+            "memory": "vector",
+            "accuracy": 0.1429,
+            "comment": null,
+            "source_url": "https://github.com/tenurehq/precisionmembench",
+            "source_label": "PrecisionMemBench baselines (tenurehq) \u2014 unverified"
+          },
+          {
+            "memory": "mem0",
+            "accuracy": 0.1169,
+            "comment": null,
+            "source_url": "https://github.com/tenurehq/precisionmembench",
+            "source_label": "PrecisionMemBench baselines (tenurehq) \u2014 unverified"
+          },
+          {
+            "memory": "a-mem",
+            "accuracy": 0.1169,
+            "comment": null,
+            "source_url": "https://github.com/tenurehq/precisionmembench",
+            "source_label": "PrecisionMemBench baselines (tenurehq) \u2014 unverified"
+          },
+          {
+            "memory": "cognee",
+            "accuracy": 0.1429,
+            "comment": null,
+            "source_url": "https://github.com/tenurehq/precisionmembench",
+            "source_label": "PrecisionMemBench baselines (tenurehq) \u2014 unverified"
+          }
+        ]
+      }
+    },
+    "supportbench": {
+      "description": "Does a support agent use the product docs and each customer's history correctly? Real Nextcloud 32 manuals (837 PDF pages) plus per-customer support chats and approved exceptions.",
+      "score_type": "accuracy",
+      "note": null,
+      "runs": {
+        "support-knowledge-local-1": {
+          "splits": {
+            "nextcloud": {
+              "score": 0.7105263157894737,
+              "queries": 114,
+              "path": "outputs/supportbench/support-knowledge-local-1/agent/nextcloud.json.gz",
+              "avg_query_usd": 0.00056,
+              "ingest_usd": 0.0
+            }
+          },
+          "memory_provider": "hindsight-support-knowledge",
+          "mode": "agent",
+          "answer_llm": null,
+          "judge_llm": "openai:gemma-4-26b-a4b",
+          "description": null
+        },
+        "support-linked-local-1": {
+          "splits": {
+            "nextcloud": {
+              "score": 0.8508771929824561,
+              "queries": 114,
+              "path": "outputs/supportbench/support-linked-local-1/agent/nextcloud.json.gz",
+              "avg_query_usd": 0.00059,
+              "ingest_usd": 0.336
+            }
+          },
+          "memory_provider": "hindsight-support-linked",
+          "mode": "agent",
+          "answer_llm": null,
+          "judge_llm": "openai:gemma-4-26b-a4b",
+          "description": null
+        },
+        "support-memory-local-1": {
+          "splits": {
+            "nextcloud": {
+              "score": 0.7456140350877193,
+              "queries": 114,
+              "path": "outputs/supportbench/support-memory-local-1/agent/nextcloud.json.gz",
+              "avg_query_usd": 0.00031,
+              "ingest_usd": 0.9452
+            }
+          },
+          "memory_provider": "hindsight-support-memory",
+          "mode": "agent",
+          "answer_llm": null,
+          "judge_llm": "openai:gemma-4-26b-a4b",
+          "description": null
+        }
+      },
+      "published": {}
+    },
+    "vidore-v3-markdown": {
+      "description": "ViDoRe V3, 8 enterprise PDF tasks (EN + FR) as the page markdown the dataset ships, one text document per page; text-to-page search in 6 query languages.",
+      "score_type": "ndcg@10",
+      "note": "nDCG@10 (trec_eval linear gain) over every query of all 6 query languages, against ViDoRe's page-level qrels. The average split is the mean over the 8 tasks, the number Mixedbread's table reports. Search only: no LLM, no reranker, no query rewriting.",
+      "runs": {
+        "hindsight-jev114": {
+          "splits": {
+            "computer_science": {
+              "score": null,
+              "queries": 215,
+              "path": "outputs/vidore-v3-markdown/hindsight-jev114/retrieval/computer_science.json.gz",
+              "own_language": 0.8333795139905361
+            },
+            "energy": {
+              "score": null,
+              "queries": 308,
+              "path": "outputs/vidore-v3-markdown/hindsight-jev114/retrieval/energy.json.gz",
+              "own_language": 0.7294479931311448
+            },
+            "finance_en": {
+              "score": null,
+              "queries": 309,
+              "path": "outputs/vidore-v3-markdown/hindsight-jev114/retrieval/finance_en.json.gz",
+              "own_language": 0.7377997943573192
+            },
+            "finance_fr": {
+              "score": null,
+              "queries": 320,
+              "path": "outputs/vidore-v3-markdown/hindsight-jev114/retrieval/finance_fr.json.gz",
+              "own_language": 0.5739463384276697
+            },
+            "hr": {
+              "score": null,
+              "queries": 318,
+              "path": "outputs/vidore-v3-markdown/hindsight-jev114/retrieval/hr.json.gz",
+              "own_language": 0.7047468723189936
+            },
+            "industrial": {
+              "score": null,
+              "queries": 283,
+              "path": "outputs/vidore-v3-markdown/hindsight-jev114/retrieval/industrial.json.gz",
+              "own_language": 0.6066833695707339
+            },
+            "pharmaceuticals": {
+              "score": null,
+              "queries": 364,
+              "path": "outputs/vidore-v3-markdown/hindsight-jev114/retrieval/pharmaceuticals.json.gz",
+              "own_language": 0.6966804396927342
+            },
+            "physics": {
+              "score": null,
+              "queries": 302,
+              "path": "outputs/vidore-v3-markdown/hindsight-jev114/retrieval/physics.json.gz",
+              "own_language": 0.5001507687214111
+            },
+            "average": {
+              "score": null,
+              "own_language": 0.6728543862763179
+            }
+          },
+          "memory_provider": "hindsight-knowledge",
+          "mode": "retrieval",
+          "answer_llm": null,
+          "judge_llm": null,
+          "description": "Hindsight knowledge bank, embeddinggemma-2 search, reranked by Jev 1.14 (TypeSafe System One)."
+        }
+      },
+      "published": {
+        "average": [
+          {
+            "memory": "Mixedbread",
+            "accuracy": 0.6225,
+            "comment": "Mean over the 8 tasks, each scored on queries in the task's own language (the setting of Mixedbread's table). Cross-language average over all 6 query languages: 60.14.",
+            "source_url": "https://www.mixedbread.com/evals/vidore-v3-text",
+            "source_label": "Mixedbread ViDoRe V3 text evals"
+          },
+          {
+            "memory": "Mixedbread + reranker",
+            "accuracy": 0.6991,
+            "comment": "Mean over the 8 tasks, each scored on queries in the task's own language (the setting of Mixedbread's table). With Mixedbread's reranker. Over all 6 query languages: 69.26.",
+            "source_url": "https://www.mixedbread.com/evals/vidore-v3-text",
+            "source_label": "Mixedbread ViDoRe V3 text evals"
+          },
+          {
+            "memory": "Voyage 4 Large",
+            "accuracy": 0.6064,
+            "comment": "Mean over the 8 tasks, each scored on queries in the task's own language (the setting of Mixedbread's table). Over all 6 query languages: 58.75.",
+            "source_url": "https://www.mixedbread.com/evals/vidore-v3-text",
+            "source_label": "Mixedbread ViDoRe V3 text evals"
+          },
+          {
+            "memory": "Gemini Embedding 2",
+            "accuracy": 0.587,
+            "comment": "Mean over the 8 tasks, each scored on queries in the task's own language (the setting of Mixedbread's table).",
+            "source_url": "https://www.mixedbread.com/evals/vidore-v3-text",
+            "source_label": "Mixedbread ViDoRe V3 text evals"
+          },
+          {
+            "memory": "Cohere Embed 4",
+            "accuracy": 0.5663,
+            "comment": "Mean over the 8 tasks, each scored on queries in the task's own language (the setting of Mixedbread's table).",
+            "source_url": "https://www.mixedbread.com/evals/vidore-v3-text",
+            "source_label": "Mixedbread ViDoRe V3 text evals"
+          },
+          {
+            "memory": "Qwen3 Embedding 8B",
+            "accuracy": 0.5424,
+            "comment": "Mean over the 8 tasks, each scored on queries in the task's own language (the setting of Mixedbread's table).",
+            "source_url": "https://www.mixedbread.com/evals/vidore-v3-text",
+            "source_label": "Mixedbread ViDoRe V3 text evals"
+          },
+          {
+            "memory": "OpenAI text-embedding-3-large",
+            "accuracy": 0.5123,
+            "comment": "Mean over the 8 tasks, each scored on queries in the task's own language (the setting of Mixedbread's table).",
+            "source_url": "https://www.mixedbread.com/evals/vidore-v3-text",
+            "source_label": "Mixedbread ViDoRe V3 text evals"
+          },
+          {
+            "memory": "BM25",
+            "accuracy": 0.4998,
+            "comment": "Mean over the 8 tasks, each scored on queries in the task's own language (the setting of Mixedbread's table).",
+            "source_url": "https://www.mixedbread.com/evals/vidore-v3-text",
+            "source_label": "Mixedbread ViDoRe V3 text evals"
+          },
+          {
+            "memory": "Mixedbread (all 6 query languages)",
+            "accuracy": 0.6014,
+            "comment": "Mean over the 8 tasks over every query language, the setting AMB's run scores. Per-query files: https://github.com/mixedbread-ai/quality-evals",
+            "source_url": "https://www.mixedbread.com/evals/vidore-v3-text",
+            "source_label": "Mixedbread ViDoRe V3 text evals"
+          },
+          {
+            "memory": "Voyage 4 Large (all 6 query languages)",
+            "accuracy": 0.5875,
+            "comment": "Mean over the 8 tasks over every query language, the setting AMB's run scores.",
+            "source_url": "https://www.mixedbread.com/evals/vidore-v3-text",
+            "source_label": "Mixedbread ViDoRe V3 text evals"
+          },
+          {
+            "memory": "Qwen3-Embedding-8B (all 6 query languages)",
+            "accuracy": 0.5108,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker. The paper averages 10 tasks; this is the mean over the 8 public ones AMB runs.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Jina-v4 (all 6 query languages)",
+            "accuracy": 0.5048,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker. The paper averages 10 tasks; this is the mean over the 8 public ones AMB runs.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "LFM2-350M (all 6 query languages)",
+            "accuracy": 0.4423,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker. The paper averages 10 tasks; this is the mean over the 8 public ones AMB runs.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Qwen3-Embedding-0.6B (all 6 query languages)",
+            "accuracy": 0.4368,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker. The paper averages 10 tasks; this is the mean over the 8 public ones AMB runs.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "BGE-M3 (all 6 query languages)",
+            "accuracy": 0.4145,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker. The paper averages 10 tasks; this is the mean over the 8 public ones AMB runs.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "BM25S (all 6 query languages)",
+            "accuracy": 0.1909,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker. The paper averages 10 tasks; this is the mean over the 8 public ones AMB runs.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          }
+        ],
+        "computer_science": [
+          {
+            "memory": "Qwen3-Embedding-8B (all 6 query languages)",
+            "accuracy": 0.717,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Jina-v4 (all 6 query languages)",
+            "accuracy": 0.643,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "LFM2-350M (all 6 query languages)",
+            "accuracy": 0.635,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Qwen3-Embedding-0.6B (all 6 query languages)",
+            "accuracy": 0.664,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "BGE-M3 (all 6 query languages)",
+            "accuracy": 0.58,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "BM25S (all 6 query languages)",
+            "accuracy": 0.287,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          }
+        ],
+        "finance_en": [
+          {
+            "memory": "Qwen3-Embedding-8B (all 6 query languages)",
+            "accuracy": 0.494,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Jina-v4 (all 6 query languages)",
+            "accuracy": 0.484,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "LFM2-350M (all 6 query languages)",
+            "accuracy": 0.39,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Qwen3-Embedding-0.6B (all 6 query languages)",
+            "accuracy": 0.427,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "BGE-M3 (all 6 query languages)",
+            "accuracy": 0.398,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "BM25S (all 6 query languages)",
+            "accuracy": 0.176,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          }
+        ],
+        "pharmaceuticals": [
+          {
+            "memory": "Qwen3-Embedding-8B (all 6 query languages)",
+            "accuracy": 0.592,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Jina-v4 (all 6 query languages)",
+            "accuracy": 0.549,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "LFM2-350M (all 6 query languages)",
+            "accuracy": 0.564,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Qwen3-Embedding-0.6B (all 6 query languages)",
+            "accuracy": 0.506,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "BGE-M3 (all 6 query languages)",
+            "accuracy": 0.52,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "BM25S (all 6 query languages)",
+            "accuracy": 0.273,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          }
+        ],
+        "hr": [
+          {
+            "memory": "Qwen3-Embedding-8B (all 6 query languages)",
+            "accuracy": 0.476,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Jina-v4 (all 6 query languages)",
+            "accuracy": 0.528,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "LFM2-350M (all 6 query languages)",
+            "accuracy": 0.435,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Qwen3-Embedding-0.6B (all 6 query languages)",
+            "accuracy": 0.377,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "BGE-M3 (all 6 query languages)",
+            "accuracy": 0.424,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "BM25S (all 6 query languages)",
+            "accuracy": 0.128,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          }
+        ],
+        "industrial": [
+          {
+            "memory": "Qwen3-Embedding-8B (all 6 query languages)",
+            "accuracy": 0.404,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Jina-v4 (all 6 query languages)",
+            "accuracy": 0.384,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "LFM2-350M (all 6 query languages)",
+            "accuracy": 0.344,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Qwen3-Embedding-0.6B (all 6 query languages)",
+            "accuracy": 0.316,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "BGE-M3 (all 6 query languages)",
+            "accuracy": 0.285,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "BM25S (all 6 query languages)",
+            "accuracy": 0.156,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          }
+        ],
+        "physics": [
+          {
+            "memory": "Qwen3-Embedding-8B (all 6 query languages)",
+            "accuracy": 0.456,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Jina-v4 (all 6 query languages)",
+            "accuracy": 0.436,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "LFM2-350M (all 6 query languages)",
+            "accuracy": 0.418,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Qwen3-Embedding-0.6B (all 6 query languages)",
+            "accuracy": 0.433,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "BGE-M3 (all 6 query languages)",
+            "accuracy": 0.359,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "BM25S (all 6 query languages)",
+            "accuracy": 0.148,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          }
+        ],
+        "energy": [
+          {
+            "memory": "Qwen3-Embedding-8B (all 6 query languages)",
+            "accuracy": 0.589,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Jina-v4 (all 6 query languages)",
+            "accuracy": 0.601,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "LFM2-350M (all 6 query languages)",
+            "accuracy": 0.47,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Qwen3-Embedding-0.6B (all 6 query languages)",
+            "accuracy": 0.513,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "BGE-M3 (all 6 query languages)",
+            "accuracy": 0.498,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "BM25S (all 6 query languages)",
+            "accuracy": 0.219,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          }
+        ],
+        "finance_fr": [
+          {
+            "memory": "Qwen3-Embedding-8B (all 6 query languages)",
+            "accuracy": 0.358,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Jina-v4 (all 6 query languages)",
+            "accuracy": 0.413,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "LFM2-350M (all 6 query languages)",
+            "accuracy": 0.282,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Qwen3-Embedding-0.6B (all 6 query languages)",
+            "accuracy": 0.258,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "BGE-M3 (all 6 query languages)",
+            "accuracy": 0.252,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "BM25S (all 6 query languages)",
+            "accuracy": 0.14,
+            "comment": "Page markdown from NVIDIA NeMo Retriever extraction, which may differ from the markdown the dataset ships. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          }
+        ]
+      }
+    },
+    "vidore-v3-pdf": {
+      "description": "ViDoRe V3, 8 enterprise PDF tasks as the raw source PDFs: the server reads and splits each file itself, and a hit on page n stands for that page.",
+      "score_type": "ndcg@10",
+      "note": "nDCG@10 (trec_eval linear gain) over every query of all 6 query languages, against ViDoRe's page-level qrels. The average split is the mean over the 8 tasks, the number Mixedbread's table reports. Search only: no LLM, no reranker, no query rewriting. Harder than the markdown version: nobody parses the pages for the server.",
+      "runs": {
+        "hindsight-jev114": {
+          "splits": {
+            "computer_science": {
+              "score": null,
+              "queries": 215,
+              "path": "outputs/vidore-v3-pdf/hindsight-jev114/retrieval/computer_science.json.gz",
+              "own_language": 0.841097660827437
+            },
+            "energy": {
+              "score": null,
+              "queries": 308,
+              "path": "outputs/vidore-v3-pdf/hindsight-jev114/retrieval/energy.json.gz",
+              "own_language": 0.7447444107888546
+            },
+            "finance_en": {
+              "score": null,
+              "queries": 309,
+              "path": "outputs/vidore-v3-pdf/hindsight-jev114/retrieval/finance_en.json.gz",
+              "own_language": 0.7580208202495056
+            },
+            "finance_fr": {
+              "score": null,
+              "queries": 320,
+              "path": "outputs/vidore-v3-pdf/hindsight-jev114/retrieval/finance_fr.json.gz",
+              "own_language": 0.5841571720052662
+            },
+            "hr": {
+              "score": null,
+              "queries": 318,
+              "path": "outputs/vidore-v3-pdf/hindsight-jev114/retrieval/hr.json.gz",
+              "own_language": 0.716560195574704
+            },
+            "industrial": {
+              "score": null,
+              "queries": 283,
+              "path": "outputs/vidore-v3-pdf/hindsight-jev114/retrieval/industrial.json.gz",
+              "own_language": 0.631674611588637
+            },
+            "pharmaceuticals": {
+              "score": null,
+              "queries": 364,
+              "path": "outputs/vidore-v3-pdf/hindsight-jev114/retrieval/pharmaceuticals.json.gz",
+              "own_language": 0.7270762302382328
+            },
+            "physics": {
+              "score": null,
+              "queries": 302,
+              "path": "outputs/vidore-v3-pdf/hindsight-jev114/retrieval/physics.json.gz",
+              "own_language": 0.5089327888148562
+            },
+            "average": {
+              "score": null,
+              "own_language": 0.6890329862609367
+            }
+          },
+          "memory_provider": "hindsight-knowledge",
+          "mode": "retrieval",
+          "answer_llm": null,
+          "judge_llm": null,
+          "description": "Hindsight knowledge bank, embeddinggemma-2 search, reranked by Jev 1.14 (TypeSafe System One)."
+        }
+      },
+      "published": {
+        "average": [
+          {
+            "memory": "Mixedbread + reranker",
+            "accuracy": 0.6945,
+            "comment": "Page images, mxbai-rerank-v3.1-listwise. Mean over the 8 tasks, each scored on queries in the task's own language, from the per-task result files.",
+            "source_url": "https://github.com/mixedbread-ai/quality-evals",
+            "source_label": "mixedbread-ai/quality-evals"
+          },
+          {
+            "memory": "Cohere Embed 4 + Rerank 4 Pro",
+            "accuracy": 0.6736,
+            "comment": "Page images, reranks the top 50. Mean over the 8 tasks, each scored on queries in the task's own language, from the per-task result files.",
+            "source_url": "https://github.com/mixedbread-ai/quality-evals",
+            "source_label": "mixedbread-ai/quality-evals"
+          },
+          {
+            "memory": "Mixedbread",
+            "accuracy": 0.6424,
+            "comment": "Page images. Mean over the 8 tasks, each scored on queries in the task's own language, from the per-task result files.",
+            "source_url": "https://github.com/mixedbread-ai/quality-evals",
+            "source_label": "mixedbread-ai/quality-evals"
+          },
+          {
+            "memory": "Voyage Multimodal 3.5",
+            "accuracy": 0.5754,
+            "comment": "Page images. Mean over the 8 tasks, each scored on queries in the task's own language, from the per-task result files.",
+            "source_url": "https://github.com/mixedbread-ai/quality-evals",
+            "source_label": "mixedbread-ai/quality-evals"
+          },
+          {
+            "memory": "Gemini Embedding 2",
+            "accuracy": 0.4854,
+            "comment": "Page images. Mean over the 8 tasks, each scored on queries in the task's own language, from the per-task result files.",
+            "source_url": "https://github.com/mixedbread-ai/quality-evals",
+            "source_label": "mixedbread-ai/quality-evals"
+          },
+          {
+            "memory": "ColEmbed-3B-v2 (all 6 query languages)",
+            "accuracy": 0.597,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker. The paper averages 10 tasks; this is the mean over the 8 public ones AMB runs.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Jina-v4 (all 6 query languages)",
+            "accuracy": 0.576,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker. The paper averages 10 tasks; this is the mean over the 8 public ones AMB runs.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColNomic-7B (all 6 query languages)",
+            "accuracy": 0.5771,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker. The paper averages 10 tasks; this is the mean over the 8 public ones AMB runs.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColEmbed-3B (all 6 query languages)",
+            "accuracy": 0.5708,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker. The paper averages 10 tasks; this is the mean over the 8 public ones AMB runs.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColNomic-3B (all 6 query languages)",
+            "accuracy": 0.5645,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker. The paper averages 10 tasks; this is the mean over the 8 public ones AMB runs.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColEmbed-1B (all 6 query languages)",
+            "accuracy": 0.5547,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker. The paper averages 10 tasks; this is the mean over the 8 public ones AMB runs.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColQwen2.5 (all 6 query languages)",
+            "accuracy": 0.5246,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker. The paper averages 10 tasks; this is the mean over the 8 public ones AMB runs.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Nomic-7B (all 6 query languages)",
+            "accuracy": 0.4951,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker. The paper averages 10 tasks; this is the mean over the 8 public ones AMB runs.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColQwen2 (all 6 query languages)",
+            "accuracy": 0.442,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker. The paper averages 10 tasks; this is the mean over the 8 public ones AMB runs.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Nomic-3B (all 6 query languages)",
+            "accuracy": 0.446,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker. The paper averages 10 tasks; this is the mean over the 8 public ones AMB runs.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColPali (all 6 query languages)",
+            "accuracy": 0.4298,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker. The paper averages 10 tasks; this is the mean over the 8 public ones AMB runs.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          }
+        ],
+        "computer_science": [
+          {
+            "memory": "ColEmbed-3B-v2 (all 6 query languages)",
+            "accuracy": 0.771,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Jina-v4 (all 6 query languages)",
+            "accuracy": 0.718,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColNomic-7B (all 6 query languages)",
+            "accuracy": 0.762,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColEmbed-3B (all 6 query languages)",
+            "accuracy": 0.752,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColNomic-3B (all 6 query languages)",
+            "accuracy": 0.727,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColEmbed-1B (all 6 query languages)",
+            "accuracy": 0.713,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColQwen2.5 (all 6 query languages)",
+            "accuracy": 0.723,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Nomic-7B (all 6 query languages)",
+            "accuracy": 0.666,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColQwen2 (all 6 query languages)",
+            "accuracy": 0.686,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Nomic-3B (all 6 query languages)",
+            "accuracy": 0.585,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColPali (all 6 query languages)",
+            "accuracy": 0.653,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          }
+        ],
+        "finance_en": [
+          {
+            "memory": "ColEmbed-3B-v2 (all 6 query languages)",
+            "accuracy": 0.642,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Jina-v4 (all 6 query languages)",
+            "accuracy": 0.593,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColNomic-7B (all 6 query languages)",
+            "accuracy": 0.566,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColEmbed-3B (all 6 query languages)",
+            "accuracy": 0.609,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColNomic-3B (all 6 query languages)",
+            "accuracy": 0.563,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColEmbed-1B (all 6 query languages)",
+            "accuracy": 0.589,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColQwen2.5 (all 6 query languages)",
+            "accuracy": 0.523,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Nomic-7B (all 6 query languages)",
+            "accuracy": 0.488,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColQwen2 (all 6 query languages)",
+            "accuracy": 0.39,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Nomic-3B (all 6 query languages)",
+            "accuracy": 0.442,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColPali (all 6 query languages)",
+            "accuracy": 0.344,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          }
+        ],
+        "pharmaceuticals": [
+          {
+            "memory": "ColEmbed-3B-v2 (all 6 query languages)",
+            "accuracy": 0.66,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Jina-v4 (all 6 query languages)",
+            "accuracy": 0.631,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColNomic-7B (all 6 query languages)",
+            "accuracy": 0.623,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColEmbed-3B (all 6 query languages)",
+            "accuracy": 0.637,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColNomic-3B (all 6 query languages)",
+            "accuracy": 0.611,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColEmbed-1B (all 6 query languages)",
+            "accuracy": 0.626,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColQwen2.5 (all 6 query languages)",
+            "accuracy": 0.579,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Nomic-7B (all 6 query languages)",
+            "accuracy": 0.589,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColQwen2 (all 6 query languages)",
+            "accuracy": 0.522,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Nomic-3B (all 6 query languages)",
+            "accuracy": 0.553,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColPali (all 6 query languages)",
+            "accuracy": 0.531,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          }
+        ],
+        "hr": [
+          {
+            "memory": "ColEmbed-3B-v2 (all 6 query languages)",
+            "accuracy": 0.623,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Jina-v4 (all 6 query languages)",
+            "accuracy": 0.595,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColNomic-7B (all 6 query languages)",
+            "accuracy": 0.587,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColEmbed-3B (all 6 query languages)",
+            "accuracy": 0.587,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColNomic-3B (all 6 query languages)",
+            "accuracy": 0.573,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColEmbed-1B (all 6 query languages)",
+            "accuracy": 0.57,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColQwen2.5 (all 6 query languages)",
+            "accuracy": 0.512,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Nomic-7B (all 6 query languages)",
+            "accuracy": 0.462,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColQwen2 (all 6 query languages)",
+            "accuracy": 0.451,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Nomic-3B (all 6 query languages)",
+            "accuracy": 0.433,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColPali (all 6 query languages)",
+            "accuracy": 0.448,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          }
+        ],
+        "industrial": [
+          {
+            "memory": "ColEmbed-3B-v2 (all 6 query languages)",
+            "accuracy": 0.517,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Jina-v4 (all 6 query languages)",
+            "accuracy": 0.504,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColNomic-7B (all 6 query languages)",
+            "accuracy": 0.501,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColEmbed-3B (all 6 query languages)",
+            "accuracy": 0.471,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColNomic-3B (all 6 query languages)",
+            "accuracy": 0.474,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColEmbed-1B (all 6 query languages)",
+            "accuracy": 0.466,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColQwen2.5 (all 6 query languages)",
+            "accuracy": 0.413,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Nomic-7B (all 6 query languages)",
+            "accuracy": 0.379,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColQwen2 (all 6 query languages)",
+            "accuracy": 0.383,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Nomic-3B (all 6 query languages)",
+            "accuracy": 0.332,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColPali (all 6 query languages)",
+            "accuracy": 0.356,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          }
+        ],
+        "physics": [
+          {
+            "memory": "ColEmbed-3B-v2 (all 6 query languages)",
+            "accuracy": 0.47,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Jina-v4 (all 6 query languages)",
+            "accuracy": 0.466,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColNomic-7B (all 6 query languages)",
+            "accuracy": 0.483,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColEmbed-3B (all 6 query languages)",
+            "accuracy": 0.451,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColNomic-3B (all 6 query languages)",
+            "accuracy": 0.475,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColEmbed-1B (all 6 query languages)",
+            "accuracy": 0.441,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColQwen2.5 (all 6 query languages)",
+            "accuracy": 0.459,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Nomic-7B (all 6 query languages)",
+            "accuracy": 0.442,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColQwen2 (all 6 query languages)",
+            "accuracy": 0.416,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Nomic-3B (all 6 query languages)",
+            "accuracy": 0.42,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColPali (all 6 query languages)",
+            "accuracy": 0.417,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          }
+        ],
+        "energy": [
+          {
+            "memory": "ColEmbed-3B-v2 (all 6 query languages)",
+            "accuracy": 0.649,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Jina-v4 (all 6 query languages)",
+            "accuracy": 0.64,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColNomic-7B (all 6 query languages)",
+            "accuracy": 0.64,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColEmbed-3B (all 6 query languages)",
+            "accuracy": 0.621,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColNomic-3B (all 6 query languages)",
+            "accuracy": 0.65,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColEmbed-1B (all 6 query languages)",
+            "accuracy": 0.609,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColQwen2.5 (all 6 query languages)",
+            "accuracy": 0.597,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Nomic-7B (all 6 query languages)",
+            "accuracy": 0.575,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColQwen2 (all 6 query languages)",
+            "accuracy": 0.488,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Nomic-3B (all 6 query languages)",
+            "accuracy": 0.514,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColPali (all 6 query languages)",
+            "accuracy": 0.471,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          }
+        ],
+        "finance_fr": [
+          {
+            "memory": "ColEmbed-3B-v2 (all 6 query languages)",
+            "accuracy": 0.444,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Jina-v4 (all 6 query languages)",
+            "accuracy": 0.461,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColNomic-7B (all 6 query languages)",
+            "accuracy": 0.455,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColEmbed-3B (all 6 query languages)",
+            "accuracy": 0.438,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColNomic-3B (all 6 query languages)",
+            "accuracy": 0.443,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColEmbed-1B (all 6 query languages)",
+            "accuracy": 0.424,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColQwen2.5 (all 6 query languages)",
+            "accuracy": 0.391,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Nomic-7B (all 6 query languages)",
+            "accuracy": 0.36,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColQwen2 (all 6 query languages)",
+            "accuracy": 0.2,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "Nomic-3B (all 6 query languages)",
+            "accuracy": 0.289,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          },
+          {
+            "memory": "ColPali (all 6 query languages)",
+            "accuracy": 0.218,
+            "comment": "Page images. Table 1, all 6 query languages (the setting AMB's own run scores), no reranker.",
+            "source_url": "https://arxiv.org/abs/2601.08620",
+            "source_label": "ViDoRe V3 Paper (arXiv:2601.08620)"
+          }
+        ]
+      }
+    },
+    "atm-bench-retrieval": {
+      "description": "ATM-Bench as search: 3,759 photos, 533 videos and 6,742 emails (four years of one person's data), 1,013 questions scored on their human-labelled evidence items.",
+      "score_type": "recall@10",
+      "note": "R@10: the share of a question's evidence items in the top 10 results. Each photo and video goes in as the raw file and as the benchmark's own text record (time, place, caption, OCR, tags); a hit on either counts as the item.",
+      "runs": {
+        "hindsight-jev114": {
+          "splits": {
+            "atm-bench": {
+              "score": 0.9067781538413324,
+              "queries": 1013,
+              "path": "outputs/atm-bench-retrieval/hindsight-jev114/retrieval/atm-bench.json.gz"
+            }
+          },
+          "memory_provider": "hindsight-knowledge",
+          "mode": "retrieval",
+          "answer_llm": null,
+          "judge_llm": null,
+          "description": "Hindsight knowledge bank, embeddinggemma-2 search, reranked by Jev 1.14 (TypeSafe System One)."
+        }
+      },
+      "published": {
+        "atm-bench": [
+          {
+            "memory": "Memexa v2",
+            "accuracy": 0.9232,
+            "comment": "BGE-M3 + bge-reranker-v2-m3; memory built with DeepSeek (an LLM). R@10 counts the items passed to the answer model.",
+            "source_url": "https://atmbench.github.io/leaderboard.html",
+            "source_label": "ATM-Bench leaderboard"
+          },
+          {
+            "memory": "RE-call",
+            "accuracy": 0.901,
+            "comment": "Voyage-4-large + Voyage rerank-2.5.",
+            "source_url": "https://atmbench.github.io/leaderboard.html",
+            "source_label": "ATM-Bench leaderboard"
+          },
+          {
+            "memory": "Graphon V1",
+            "accuracy": 0.8997,
+            "comment": "Memory built with an LLM.",
+            "source_url": "https://atmbench.github.io/leaderboard.html",
+            "source_label": "ATM-Bench leaderboard"
+          },
+          {
+            "memory": "Memexa",
+            "accuracy": 0.7909,
+            "comment": "BGE-M3 + bge-reranker-v2-m3.",
+            "source_url": "https://atmbench.github.io/leaderboard.html",
+            "source_label": "ATM-Bench leaderboard"
+          },
+          {
+            "memory": "MediaFind",
+            "accuracy": 0.7785,
+            "comment": "MiniLM-L6 + BM25.",
+            "source_url": "https://atmbench.github.io/leaderboard.html",
+            "source_label": "ATM-Bench leaderboard"
+          },
+          {
+            "memory": "MemPalace",
+            "accuracy": 0.764,
+            "comment": "MiniLM-L6.",
+            "source_url": "https://atmbench.github.io/leaderboard.html",
+            "source_label": "ATM-Bench leaderboard"
+          },
+          {
+            "memory": "ATM-RAG (paper baseline)",
+            "accuracy": 0.687,
+            "comment": "MiniLM-L6.",
+            "source_url": "https://atmbench.github.io/leaderboard.html",
+            "source_label": "ATM-Bench leaderboard"
+          }
+        ]
+      }
+    },
+    "legalbench-rag": {
+      "description": "LegalBench-RAG mini: 776 questions over 714 contracts (NDAs, M&A agreements, commercial contracts, privacy policies), scored on the exact characters lawyers marked.",
+      "score_type": "recall@5",
+      "note": "Character recall@5, as legalbenchrag/run_benchmark.py computes it: the share of the marked characters that the top 5 results' text covers. The 4 sets weigh the same (194 questions each). The search runs at the API's default budget of 4,096 tokens, so the 5 results carry about as much text as 5 chunks of a typical RAG setup. Precision (the share of returned text that is marked) is in each query's metrics. Documents go in with neutral names. Search only: no LLM.",
+      "runs": {
+        "hindsight-filenames": {
+          "splits": {
+            "mini": {
+              "score": 0.9431154589790489,
+              "queries": 776,
+              "path": "outputs/legalbench-rag/hindsight-filenames/retrieval/mini.json.gz"
+            }
+          },
+          "memory_provider": "hindsight-knowledge",
+          "mode": "retrieval",
+          "answer_llm": null,
+          "judge_llm": null,
+          "description": "Hindsight knowledge bank: embeddinggemma-2 search, 512-token passages, one rerank by hs-decide-1-flash-mm judging each passage alone, fused with the search order of documents. Contracts uploaded under their corpus file names."
+        },
+        "hindsight-no-filenames": {
+          "splits": {
+            "mini": {
+              "score": 0.8572549707140767,
+              "queries": 776,
+              "path": "outputs/legalbench-rag/hindsight-no-filenames/retrieval/mini.json.gz"
+            }
+          },
+          "memory_provider": "hindsight-knowledge",
+          "mode": "retrieval",
+          "answer_llm": null,
+          "judge_llm": null,
+          "description": "Hindsight knowledge bank: embeddinggemma-2 search, 512-token passages, one rerank by hs-decide-1-flash-mm judging each passage alone, fused with the search order of documents. Contracts under neutral ids, no file names (as Conare ran it)."
+        }
+      },
+      "published": {
+        "mini": [
+          {
+            "memory": "Conare",
+            "accuracy": 0.854,
+            "comment": "Character recall@5 on the official LegalBench-RAG mini set (776 questions, 714 contracts, no file names), as published in Conare's table (data as of 9 November 2026). Conare's hosted search API, default settings. Self-reported.",
+            "source_url": "https://conare.ai/benchmarks",
+            "source_label": "Conare benchmarks"
+          },
+          {
+            "memory": "Voyage context-3",
+            "accuracy": 0.637,
+            "comment": "Character recall@5 on the official LegalBench-RAG mini set (776 questions, 714 contracts, no file names), as published in Conare's table (data as of 9 November 2026). voyage-context-3. Run and published by Conare.",
+            "source_url": "https://conare.ai/benchmarks",
+            "source_label": "Conare benchmarks"
+          },
+          {
+            "memory": "Cohere Embed v5 + Rerank v5 Pro",
+            "accuracy": 0.494,
+            "comment": "Character recall@5 on the official LegalBench-RAG mini set (776 questions, 714 contracts, no file names), as published in Conare's table (data as of 9 November 2026). embed-v5 + rerank-v5.0-pro. Run and published by Conare.",
+            "source_url": "https://conare.ai/benchmarks",
+            "source_label": "Conare benchmarks"
+          },
+          {
+            "memory": "OpenAI file search",
+            "accuracy": 0.478,
+            "comment": "Character recall@5 on the official LegalBench-RAG mini set (776 questions, 714 contracts, no file names), as published in Conare's table (data as of 9 November 2026). OpenAI's hosted file search, default settings. Run and published by Conare.",
+            "source_url": "https://conare.ai/benchmarks",
+            "source_label": "Conare benchmarks"
+          },
+          {
+            "memory": "NVIDIA Nemotron 3.5 Embed 8B",
+            "accuracy": 0.445,
+            "comment": "Character recall@5 on the official LegalBench-RAG mini set (776 questions, 714 contracts, no file names), as published in Conare's table (data as of 9 November 2026). Nemotron-3.5-Embed-8B. Run and published by Conare.",
+            "source_url": "https://conare.ai/benchmarks",
+            "source_label": "Conare benchmarks"
+          },
+          {
+            "memory": "Qwen3 Embedding 8B",
+            "accuracy": 0.425,
+            "comment": "Character recall@5 on the official LegalBench-RAG mini set (776 questions, 714 contracts, no file names), as published in Conare's table (data as of 9 November 2026). Run and published by Conare.",
+            "source_url": "https://conare.ai/benchmarks",
+            "source_label": "Conare benchmarks"
+          },
+          {
+            "memory": "ZeroEntropy zembed-1",
+            "accuracy": 0.416,
+            "comment": "Character recall@5 on the official LegalBench-RAG mini set (776 questions, 714 contracts, no file names), as published in Conare's table (data as of 9 November 2026). Run and published by Conare.",
+            "source_url": "https://conare.ai/benchmarks",
+            "source_label": "Conare benchmarks"
+          },
+          {
+            "memory": "Jina Embeddings v5 Text Small",
+            "accuracy": 0.399,
+            "comment": "Character recall@5 on the official LegalBench-RAG mini set (776 questions, 714 contracts, no file names), as published in Conare's table (data as of 9 November 2026). Run and published by Conare.",
+            "source_url": "https://conare.ai/benchmarks",
+            "source_label": "Conare benchmarks"
+          }
+        ]
+      }
+    }
+  }
+}

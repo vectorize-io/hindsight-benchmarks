@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { AMB_RESULTS, AMB_SITE } from "@/lib/amb";
+import { SECTIONS, rank } from "@/lib/benchmarks";
 import { BOARDS } from "@/lib/data";
 import { FAMILIES } from "@/lib/models";
 import { PageHero } from "@/components/Page";
@@ -91,6 +91,16 @@ function Row({
   );
 }
 
+// Every benchmark where Hindsight is 1st, from the same data as /benchmarks. A card with several
+// panels (BEAM's sizes) counts when Hindsight is 1st on all of them; the rest are left out.
+function firsts() {
+  return SECTIONS.flatMap((s) =>
+    s.cards
+      .filter((c) => c.panels.every((p) => rank(p)?.place === 1))
+      .map((c) => ({ c, href: `/benchmarks#${s.key}` })),
+  );
+}
+
 export default function Home() {
   const allOps = BOARDS.find((b) => b.id === "all-operations")!;
   return (
@@ -110,28 +120,26 @@ export default function Home() {
               </span>
             </>
           }
-          text="#1 on every Agent Memory Benchmark dataset, the same datasets other memory systems run."
+          text="State of the art on these Agent Memory Benchmark datasets, against every system that publishes a score."
           href="/benchmarks"
           cta="See all results"
         >
           <div className="divide-y divide-border border-y border-border">
-            {AMB_RESULTS.map((r) => (
-              <Row
-                key={`${r.benchmark}-${r.split}`}
-                href={r.href}
-                name={r.benchmark}
-                detail={r.split}
-                value={`${r.score}%`}
-              />
+            {firsts().map(({ c, href }) => (
+              <Link key={c.key} href={href} className="group flex items-center gap-3 py-2 hover:text-[hsl(var(--primary))] transition-colors">
+                <span
+                  className="shrink-0 text-[10px] font-bold text-white px-1.5 py-0.5 rounded-full"
+                  style={{ background: "linear-gradient(90deg, #0074d9 0%, #009296 100%)" }}
+                >
+                  #1
+                </span>
+                <span className="min-w-0">
+                  <span className="block font-medium text-sm truncate">{c.bench}</span>
+                  <span className="block text-xs text-muted-foreground truncate">{c.title}</span>
+                </span>
+              </Link>
             ))}
           </div>
-          <a
-            href={AMB_SITE}
-            className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-[hsl(var(--primary))]"
-          >
-            Compare all systems{" "}
-            <ArrowRight className="w-3 h-3" />
-          </a>
         </Column>
 
         <Column
