@@ -1,5 +1,5 @@
 {
-  "amb_commit": "25e80b5f2a6f872d9c460fb196aab055779c6ac0",
+  "amb_commit": "5d422bea3ae4d971c84121cad2b38e6f64779401",
   "datasets": {
     "beam": {
       "description": "Long-context memory benchmark: 100 conversations (100K\u201310M tokens), 2 000 questions across 10 memory ability categories.",
@@ -2311,6 +2311,101 @@
             "comment": "MiniLM-L6.",
             "source_url": "https://atmbench.github.io/leaderboard.html",
             "source_label": "ATM-Bench leaderboard"
+          }
+        ]
+      }
+    },
+    "legalbench-rag": {
+      "description": "LegalBench-RAG mini: 776 questions over 714 contracts (NDAs, M&A agreements, commercial contracts, privacy policies), scored on the exact characters lawyers marked.",
+      "score_type": "recall@5",
+      "note": "Character recall@5, as legalbenchrag/run_benchmark.py computes it: the share of the marked characters that the top 5 results' text covers. The 4 sets weigh the same (194 questions each). The search runs at the API's default budget of 4,096 tokens, so the 5 results carry about as much text as 5 chunks of a typical RAG setup. Precision (the share of returned text that is marked) is in each query's metrics. Documents go in with neutral names. Search only: no LLM.",
+      "runs": {
+        "hindsight-pr6704": {
+          "splits": {
+            "mini": {
+              "score": 0.8572549707140767,
+              "queries": 776,
+              "path": "outputs/legalbench-rag/hindsight-pr6704/retrieval/mini.json.gz"
+            }
+          },
+          "memory_provider": "hindsight-knowledge",
+          "mode": "retrieval",
+          "answer_llm": null,
+          "judge_llm": null,
+          "description": "Hindsight knowledge bank (PR #6704): embeddinggemma-2 search, 512-token passages, one rerank by hs-decide-1-flash-mm judging each passage alone, fused with the search order of documents. Contracts under neutral ids, no file names (as Conare ran it)."
+        },
+        "hindsight-pr6704-filenames": {
+          "splits": {
+            "mini": {
+              "score": 0.9431154589790489,
+              "queries": 776,
+              "path": "outputs/legalbench-rag/hindsight-pr6704-filenames/retrieval/mini.json.gz"
+            }
+          },
+          "memory_provider": "hindsight-knowledge",
+          "mode": "retrieval",
+          "answer_llm": null,
+          "judge_llm": null,
+          "description": "Hindsight knowledge bank (PR #6704): embeddinggemma-2 search, 512-token passages, one rerank by hs-decide-1-flash-mm judging each passage alone, fused with the search order of documents. Contracts uploaded under their corpus file names."
+        }
+      },
+      "published": {
+        "mini": [
+          {
+            "memory": "Conare",
+            "accuracy": 0.854,
+            "comment": "Character recall@5 on the official LegalBench-RAG mini set (776 questions, 714 contracts, no file names), as published in Conare's table (data as of 9 November 2026). Conare's hosted search API, default settings. Self-reported.",
+            "source_url": "https://conare.ai/benchmarks",
+            "source_label": "Conare benchmarks"
+          },
+          {
+            "memory": "Voyage context-3",
+            "accuracy": 0.637,
+            "comment": "Character recall@5 on the official LegalBench-RAG mini set (776 questions, 714 contracts, no file names), as published in Conare's table (data as of 9 November 2026). voyage-context-3. Run and published by Conare.",
+            "source_url": "https://conare.ai/benchmarks",
+            "source_label": "Conare benchmarks"
+          },
+          {
+            "memory": "Cohere Embed v5 + Rerank v5 Pro",
+            "accuracy": 0.494,
+            "comment": "Character recall@5 on the official LegalBench-RAG mini set (776 questions, 714 contracts, no file names), as published in Conare's table (data as of 9 November 2026). embed-v5 + rerank-v5.0-pro. Run and published by Conare.",
+            "source_url": "https://conare.ai/benchmarks",
+            "source_label": "Conare benchmarks"
+          },
+          {
+            "memory": "OpenAI file search",
+            "accuracy": 0.478,
+            "comment": "Character recall@5 on the official LegalBench-RAG mini set (776 questions, 714 contracts, no file names), as published in Conare's table (data as of 9 November 2026). OpenAI's hosted file search, default settings. Run and published by Conare.",
+            "source_url": "https://conare.ai/benchmarks",
+            "source_label": "Conare benchmarks"
+          },
+          {
+            "memory": "NVIDIA Nemotron 3.5 Embed 8B",
+            "accuracy": 0.445,
+            "comment": "Character recall@5 on the official LegalBench-RAG mini set (776 questions, 714 contracts, no file names), as published in Conare's table (data as of 9 November 2026). Nemotron-3.5-Embed-8B. Run and published by Conare.",
+            "source_url": "https://conare.ai/benchmarks",
+            "source_label": "Conare benchmarks"
+          },
+          {
+            "memory": "Qwen3 Embedding 8B",
+            "accuracy": 0.425,
+            "comment": "Character recall@5 on the official LegalBench-RAG mini set (776 questions, 714 contracts, no file names), as published in Conare's table (data as of 9 November 2026). Run and published by Conare.",
+            "source_url": "https://conare.ai/benchmarks",
+            "source_label": "Conare benchmarks"
+          },
+          {
+            "memory": "ZeroEntropy zembed-1",
+            "accuracy": 0.416,
+            "comment": "Character recall@5 on the official LegalBench-RAG mini set (776 questions, 714 contracts, no file names), as published in Conare's table (data as of 9 November 2026). Run and published by Conare.",
+            "source_url": "https://conare.ai/benchmarks",
+            "source_label": "Conare benchmarks"
+          },
+          {
+            "memory": "Jina Embeddings v5 Text Small",
+            "accuracy": 0.399,
+            "comment": "Character recall@5 on the official LegalBench-RAG mini set (776 questions, 714 contracts, no file names), as published in Conare's table (data as of 9 November 2026). Run and published by Conare.",
+            "source_url": "https://conare.ai/benchmarks",
+            "source_label": "Conare benchmarks"
           }
         ]
       }

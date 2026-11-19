@@ -50,7 +50,15 @@ const MEMORY: CardSpec[] = [
 const KNOWLEDGE: CardSpec[] = [
   { key: 'vidore-v3-pdf', bench: 'ViDoRe V3 · raw PDFs', title: 'Enterprise PDFs', about: '8 public sets of real company PDFs, English and French. The server reads the files itself.', splits: [['average']], ownLanguage: true },
   { key: 'vidore-v3-markdown', bench: 'ViDoRe V3 · page text', title: 'Enterprise documents as text', about: 'The same 8 sets, as the page text the dataset ships.', splits: [['average']], ownLanguage: true },
-  { key: 'legalbench-rag', bench: 'LegalBench-RAG mini', title: 'Contracts', about: '776 questions over 714 contracts, scored on the exact text lawyers marked.', splits: [['mini']] },
+  {
+    key: 'legalbench-rag', bench: 'LegalBench-RAG mini', title: 'Contracts',
+    about: '776 questions over 714 contracts, scored on the exact text lawyers marked. The other systems ran with no file names.',
+    splits: [['mini']],
+    runLabels: {
+      'hindsight-pr6704': 'Hindsight, no file names',
+      'hindsight-pr6704-filenames': 'Hindsight, with file names',
+    },
+  },
   { key: 'atm-bench-retrieval', bench: 'ATM-Bench', title: 'Photos, videos and emails', about: '1,013 questions over four years of one person’s photos, videos and emails.', splits: [['atm-bench']] },
 ]
 const HYBRID: CardSpec[] = [
