@@ -15,11 +15,9 @@ const DATASETS = DATA.datasets as unknown as Record<string, Dataset>
 export const AMB_COMMIT = DATA.amb_commit
 
 // baseline: the same agent with no memory, there to show the gain, not a system to rank against.
-export type Row = { label: string; value: number; ours: boolean; published: boolean; baseline?: boolean; href?: string; title?: string }
+export type Row = { label: string; value: number; ours: boolean; published: boolean; baseline?: boolean; href?: string; title?: string; price?: string }
 export type Panel = { label?: string; rows: Row[] }
-// A card's score-against-cost chart: one dot per setup, with what it costs on the x axis.
-export type Cost = { about: string; axis: string; money: (v: number) => string; dots: { label: string; cost: number; value: number; ours: boolean; href?: string }[] }
-export type Card = { key: string; bench: string; title: string; about: string; metric: string; panels: Panel[]; note: string; cost?: Cost }
+export type Card = { key: string; bench: string; title: string; about: string; metric: string; panels: Panel[]; note: string }
 export type Section = { key: string; title: string; about: string; cards: Card[] }
 
 type CardSpec = {
@@ -67,32 +65,18 @@ const HYBRID: CardSpec[] = [
     about: '114 support questions over the real Nextcloud manuals (837 PDF pages), each customer’s past chats and approved exceptions. The same documents, stored three ways.',
     splits: [['nextcloud']],
     runLabels: {
-      'support-linked-local-1': 'Memory + knowledge bank',
-      'support-memory-local-1': 'Memory bank only',
-      'support-knowledge-local-1': 'Knowledge bank only',
+      'support-linked': 'Memory + knowledge bank',
+      'support-memory': 'Memory bank only',
+      'support-knowledge': 'Knowledge bank only',
     },
   },
 ]
 
-const dollars = (v: number) => (v === 0 ? '$0' : v >= 1 ? `$${v.toFixed(2).replace(/\.00$/, '')}` : `$${+v.toPrecision(2)}`)
-
 // Price per 1,000 searches of a hosted search service, everything included (parsing, storage, index, search):
 // Hindsight Cloud (proposed) and Mixedbread's list prices. Embedding APIs price only one step of search, the
 // rest is yours to run, so they get no dot: the two would not compare.
-const SEARCH_PRICE: Record<string, number> = { Hindsight: 4.5, Mixedbread: 4, 'Mixedbread + reranker': 7.5 }
+const SEARCH_PRICE: Record<string, number> = { Hindsight: 4.5, 'Mixedbread + reranker': 7.5 }
 const STORE: Record<string, string> = { 'vidore-v3-pdf': 'its page-image store', 'vidore-v3-markdown': 'its page-text store' }
-
-function cost(spec: CardSpec, panel: Panel): Cost | undefined {
-  if (spec.key.startsWith('vidore')) {
-    return {
-      about: `Hosted search, everything included: Hindsight Cloud (proposed price, with Jev reranking) and Mixedbread (list price, ${STORE[spec.key]}).`,
-      axis: 'price per 1,000 searches',
-      money: dollars,
-      dots: panel.rows.filter((r) => SEARCH_PRICE[r.label] != null).map((r) => ({ label: r.label, cost: SEARCH_PRICE[r.label], value: r.value, ours: r.ours, href: r.href })),
-    }
-  }
-  return undefined
-}
 
 const isOurs = (r: Run) => (r.memory_provider ?? '').startsWith('hindsight')
 const model = (m: string | null) => (m ?? '').replace(/^[a-z]+:/, '').replace('gemini-3.1-pro-preview', 'Gemini 3.1 Pro').replace('gemini-2.5-flash-lite', 'Gemini 2.5 Flash-Lite')
@@ -124,6 +108,7 @@ function card(spec: CardSpec, section: string): Card | null {
     }
     // A system that published several numbers under one name (MemMachine on LoCoMo) shows its best.
     const best = rows.sort((a, b) => b.value - a.value).filter((r, i, all) => all.findIndex((o) => o.label === r.label) === i)
+    if (STORE[spec.key]) for (const r of best) if (SEARCH_PRICE[r.label] != null) r.price = `$${SEARCH_PRICE[r.label].toFixed(2)}`
     return { label, rows: best }
   })
   if (!panels.some((p) => p.rows.some((r) => r.ours))) return null
@@ -131,12 +116,13 @@ function card(spec: CardSpec, section: string): Card | null {
   const others = [...new Set(runs.filter(([, r]) => !isOurs(r)).map(([n]) => RUN_NAMES[n] ?? n))]
   const note =
     section === 'knowledge'
-      ? 'Search only: no LLM writes or grades anything. Hindsight embeds with EmbeddingGemma 2 and reranks with Jev 1.14. The other rows are the numbers each system or leaderboard published.'
+      ? 'Search only: no LLM writes or grades anything. Hindsight embeds with EmbeddingGemma 2 and reranks with hs-decide-1-flash-mm. The other rows are the numbers each system or leaderboard published.'
       : section === 'hybrid'
         ? 'One Hindsight agent (reflect, Gemma 4 26B) answers in each setup; only where the documents are stored changes. No other system has run SupportBench yet.'
         : `Run on AMB: Hindsight${others.length ? `, ${others.join(', ')}` : ''}${ran.length ? `, answers by ${model(ran[0][1].answer_llm)}, graded by ${model(ran[0][1].judge_llm)}` : ''}. Striped rows are the numbers each system published, with its own models and setup.`
   const metric = d.score_type === 'accuracy' ? 'Accuracy' : d.score_type.replace(/^ndcg/, 'NDCG').replace(/^recall/, 'Recall')
-  return { key: spec.key, bench: spec.bench, title: spec.title, about: spec.about, metric, panels, note, cost: cost(spec, panels[0]) }
+  return { key: spec.key, bench: spec.bench, title: spec.title, about: spec.about, metric, panels,
+    note: STORE[spec.key] ? `${note} Prices are per 1,000 searches, hosted, everything included (parsing, storage, index, search): $4.50 is Hindsight Cloud’s pricing, reranking included; $7.50 is Mixedbread’s list price with its reranker, on ${STORE[spec.key]}.` : note }
 }
 
 // SDE-Bench, from the coding leaderboard's data (pull_amb_coding.py): per coding agent, how often the
@@ -168,7 +154,7 @@ function sdeCard(): Card {
 }
 
 export const SECTIONS: Section[] = [
-  { key: 'memory', title: 'Memory', about: 'An agent that remembers users and conversations. It answers from what Hindsight recalls, and an LLM grades the answer.', cards: [...MEMORY.map((s) => card(s, 'memory')), sdeCard()] },
+  { key: 'memory', title: 'Memory', about: 'An agent that remembers users and conversations. It answers from what Hindsight recalls from a memory bank, and an LLM grades the answer.', cards: [...MEMORY.map((s) => card(s, 'memory')), sdeCard()] },
   { key: 'knowledge', title: 'Knowledge', about: 'Search over documents in a knowledge bank: PDFs, text, images and video. Scored on the ranking alone, against each dataset’s own labels.', cards: KNOWLEDGE.map((s) => card(s, 'knowledge')) },
   { key: 'hybrid', title: 'Memory + knowledge', about: 'An agent that needs both: shared documents in a knowledge bank, and what it knows about each user in a memory bank.', cards: HYBRID.map((s) => card(s, 'hybrid')) },
 ].map((s) => ({ ...s, cards: s.cards.filter((c): c is Card => c !== null) }))
@@ -180,12 +166,3 @@ export function rank(p: Panel): { place: number; of: number } | null {
   return { place: field.findIndex((r) => r.ours) + 1, of: field.filter((r) => !r.ours).length + 1 }
 }
 
-export const ordinal = (n: number) => `${n}${n % 10 === 1 && n !== 11 ? 'st' : n % 10 === 2 && n !== 12 ? 'nd' : n % 10 === 3 && n !== 13 ? 'rd' : 'th'}`
-
-
-// The badge text when there is nobody to rank against: the gain over the same agent with no memory.
-export function gain(p: Panel): string | null {
-  const base = p.rows.find((r) => r.baseline)
-  const best = p.rows.find((r) => r.ours)
-  return base && best ? `+${Math.round((best.value - base.value) * 100)} pts vs no memory` : null
-}

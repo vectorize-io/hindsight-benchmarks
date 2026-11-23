@@ -1,5 +1,5 @@
 {
-  "amb_commit": "bcc9dcd6cac30becee8ea06b2a722a9d6bacbe2b",
+  "amb_commit": "9905feb48f7f0a820629ac06a88b75ecfef77b7f",
   "datasets": {
     "beam": {
       "description": "Long-context memory benchmark: 100 conversations (100K\u201310M tokens), 2 000 questions across 10 memory ability categories.",
@@ -522,23 +522,9 @@
           {
             "memory": "Honcho",
             "accuracy": 0.904,
-            "comment": "Self-reported by Plastic Labs. LongMemEval S split. LLM-as-a-judge with GPT-4o as judge (following the LongMemEval paper's methodology). Uses Claude Haiku 4.5 as backbone. Score on LongMem M (500 questions): 88.8%. Also reported in the Chronos paper (arXiv:2603.16862).",
+            "comment": "Self-reported by Plastic Labs. LongMemEval S split. LLM-as-a-judge with GPT-4o as judge (following the LongMemEval paper's methodology). Uses Claude Haiku 4.5 as backbone. Score on LongMem M (500 questions): 88.8%.",
             "source_url": "https://blog.plasticlabs.ai/research/Benchmarking-Honcho",
             "source_label": "Honcho Benchmarking Blog (Plastic Labs)"
-          },
-          {
-            "memory": "Mastra",
-            "accuracy": 0.928,
-            "comment": "Reported by the Chronos paper, not self-reported. Best of two configurations tested; the GPT-4o configuration achieved 84.8%. The backbone for this configuration is not specified.",
-            "source_url": "https://arxiv.org/abs/2603.16862",
-            "source_label": "Chronos Paper (arXiv:2603.16862)"
-          },
-          {
-            "memory": "Chronos",
-            "accuracy": 0.956,
-            "comment": "Self-reported by Chronos authors. Best of two configurations tested; the GPT-4o configuration achieved 92.6%. This configuration uses Claude Opus 4.6 as backbone, which is considerably more capable than the models used by most other entries here.",
-            "source_url": "https://arxiv.org/abs/2603.16862",
-            "source_label": "Chronos Paper (arXiv:2603.16862)"
           }
         ]
       }
@@ -838,12 +824,12 @@
       "score_type": "accuracy",
       "note": null,
       "runs": {
-        "support-knowledge-local-1": {
+        "support-knowledge": {
           "splits": {
             "nextcloud": {
               "score": 0.7105263157894737,
               "queries": 114,
-              "path": "outputs/supportbench/support-knowledge-local-1/agent/nextcloud.json.gz",
+              "path": "outputs/supportbench/support-knowledge/agent/nextcloud.json.gz",
               "avg_query_usd": 0.00056,
               "ingest_usd": 0.0
             }
@@ -854,12 +840,12 @@
           "judge_llm": "openai:gemma-4-26b-a4b",
           "description": null
         },
-        "support-linked-local-1": {
+        "support-linked": {
           "splits": {
             "nextcloud": {
               "score": 0.8508771929824561,
               "queries": 114,
-              "path": "outputs/supportbench/support-linked-local-1/agent/nextcloud.json.gz",
+              "path": "outputs/supportbench/support-linked/agent/nextcloud.json.gz",
               "avg_query_usd": 0.00059,
               "ingest_usd": 0.336
             }
@@ -870,12 +856,12 @@
           "judge_llm": "openai:gemma-4-26b-a4b",
           "description": null
         },
-        "support-memory-local-1": {
+        "support-memory": {
           "splits": {
             "nextcloud": {
               "score": 0.7456140350877193,
               "queries": 114,
-              "path": "outputs/supportbench/support-memory-local-1/agent/nextcloud.json.gz",
+              "path": "outputs/supportbench/support-memory/agent/nextcloud.json.gz",
               "avg_query_usd": 0.00031,
               "ingest_usd": 0.9452
             }
@@ -894,66 +880,66 @@
       "score_type": "ndcg@10",
       "note": "nDCG@10 (trec_eval linear gain) over every query of all 6 query languages, against ViDoRe's page-level qrels. The average split is the mean over the 8 tasks, the number Mixedbread's table reports. Search only: no LLM, no reranker, no query rewriting.",
       "runs": {
-        "hindsight-jev114": {
+        "hindsight-kb": {
           "splits": {
             "computer_science": {
               "score": null,
               "queries": 215,
-              "path": "outputs/vidore-v3-markdown/hindsight-jev114/retrieval/computer_science.json.gz",
-              "own_language": 0.8333795139905361
+              "path": "outputs/vidore-v3-markdown/hindsight-kb/retrieval/computer_science.json.gz",
+              "own_language": 0.834210321492957
             },
             "energy": {
               "score": null,
               "queries": 308,
-              "path": "outputs/vidore-v3-markdown/hindsight-jev114/retrieval/energy.json.gz",
-              "own_language": 0.7294479931311448
+              "path": "outputs/vidore-v3-markdown/hindsight-kb/retrieval/energy.json.gz",
+              "own_language": 0.7012603477792994
             },
             "finance_en": {
               "score": null,
               "queries": 309,
-              "path": "outputs/vidore-v3-markdown/hindsight-jev114/retrieval/finance_en.json.gz",
-              "own_language": 0.7377997943573192
+              "path": "outputs/vidore-v3-markdown/hindsight-kb/retrieval/finance_en.json.gz",
+              "own_language": 0.7245810374131134
             },
             "finance_fr": {
               "score": null,
               "queries": 320,
-              "path": "outputs/vidore-v3-markdown/hindsight-jev114/retrieval/finance_fr.json.gz",
-              "own_language": 0.5739463384276697
+              "path": "outputs/vidore-v3-markdown/hindsight-kb/retrieval/finance_fr.json.gz",
+              "own_language": 0.5257784634345546
             },
             "hr": {
               "score": null,
               "queries": 318,
-              "path": "outputs/vidore-v3-markdown/hindsight-jev114/retrieval/hr.json.gz",
-              "own_language": 0.7047468723189936
+              "path": "outputs/vidore-v3-markdown/hindsight-kb/retrieval/hr.json.gz",
+              "own_language": 0.6959821991053374
             },
             "industrial": {
               "score": null,
               "queries": 283,
-              "path": "outputs/vidore-v3-markdown/hindsight-jev114/retrieval/industrial.json.gz",
-              "own_language": 0.6066833695707339
+              "path": "outputs/vidore-v3-markdown/hindsight-kb/retrieval/industrial.json.gz",
+              "own_language": 0.5940546097659681
             },
             "pharmaceuticals": {
               "score": null,
               "queries": 364,
-              "path": "outputs/vidore-v3-markdown/hindsight-jev114/retrieval/pharmaceuticals.json.gz",
-              "own_language": 0.6966804396927342
+              "path": "outputs/vidore-v3-markdown/hindsight-kb/retrieval/pharmaceuticals.json.gz",
+              "own_language": 0.7037455240270185
             },
             "physics": {
               "score": null,
               "queries": 302,
-              "path": "outputs/vidore-v3-markdown/hindsight-jev114/retrieval/physics.json.gz",
-              "own_language": 0.5001507687214111
+              "path": "outputs/vidore-v3-markdown/hindsight-kb/retrieval/physics.json.gz",
+              "own_language": 0.5186693236105486
             },
             "average": {
               "score": null,
-              "own_language": 0.6728543862763179
+              "own_language": 0.6622852283285996
             }
           },
           "memory_provider": "hindsight-knowledge",
           "mode": "retrieval",
           "answer_llm": null,
           "judge_llm": null,
-          "description": "Hindsight knowledge bank, embeddinggemma-2 search, reranked by Jev 1.14 (TypeSafe System One)."
+          "description": null
         }
       },
       "published": {
@@ -1430,66 +1416,66 @@
       "score_type": "ndcg@10",
       "note": "nDCG@10 (trec_eval linear gain) over every query of all 6 query languages, against ViDoRe's page-level qrels. The average split is the mean over the 8 tasks, the number Mixedbread's table reports. Search only: no LLM, no reranker, no query rewriting. Harder than the markdown version: nobody parses the pages for the server.",
       "runs": {
-        "hindsight-jev114": {
+        "hindsight-kb": {
           "splits": {
             "computer_science": {
               "score": null,
               "queries": 215,
-              "path": "outputs/vidore-v3-pdf/hindsight-jev114/retrieval/computer_science.json.gz",
-              "own_language": 0.841097660827437
+              "path": "outputs/vidore-v3-pdf/hindsight-kb/retrieval/computer_science.json.gz",
+              "own_language": 0.8512223638886064
             },
             "energy": {
               "score": null,
               "queries": 308,
-              "path": "outputs/vidore-v3-pdf/hindsight-jev114/retrieval/energy.json.gz",
-              "own_language": 0.7447444107888546
+              "path": "outputs/vidore-v3-pdf/hindsight-kb/retrieval/energy.json.gz",
+              "own_language": 0.7381931814204804
             },
             "finance_en": {
               "score": null,
               "queries": 309,
-              "path": "outputs/vidore-v3-pdf/hindsight-jev114/retrieval/finance_en.json.gz",
-              "own_language": 0.7580208202495056
+              "path": "outputs/vidore-v3-pdf/hindsight-kb/retrieval/finance_en.json.gz",
+              "own_language": 0.7477595123168652
             },
             "finance_fr": {
               "score": null,
               "queries": 320,
-              "path": "outputs/vidore-v3-pdf/hindsight-jev114/retrieval/finance_fr.json.gz",
-              "own_language": 0.5841571720052662
+              "path": "outputs/vidore-v3-pdf/hindsight-kb/retrieval/finance_fr.json.gz",
+              "own_language": 0.5720394764946959
             },
             "hr": {
               "score": null,
               "queries": 318,
-              "path": "outputs/vidore-v3-pdf/hindsight-jev114/retrieval/hr.json.gz",
-              "own_language": 0.716560195574704
+              "path": "outputs/vidore-v3-pdf/hindsight-kb/retrieval/hr.json.gz",
+              "own_language": 0.7146720942540714
             },
             "industrial": {
               "score": null,
               "queries": 283,
-              "path": "outputs/vidore-v3-pdf/hindsight-jev114/retrieval/industrial.json.gz",
-              "own_language": 0.631674611588637
+              "path": "outputs/vidore-v3-pdf/hindsight-kb/retrieval/industrial.json.gz",
+              "own_language": 0.6200832999141388
             },
             "pharmaceuticals": {
               "score": null,
               "queries": 364,
-              "path": "outputs/vidore-v3-pdf/hindsight-jev114/retrieval/pharmaceuticals.json.gz",
-              "own_language": 0.7270762302382328
+              "path": "outputs/vidore-v3-pdf/hindsight-kb/retrieval/pharmaceuticals.json.gz",
+              "own_language": 0.7116704173287921
             },
             "physics": {
               "score": null,
               "queries": 302,
-              "path": "outputs/vidore-v3-pdf/hindsight-jev114/retrieval/physics.json.gz",
-              "own_language": 0.5089327888148562
+              "path": "outputs/vidore-v3-pdf/hindsight-kb/retrieval/physics.json.gz",
+              "own_language": 0.48257563011068416
             },
             "average": {
               "score": null,
-              "own_language": 0.6890329862609367
+              "own_language": 0.6797769969660418
             }
           },
           "memory_provider": "hindsight-knowledge",
           "mode": "retrieval",
           "answer_llm": null,
           "judge_llm": null,
-          "description": "Hindsight knowledge bank, embeddinggemma-2 search, reranked by Jev 1.14 (TypeSafe System One)."
+          "description": null
         }
       },
       "published": {
@@ -2246,19 +2232,19 @@
       "score_type": "recall@10",
       "note": "R@10: the share of a question's evidence items in the top 10 results. Each photo and video goes in as the raw file and as the benchmark's own text record (time, place, caption, OCR, tags); a hit on either counts as the item.",
       "runs": {
-        "hindsight-jev114": {
+        "hindsight-kb": {
           "splits": {
             "atm-bench": {
-              "score": 0.9067781538413324,
+              "score": 0.9306342938623294,
               "queries": 1013,
-              "path": "outputs/atm-bench-retrieval/hindsight-jev114/retrieval/atm-bench.json.gz"
+              "path": "outputs/atm-bench-retrieval/hindsight-kb/retrieval/atm-bench.json.gz"
             }
           },
           "memory_provider": "hindsight-knowledge",
           "mode": "retrieval",
           "answer_llm": null,
           "judge_llm": null,
-          "description": "Hindsight knowledge bank, embeddinggemma-2 search, reranked by Jev 1.14 (TypeSafe System One)."
+          "description": null
         }
       },
       "published": {
@@ -2323,7 +2309,7 @@
         "hindsight-filenames": {
           "splits": {
             "mini": {
-              "score": 0.9431154589790489,
+              "score": 0.949661542268739,
               "queries": 776,
               "path": "outputs/legalbench-rag/hindsight-filenames/retrieval/mini.json.gz"
             }
@@ -2332,12 +2318,12 @@
           "mode": "retrieval",
           "answer_llm": null,
           "judge_llm": null,
-          "description": "Hindsight knowledge bank: embeddinggemma-2 search, 512-token passages, one rerank by hs-decide-1-flash-mm judging each passage alone, fused with the search order of documents. Contracts uploaded under their corpus file names."
+          "description": "Hindsight knowledge bank, hindsight main fdae5ed70 with stock knowledge-bank settings: embeddinggemma-2 search, 512-token passages, one rerank by hs-decide-1-flash-mm judging each passage alone, fused with the search order of documents. Contracts uploaded under their corpus file names."
         },
         "hindsight-no-filenames": {
           "splits": {
             "mini": {
-              "score": 0.8572549707140767,
+              "score": 0.8722407028837523,
               "queries": 776,
               "path": "outputs/legalbench-rag/hindsight-no-filenames/retrieval/mini.json.gz"
             }
@@ -2346,7 +2332,7 @@
           "mode": "retrieval",
           "answer_llm": null,
           "judge_llm": null,
-          "description": "Hindsight knowledge bank: embeddinggemma-2 search, 512-token passages, one rerank by hs-decide-1-flash-mm judging each passage alone, fused with the search order of documents. Contracts under neutral ids, no file names (as Conare ran it)."
+          "description": "Hindsight knowledge bank, hindsight main fdae5ed70 with stock knowledge-bank settings: embeddinggemma-2 search, 512-token passages, one rerank by hs-decide-1-flash-mm judging each passage alone, fused with the search order of documents. Contracts under neutral ids, no file names (as Conare ran it)."
         }
       },
       "published": {

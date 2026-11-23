@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { ArrowUpRight } from 'lucide-react'
-import { AMB_COMMIT, AMB_REPO, AMB_SITE, SECTIONS, rank } from '@/lib/benchmarks'
+import { AMB_COMMIT, AMB_REPO, AMB_SITE, SECTIONS } from '@/lib/benchmarks'
 import { PageHero } from '@/components/Page'
 import { BenchmarkCard } from '@/components/BenchmarkCard'
 import { ModelScatter } from '@/components/BoardView'
@@ -18,10 +18,7 @@ export default function BenchmarksPage() {
   // Footnotes are numbered down the page, one per card.
   let n = 0
   const sections = SECTIONS.map((s) => ({ ...s, cards: s.cards.map((c) => ({ c, n: ++n })) }))
-  const summary = sections.map((s) => {
-    const ranked = s.cards.flatMap(({ c }) => c.panels.map(rank)).filter((r) => r !== null)
-    return { key: s.key, title: s.title, first: ranked.filter((r) => r.place === 1).length, ranked: ranked.length, cards: s.cards.length }
-  })
+  const summary = sections.map((s) => ({ key: s.key, title: s.title, cards: s.cards.length }))
 
   return (
     <>
@@ -36,7 +33,7 @@ export default function BenchmarksPage() {
             <a key={s.key} href={`#${s.key}`} className="rounded-xl border border-border p-4 hover:border-[hsl(var(--primary))]/50 transition">
               <div className="font-heading font-bold">{s.title}</div>
               <div className="text-sm text-muted-foreground">
-                {s.ranked ? `1st on ${s.first} of ${s.ranked} ${s.ranked === 1 ? 'test' : 'tests'}` : `${s.cards} ${s.cards === 1 ? 'benchmark' : 'benchmarks'}, no other system yet`}
+                {`${s.cards} ${s.cards === 1 ? 'benchmark' : 'benchmarks'}`}
               </div>
             </a>
           ))}
@@ -62,7 +59,11 @@ export default function BenchmarksPage() {
         {sections.map((s) => (
           <section key={s.key} id={s.key} className="scroll-mt-24">
             <h2 className="font-heading font-extrabold text-2xl">{s.title}</h2>
-            <p className="text-muted-foreground mt-1 mb-5 max-w-3xl">{s.about}</p>
+            <p className="text-muted-foreground mt-1 mb-5 max-w-3xl">
+              {s.about.split(/(memory bank|knowledge bank)/).map((t, i) =>
+                i % 2 ? <code key={i} className="font-mono text-[0.9em] px-1 py-0.5 rounded bg-secondary text-foreground">{t}</code> : t,
+              )}
+            </p>
             <div className="grid md:grid-cols-2 gap-4">
               {s.cards.map(({ c, n }) => (
                 <BenchmarkCard key={c.key} c={c} n={n}>
