@@ -72,10 +72,9 @@ const HYBRID: CardSpec[] = [
   },
 ]
 
-// Price per 1,000 searches of a hosted search service, everything included (parsing, storage, index, search):
-// Hindsight Cloud (proposed) and Mixedbread's list prices. Embedding APIs price only one step of search, the
-// rest is yours to run, so they get no dot: the two would not compare.
-const SEARCH_PRICE: Record<string, number> = { Hindsight: 4.5, 'Mixedbread + reranker': 7.5 }
+// Search price per 1,000 queries, as each hosted service lists it: Hindsight Cloud's KB Search
+// ($0.002 per query, docs.hindsight.vectorize.io/cloud/billing) and Mixedbread's list price with its reranker.
+const SEARCH_PRICE: Record<string, number> = { Hindsight: 2, 'Mixedbread + reranker': 7.5 }
 const STORE: Record<string, string> = { 'vidore-v3-pdf': 'its page-image store', 'vidore-v3-markdown': 'its page-text store' }
 
 const isOurs = (r: Run) => (r.memory_provider ?? '').startsWith('hindsight')
@@ -122,7 +121,7 @@ function card(spec: CardSpec, section: string): Card | null {
         : `Run on AMB: Hindsight${others.length ? `, ${others.join(', ')}` : ''}${ran.length ? `, answers by ${model(ran[0][1].answer_llm)}, graded by ${model(ran[0][1].judge_llm)}` : ''}. Striped rows are the numbers each system published, with its own models and setup.`
   const metric = d.score_type === 'accuracy' ? 'Accuracy' : d.score_type.replace(/^ndcg/, 'NDCG').replace(/^recall/, 'Recall')
   return { key: spec.key, bench: spec.bench, title: spec.title, about: spec.about, metric, panels,
-    note: STORE[spec.key] ? `${note} Prices are per 1,000 searches, hosted, everything included (parsing, storage, index, search): $4.50 is Hindsight Cloud’s pricing, reranking included; $7.50 is Mixedbread’s list price with its reranker, on ${STORE[spec.key]}.` : note }
+    note: STORE[spec.key] ? `${note} Prices are per 1,000 searches, as each service lists them: $2.00 is Hindsight Cloud’s knowledge-bank search, a flat fee per query with reranking included (loading and storing documents are billed separately); $7.50 is Mixedbread’s list price with its reranker, on ${STORE[spec.key]}.` : note }
 }
 
 // SDE-Bench, from the coding leaderboard's data (pull_amb_coding.py): per coding agent, how often the
