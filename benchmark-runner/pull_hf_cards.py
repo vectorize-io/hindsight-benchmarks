@@ -23,7 +23,7 @@ OUT = Path(__file__).parent.parent / "visualizer" / "lib" / "models.json"
 FAMILIES = [
     {"id": "decision", "title": "Decision model", "repo": "hindsight-ai/hs-decide-1-flash",
      "short": "Fast yes/no, pick-one and score answers with a probability for every option.",
-     "facts": [["Parameters", "0.8B"], ["Context", "65,536 tokens"], ["Languages", "8"], ["Serves on", "vLLM"]]},
+     "facts": [["Parameters", "0.8B"], ["Context", "131,072 tokens"], ["Inputs", "Text and images"], ["Languages", "8"], ["Serves on", "vLLM, MLX or Transformers"]]},
     {"id": "embeddings", "title": "Embedding model", "repo": "hindsight-ai/hs-embed-1",
      "short": "Turns memories and queries into vectors for recall.",
      "facts": [["Dimensions", "384 (also 256, 128, 64)"], ["Context", "8,192 tokens"], ["Languages", "8"], ["Runs on", "CPU or GPU, stock TEI"]]},

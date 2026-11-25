@@ -13,7 +13,11 @@
         ],
         [
           "Context",
-          "65,536 tokens"
+          "131,072 tokens"
+        ],
+        [
+          "Inputs",
+          "Text and images"
         ],
         [
           "Languages",
@@ -21,7 +25,7 @@
         ],
         [
           "Serves on",
-          "vLLM"
+          "vLLM, MLX or Transformers"
         ]
       ],
       "benchmarks": [
@@ -46,7 +50,7 @@
           "name": "Wikipedia revisions",
           "metric": "",
           "href": null,
-          "about": "Right call on whether a new memory changes the page (%), 400 cases",
+          "about": "Right call on whether a new memory concerns the page (%), 400 cases",
           "section": "Page refresh"
         },
         {
@@ -54,7 +58,7 @@
           "name": "Refreshes skipped",
           "metric": "",
           "href": null,
-          "about": "Covered or off-topic memories skipped, no LLM call (%), 180 cases",
+          "about": "Memories from another article skipped, no LLM call (%), 90 cases",
           "section": "Page refresh"
         },
         {
@@ -126,14 +130,14 @@
           "tag": "hindsight",
           "size": "0.8B",
           "scores": {
-            "locomo-evidence::recall_at_10": 93.0,
-            "longmemeval-evidence::recall_at_10": 97.5,
-            "wikipedia-revisions::accuracy": 79.5,
-            "refreshes-skipped::accuracy": 89.4,
-            "new-facts-caught::recall": 71.4,
-            "dialogue-nli::accuracy": 75.8,
-            "squad-hotpotqa-sufficiency::accuracy": 61.8,
-            "decision-index::skill": 36.1,
+            "locomo-evidence::recall_at_10": 95.0,
+            "longmemeval-evidence::recall_at_10": 100.0,
+            "wikipedia-revisions::accuracy": 96.2,
+            "refreshes-skipped::accuracy": 90.0,
+            "new-facts-caught::recall": 97.3,
+            "dialogue-nli::accuracy": 79.2,
+            "squad-hotpotqa-sufficiency::accuracy": 67.8,
+            "decision-index::skill": 42.6,
             "judge50-memories::latency_s": 67.3,
             "one-decision::latency_ms": 1900.6,
             "throughput::throughput": 0.75
@@ -146,9 +150,9 @@
           "scores": {
             "locomo-evidence::recall_at_10": 91.5,
             "longmemeval-evidence::recall_at_10": 100.0,
-            "wikipedia-revisions::accuracy": 68.5,
-            "refreshes-skipped::accuracy": 45.0,
-            "new-facts-caught::recall": 87.7,
+            "wikipedia-revisions::accuracy": 90.5,
+            "refreshes-skipped::accuracy": 74.4,
+            "new-facts-caught::recall": 93.2,
             "dialogue-nli::accuracy": 83.0,
             "squad-hotpotqa-sufficiency::accuracy": 66.8,
             "decision-index::skill": 53.8,
@@ -164,9 +168,9 @@
           "scores": {
             "locomo-evidence::recall_at_10": 83.0,
             "longmemeval-evidence::recall_at_10": 100.0,
-            "wikipedia-revisions::accuracy": 72.0,
-            "refreshes-skipped::accuracy": 47.2,
-            "new-facts-caught::recall": 92.3,
+            "wikipedia-revisions::accuracy": 94.0,
+            "refreshes-skipped::accuracy": 75.6,
+            "new-facts-caught::recall": 99.1,
             "dialogue-nli::accuracy": 88.0,
             "squad-hotpotqa-sufficiency::accuracy": 67.8,
             "decision-index::skill": 36.9,
@@ -182,9 +186,9 @@
           "scores": {
             "locomo-evidence::recall_at_10": 94.0,
             "longmemeval-evidence::recall_at_10": 97.5,
-            "wikipedia-revisions::accuracy": 56.0,
-            "refreshes-skipped::accuracy": 78.3,
-            "new-facts-caught::recall": 37.7,
+            "wikipedia-revisions::accuracy": 86.8,
+            "refreshes-skipped::accuracy": 43.3,
+            "new-facts-caught::recall": 99.1,
             "dialogue-nli::accuracy": 51.7,
             "squad-hotpotqa-sufficiency::accuracy": 50.7,
             "judge50-memories::latency_s": 1583.9,
